@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { authGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: 'home',
+    canActivate: [authGuard],
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
@@ -35,6 +37,11 @@ const routes: Routes = [
     path: 'splash',
     loadChildren: () => import('./pages/splash/splash.module').then( m => m.SplashPageModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+
 ];
 
 @NgModule({

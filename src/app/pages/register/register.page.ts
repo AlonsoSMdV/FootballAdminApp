@@ -40,14 +40,7 @@ export class RegisterPage {
             ...this.registerForm.value,
             userId: resp.id.toString()
           };
-          
-          this.peopleSvc.add(userData).subscribe({
-            next: resp => {
-              const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
-              this.router.navigateByUrl(returnUrl);
-            },
-            error: err => {}
-          });
+          this.router.navigate(['/home'])
         },
         error: err => {
           console.log(err);

@@ -7,7 +7,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { provideHttpClient } from '@angular/common/http';
-import { LeaguesRepositoryFactory, TeamsRepositoryFactory, PlayersRepositoryFactory, AuthMappingFactory, AuthenticationServiceFactory, PeopleRepositoryFactory } from './core/repositories/repository.factory';
+import { LeaguesRepositoryFactory, TeamsRepositoryFactory, PlayersRepositoryFactory, AuthMappingFactory, AuthenticationServiceFactory, PeopleRepositoryFactory, MediaServiceFactory } from './core/repositories/repository.factory';
 import { LEAGUE_API_URL_TOKEN, LEAGUE_REPOSITORY_MAPPING_TOKEN, LEAGUE_REPOSITORY_TOKEN, LEAGUE_RESOURCE_NAME_TOKEN, 
   TEAM_API_URL_TOKEN, TEAM_REPOSITORY_MAPPING_TOKEN, TEAM_REPOSITORY_TOKEN, TEAM_RESOURCE_NAME_TOKEN, 
   PLAYER_API_URL_TOKEN, PLAYER_REPOSITORY_MAPPING_TOKEN, PLAYER_REPOSITORY_TOKEN,PLAYER_RESOURCE_NAME_TOKEN,
@@ -28,6 +28,7 @@ import { PlayerMappingStrapi } from './core/repositories/impl/player-mapping-str
 import { BaseAuthenticationService } from './core/services/impl/base-authentication.service';
 import { PeopleService } from './core/services/impl/people.service';
 import { PeopleMappingStrapi } from './core/repositories/impl/people-mapping-strapi.service';
+import { BaseMediaService } from './core/services/impl/base-media.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,9 +40,9 @@ import { PeopleMappingStrapi } from './core/repositories/impl/people-mapping-str
     {provide: PEOPLE_REPOSITORY_TOKEN, useClass: PeopleService},
     {provide: BACKEND_TOKEN, useValue: 'strapi'},
     {provide: PEOPLE_RESOURCE_NAME_TOKEN, useValue: 'usuarios'},
-    {provide: LEAGUE_RESOURCE_NAME_TOKEN, useValue: 'ligas'},
-    {provide: TEAM_RESOURCE_NAME_TOKEN, useValue: 'equipos'},
-    {provide: PLAYER_RESOURCE_NAME_TOKEN, useValue: 'jugadores'},
+    {provide: LEAGUE_RESOURCE_NAME_TOKEN, useValue: 'leagues'},
+    {provide: TEAM_RESOURCE_NAME_TOKEN, useValue: 'teams'},
+    {provide: PLAYER_RESOURCE_NAME_TOKEN, useValue: 'players  '},
     {provide: LEAGUE_API_URL_TOKEN, useValue: 'http://localhost:1337/api'},
     {provide: TEAM_API_URL_TOKEN, useValue: 'http://localhost:1337/api'},
     {provide: PLAYER_API_URL_TOKEN, useValue: 'http://localhost:1337/api'},
@@ -85,8 +86,13 @@ import { PeopleMappingStrapi } from './core/repositories/impl/people-mapping-str
       provide: 'PlayerService',
       useClass:PlayerService
     },
+    {
+      provide: 'PeopleService',
+      useClass: PeopleService
+    },
 
-    AuthenticationServiceFactory
+    AuthenticationServiceFactory,
+    MediaServiceFactory,
   ],
   bootstrap: [AppComponent],
 })

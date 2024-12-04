@@ -19,6 +19,7 @@ export class LeaguesPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getLeagues();
   }
 
 
