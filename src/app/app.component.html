@@ -2,21 +2,29 @@
   <!-- Menú lateral -->
   <ion-menu #menu side="start" menuId="mainMenu" contentId="mainContent" [disabled]="!(authSvc.authenticated$ | async)" >
    <ion-header>
-     <ion-toolbar>
-       <ion-title slot="start">{{ 'MENU.TITLE'}}</ion-title>
-       <ion-fab slot="end">
-         <ion-fab-button size="small">
-           <ion-icon name="language-outline"></ion-icon>
-         </ion-fab-button>
-       </ion-fab>
-     </ion-toolbar>
+    <ion-toolbar>
+      <ion-title>{{ 'MENU.TITLE' | translate  }}</ion-title>
+      <ion-fab slot="end">
+        <ion-fab-button size="small">
+          <ion-icon name="language-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="start">
+          <ion-fab-button (click)="changeLanguage('es')" [color]="currentLang === 'es' ? 'primary' : 'medium'">
+            <ion-text>ES</ion-text>
+          </ion-fab-button>
+          <ion-fab-button (click)="changeLanguage('en')" [color]="currentLang === 'en' ? 'primary' : 'medium'">
+            <ion-text>EN</ion-text>
+          </ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
+    </ion-toolbar>
    </ion-header>
    <ion-content>
      <ion-list>
-       <ion-item (click)="menu.close()" routerLink="/home" routerDirection="root">{{ 'MENU.HOME'}}</ion-item>
-       <ion-item (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" routerLink="/leagues" routerDirection="root">{{ 'MENU.LEAGUES'}}</ion-item>
-       <ion-item (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" routerLink="/profile" routerDirection="root">{{ 'MENU.PROFILE'}}</ion-item>
-       <ion-item (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" (click)="logout()" button>{{ 'MENU.LOGOUT'}}</ion-item>
+       <ion-item (click)="menu.close()" routerLink="/home" routerDirection="root">{{ 'MENU.HOME'  | translate }}</ion-item>
+       <ion-item (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" routerLink="/leagues" routerDirection="root">{{ 'MENU.LEAGUES'  | translate }}</ion-item>
+       <ion-item (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" routerLink="/profile" routerDirection="root">{{ 'MENU.PROFILE'  | translate }}</ion-item>
+       <ion-item (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" (click)="logout()" button>{{ 'MENU.LOGOUT'  | translate }}</ion-item>
      </ion-list>
    </ion-content>
    <ion-footer>

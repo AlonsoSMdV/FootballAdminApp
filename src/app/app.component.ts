@@ -9,11 +9,20 @@ import { LanguageService } from './core/services/language.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  currentLang: string;
 
   constructor(
+    private languageService: LanguageService,
     public authSvc: BaseAuthenticationService,
     private router: Router
   ) {
+    this.currentLang = this.languageService.getStoredLanguage();
+  }
+
+  changeLanguage(lang: string) {
+    this.languageService.changeLanguage(lang);
+    this.currentLang = lang;
+    this.languageService.storeLanguage(lang);
   }
 
   logout() {

@@ -6,7 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { LeaguesRepositoryFactory, TeamsRepositoryFactory, PlayersRepositoryFactory, AuthMappingFactory, AuthenticationServiceFactory, PeopleRepositoryFactory, MediaServiceFactory } from './core/repositories/repository.factory';
 import { LEAGUE_API_URL_TOKEN, LEAGUE_REPOSITORY_MAPPING_TOKEN, LEAGUE_REPOSITORY_TOKEN, LEAGUE_RESOURCE_NAME_TOKEN, 
   TEAM_API_URL_TOKEN, TEAM_REPOSITORY_MAPPING_TOKEN, TEAM_REPOSITORY_TOKEN, TEAM_RESOURCE_NAME_TOKEN, 
@@ -29,10 +29,26 @@ import { BaseAuthenticationService } from './core/services/impl/base-authenticat
 import { PeopleService } from './core/services/impl/people.service';
 import { PeopleMappingStrapi } from './core/repositories/impl/people-mapping-strapi.service';
 import { BaseMediaService } from './core/services/impl/base-media.service';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideHttpClient(),
@@ -42,7 +58,7 @@ import { BaseMediaService } from './core/services/impl/base-media.service';
     {provide: PEOPLE_RESOURCE_NAME_TOKEN, useValue: 'usuarios'},
     {provide: LEAGUE_RESOURCE_NAME_TOKEN, useValue: 'leagues'},
     {provide: TEAM_RESOURCE_NAME_TOKEN, useValue: 'teams'},
-    {provide: PLAYER_RESOURCE_NAME_TOKEN, useValue: 'players  '},
+    {provide: PLAYER_RESOURCE_NAME_TOKEN, useValue: 'players'},
     {provide: LEAGUE_API_URL_TOKEN, useValue: 'http://localhost:1337/api'},
     {provide: TEAM_API_URL_TOKEN, useValue: 'http://localhost:1337/api'},
     {provide: PLAYER_API_URL_TOKEN, useValue: 'http://localhost:1337/api'},
@@ -70,12 +86,12 @@ import { BaseMediaService } from './core/services/impl/base-media.service';
     },
     LeaguesRepositoryFactory,
     TeamsRepositoryFactory,
-    PeopleRepositoryFactory,
+    PlayersRepositoryFactory,
     PeopleRepositoryFactory,
     AuthMappingFactory,
     LeaguesRepositoryFactory,
     TeamsRepositoryFactory,
-    PeopleRepositoryFactory,
+    PlayersRepositoryFactory,
     {
       provide: 'LeagueService',
       useClass:LeagueService

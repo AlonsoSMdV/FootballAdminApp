@@ -1,8 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>teams</ion-title>
+    <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+  </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
@@ -10,4 +13,35 @@
       <ion-title size="large">teams</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-md="12" *ngFor="let team of (teams$ | async)">
+        <ion-card>
+          <div class="card-content">
+            <!-- Contenido principal -->
+            <div class="content">
+              <ion-label>
+                {{team.name}}<br>
+              </ion-label>
+              <ion-label>
+                {{team.numberOfPlayers}}
+              </ion-label>
+            </div>
+            <!-- Botones -->
+            <div class="button-container">
+              <ion-button color="primary" routerLink="/players">
+                <ion-icon name="information-outline" slot="icon-only"></ion-icon>
+              </ion-button>
+              <ion-button color="danger">
+                <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+              </ion-button>
+              <ion-button color="warning">
+                <ion-icon name="create-outline" slot="icon-only"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

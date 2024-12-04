@@ -1,0 +1,34 @@
+.card-content {
+  display: flex; /* Flexbox para alinear todo en la misma línea */
+  align-items: center; /* Alinea los elementos verticalmente al centro */
+  justify-content: space-between; /* Espacio entre contenido y botones */
+  gap: 10px; /* Espacio entre los elementos */
+}
+
+.content {
+  display: flex; /* Alinea las etiquetas en fila */
+  flex-direction: column; /* Mantén las etiquetas en columna */
+}
+
+.button-container {
+  display: flex; /* Botones alineados horizontalmente */
+  gap: 10px; /* Espacio entre botones */
+}
+
+ion-img {
+  width: 50px; /* Ajusta el tamaño según sea necesario */
+  height: 50px;
+  object-fit: cover; /* Asegura que las imágenes se vean correctamente */
+  border-radius: 50%; /* Para imágenes circulares */
+}
+
+ion-label {
+  flex: 1; /* Permite que las etiquetas ocupen espacio restante */
+  text-align: center; /* Alinea el texto */
+}
+
+ion-card {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}

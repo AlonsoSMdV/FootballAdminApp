@@ -64,7 +64,7 @@ export class PlayerMappingStrapi implements IBaseMapping<Player> {
           data:{
               name: data.name,
               firstSurname: data.firstSurname,
-              secondSurname: data.secondSurname,
+              secondSurname: data .secondSurname?String(data.secondSurname):"",
               birthdate: data.birthdate,
               nationality: data.nationality,
               dorsal: data.dorsal,
@@ -81,7 +81,7 @@ export class PlayerMappingStrapi implements IBaseMapping<Player> {
               break;
               case 'firstSurname': mappedData.firstSurname=data[key];
               break;
-              case 'secondSurname': mappedData.secondSurname=data[key];
+              case 'secondSurname': mappedData.secondSurname=data[key] ? String(data[key]): "";
               break;
               case 'birthdate': mappedData.birthdate=data[key];
               break;

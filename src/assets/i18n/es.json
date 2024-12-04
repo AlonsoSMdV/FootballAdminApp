@@ -66,8 +66,7 @@
     "MENU": {
       "TITLE": "Menú",
       "HOME": "Inicio",
-      "PEOPLE": "Personas",
-      "GROUPS": "Grupos",
+      "LEAGUES": "Ligas",
       "LOGOUT": "Cerrar sesión",
       "PROFILE": "Perfil"
     },
