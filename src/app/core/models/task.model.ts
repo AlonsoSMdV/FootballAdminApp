@@ -1,7 +1,7 @@
 import { Model } from "./base.model";
-import { Person } from "./person.model";
+import { Users } from "./users.model";
 
 export interface Task extends Model{
-    owner:Person,
+    owner:Users,
     date:Date
 }

@@ -3,10 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { lastValueFrom } from 'rxjs';
-import { Person } from 'src/app/core/models/person.model';
+import { Users } from 'src/app/core/models/users.model';
 import { BaseAuthenticationService } from 'src/app/core/services/impl/base-authentication.service';
 import { BaseMediaService } from 'src/app/core/services/impl/base-media.service';
-import { PeopleService } from 'src/app/core/services/impl/people.service';
+import { UsersService } from 'src/app/core/services/impl/users.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,11 +17,11 @@ export class ProfilePage implements OnInit {
 
   genders:string[] = ['Masculino', 'Femenino', 'Otros'];
   formGroup: FormGroup;
-  person?: Person | null;
+  person?: Users | null;
 
   constructor(
     private formBuilder: FormBuilder,
-    private peopleService: PeopleService,
+    private usersService: UsersService,
     private authService:BaseAuthenticationService,
     private mediaService:BaseMediaService,
     private loadingController: LoadingController,
@@ -45,7 +45,7 @@ export class ProfilePage implements OnInit {
     try {
       const user = await this.authService.getCurrentUser();
       if(user){
-          this.person = await lastValueFrom(this.peopleService.getByUserId(user.id));
+          this.person = await lastValueFrom(this.usersService.getByUserId(user.id));
           console.log(this.person);
           if (this.person) {
             const updatedPerson: any = {
@@ -78,10 +78,10 @@ export class ProfilePage implements OnInit {
       await loading.present();
 
       try {
-        const changedValues = {} as Record<keyof Person, any>;
+        const changedValues = {} as Record<keyof Users, any>;
         Object.keys(this.formGroup.controls).forEach(key => {
           if (this.formGroup.get(key)?.dirty) {
-            changedValues[key as keyof Person] = this.formGroup.get(key)?.value;
+            changedValues[key as keyof Users] = this.formGroup.get(key)?.value;
           }
         });
 
@@ -93,7 +93,7 @@ export class ProfilePage implements OnInit {
           changedValues.picture = uploadedBlob[0];
         } 
         
-        await lastValueFrom(this.peopleService.update(this.person.id, changedValues));
+        await lastValueFrom(this.usersService.update(this.person.id, changedValues));
         
         const toast = await this.toastController.create({
           message: await this.translateService.get('COMMON.SUCCESS.SAVE').toPromise(),

@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/core/models/auth.model';
 import { BaseAuthenticationService } from 'src/app/core/services/impl/base-authentication.service';
-import { PeopleService } from 'src/app/core/services/impl/people.service';
+import { UsersService } from 'src/app/core/services/impl/users.service';
 import { passwordValidator, passwordsMatchValidator } from 'src/app/core/utils/validators';
 
 @Component({
@@ -14,13 +14,14 @@ import { passwordValidator, passwordsMatchValidator } from 'src/app/core/utils/v
 export class RegisterPage {
 
   registerForm: FormGroup;
+  img: string|undefined = './../../../assets/img/campo-futbol2.jpg';
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private route:ActivatedRoute,
     private authSvc:BaseAuthenticationService,
-    private peopleSvc:PeopleService
+    private peopleSvc:UsersService
   ) {
     this.registerForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],

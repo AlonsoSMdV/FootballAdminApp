@@ -1,28 +1,64 @@
+ion-toolbar {
+  position: relative;
+  
+  ion-fab {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    ion-fab-list {
+      margin-right: 55px;
+      
+      ion-fab-button {
+        --background: var(--ion-color-light);
+        --color: var(--ion-color-dark);
+        
+        &.ion-color-primary {
+          --background: var(--ion-color-primary);
+          --color: var(--ion-color-primary-contrast);
+        }
+      }
+    }
+  }
+}
+
+ion-content {
+  --background: none; /* Elimina el fondo oscuro predefinido */
+  position: relative; /* Necesario para posicionar la superposición */
+}
+
 div.login-container {
-    display: flex;
-    flex-direction: column; 
-    justify-content: flex-start;
-    align-items: center;
-    height: 100%;
-    padding: 16px; /* Espaciado para evitar bordes ajustados */
-    overflow-y: auto; /* Permitir scroll vertical si el contenido crece */
-  }
+  display: flex;
+  flex-direction: column; 
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  padding: 16px; /* Espaciado para evitar bordes ajustados */
+  overflow-y: auto; /* Permitir scroll vertical si el contenido crece */
+  position: relative; /* Asegura que el formulario esté por encima del fondo */
+  z-index: 2;
   
-  form {
-    width: 100%;
-    max-width: 400px;
-    height:100%;
-  }
-  
-  .error {
-    color: red;
-    font-size: 12px;
-    margin-top: -8px;
-    margin-bottom: 8px;
-  }
-  ion-item{
-    margin-bottom:10px;
-  }
-  ion-text.input-error{
-    margin-top:-10px;
-  }
+}
+
+form {
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+ion-item {
+  margin-bottom: 10px;
+}
+
+ion-text.input-error {
+  margin-top: -10px;
+}
+

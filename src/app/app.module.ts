@@ -26,8 +26,8 @@ import { LeagueMappingStrapi } from './core/repositories/impl/league-mapping-str
 import { TeamMappingStrapi } from './core/repositories/impl/team-mapping-strapi.service';
 import { PlayerMappingStrapi } from './core/repositories/impl/player-mapping-strapi.service';
 import { BaseAuthenticationService } from './core/services/impl/base-authentication.service';
-import { PeopleService } from './core/services/impl/people.service';
-import { PeopleMappingStrapi } from './core/repositories/impl/people-mapping-strapi.service';
+import { UsersService } from './core/services/impl/users.service';
+import { UsersMappingStrapi } from './core/repositories/impl/users-mapping-strapi.service';
 import { BaseMediaService } from './core/services/impl/base-media.service';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -53,9 +53,9 @@ export function createTranslateLoader(http: HttpClient) {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideHttpClient(),
 
-    {provide: PEOPLE_REPOSITORY_TOKEN, useClass: PeopleService},
+    {provide: PEOPLE_REPOSITORY_TOKEN, useClass: UsersService},
     {provide: BACKEND_TOKEN, useValue: 'strapi'},
-    {provide: PEOPLE_RESOURCE_NAME_TOKEN, useValue: 'usuarios'},
+    {provide: PEOPLE_RESOURCE_NAME_TOKEN, useValue: 'users'},
     {provide: LEAGUE_RESOURCE_NAME_TOKEN, useValue: 'leagues'},
     {provide: TEAM_RESOURCE_NAME_TOKEN, useValue: 'teams'},
     {provide: PLAYER_RESOURCE_NAME_TOKEN, useValue: 'players'},
@@ -70,7 +70,7 @@ export function createTranslateLoader(http: HttpClient) {
 
     {
       provide: PEOPLE_REPOSITORY_MAPPING_TOKEN,
-      useClass: PeopleMappingStrapi
+      useClass: UsersMappingStrapi
     },
     {
       provide: LEAGUE_REPOSITORY_MAPPING_TOKEN,
@@ -104,7 +104,7 @@ export function createTranslateLoader(http: HttpClient) {
     },
     {
       provide: 'PeopleService',
-      useClass: PeopleService
+      useClass: UsersService
     },
 
     AuthenticationServiceFactory,

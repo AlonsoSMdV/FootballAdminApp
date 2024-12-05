@@ -2,9 +2,9 @@
 import { InjectionToken } from '@angular/core';
 import { IBaseRepository } from './intefaces/base-repository.interface';
 import { ITasksRepository } from './intefaces/tasks-repository.interface';
-import { IPeopleRepository } from './intefaces/people-repository.interface';
+import { IPeopleRepository } from './intefaces/users-repository.interface';
 import { IBaseMapping } from './intefaces/base-mapping.interface';
-import { Person } from '../models/person.model';
+import { Users } from '../models/users.model';
 import { IStrapiAuthentication } from '../services/interfaces/strapi-authentication.interface';
 import { IAuthentication } from '../services/interfaces/authentication.interface';
 import { League } from '../models/leagues.model';
@@ -41,12 +41,12 @@ export const AUTH_ME_API_URL_TOKEN = new InjectionToken<string>('AuthMeApiUrl');
 export const UPLOAD_API_URL_TOKEN = new InjectionToken<string>('UploadApiUrl');
 
 export const REPOSITORY_MAPPING_TOKEN = new InjectionToken<IBaseMapping<any>>('IBaseRepositoryMapping');
-export const PEOPLE_REPOSITORY_MAPPING_TOKEN = new InjectionToken<IBaseMapping<Person>>('IPeopleRepositoryMapping');
-export const GROUPS_REPOSITORY_MAPPING_TOKEN = new InjectionToken<IBaseMapping<Person>>('IGroupsRepositoryMapping');
+export const PEOPLE_REPOSITORY_MAPPING_TOKEN = new InjectionToken<IBaseMapping<Users>>('IPeopleRepositoryMapping');
+export const GROUPS_REPOSITORY_MAPPING_TOKEN = new InjectionToken<IBaseMapping<Users>>('IGroupsRepositoryMapping');
 export const LEAGUE_REPOSITORY_MAPPING_TOKEN = new InjectionToken<IBaseMapping<League>>('ILeaguesRepositoryMapping');
 export const PLAYER_REPOSITORY_MAPPING_TOKEN = new InjectionToken<IBaseMapping<Player>>('IPlayerRepositoryMapping');
 export const TEAM_REPOSITORY_MAPPING_TOKEN = new InjectionToken<IBaseMapping<Team>>('ITeamRepositoryMapping');
 export const AUTH_TOKEN = new InjectionToken<IAuthentication>('IAuthentication');
 export const STRAPI_AUTH_TOKEN = new InjectionToken<IStrapiAuthentication>('IStrapiAuthentication');
-export const AUTH_MAPPING_TOKEN = new InjectionToken<IBaseMapping<Person>>('IAuthMapping');
+export const AUTH_MAPPING_TOKEN = new InjectionToken<IBaseMapping<Users>>('IAuthMapping');
 export const BACKEND_TOKEN = new InjectionToken<string>('Backend');

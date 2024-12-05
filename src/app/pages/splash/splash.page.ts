@@ -1,3 +1,4 @@
+import { AnimationOptions } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { timer } from 'rxjs';
@@ -10,13 +11,14 @@ import { BaseAuthenticationService } from 'src/app/core/services/impl/base-authe
 })
 export class SplashPage implements OnInit {
 
+  
   constructor(
     private router:Router,
     private authSvc:BaseAuthenticationService
   ) { }
 
   ngOnInit() {
-    timer(5000).subscribe(_=>{
+    timer(2500).subscribe(_=>{
       this.router.navigate(['/home']);
     });
   }

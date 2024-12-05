@@ -4,21 +4,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" scrollY="true">
+<ion-content [fullscreen]="true" scrollY="true" [style.background-image]="'url(' + img + ')'" [style.background-size]="'cover'" [style.background-position]="'center'">
   <div class="register-container">
     
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <ion-grid>
         <ion-row>
           <ion-col style="display:flex" class="ion-justify-content-center">
-            <ion-text><h1>Crear un cuenta</h1></ion-text>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-      <ion-grid>
-        <ion-row>
-          <ion-col style="display:flex" class="ion-justify-content-center ion-align-items-center">
-            ¿Tienes una cuenta?<ion-button style="text-transform:none" (click)="onLogin()" fill="clear">Inicia sesión</ion-button>
+            <ion-text><h1>⚽ Crear un cuenta ⚽</h1></ion-text>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -56,9 +49,16 @@
       <ion-text class="input-error" color="danger" *ngIf="registerForm.errors?.['passwordsMismatch']">
         <p>*Las contraseñas no coinciden</p>
       </ion-text>
-      <ion-button style="text-transform:none" expand="block" type="submit" [disabled]="registerForm.invalid">
+      <ion-button style="text-transform:none" color="success" expand="block" type="submit" [disabled]="registerForm.invalid">
         Crear cuenta
       </ion-button>
+      <ion-grid>
+        <ion-row>
+          <ion-col style="display:flex" class="ion-justify-content-center ion-align-items-center">
+            ¿Tienes una cuenta?<ion-button style="text-transform:none" color="success" (click)="onLogin()" fill="clear">Inicia sesión</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </form>
   </div>
 </ion-content>

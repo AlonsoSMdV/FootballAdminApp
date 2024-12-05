@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { BaseAuthenticationService } from 'src/app/core/services/impl/base-authentication.service';
+import { LanguageService } from 'src/app/core/services/language.service';
 
 @Component({
   selector: 'app-login',
@@ -9,18 +11,30 @@ import { BaseAuthenticationService } from 'src/app/core/services/impl/base-authe
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
+  currentLang:string
   loginForm: FormGroup;
+  img: string|undefined = './../../../assets/img/campo-futbol2.jpg';
+
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private route:ActivatedRoute,
-    private authSvc:BaseAuthenticationService
+    private authSvc:BaseAuthenticationService,
+    private languageService: LanguageService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     });
+
+    this.currentLang = this.languageService.getStoredLanguage();
+  }
+
+  changeLanguage(lang: string) {
+    this.languageService.changeLanguage(lang);
+    this.currentLang = lang;
+    this.languageService.storeLanguage(lang);
   }
 
   onSubmit() {

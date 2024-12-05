@@ -6,6 +6,7 @@ div.register-container {
     height: 100%;
     padding: 16px; /* Espaciado para evitar bordes ajustados */
     overflow-y: auto; /* Permitir scroll vertical si el contenido crece */
+    
   }
   
   form {
@@ -27,4 +28,8 @@ div.register-container {
   ion-text.input-error{
     margin-top:-10px;
   }
-  
+  ion-content {
+    --background: none; /* Elimina el fondo oscuro predefinido */
+    position: relative; /* Necesario para posicionar la superposición */
+
+  }

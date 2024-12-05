@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { IBaseMapping } from "../intefaces/base-mapping.interface";
 import { Paginated } from "../../models/paginated.model";
-import { Person } from "../../models/person.model";
+import { Users } from "../../models/users.model";
 
 interface PersonRaw{
     id:string,
@@ -24,19 +24,19 @@ interface PersonRaw{
 @Injectable({
     providedIn: 'root'
   })
-  export class PeopleLocalStorageMapping implements IBaseMapping<Person> {
-    setAdd(data: Person) {
+  export class UsersLocalStorageMapping implements IBaseMapping<Users> {
+    setAdd(data: Users) {
         throw new Error("Method not implemented.");
     }
     setUpdate(data: any) {
         throw new Error("Method not implemented.");
     }
-    getPaginated(page:number, pageSize:number, pages:number, data: PersonRaw[]): Paginated<Person> {
-        return {page:page, pageSize:pageSize, pages:pages, data:data.map<Person>((d:PersonRaw)=>{
+    getPaginated(page:number, pageSize:number, pages:number, data: PersonRaw[]): Paginated<Users> {
+        return {page:page, pageSize:pageSize, pages:pages, data:data.map<Users>((d:PersonRaw)=>{
             return this.getOne(d);
         })};
     }
-    getOne(data: PersonRaw):Person {
+    getOne(data: PersonRaw):Users {
         return {
             id:data.id, 
             name:data.name.first, 
@@ -51,13 +51,13 @@ interface PersonRaw{
                 thumbnail:data.picture.thumbnail
             }};
     }
-    getAdded(data: PersonRaw):Person {
+    getAdded(data: PersonRaw):Users {
         return this.getOne(data);
     }
-    getUpdated(data: PersonRaw):Person {
+    getUpdated(data: PersonRaw):Users {
         return this.getOne(data);
     }
-    getDeleted(data: PersonRaw):Person {
+    getDeleted(data: PersonRaw):Users {
         return this.getOne(data);
     }
   }

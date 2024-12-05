@@ -3,7 +3,7 @@ import { FactoryProvider, InjectionToken } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BaseRepositoryHttpService } from './impl/base-repository-http.service';
 import { IBaseRepository } from './intefaces/base-repository.interface';
-import { Person } from '../models/person.model';
+import { Users } from '../models/users.model';
 import { AUTH_MAPPING_TOKEN, AUTH_ME_API_URL_TOKEN, AUTH_SIGN_IN_API_URL_TOKEN, AUTH_SIGN_UP_API_URL_TOKEN, BACKEND_TOKEN, GROUPS_API_URL_TOKEN, GROUPS_REPOSITORY_MAPPING_TOKEN, GROUPS_REPOSITORY_TOKEN, GROUPS_RESOURCE_NAME_TOKEN, LEAGUE_API_URL_TOKEN, LEAGUE_REPOSITORY_MAPPING_TOKEN, LEAGUE_REPOSITORY_TOKEN, LEAGUE_RESOURCE_NAME_TOKEN, PEOPLE_API_URL_TOKEN, PEOPLE_REPOSITORY_MAPPING_TOKEN, PEOPLE_REPOSITORY_TOKEN, PEOPLE_RESOURCE_NAME_TOKEN, PLAYER_API_URL_TOKEN, PLAYER_REPOSITORY_MAPPING_TOKEN, PLAYER_REPOSITORY_TOKEN, PLAYER_RESOURCE_NAME_TOKEN, TEAM_API_URL_TOKEN, TEAM_REPOSITORY_MAPPING_TOKEN, TEAM_REPOSITORY_TOKEN, TEAM_RESOURCE_NAME_TOKEN, UPLOAD_API_URL_TOKEN } from './repository.tokens';
 import { BaseRespositoryLocalStorageService } from './impl/base-repository-local-storage.service';
 import { Model } from '../models/base.model';
@@ -14,12 +14,9 @@ import { StrapiRepositoryService } from './impl/strapi-repository.service';
 import { BaseAuthenticationService } from '../services/impl/base-authentication.service';
 import { IAuthMapping } from '../services/interfaces/auth-mapping.interface';
 import { StrapiAuthenticationService } from '../services/impl/strapi-authentication.service';
-import { PeopleLocalStorageMapping } from './impl/people-mapping-local-storage.service';
-import { PeopleMappingJsonServer } from './impl/people-mapping-json-server.service';
-import { PeopleMappingStrapi } from './impl/people-mapping-strapi.service';
+import { UsersLocalStorageMapping } from './impl/users-mapping-local-storage.service';
+import { UsersMappingStrapi } from './impl/users-mapping-strapi.service';
 import { StrapiAuthMappingService } from '../services/impl/strapi-auth-mapping.service';
-import { GroupsMappingJsonServer } from './impl/groups-mapping-json-server.service';
-import { GroupsMappingStrapi } from './impl/groups-mapping-strapi.service';
 import { IStrapiAuthentication } from '../services/interfaces/strapi-authentication.interface';
 import { StrapiMediaService } from '../services/impl/strapi-media.service';
 import { BaseMediaService } from '../services/impl/base-media.service';
@@ -168,7 +165,7 @@ export const MediaServiceFactory:FactoryProvider = {
   deps: [BACKEND_TOKEN, UPLOAD_API_URL_TOKEN, BaseAuthenticationService, HttpClient]
 };
 
-export const PeopleRepositoryFactory: FactoryProvider = createBaseRepositoryFactory<Person>(PEOPLE_REPOSITORY_TOKEN,
+export const PeopleRepositoryFactory: FactoryProvider = createBaseRepositoryFactory<Users>(PEOPLE_REPOSITORY_TOKEN,
   [BACKEND_TOKEN, HttpClient, BaseAuthenticationService, PEOPLE_API_URL_TOKEN, PEOPLE_RESOURCE_NAME_TOKEN, PEOPLE_REPOSITORY_MAPPING_TOKEN]
 );
 export const GroupsRepositoryFactory: FactoryProvider = createBaseRepositoryFactory<Group>(GROUPS_REPOSITORY_TOKEN,

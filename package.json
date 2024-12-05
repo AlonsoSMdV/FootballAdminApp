@@ -27,6 +27,7 @@
     "@capacitor/keyboard": "6.0.3",
     "@capacitor/status-bar": "6.0.2",
     "@ionic/angular": "^8.0.0",
+    "@lottiefiles/dotlottie-web": "^0.38.1",
     "@ngx-translate/core": "^16.0.3",
     "@ngx-translate/http-loader": "^16.0.0",
     "ionicons": "^7.0.0",

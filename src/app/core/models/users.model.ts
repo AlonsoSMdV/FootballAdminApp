@@ -1,7 +1,7 @@
 // src/app/core/person.model.ts
 import { Model } from "./base.model";
 
-export interface Person extends Model{
+export interface Users extends Model{
     name:string,
     surname:string,
     age?:number,
@@ -14,6 +14,5 @@ export interface Person extends Model{
         small:string | undefined,
         thumbnail:string | undefined
     },
-    groupId?:string,
     userId?:string
 }

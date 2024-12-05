@@ -1,9 +1,9 @@
 // src/app/services/interfaces/people.service.interface.ts
 import { Observable } from 'rxjs';
-import { Person } from '../../models/person.model';
+import { Users } from '../../models/users.model';
 import { IBaseService } from './base-service.interface';
 
-export interface IPeopleService extends IBaseService<Person> {
+export interface IPeopleService extends IBaseService<Users> {
   // Métodos específicos si los hay
-  getByUserId(userId: string): Observable<Person | null>;
+  getByUserId(userId: string): Observable<Users | null>;
 }
