@@ -5,7 +5,7 @@
   </ion-buttons>
 
   <ion-title>Jugadores</ion-title>
-  <ion-button color="success" class="createPlayer" slot="end">Crear jugador</ion-button>
+  <ion-button color="success" class="createPlayer" slot="end"(click)="onAddPlayer()">Crear jugador</ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -18,7 +18,7 @@
   </ion-header>
   <ion-grid class="card-container">
     <ion-row>
-      <ion-col size="6" size-md="4" *ngFor="let player of players$ | async" >
+      <ion-col size="6" size-md="4" *ngFor="let player of players$ | async; let i= index" >
         <ion-card>
           <div class="card-content">
             <!-- Contenido principal -->
@@ -32,10 +32,10 @@
               <ion-button color="primary" (click)="openPlayerDetail(player)">
                 <ion-icon name="information-outline" slot="icon-only"></ion-icon>
               </ion-button>
-              <ion-button color="danger">
+              <ion-button color="danger" (click)="onDeletePlayer(player)">
                 <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
               </ion-button>
-              <ion-button color="warning">
+              <ion-button color="warning" (click)="openPlayer(player, i)">
                 <ion-icon name="create-outline" slot="icon-only"></ion-icon>
               </ion-button>
             </div>

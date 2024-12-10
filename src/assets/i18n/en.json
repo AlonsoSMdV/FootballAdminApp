@@ -38,5 +38,12 @@
         "REPEAT_PASSWORD": "Repeat password",
         "BUTTON_LOGIN": "Log In",
         "BUTTON_REGISTER": "Register"
-        }
+        },
+        "LEAGUES":{
+
+        },
+        "TEAMS":{
+
+        },
+        "PLAYER":{}
   } 

@@ -7,7 +7,7 @@ interface PlayerRaw{
   id?: string
   nombre: string
   ape1: string;
-  ape2: string;
+  ape2?: string;
   fechNacimiento: Date;
   nacionalidad: string
   dorsal: number
@@ -50,7 +50,7 @@ export class PlayerJsonServerStorageMapping implements IBaseMapping<Player> {
                   break;
               case 'position': toReturn['posicion']=data[key];
                   break;
-              case 'teamId': toReturn['idEquipo']=data[key];
+              case 'team': toReturn['idEquipo']=data[key];
                   break;
           
               default:
@@ -74,7 +74,7 @@ export class PlayerJsonServerStorageMapping implements IBaseMapping<Player> {
           nationality:data.nacionalidad,
           dorsal:data.dorsal,
           position:data.posicion,
-          teamId:data.idEquipo,
+          team:data.idEquipo,
       };
   }
   getAdded(data: any):Player {

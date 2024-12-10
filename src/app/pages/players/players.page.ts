@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Paginated } from 'src/app/core/models/paginated.model';
 import { Player } from 'src/app/core/models/players.model';
 import { PlayerService } from 'src/app/core/services/impl/player.service';
+import { PlayerCreateModalComponent } from 'src/app/shared/components/player-create-modal/player-create-modal.component';
 import { PlayerModalComponent } from 'src/app/shared/components/player-modal/player-modal.component';
 
 @Component({
@@ -19,19 +21,22 @@ export class PlayersPage implements OnInit {
   constructor(
     private playerSvc: PlayerService,
     private modalCtrl: ModalController,
+    private alertCtrl: AlertController,
+    private translate: TranslateService
   ) { }
 
   ngOnInit() {
-    this.getLeagues();
+    this.getPlayers();
   }
 
 
   selectedLeague: any = null
+  selectedPlayer: any = null
   page: number = 1;
   pageSize:number = 25;
   pages:number = 0;
 
-  getLeagues(){
+  getPlayers(){
     this.page=1;
     this.playerSvc.getAll(this.page, this.pageSize).subscribe({
       next:(response:Paginated<Player>)=>{
@@ -50,7 +55,7 @@ export class PlayersPage implements OnInit {
     await modal.present();
   }
   
-  getMoreLeagues(notify: HTMLIonInfiniteScrollElement | null = null){
+  getMorePlayers(notify: HTMLIonInfiniteScrollElement | null = null){
     this.playerSvc.getAll(this.page, this.pageSize).subscribe({
       next:(response: Paginated<Player>)=>{
         this._players.next([...this._players.value, ...response.data]);
@@ -58,6 +63,73 @@ export class PlayersPage implements OnInit {
         notify?.complete();
       }
     })
+  }
+
+  async openPlayer(player: any, index: number){
+    await this.presentModalPLayer('edit', player)
+    this.selectedPlayer
+  }
+
+  private async presentModalPLayer(mode:'new'|'edit', player:Player|undefined=undefined){
+    const modal = await this.modalCtrl.create({
+      component:PlayerCreateModalComponent,
+      componentProps:(mode=='edit'?{
+        player: player
+      }:{})
+    });
+    modal.onDidDismiss().then((response:any)=>{
+      switch (response.role) {
+        case 'new':
+          this.playerSvc.add(response.data).subscribe({
+            next:res=>{
+              this.getPlayers();
+            },
+            error:err=>{}
+          });
+          break;
+        case 'edit':
+          this.playerSvc.update(player!.id, response.data).subscribe({
+            next:res=>{
+              this.getPlayers();
+            },
+            error:err=>{}
+          });
+          break;
+        default:
+          break;
+      }
+    });
+    await modal.present();
+  }
+
+  async onAddPlayer(){
+    await this.presentModalPLayer('new');
+  }
+
+  async onDeletePlayer(player: Player) {
+    const alert = await this.alertCtrl.create({
+      header: await this.translate.get('PEOPLE.MESSAGES.DELETE_CONFIRM').toPromise(),
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
+        {
+          text: 'OK',
+          role: 'yes',
+          handler: () => {
+            this.playerSvc.delete(player.id).subscribe({
+              next: response => {
+                this.getPlayers();
+              },
+              error: err => {}
+            });
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }
 

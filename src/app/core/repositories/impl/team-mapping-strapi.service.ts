@@ -64,7 +64,7 @@ export class TeamMappingStrapi implements IBaseMapping<Team> {
           data:{
               name: data.name,
               numberOfPlayers: data.numberOfPlayers,
-              league: data.leagueId?Number(data.leagueId): null
+              league: data.league?Number(data.league): null
           }
       };
   }
@@ -76,7 +76,7 @@ export class TeamMappingStrapi implements IBaseMapping<Team> {
               break;
               case 'numberOfPlayers': mappedData.numberOfPlayers=data[key];
               break;
-              case 'leagueId': mappedData.league=data[key] ? Number(data[key]) : null;
+              case 'league': mappedData.league=data[key] ? Number(data[key]) : null;
               break;
               
               default:
@@ -99,7 +99,7 @@ export class TeamMappingStrapi implements IBaseMapping<Team> {
           id: id.toString(),
           name: attributes.name,
           numberOfPlayers: attributes.numberOfPlayers,
-          leagueId: typeof attributes.league === 'object' ? attributes.league?.data?.id.toString() : undefined
+          league: typeof attributes.league === 'object' ? attributes.league?.data?.id.toString() : undefined
       };
   }
   getAdded(data: TeamRaw):Team {

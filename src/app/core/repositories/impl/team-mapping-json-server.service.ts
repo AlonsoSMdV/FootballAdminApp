@@ -19,7 +19,7 @@ export class TeamJsonServerStorageMapping implements IBaseMapping<Team> {
           id:data.id, 
           nombre:data.name, 
           jugadoresEnPlantilla:data.numberOfPlayers,
-          idLiga:data.leagueId!,
+          idLiga:data.league!,
       };
   }
   setUpdate(data: Team):TeamRaw {
@@ -30,7 +30,7 @@ export class TeamJsonServerStorageMapping implements IBaseMapping<Team> {
                   break;
               case 'numberOfPlayers': toReturn['jugadoresEnPlantilla']=data[key];
                   break;
-              case 'leagueId': toReturn['idLiga']=data[key];
+              case 'league': toReturn['idLiga']=data[key];
                   break;
               default:
                   break;
@@ -48,7 +48,7 @@ export class TeamJsonServerStorageMapping implements IBaseMapping<Team> {
           id:data.id, 
           name:data.nombre, 
           numberOfPlayers:data.jugadoresEnPlantilla,
-          leagueId:data.idLiga,
+          league:data.idLiga,
       };
   }
   getAdded(data: any):Team {

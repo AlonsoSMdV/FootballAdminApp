@@ -69,7 +69,7 @@ export class PlayerMappingStrapi implements IBaseMapping<Player> {
               nationality: data.nationality,
               dorsal: data.dorsal,
               position: data.position,
-              team: data.teamId?Number(data.teamId):null
+              team: data.team?Number(data.team):null
           }
       };
   }
@@ -91,7 +91,7 @@ export class PlayerMappingStrapi implements IBaseMapping<Player> {
               break;
               case 'position': mappedData.position=data[key];
               break;
-              case 'teamId': mappedData.team=data[key] ? Number(data[key]): null;
+              case 'team': mappedData.team=data[key] ? Number(data[key]): null;
               break;
               default:
           }
@@ -118,7 +118,7 @@ export class PlayerMappingStrapi implements IBaseMapping<Player> {
           nationality: attributes.nationality,
           dorsal: attributes.dorsal,
           position: attributes.position,
-          teamId: typeof attributes.team === 'object' ? attributes.team?.data?.id.toString() : undefined,
+          team: typeof attributes.team === 'object' ? attributes.team?.data?.id.toString() : undefined,
       };
   }
   getAdded(data: PlayerRaw):Player {

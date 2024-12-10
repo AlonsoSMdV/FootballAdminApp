@@ -1,3 +1,45 @@
-<p>
-  team-create-modal works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-icon slot="start" name="person-outline"></ion-icon>
+    <ion-title>
+      @if (mode=='edit') {
+        {{ 'TEAMS.EDIT' | translate }}
+      }
+      @else {
+        {{ 'TEAMS.NEW' | translate }}
+      }
+    </ion-title>
+    @if (isMobile) {
+      <ion-buttons slot="end">
+        <ion-button (click)="dismiss()">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    }
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-input [label]="'TEAMS.NAME' | translate" label-placement="stacked"  type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+      <p *ngIf="name?.errors?.['required']">{{ 'LEAGUES.ERRORS.NAME_REQUIRED' | translate }}</p>
+      <p *ngIf="name?.errors?.['minlength']">{{ 'LEAGUES.ERRORS.NAME_MIN_LENGTH' | translate }}</p>
+    </ion-text>
+
+    <ion-item>
+      <ion-input [label]="'TEAMS.NOFPLAYERS' | translate" label-placement="stacked"  type="text" formControlName="numberOfPlayers"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="numberOfPlayers?.invalid && (numberOfPlayers?.dirty || numberOfPlayers?.touched)">
+      <p *ngIf="numberOfPlayers?.errors?.['pattern']">{{ 'LEAGUES.ERRORS.NAME_REQUIRED' | translate }}</p>
+    </ion-text>
+    <ion-item>
+      <ion-label position="stacked">{{ 'TEAMS.LEAGUE' | translate }}</ion-label>
+      <app-league-selectable formControlName="league"></app-league-selectable>
+      </ion-item>
+    <!-- Botón de Envío -->
+    <ion-button [disabled]="!formGroup.valid || !formGroup.dirty" expand="full" type="submit" >{{ 'PERSON.SUBMIT' | translate }}</ion-button>
+  </form>
+
+</ion-content>
