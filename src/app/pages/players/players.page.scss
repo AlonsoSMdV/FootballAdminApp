@@ -1,4 +1,25 @@
 
+  
+  ion-fab {
+    position: absolute;
+    right: 10px;
+    top: 5%;
+    transform: translateY(-50%);
+
+    ion-fab-list {
+      margin-right: 55px;
+      
+      ion-fab-button {
+        --background: var(--ion-color-light);
+        --color: var(--ion-color-dark);
+        
+        &.ion-color-success {
+          --background: var(--ion-color-success);
+          --color: var(--ion-color-success-contrast);
+        }
+      }
+    }
+  }
 .card-content {
   display: flex; /* Flexbox para alinear todo en la misma línea */
   align-items: center; /* Alinea los elementos verticalmente al centro */
@@ -32,4 +53,8 @@ ion-card {
   padding: 10px;
   display: flex;
   flex-direction: column;
+}
+
+.createPlayer{
+  margin-right: 15px;
 }

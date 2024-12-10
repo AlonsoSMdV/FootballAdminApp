@@ -1,10 +1,7 @@
-ion-toolbar {
-  position: relative;
-  
   ion-fab {
     position: absolute;
     right: 10px;
-    top: 50%;
+    top: 5%;
     transform: translateY(-50%);
 
     ion-fab-list {
@@ -14,31 +11,46 @@ ion-toolbar {
         --background: var(--ion-color-light);
         --color: var(--ion-color-dark);
         
-        &.ion-color-primary {
-          --background: var(--ion-color-primary);
-          --color: var(--ion-color-primary-contrast);
+        &.ion-color-success {
+          --background: var(--ion-color-success);
+          --color: var(--ion-color-success-contrast);
         }
       }
     }
   }
-}
-
+  
 ion-content {
   --background: none; /* Elimina el fondo oscuro predefinido */
   position: relative; /* Necesario para posicionar la superposición */
 }
 
-div.login-container {
+/* Ajuste para centrar con desplazamiento hacia arriba */
+.login-wrapper {
   display: flex;
-  flex-direction: column; 
-  justify-content: flex-start;
-  align-items: center;
-  height: 100%;
-  padding: 16px; /* Espaciado para evitar bordes ajustados */
-  overflow-y: auto; /* Permitir scroll vertical si el contenido crece */
-  position: relative; /* Asegura que el formulario esté por encima del fondo */
-  z-index: 2;
-  
+  justify-content: center;
+  align-items: flex-start; /* Inicia el contenido desde la parte superior */
+  height: 100vh; /* Altura completa de la pantalla */
+  padding: 16px; /* Espaciado para dispositivos pequeños */
+  padding-top: 10vh; /* Desplaza hacia abajo un poco para no estar completamente pegado */
+}
+
+/* Estilo para el contenedor del formulario */
+.login-container {
+  width: 100%;
+  max-width: 400px; /* Ancho máximo para el formulario */
+  background-image: linear-gradient(to bottom, #355e38, #000000); /* Fondo blanco semitransparente */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar relieve */
+  padding: 24px; /* Espaciado interno */
+  padding-top: 15px;
+}
+
+/* Ajustar estilos para dispositivos más pequeños */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 16px;
+    padding-top: 7px;
+  }
 }
 
 form {

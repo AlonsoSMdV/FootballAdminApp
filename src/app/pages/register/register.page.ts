@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/core/models/auth.model';
 import { BaseAuthenticationService } from 'src/app/core/services/impl/base-authentication.service';
 import { UsersService } from 'src/app/core/services/impl/users.service';
+import { LanguageService } from 'src/app/core/services/language.service';
 import { passwordValidator, passwordsMatchValidator } from 'src/app/core/utils/validators';
 
 @Component({
@@ -12,7 +13,8 @@ import { passwordValidator, passwordsMatchValidator } from 'src/app/core/utils/v
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage {
-
+  
+  currentLang:string  
   registerForm: FormGroup;
   img: string|undefined = './../../../assets/img/campo-futbol2.jpg';
 
@@ -21,7 +23,8 @@ export class RegisterPage {
     private router: Router,
     private route:ActivatedRoute,
     private authSvc:BaseAuthenticationService,
-    private peopleSvc:UsersService
+    private peopleSvc:UsersService,
+    private languageService: LanguageService
   ) {
     this.registerForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
@@ -31,7 +34,15 @@ export class RegisterPage {
       confirmPassword: ['', [Validators.required]]
     },
     { validators: passwordsMatchValidator });
+
+    this.currentLang = this.languageService.getStoredLanguage();
   }
+  changeLanguage(lang: string) {
+    this.languageService.changeLanguage(lang);
+    this.currentLang = lang;
+    this.languageService.storeLanguage(lang);
+  }
+
 
   onSubmit() {
     if (this.registerForm.valid) {

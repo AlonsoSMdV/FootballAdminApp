@@ -28,5 +28,15 @@
       "PASSWORD": "Password",
       "BUTTON_LOGIN": "Log In",
       "BUTTON_REGISTER": "Register"
-      }
+      },
+      "REGISTER": {
+        "TITLE": "Create an account",
+        "NAME": "Name",
+        "SURNAMES":"Surnames",
+        "EMAIL": "Email",
+        "PASSWORD": "Password",
+        "REPEAT_PASSWORD": "Repeat password",
+        "BUTTON_LOGIN": "Log In",
+        "BUTTON_REGISTER": "Register"
+        }
   } 

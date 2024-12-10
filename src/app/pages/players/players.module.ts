@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { PlayersPageRoutingModule } from './players-routing.module';
 
 import { PlayersPage } from './players.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    SharedModule,
     PlayersPageRoutingModule
   ],
   declarations: [PlayersPage]

@@ -5,21 +5,21 @@
     <ion-toolbar>
       <ion-title>{{ 'MENU.TITLE' | translate  }}</ion-title>
       <ion-fab slot="end">
-        <ion-fab-button size="small">
-          <ion-icon name="language-outline"></ion-icon>
+        <ion-fab-button color="success" size="small">
+          <ion-icon name="globe"></ion-icon>
         </ion-fab-button>
-        <ion-fab-list side="start">
-          <ion-fab-button (click)="changeLanguage('es')" [color]="currentLang === 'es' ? 'primary' : 'medium'">
+        <ion-fab-list side="bottom">
+          <ion-fab-button (click)="changeLanguage('es')" [color]="currentLang === 'es' ? 'success' : 'medium'">
             <ion-text>ES</ion-text>
           </ion-fab-button>
-          <ion-fab-button (click)="changeLanguage('en')" [color]="currentLang === 'en' ? 'primary' : 'medium'">
+          <ion-fab-button (click)="changeLanguage('en')" [color]="currentLang === 'en' ? 'success' : 'medium'">
             <ion-text>EN</ion-text>
           </ion-fab-button>
         </ion-fab-list>
       </ion-fab>
     </ion-toolbar>
    </ion-header>
-   <ion-content>
+   <ion-content class="menuContent">
      <ion-list>
       <ion-item>
         <ion-avatar slot="start" (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" routerLink="/profile">

@@ -29,5 +29,15 @@
       "PASSWORD": "Contraseña",
       "BUTTON_LOGIN": "Iniciar sesión",
       "BUTTON_REGISTER": "Regístrate"
+      },
+    "REGISTER": {
+      "TITLE": "Crea una cuenta",
+      "NAME": "Nombre",
+      "SURNAMES":"Apellidos",
+      "EMAIL": "Correo electrónico",
+      "PASSWORD": "Contraseña",
+      "REPEAT_PASSWORD": "Repita contraseña",
+      "BUTTON_LOGIN": "Iniciar sesión",
+      "BUTTON_REGISTER": "Crear cuenta"
       }
   }
