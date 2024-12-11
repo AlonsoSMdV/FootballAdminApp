@@ -16,27 +16,27 @@
       <ion-title size="large">{{'LEAGUES.TITLE' | translate}}</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-grid >
-    <ion-row>
-      <ion-col size="6" size-md="6" *ngFor="let league of (leagues$ | async), let i = index"  >
-        <ion-card>
-          <ion-img ></ion-img>
-          <ion-img ></ion-img>
-          <ion-img ></ion-img>
-          <ion-label>{{league.name}}</ion-label>
-          <div class="button-container" >
-            <ion-button color="success" routerLink="/teams">
-              <ion-icon name="information-outline" slot="icon-only"></ion-icon>
-            </ion-button>
-            <ion-button color="danger" (click)="onDeleteLeague(league)">
-              <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
-            </ion-button>
-            <ion-button color="primary" (click)="openLeague(league, i)">
-              <ion-icon name="create-outline" slot="icon-only"></ion-icon>
-            </ion-button>
-          </div>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-grid>
+  <ion-row>
+    <ion-col size="6" size-md="6" *ngFor="let league of (leagues$ | async), let i = index">
+      <ion-card class="league-card" [style.background-image]="'url('+img+')'" [style.background-size]="'cover'" [style.background-position]="'center'">
+        <ion-img></ion-img>
+        <ion-img></ion-img>
+        <ion-img></ion-img>
+        <ion-label class="league-label">{{league.name}}</ion-label>
+        <div class="button-container">
+          <ion-button color="success" routerLink="/teams">
+            <ion-icon name="information-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+          <ion-button color="danger" (click)="onDeleteLeague(league)">
+            <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+          <ion-button color="primary" (click)="openLeague(league, i)">
+            <ion-icon name="create-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
 </ion-content>

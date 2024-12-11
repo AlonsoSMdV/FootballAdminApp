@@ -1,3 +1,40 @@
 .createLeague{
   margin-right: 15px;
 }
+
+.league-card {
+  position: relative;
+  overflow: hidden;
+  padding: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Asegura separación entre contenido y botones */
+  height: 100px; /* Ajusta el tamaño según sea necesario */
+}
+
+/* Al pasar el ratón, agrandamos la tarjeta */
+.league-card:hover {
+  transform: scale(1.1); /* Incrementa el tamaño */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Añade sombra */
+  z-index: 1; /* Trae la tarjeta al frente */
+}
+
+/* Estilo del texto */
+.league-label {
+  color: white !important;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: auto; /* Empuja los botones hacia abajo */
+}
+
+/* Botones alineados en la parte inferior */
+.button-container {
+  display: flex;
+  justify-content: center; /* Espacia los botones horizontalmente */
+  margin-top: 16px;
+}
+
+ion-button {
+  flex: 0 1 auto; /* Asegura que los botones no crezcan ni se reduzcan */
+}

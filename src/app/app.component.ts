@@ -9,6 +9,7 @@ import { LanguageService } from './core/services/language.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  showMenu: boolean = true;
   currentLang: string;
 
   constructor(

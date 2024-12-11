@@ -74,5 +74,36 @@
             "PATTERN": "El número de jugadores en plantilla ha de ser positivo"
             }
       },
-      "PLAYER":{}
+      "TEAM_SELECTABLE":{
+        "NONE": "Ninguno",
+        "SEARCH": "Buscar",
+        "SELECT_LEAGUE": "Seleccionar equipo"
+      },
+      "PLAYERS":{
+        "TITLE":"Jugadores",
+          "CREATE": "Crear jugador",
+          "EDIT": "Editar jugador",
+          "NEW": "Nuevo jugador",
+          "NAME": "Nombre",
+          "SURNAME1":"Primer apellido",
+          "SURNAME2":"Segundo apellido",
+          "NATIONALITY":"Nacionalidad",
+          "DORSAL":"Dorsal",
+          "BIRTHDATE":"Fecha de nacimiento",
+          "POSTION":"Posición",
+          "TEAM":"Equipo",
+          "SUBMIT": "Registrar",
+          "UPDATE": "Actualizar",
+          "ERRORS": {
+            "NAME_REQUIRED": "El nombre es obligatorio",
+            "NAME_MIN_LENGTH": "El nombre debe tener minimo 2 caracteres",
+            "SURNAME_REQUIRED": "Los apellidos son obligatorios",
+            "SURNAME_MIN_LENGTH": "Los apellidos deben tener minimo 2 caracteres",
+            "NATIONALITY_REQUIRED": "La nacionalidad es obligatoria",
+            "NATIONALITY_INVALID": "La nacionalidad debe tener minimo 2 caracteres",
+            "PATTERN": "El dorsal debe ser un número positivo",
+            "BIRTHDATE_REQUIRED": "La fecha de nacimiento es obligatoria",
+            "POSITION_REQUIRED": "La posición es obligatoria"
+            }
+      }
   }

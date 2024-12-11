@@ -73,17 +73,36 @@
             "PATTERN": "The number of players in a team neds to be positive"
             }
         },
-        "PLAYER":{
+        "TEAM_SELECTABLE":{
+          "NONE": "No one team",
+          "SEARCH": "Search",
+          "SELECT_LEAGUE": "Select team"
+        },
+        "PLAYERS":{
           "TITLE":"Players",
           "CREATE": "Create player",
           "EDIT": "Edit player",
           "NEW": "New player",
           "NAME": "Name",
+          "SURNAME1":"First surname",
+          "SURNAME2":"Second surname",
+          "NATIONALITY":"Nationality",
+          "DORSAL":"Dorsal",
+          "BIRTHDATE":"Birthdate",
+          "POSTION":"Position",
+          "TEAM":"Team",
           "SUBMIT": "Register",
           "UPDATE": "Update",
           "ERRORS": {
             "NAME_REQUIRED": "Name is required",
-            "NAME_MIN_LENGTH": "Name must be at least 2 characters long"
+            "NAME_MIN_LENGTH": "Name must be at least 2 characters long",
+            "SURNAME_REQUIRED": "Surnames are required",
+            "SURNAME_MIN_LENGTH": "Surnames must be at least 2 characters long",
+            "NATIONALITY_REQUIRED": "Nationality is required",
+            "NATIONALITY_INVALID": "Nationality must be at least 2 characters long",
+            "PATTERN": "Dorsal must be positive",
+            "BIRTHDATE_REQUIRED": "Birthdate is required",
+            "POSITION_REQUIRED": "Position is required"
             }
         }
   } 

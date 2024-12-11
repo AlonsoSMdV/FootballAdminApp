@@ -58,3 +58,28 @@ ion-card {
 .createPlayer{
   margin-right: 15px;
 }
+
+.card-container ion-card {
+  transition: transform 0.3s ease; /* Transición suave al ampliar */
+  cursor: pointer; /* Cambia el cursor para indicar interactividad */
+}
+
+.card-container ion-card:hover {
+  transform: scale(1.1); /* Amplía la tarjeta al pasar el ratón */
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.player-label{
+  color: white;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px; /* Espaciado entre botones y contenido */
+}

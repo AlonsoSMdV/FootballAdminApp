@@ -1,7 +1,7 @@
 <ion-content>
-  <ion-split-pane contentId="mainContent" style="--side-max-width:150px;">
+  <ion-split-pane contentId="mainContent" style="--side-max-width:125px;">
     <!-- Sidebar menu visible on larger screens -->
-    <ion-menu contentId="mainContent" side="start" menuId="mainMenu" #menu>
+    <ion-menu contentId="mainContent" side="start" menuId="mainMenu" #menu [disabled]="!(authSvc.authenticated$ | async)">
       <ion-header>
         <ion-toolbar>
           <ion-title>{{ 'MENU.TITLE' | translate }}</ion-title>

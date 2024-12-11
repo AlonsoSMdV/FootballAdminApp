@@ -1,19 +1,19 @@
-<ion-content class="card-modal" >
+<ion-content class="card-modal"  [style.background-image]="'url('+img+')'" [style.background-size]="'cover'" [style.background-position]="'center'">
   <div class="modal-content" (click)="closeModal()">
     <h2>INFORMACIÓN DEL JUGADOR</h2>
     <ion-avatar>
       <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
     </ion-avatar><div class="player-info">
-      <p><strong>Nombre: </strong> {{ player.name }}</p>
-      <p><strong>Primer apellido: </strong> {{ player.firstSurname }}</p>
+      <p><strong>{{'PLAYERS.NAME' | translate}}: </strong> {{ player.name }}</p>
+      <p><strong>{{'PLAYERS.SURNAME1' | translate}}: </strong> {{ player.firstSurname }}</p>
       
-      <p><strong>Segundo apellido: </strong> {{ player.secondSurname }}</p>
+      <p><strong>{{'PLAYERS.SURNAME2' | translate}}: </strong> {{ player.secondSurname }}</p>
       
-      <p><strong>Fecha de nacimiento: </strong> {{ player.birthdate }}</p>
+      <p><strong>{{'PLAYERS.BIRTHDATE' | translate}}: </strong> {{ player.birthdate }}</p>
       
-      <p><strong>Dorsal: </strong> {{ player.dorsal }}</p>
-      <p><strong>Nacionalidad: </strong> {{ player.nationality }}</p>
-      <p><strong>Posición: </strong> {{ player.position}}</p>
+      <p><strong>{{'PLAYERS.DORSAL' | translate}}: </strong> {{ player.dorsal }}</p>
+      <p><strong>{{'PLAYERS.NATIONALITY' | translate}}: </strong> {{ player.nationality }}</p>
+      <p><strong>{{'PLAYERS.POSITION' | translate}}: </strong> {{ player.position}}</p>
     </div>
   </div>
 </ion-content>

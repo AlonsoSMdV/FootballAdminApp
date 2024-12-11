@@ -14,6 +14,7 @@ import { LeagueCreateModalComponent } from 'src/app/shared/components/league-cre
   styleUrls: ['./leagues.page.scss'],
 })
 export class LeaguesPage implements OnInit {
+  img: string|undefined = './../../../assets/img/imgCard2.jpg'
   currentLang:string
   _leagues: BehaviorSubject<League[]> = new BehaviorSubject<League[]>([]);
   leagues$: Observable<League[]> = this._leagues.asObservable();

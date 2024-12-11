@@ -8,6 +8,7 @@ import { Player } from 'src/app/core/models/players.model';
   styleUrls: ['./player-modal.component.scss'],
 })
 export class PlayerModalComponent  implements OnInit {
+  img: string|undefined = './../../../assets/img/Player1.jpg'
   constructor(private modalCtrl: ModalController) { }
 
   @Input() player!: Player;

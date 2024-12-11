@@ -23,13 +23,50 @@ ion-toolbar {
   }
 }
 
-ion-content{
+ion-content {
   --background: none;
-  background-image: linear-gradient(to bottom, #355e38, #000000);
+  background-image: linear-gradient(to bottom, #355e38, #000000); /* Gradiente */
   color: white;
+}
 
-  ion-item{
-    --background: none;
-    background-color: transparent;
-  }
+ion-item {
+  --background: none !important; /* Sobrescribe el fondo predeterminado */
+  background-color: transparent !important; /* Asegura la transparencia */
+  --ion-background-color: transparent !important; /* Compatibilidad con variables de Ionic */
+  --color: white; /* Ajusta el color del texto */
+}
+
+ion-list {
+  --ion-background-color: transparent !important; /* Asegura transparencia en listas */
+  background-color: transparent !important;
+}
+
+ion-footer {
+  --background: none !important; /* Elimina el fondo predeterminado */
+  background-color: transparent !important; /* Hace el fondo transparente */
+  --ion-background-color: transparent !important; /* Compatibilidad con Ionic */
+  box-shadow: none; /* Elimina cualquier sombra */
+  border-top: none; /* Elimina bordes superiores */
+}
+
+ion-toolbar {
+  --background: none !important; /* Elimina el fondo */
+  background-color: transparent !important;
+  --ion-background-color: transparent !important; /* Compatibilidad con temas de Ionic */
+  box-shadow: none; /* Elimina la sombra */
+  border: none; /* Elimina cualquier borde */
+}
+
+ion-footer ion-item {
+  --background: none !important; /* Fondo transparente */
+  background-color: transparent !important;
+  --ion-background-color: transparent !important;
+}
+
+ion-icon {
+  color: white; /* Asegura que los íconos sean visibles */
+}
+
+ion-label {
+  color: white; /* Si usas texto dentro del toolbar, hazlo visible */
 }

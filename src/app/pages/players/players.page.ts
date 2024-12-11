@@ -15,6 +15,7 @@ import { PlayerModalComponent } from 'src/app/shared/components/player-modal/pla
   styleUrls: ['./players.page.scss'],
 })
 export class PlayersPage implements OnInit {
+  img: string|undefined = './../../../assets/img/imgCard2.jpg'
   currentLang:string
   _players: BehaviorSubject<Player[]> = new BehaviorSubject<Player[]>([]);
   players$: Observable<Player[]> = this._players.asObservable();

@@ -14,6 +14,7 @@ import { TeamCreateModalComponent } from 'src/app/shared/components/team-create-
   styleUrls: ['./teams.page.scss'],
 })
 export class TeamsPage implements OnInit {
+  img: string|undefined = './../../../assets/img/imgCard2.jpg'
   currentLang:string
   _teams: BehaviorSubject<Team[]> = new BehaviorSubject<Team[]>([]);
   teams$: Observable<Team[]> = this._teams.asObservable();

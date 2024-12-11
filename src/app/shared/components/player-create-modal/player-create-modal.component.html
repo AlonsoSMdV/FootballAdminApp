@@ -1,5 +1,5 @@
 <ion-toolbar>
-  <ion-icon slot="start" name="person-outline"></ion-icon>
+  <ion-icon slot="start" name="football"></ion-icon>
   <ion-title>
     @if (mode=='edit') {
       {{ 'PLAYERS.EDIT' | translate }}
@@ -48,8 +48,8 @@
     <ion-input [label]="'PLAYERS.NATIONALITY' | translate" label-placement="stacked" type="text" formControlName="nationality"></ion-input>
   </ion-item>
   <ion-text color="danger" *ngIf="nationality?.invalid && (nationality?.dirty || nationality?.touched)">
-    <p *ngIf="nationality?.errors?.['required']">{{ 'PLAYERS.ERRORS.EMAIL_REQUIRED' | translate }}</p>
-    <p *ngIf="nationality?.errors?.['minlength']">{{ 'PLAYERS.ERRORS.EMAIL_INVALID' | translate }}</p>
+    <p *ngIf="nationality?.errors?.['required']">{{ 'PLAYERS.ERRORS.NATIONALITY_REQUIRED' | translate }}</p>
+    <p *ngIf="nationality?.errors?.['minlength']">{{ 'PLAYERS.ERRORS.NATIONALITY_INVALID' | translate }}</p>
   </ion-text>
 
   <!-- Dorsal -->
@@ -57,8 +57,7 @@
     <ion-input [label]="'PLAYERS.DORSAL' | translate" label-placement="stacked" type="text" formControlName="dorsal"></ion-input>
   </ion-item>
   <ion-text color="danger" *ngIf="dorsal?.invalid">
-    <p *ngIf="dorsal?.errors?.['required']">{{ 'PLAYERS.ERRORS.EMAIL_REQUIRED' | translate }}</p>
-    <p *ngIf="dorsal?.errors?.['minlength']">{{ 'PLAYERS.ERRORS.EMAIL_INVALID' | translate }}</p>
+    <p *ngIf="dorsal?.errors?.['pattern']">{{ 'PLAYERS.ERRORS.PATTERN' | translate }}</p>
   </ion-text>
   <!-- Fecha Nacimiento -->
   <ion-item>
@@ -67,7 +66,7 @@
     </ion-input>
   </ion-item>
   <ion-text color="danger" *ngIf="birthdate?.invalid && (birthdate?.dirty || birthdate?.touched)">
-    <p *ngIf="birthdate?.errors?.['required']">La fecha de nacimiento es obligatorio.</p>
+    <p *ngIf="nationality?.errors?.['required']">{{ 'PLAYERS.ERRORS.BIRTHDATE_REQUIRED' | translate }}</p>
   </ion-text>
   <!-- Posicion -->
   <ion-item>
@@ -75,7 +74,7 @@
   </ion-item>
   
   <ion-text color="danger" *ngIf="position?.invalid && (position?.dirty || position?.touched)">
-    <p *ngIf="position?.errors?.['required']">La posición es obligatoria.</p>
+    <p *ngIf="nationality?.errors?.['required']">{{ 'PLAYERS.ERRORS.POSITION_REQUIRED' | translate }}</p>
   </ion-text>
 
   <ion-item>

@@ -1,0 +1,36 @@
+.card-modal {
+  --background: none; /* Evitar que el contenido tenga un fondo por defecto */
+  background-color: transparent;
+  padding: 20px; /* Agregar espacio alrededor del contenido */
+}
+
+.modal-content {
+  padding: 20px; /* Espaciado dentro del contenido */
+  border-radius: 10px; /* Bordes redondeados */
+  color: white; /* Asegura que el texto sea visible sobre el fondo oscuro */
+  margin-top: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+ion-avatar {
+  margin: 0 auto; /* Centra el avatar */
+  display: block; /* Para que esté en el centro */
+  margin-bottom: 20px; /* Espacio entre el avatar y el contenido */
+}
+
+.player-info p {
+  margin: 10px 0; /* Espaciado entre los párrafos */
+}
+
+.player-info strong {
+  color: #f0f0f0; /* Asegura que los títulos sean visibles */
+}
+
+ion-content {
+  padding: 0; /* Elimina cualquier padding adicional de ion-content */
+  --background: none; /* Para asegurar que no se aplique un fondo adicional */
+}
