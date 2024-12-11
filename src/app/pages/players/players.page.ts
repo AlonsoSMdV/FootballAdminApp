@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Paginated } from 'src/app/core/models/paginated.model';
 import { Player } from 'src/app/core/models/players.model';
 import { PlayerService } from 'src/app/core/services/impl/player.service';
+import { LanguageService } from 'src/app/core/services/language.service';
 import { PlayerCreateModalComponent } from 'src/app/shared/components/player-create-modal/player-create-modal.component';
 import { PlayerModalComponent } from 'src/app/shared/components/player-modal/player-modal.component';
 
@@ -14,7 +15,7 @@ import { PlayerModalComponent } from 'src/app/shared/components/player-modal/pla
   styleUrls: ['./players.page.scss'],
 })
 export class PlayersPage implements OnInit {
-
+  currentLang:string
   _players: BehaviorSubject<Player[]> = new BehaviorSubject<Player[]>([]);
   players$: Observable<Player[]> = this._players.asObservable();
 
@@ -22,8 +23,11 @@ export class PlayersPage implements OnInit {
     private playerSvc: PlayerService,
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
-    private translate: TranslateService
-  ) { }
+    private translate: TranslateService,
+    private languageService: LanguageService
+  ) { 
+    this.currentLang = this.languageService.getStoredLanguage();
+  }
 
   ngOnInit() {
     this.getPlayers();

@@ -1,46 +1,44 @@
-<ion-app>
-  <!-- Menú lateral -->
-  <ion-menu #menu side="start" menuId="mainMenu" contentId="mainContent" [disabled]="!(authSvc.authenticated$ | async)" >
-   <ion-header>
-    <ion-toolbar>
-      <ion-title>{{ 'MENU.TITLE' | translate  }}</ion-title>
-      <ion-fab slot="end">
-        <ion-fab-button color="success" size="small">
-          <ion-icon name="globe"></ion-icon>
-        </ion-fab-button>
-        <ion-fab-list side="bottom">
-          <ion-fab-button (click)="changeLanguage('es')" [color]="currentLang === 'es' ? 'success' : 'medium'">
-            <ion-text>ES</ion-text>
-          </ion-fab-button>
-          <ion-fab-button (click)="changeLanguage('en')" [color]="currentLang === 'en' ? 'success' : 'medium'">
-            <ion-text>EN</ion-text>
-          </ion-fab-button>
-        </ion-fab-list>
-      </ion-fab>
-    </ion-toolbar>
-   </ion-header>
-   <ion-content class="menuContent">
-     <ion-list>
-      <ion-item>
-        <ion-avatar slot="start" (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" routerLink="/profile">
-          <!-- Avatar del usuario -->
-          <img [src]="'https://ionicframework.com/docs/img/demos/avatar.svg'" alt="Avatar" />
-        </ion-avatar>
-        <ion-label>
-          <!-- Nombre del usuario -->
-          <h3>{{ (authSvc.user$ | async)?.username}}</h3>
-        </ion-label>
-      </ion-item>
-       <ion-item (click)="menu.close()" routerLink="/home" routerDirection="root">{{ 'MENU.HOME'  | translate }}</ion-item>
-       <ion-item (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" routerLink="/leagues" routerDirection="root">{{ 'MENU.LEAGUES'  | translate }}</ion-item>
-       <ion-item (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" routerLink="/profile" routerDirection="root">{{ 'MENU.PROFILE'  | translate }}</ion-item>
-     </ion-list>
-   </ion-content>
-   <ion-footer>
-     <ion-toolbar>
-      <ion-item lines="none" color="danger" (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" (click)="logout()" button>{{ 'MENU.LOGOUT'  | translate }}</ion-item>
-     </ion-toolbar>
-   </ion-footer>
- </ion-menu>
- <ion-router-outlet id="mainContent"></ion-router-outlet>
-</ion-app>
+<ion-content>
+  <ion-split-pane contentId="mainContent" style="--side-max-width:150px;">
+    <!-- Sidebar menu visible on larger screens -->
+    <ion-menu contentId="mainContent" side="start" menuId="mainMenu" #menu>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>{{ 'MENU.TITLE' | translate }}</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="menuContent">
+        <ion-list>
+          <ion-item>
+            <ion-avatar slot="start" (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" routerLink="/profile">
+              <img [src]="'https://ionicframework.com/docs/img/demos/avatar.svg'" alt="Avatar" />
+            </ion-avatar>
+            <ion-label>
+              <h3>{{ (authSvc.user$ | async)?.username }}</h3>
+            </ion-label>
+          </ion-item>
+          <ion-item (click)="menu.close()" routerLink="/home" routerDirection="root">{{ 'MENU.HOME' | translate }}</ion-item>
+          <ion-item (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" routerLink="/leagues" routerDirection="root">{{ 'MENU.LEAGUES' | translate }}</ion-item>
+          <ion-item lines="none" style="display: flex; align-items: center;">
+            <ion-label>{{ currentLang === 'es' ? 'Español' : 'English' }}</ion-label>
+            <ion-toggle
+              [checked]="currentLang === 'es'"
+              (ionChange)="changeLanguage($event.detail.checked ? 'es' : 'en')"
+              color="success">
+            </ion-toggle>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+      <ion-footer>
+        <ion-toolbar>
+          <ion-item lines="none"  (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" (click)="logout()" button>
+            <ion-icon color="danger"name="log-out-outline"></ion-icon>
+          </ion-item>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-menu>
+
+    <!-- Main content -->
+    <ion-router-outlet id="mainContent"></ion-router-outlet>
+  </ion-split-pane>
+</ion-content>

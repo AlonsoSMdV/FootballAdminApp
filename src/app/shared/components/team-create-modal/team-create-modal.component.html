@@ -32,14 +32,14 @@
       <ion-input [label]="'TEAMS.NOFPLAYERS' | translate" label-placement="stacked"  type="text" formControlName="numberOfPlayers"></ion-input>
     </ion-item>
     <ion-text color="danger" *ngIf="numberOfPlayers?.invalid && (numberOfPlayers?.dirty || numberOfPlayers?.touched)">
-      <p *ngIf="numberOfPlayers?.errors?.['pattern']">{{ 'LEAGUES.ERRORS.NAME_REQUIRED' | translate }}</p>
+      <p *ngIf="numberOfPlayers?.errors?.['pattern']">{{ 'LEAGUES.ERRORS.PATTERN' | translate }}</p>
     </ion-text>
     <ion-item>
       <ion-label position="stacked">{{ 'TEAMS.LEAGUE' | translate }}</ion-label>
       <app-league-selectable formControlName="league"></app-league-selectable>
       </ion-item>
     <!-- Botón de Envío -->
-    <ion-button [disabled]="!formGroup.valid || !formGroup.dirty" expand="full" type="submit" >{{ 'PERSON.SUBMIT' | translate }}</ion-button>
+    <ion-button color="success" [disabled]="!formGroup.valid || !formGroup.dirty" expand="full" type="submit" >{{ 'TEAMS.SUBMIT' | translate }}</ion-button>
   </form>
 
 </ion-content>

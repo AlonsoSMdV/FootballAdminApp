@@ -19,6 +19,18 @@ export class AppComponent {
     this.currentLang = this.languageService.getStoredLanguage();
   }
 
+  /*isDarkTheme = false;
+
+  toggleTheme() {
+    this.isDarkTheme = !this.isDarkTheme;
+    const body = document.body;
+    if (this.isDarkTheme) {
+      body.classList.add('dark-theme');
+    } else {
+      body.classList.remove('dark-theme');
+    }
+  }*/
+
   changeLanguage(lang: string) {
     this.languageService.changeLanguage(lang);
     this.currentLang = lang;

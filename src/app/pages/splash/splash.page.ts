@@ -11,6 +11,9 @@ import { BaseAuthenticationService } from 'src/app/core/services/impl/base-authe
 })
 export class SplashPage implements OnInit {
 
+  options: AnimationOptions = {
+    //path: '/assets/lotties/lottie.json',
+  }
   
   constructor(
     private router:Router,

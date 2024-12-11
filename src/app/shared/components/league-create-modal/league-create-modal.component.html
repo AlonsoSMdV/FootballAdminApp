@@ -3,10 +3,10 @@
     <ion-icon slot="start" name="person-outline"></ion-icon>
     <ion-title>
       @if (mode=='edit') {
-        {{ 'PERSON.EDIT' | translate }}
+        {{ 'LEAGUES.EDIT' | translate }}
       }
       @else {
-        {{ 'PERSON.NEW' | translate }}
+        {{ 'LEAGUES.NEW' | translate }}
       }
     </ion-title>
     @if (isMobile) {
@@ -28,7 +28,7 @@
       <p *ngIf="name?.errors?.['minlength']">{{ 'LEAGUES.ERRORS.NAME_MIN_LENGTH' | translate }}</p>
     </ion-text>
     <!-- Botón de Envío -->
-    <ion-button [disabled]="!formGroup.valid || !formGroup.dirty" expand="full" type="submit" >{{ 'PERSON.SUBMIT' | translate }}</ion-button>
+    <ion-button color="success" [disabled]="!formGroup.valid || !formGroup.dirty" expand="full" type="submit" >{{ 'LEAGUES.SUBMIT' | translate }}</ion-button>
   </form>
 
 </ion-content>

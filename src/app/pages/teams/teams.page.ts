@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Paginated } from 'src/app/core/models/paginated.model';
 import { Team } from 'src/app/core/models/teams.model';
 import { TeamService } from 'src/app/core/services/impl/team.service';
+import { LanguageService } from 'src/app/core/services/language.service';
 import { TeamCreateModalComponent } from 'src/app/shared/components/team-create-modal/team-create-modal.component';
 
 @Component({
@@ -13,7 +14,7 @@ import { TeamCreateModalComponent } from 'src/app/shared/components/team-create-
   styleUrls: ['./teams.page.scss'],
 })
 export class TeamsPage implements OnInit {
-
+  currentLang:string
   _teams: BehaviorSubject<Team[]> = new BehaviorSubject<Team[]>([]);
   teams$: Observable<Team[]> = this._teams.asObservable();
 
@@ -21,8 +22,11 @@ export class TeamsPage implements OnInit {
     private teamSvc: TeamService,
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
-    private translate: TranslateService
-  ) { }
+    private translate: TranslateService,
+    private languageService: LanguageService
+  ) { 
+    this.currentLang = this.languageService.getStoredLanguage();
+  }
 
   ngOnInit() {
     this.getTeams();

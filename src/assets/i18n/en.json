@@ -16,7 +16,8 @@
       "HOME": "Home",
       "LEAGUES": "Leagues",
       "LOGOUT": "Logout",
-      "PROFILE": "Profile"
+      "PROFILE": "Profile",
+      "BACK": "Back"
     },
     "PROFILE": {
       "TITLE": "Profile",
@@ -40,10 +41,49 @@
         "BUTTON_REGISTER": "Register"
         },
         "LEAGUES":{
-
+          "TITLE":"Leagues",
+          "CREATE": "Create league",
+          "EDIT": "Edit league",
+          "NEW": "New league",
+          "NAME": "Name",
+          "SUBMIT": "Register",
+          "UPDATE": "Update",
+          "ERRORS": {
+            "NAME_REQUIRED": "Name is required",
+            "NAME_MIN_LENGTH": "Name must be at least 2 characters long"
+            }
+        },
+        "LEAGUE_SELECTABLE":{
+          "NONE": "No one league",
+          "SEARCH": "Search",
+          "SELECT_LEAGUE": "Select league"
         },
         "TEAMS":{
-
+          "TITLE":"Teams",
+          "CREATE": "Create team",
+          "EDIT": "Edit team",
+          "NEW": "New team",
+          "NAME": "Name",
+          "NOFPLAYERS": "Number of players",
+          "SUBMIT": "Register",
+          "UPDATE": "Update",
+          "ERRORS": {
+            "NAME_REQUIRED": "Name is required",
+            "NAME_MIN_LENGTH": "Name must be at least 2 characters long",
+            "PATTERN": "The number of players in a team neds to be positive"
+            }
         },
-        "PLAYER":{}
+        "PLAYER":{
+          "TITLE":"Players",
+          "CREATE": "Create player",
+          "EDIT": "Edit player",
+          "NEW": "New player",
+          "NAME": "Name",
+          "SUBMIT": "Register",
+          "UPDATE": "Update",
+          "ERRORS": {
+            "NAME_REQUIRED": "Name is required",
+            "NAME_MIN_LENGTH": "Name must be at least 2 characters long"
+            }
+        }
   } 

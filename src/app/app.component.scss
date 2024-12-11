@@ -22,3 +22,14 @@ ion-toolbar {
     }
   }
 }
+
+ion-content{
+  --background: none;
+  background-image: linear-gradient(to bottom, #355e38, #000000);
+  color: white;
+
+  ion-item{
+    --background: none;
+    background-color: transparent;
+  }
+}

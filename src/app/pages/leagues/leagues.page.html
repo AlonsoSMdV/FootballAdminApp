@@ -4,16 +4,16 @@
           <ion-menu-button></ion-menu-button>
   </ion-buttons>
 
-  <ion-title>Leagues</ion-title>
+  <ion-title>{{'LEAGUES.TITLE' | translate}}</ion-title>
 
-  <ion-button color="success" class="createLeague" slot="end" (click)="onAddLeague()">Crear liga</ion-button>
+  <ion-button color="success" class="createLeague" slot="end" (click)="onAddLeague()">{{'LEAGUES.CREATE' | translate}}</ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">leagues</ion-title>
+      <ion-title size="large">{{'LEAGUES.TITLE' | translate}}</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-grid >

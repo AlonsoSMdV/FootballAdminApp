@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { League } from 'src/app/core/models/leagues.model';
 import { Paginated } from 'src/app/core/models/paginated.model';
 import { LeagueService } from 'src/app/core/services/impl/league.service';
+import { LanguageService } from 'src/app/core/services/language.service';
 import { LeagueCreateModalComponent } from 'src/app/shared/components/league-create-modal/league-create-modal.component';
 
 @Component({
@@ -13,7 +14,7 @@ import { LeagueCreateModalComponent } from 'src/app/shared/components/league-cre
   styleUrls: ['./leagues.page.scss'],
 })
 export class LeaguesPage implements OnInit {
-
+  currentLang:string
   _leagues: BehaviorSubject<League[]> = new BehaviorSubject<League[]>([]);
   leagues$: Observable<League[]> = this._leagues.asObservable();
 
@@ -21,8 +22,11 @@ export class LeaguesPage implements OnInit {
     private leagueSvc: LeagueService,
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
-    private translate: TranslateService
-  ) { }
+    private translate: TranslateService,
+    private languageService: LanguageService
+  ) { 
+    this.currentLang = this.languageService.getStoredLanguage();
+  }
 
   ngOnInit() {
     this.getLeagues();

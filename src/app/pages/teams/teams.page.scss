@@ -2,12 +2,12 @@
   display: flex; /* Flexbox para alinear todo en la misma línea */
   align-items: center; /* Alinea los elementos verticalmente al centro */
   justify-content: space-between; /* Espacio entre contenido y botones */
-  gap: 10px; /* Espacio entre los elementos */
+  gap: 20px; /* Espacio entre los elementos */
 }
 
 .content {
   display: flex; /* Alinea las etiquetas en fila */
-  flex-direction: column; /* Mantén las etiquetas en columna */
+  flex-direction: row; /* Mantén las etiquetas en columna */
 }
 
 .button-container {
@@ -15,12 +15,6 @@
   gap: 10px; /* Espacio entre botones */
 }
 
-ion-img {
-  width: 50px; /* Ajusta el tamaño según sea necesario */
-  height: 50px;
-  object-fit: cover; /* Asegura que las imágenes se vean correctamente */
-  border-radius: 50%; /* Para imágenes circulares */
-}
 
 ion-label {
   flex: 1; /* Permite que las etiquetas ocupen espacio restante */
@@ -28,7 +22,7 @@ ion-label {
 }
 
 ion-card {
-  padding: 10px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
 }

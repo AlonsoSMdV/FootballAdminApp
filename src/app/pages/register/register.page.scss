@@ -1,26 +1,5 @@
 
 
-  
-  ion-fab {
-    position: absolute;
-    right: 10px;
-    top: 5%;
-    transform: translateY(-50%);
-
-    ion-fab-list {
-      margin-right: 55px;
-      
-      ion-fab-button {
-        --background: var(--ion-color-light);
-        --color: var(--ion-color-dark);
-        
-        &.ion-color-success {
-          --background: var(--ion-color-success);
-          --color: var(--ion-color-success-contrast);
-        }
-      }
-    }
-  }
 ion-content {
   --background: none; /* Elimina el fondo oscuro predefinido */
   position: relative; /* Necesario para posicionar la superposición */

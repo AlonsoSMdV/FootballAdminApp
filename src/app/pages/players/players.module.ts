@@ -8,6 +8,7 @@ import { PlayersPageRoutingModule } from './players-routing.module';
 
 import { PlayersPage } from './players.page';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -15,8 +16,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FormsModule,
     IonicModule,
     SharedModule,
-    PlayersPageRoutingModule
-  ],
+    PlayersPageRoutingModule,
+    TranslateModule.forChild()],
   declarations: [PlayersPage]
 })
 export class PlayersPageModule {}

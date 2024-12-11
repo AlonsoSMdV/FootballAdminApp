@@ -16,7 +16,8 @@
       "HOME": "Inicio",
       "LEAGUES": "Ligas",
       "LOGOUT": "Cerrar sesión",
-      "PROFILE": "Perfil"
+      "PROFILE": "Perfil",
+      "BACK": "Atrás"
     },
     "PROFILE": {
       "TITLE": "Perfil",
@@ -39,5 +40,39 @@
       "REPEAT_PASSWORD": "Repita contraseña",
       "BUTTON_LOGIN": "Iniciar sesión",
       "BUTTON_REGISTER": "Crear cuenta"
-      }
+      },
+      "LEAGUES":{
+        "TITLE":"Ligas",
+        "CREATE": "Crear liga",
+        "EDIT": "Editar liga",
+        "NEW": "Nueva liga",
+        "NAME": "Nombre de la liga",
+        "SUBMIT": "Registar",
+        "UPDATE": "Actualizar",
+        "ERRORS": {
+          "NAME_REQUIRED": "El nombre es obligatorio",
+          "NAME_MIN_LENGTH": "El nombre debe tener más de 2 caracteres"
+          }
+      },
+      "LEAGUE_SELECTABLE":{
+        "NONE": "Ninguna",
+        "SEARCH": "Buscar",
+        "SELECT_LEAGUE": "Selecciona una liga"
+      },
+      "TEAMS":{
+          "TITLE":"Equipos",
+          "CREATE": "Crear equipo",
+          "EDIT": "Editar equipo",
+          "NEW": "Nuevo equipo",
+          "NAME": "Nombre del equipo",
+          "NOFPLAYERS": "Jugadores en plantilla",
+          "SUBMIT": "Registar",
+          "UPDATE": "Actualizar",
+          "ERRORS": {
+            "NAME_REQUIRED": "El nombre es obligatorio",
+            "NAME_MIN_LENGTH": "El nombre del equipo tiene que tener una longitud de más de 2 caracteres",
+            "PATTERN": "El número de jugadores en plantilla ha de ser positivo"
+            }
+      },
+      "PLAYER":{}
   }

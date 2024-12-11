@@ -2,10 +2,10 @@
   <ion-icon slot="start" name="person-outline"></ion-icon>
   <ion-title>
     @if (mode=='edit') {
-      {{ 'PERSON.EDIT' | translate }}
+      {{ 'PLAYERS.EDIT' | translate }}
     }
     @else {
-      {{ 'PERSON.NEW' | translate }}
+      {{ 'PLAYERS.NEW' | translate }}
     }
   </ion-title>
   @if (isMobile) {
@@ -19,72 +19,71 @@
 <ion-content class="ion-padding">
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <ion-item>
-    <ion-input [label]="'PERSON.NAME' | translate" label-placement="stacked"  type="text" formControlName="name"></ion-input>
+    <ion-input [label]="'PLAYERS.NAME' | translate" label-placement="stacked"  type="text" formControlName="name"></ion-input>
   </ion-item>
   <ion-text color="danger" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
-    <p *ngIf="name?.errors?.['required']">{{ 'PERSON.ERRORS.NAME_REQUIRED' | translate }}</p>
-    <p *ngIf="name?.errors?.['minlength']">{{ 'PERSON.ERRORS.NAME_MIN_LENGTH' | translate }}</p>
+    <p *ngIf="name?.errors?.['required']">{{ 'PLAYERS.ERRORS.NAME_REQUIRED' | translate }}</p>
+    <p *ngIf="name?.errors?.['minlength']">{{ 'PLAYERS.ERRORS.NAME_MIN_LENGTH' | translate }}</p>
   </ion-text>
 
   <!-- Apellidos -->
   <ion-item>
-    <ion-input [label]="'PERSON.SURNAME1' | translate" label-placement="stacked" type="text" formControlName="firstSurname"></ion-input>
+    <ion-input [label]="'PLAYERS.SURNAME1' | translate" label-placement="stacked" type="text" formControlName="firstSurname"></ion-input>
   </ion-item>
   <ion-text color="danger" *ngIf="firstSurname?.invalid && (firstSurname?.dirty || firstSurname?.touched)">
-    <p *ngIf="firstSurname?.errors?.['required']">{{ 'PERSON.ERRORS.SURNAME_REQUIRED' | translate }}</p>
-    <p *ngIf="firstSurname?.errors?.['minlength']">{{ 'PERSON.ERRORS.SURNAME_MIN_LENGTH' | translate }}</p>
+    <p *ngIf="firstSurname?.errors?.['required']">{{ 'PLAYERS.ERRORS.SURNAME_REQUIRED' | translate }}</p>
+    <p *ngIf="firstSurname?.errors?.['minlength']">{{ 'PLAYERS.ERRORS.SURNAME_MIN_LENGTH' | translate }}</p>
   </ion-text>
 
   <ion-item>
-    <ion-input [label]="'PERSON.SURNAME2' | translate" label-placement="stacked" type="text" formControlName="secondSurname"></ion-input>
+    <ion-input [label]="'PLAYERS.SURNAME2' | translate" label-placement="stacked" type="text" formControlName="secondSurname"></ion-input>
   </ion-item>
   <ion-text color="danger" *ngIf="secondSurname?.invalid && (secondSurname?.dirty || secondSurname?.touched)">
-    <p *ngIf="secondSurname?.errors?.['required']">{{ 'PERSON.ERRORS.SURNAME_REQUIRED' | translate }}</p>
-    <p *ngIf="secondSurname?.errors?.['minlength']">{{ 'PERSON.ERRORS.SURNAME_MIN_LENGTH' | translate }}</p>
+    <p *ngIf="secondSurname?.errors?.['required']">{{ 'PLAYERS.ERRORS.SURNAME_REQUIRED' | translate }}</p>
+    <p *ngIf="secondSurname?.errors?.['minlength']">{{ 'PLAYERS.ERRORS.SURNAME_MIN_LENGTH' | translate }}</p>
   </ion-text>
 
-  <!-- Email -->
+  <!-- Nacionalidad -->
   <ion-item>
-    <ion-input [label]="'PERSON.NATIONALITY' | translate" label-placement="stacked" type="text" formControlName="nationality"></ion-input>
+    <ion-input [label]="'PLAYERS.NATIONALITY' | translate" label-placement="stacked" type="text" formControlName="nationality"></ion-input>
   </ion-item>
   <ion-text color="danger" *ngIf="nationality?.invalid && (nationality?.dirty || nationality?.touched)">
-    <p *ngIf="nationality?.errors?.['required']">{{ 'PERSON.ERRORS.EMAIL_REQUIRED' | translate }}</p>
-    <p *ngIf="nationality?.errors?.['minlength']">{{ 'PERSON.ERRORS.EMAIL_INVALID' | translate }}</p>
+    <p *ngIf="nationality?.errors?.['required']">{{ 'PLAYERS.ERRORS.EMAIL_REQUIRED' | translate }}</p>
+    <p *ngIf="nationality?.errors?.['minlength']">{{ 'PLAYERS.ERRORS.EMAIL_INVALID' | translate }}</p>
   </ion-text>
 
-
+  <!-- Dorsal -->
   <ion-item>
-    <ion-input [label]="'PERSON.DORSAL' | translate" label-placement="stacked" type="text" formControlName="dorsal"></ion-input>
+    <ion-input [label]="'PLAYERS.DORSAL' | translate" label-placement="stacked" type="text" formControlName="dorsal"></ion-input>
   </ion-item>
   <ion-text color="danger" *ngIf="dorsal?.invalid">
-    <p *ngIf="dorsal?.errors?.['required']">{{ 'PERSON.ERRORS.EMAIL_REQUIRED' | translate }}</p>
-    <p *ngIf="dorsal?.errors?.['minlength']">{{ 'PERSON.ERRORS.EMAIL_INVALID' | translate }}</p>
+    <p *ngIf="dorsal?.errors?.['required']">{{ 'PLAYERS.ERRORS.EMAIL_REQUIRED' | translate }}</p>
+    <p *ngIf="dorsal?.errors?.['minlength']">{{ 'PLAYERS.ERRORS.EMAIL_INVALID' | translate }}</p>
   </ion-text>
-  <!-- Género -->
+  <!-- Fecha Nacimiento -->
   <ion-item>
-    <ion-input [label]="'PERSON.BIRTHDATE' | translate" label-placement="stacked" type="text" formControlName="birthdate" placeholder="AAAA-MM-DD">
+    <ion-input [label]="'PLAYERS.BIRTHDATE' | translate" label-placement="stacked" type="text" formControlName="birthdate" placeholder="AAAA-MM-DD">
       
     </ion-input>
   </ion-item>
-  
   <ion-text color="danger" *ngIf="birthdate?.invalid && (birthdate?.dirty || birthdate?.touched)">
-    <p *ngIf="birthdate?.errors?.['required']">El género es obligatorio.</p>
+    <p *ngIf="birthdate?.errors?.['required']">La fecha de nacimiento es obligatorio.</p>
   </ion-text>
-
+  <!-- Posicion -->
   <ion-item>
-    <ion-input [label]="'PERSON.POSITION' | translate" label-placement="stacked" type="text" formControlName="position"></ion-input>
+    <ion-input [label]="'PLAYERS.POSITION' | translate" label-placement="stacked" type="text" formControlName="position"></ion-input>
   </ion-item>
   
   <ion-text color="danger" *ngIf="position?.invalid && (position?.dirty || position?.touched)">
-    <p *ngIf="position?.errors?.['required']">El género es obligatorio.</p>
+    <p *ngIf="position?.errors?.['required']">La posición es obligatoria.</p>
   </ion-text>
 
   <ion-item>
-    <ion-label position="stacked">{{ 'PERSON.GROUP' | translate }}</ion-label>
+    <ion-label position="stacked">{{ 'PLAYERS.TEAM' | translate }}</ion-label>
       <app-team-selectable formControlName="team"></app-team-selectable>
   </ion-item>
   <!-- Botón de Envío -->
-  <ion-button [disabled]="!formGroup.valid || !formGroup.dirty" expand="full" type="submit" >{{ 'PERSON.SUBMIT' | translate }}</ion-button>
+  <ion-button color="success" [disabled]="!formGroup.valid || !formGroup.dirty" expand="full" type="submit" >{{ 'PLAYERS.SUBMIT' | translate }}</ion-button>
 </form>
 
 </ion-content>
