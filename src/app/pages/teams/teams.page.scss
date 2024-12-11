@@ -50,3 +50,24 @@ ion-card {
 .createTeam{
   margin-right: 15px;
 }
+
+ion-content {
+  --background: none;
+  background-image: linear-gradient(to bottom, #000000, #1c301d); /* Gradiente */
+  color: white;
+}
+
+ion-item {
+  --background: none !important; /* Sobrescribe el fondo predeterminado */
+  background-color: transparent !important; /* Asegura la transparencia */
+  --ion-background-color: transparent !important; /* Compatibilidad con variables de Ionic */
+  --color: white; /* Ajusta el color del texto */
+}
+
+ion-toolbar {
+  --background: none !important; /* Elimina el fondo */
+  background-color: #121212;
+  --ion-background-color: transparent !important; /* Compatibilidad con temas de Ionic */
+  box-shadow: none; /* Elimina la sombra */
+  border: none; /* Elimina cualquier borde */
+}

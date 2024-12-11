@@ -65,6 +65,7 @@
           "NEW": "New team",
           "NAME": "Name",
           "NOFPLAYERS": "Number of players",
+          "LEAGUE": "League",
           "SUBMIT": "Register",
           "UPDATE": "Update",
           "ERRORS": {
@@ -76,7 +77,7 @@
         "TEAM_SELECTABLE":{
           "NONE": "No one team",
           "SEARCH": "Search",
-          "SELECT_LEAGUE": "Select team"
+          "SELECT_TEAM": "Select team"
         },
         "PLAYERS":{
           "TITLE":"Players",
@@ -89,7 +90,7 @@
           "NATIONALITY":"Nationality",
           "DORSAL":"Dorsal",
           "BIRTHDATE":"Birthdate",
-          "POSTION":"Position",
+          "POSITION":"Position",
           "TEAM":"Team",
           "SUBMIT": "Register",
           "UPDATE": "Update",

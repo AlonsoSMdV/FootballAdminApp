@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon slot="start" name="person-outline"></ion-icon>
+    <ion-icon slot="start" name="football"></ion-icon>
     <ion-title>
       @if (mode=='edit') {
         {{ 'LEAGUES.EDIT' | translate }}
@@ -28,7 +28,14 @@
       <p *ngIf="name?.errors?.['minlength']">{{ 'LEAGUES.ERRORS.NAME_MIN_LENGTH' | translate }}</p>
     </ion-text>
     <!-- Botón de Envío -->
-    <ion-button color="success" [disabled]="!formGroup.valid || !formGroup.dirty" expand="full" type="submit" >{{ 'LEAGUES.SUBMIT' | translate }}</ion-button>
+    <ion-button color="success" [disabled]="!formGroup.valid || !formGroup.dirty" expand="full" type="submit" >
+      @if (mode=='edit') {
+        {{ 'LEAGUES.UPDATE' | translate }}
+      }
+      @else {
+        {{ 'LEAGUES.SUBMIT' | translate }}
+      }
+    </ion-button>
   </form>
 
 </ion-content>

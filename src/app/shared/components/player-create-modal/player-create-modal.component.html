@@ -82,7 +82,14 @@
       <app-team-selectable formControlName="team"></app-team-selectable>
   </ion-item>
   <!-- Botón de Envío -->
-  <ion-button color="success" [disabled]="!formGroup.valid || !formGroup.dirty" expand="full" type="submit" >{{ 'PLAYERS.SUBMIT' | translate }}</ion-button>
+  <ion-button color="success" [disabled]="!formGroup.valid || !formGroup.dirty" expand="full" type="submit" >
+    @if (mode=='edit') {
+      {{ 'PLAYERS.UPDATE' | translate }}
+    }
+    @else {
+      {{ 'PLAYERS.SUBMIT' | translate }}
+    }
+  </ion-button>
 </form>
 
 </ion-content>

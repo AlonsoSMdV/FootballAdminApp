@@ -66,6 +66,7 @@
           "NEW": "Nuevo equipo",
           "NAME": "Nombre del equipo",
           "NOFPLAYERS": "Jugadores en plantilla",
+          "LEAGUE": "Liga",
           "SUBMIT": "Registar",
           "UPDATE": "Actualizar",
           "ERRORS": {
@@ -77,7 +78,7 @@
       "TEAM_SELECTABLE":{
         "NONE": "Ninguno",
         "SEARCH": "Buscar",
-        "SELECT_LEAGUE": "Seleccionar equipo"
+        "SELECT_TEAM": "Seleccionar equipo"
       },
       "PLAYERS":{
         "TITLE":"Jugadores",
@@ -90,7 +91,7 @@
           "NATIONALITY":"Nacionalidad",
           "DORSAL":"Dorsal",
           "BIRTHDATE":"Fecha de nacimiento",
-          "POSTION":"Posición",
+          "POSITION":"Posición",
           "TEAM":"Equipo",
           "SUBMIT": "Registrar",
           "UPDATE": "Actualizar",

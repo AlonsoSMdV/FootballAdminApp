@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon slot="start" name="person-outline"></ion-icon>
+    <ion-icon slot="start" name="football"></ion-icon>
     <ion-title>
       @if (mode=='edit') {
         {{ 'TEAMS.EDIT' | translate }}
@@ -39,7 +39,14 @@
       <app-league-selectable formControlName="league"></app-league-selectable>
       </ion-item>
     <!-- Botón de Envío -->
-    <ion-button color="success" [disabled]="!formGroup.valid || !formGroup.dirty" expand="full" type="submit" >{{ 'TEAMS.SUBMIT' | translate }}</ion-button>
+    <ion-button color="success" [disabled]="!formGroup.valid || !formGroup.dirty" expand="full" type="submit" >
+      @if (mode=='edit') {
+        {{ 'TEAMS.UPDATE' | translate }}
+      }
+      @else {
+        {{ 'TEAMS.SUBMIT' | translate }}
+      }
+    </ion-button>
   </form>
 
 </ion-content>
