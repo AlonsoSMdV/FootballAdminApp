@@ -34,4 +34,4 @@ Este proyecto está desarrollado utilizando las siguientes tecnologías:
 - Enlace a strapi(local): https://github.com/AlonsoSMdV/FootballCompsStrapi
 - Enlace a render: https://footballcompsstrapi.onrender.com
 - Enlace a netlify: https://futmanager.netlify.app
-- Enlace a youtube:
+- Enlace a youtube: https://youtu.be/48706eHnVA8?si=0L-_3JoVPcWXqHPb
