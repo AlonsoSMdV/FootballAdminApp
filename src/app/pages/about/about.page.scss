@@ -21,14 +21,14 @@ ion-content{
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.name {
+.full_name {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 16px;
   color: #ffffff;
 }
 
-.social-links {
+.social {
   display: flex;
   justify-content: center;
   gap: 12px;
@@ -39,4 +39,12 @@ ion-content{
   font-size: 16px;
   color: #ffffff;
   max-width: 400px;
+}
+
+ion-toolbar {
+  --background: none !important; /* Elimina el fondo */
+  background-color: #121212;
+  --ion-background-color: transparent !important; /* Compatibilidad con temas de Ionic */
+  box-shadow: none; /* Elimina la sombra */
+  border: none; /* Elimina cualquier borde */
 }
