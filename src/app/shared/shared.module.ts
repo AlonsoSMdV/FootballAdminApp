@@ -9,6 +9,7 @@ import { TeamCreateModalComponent } from './components/team-create-modal/team-cr
 import { TeamSelectableComponent } from './components/team-selectable/team-selectable.component';
 import { LeagueCreateModalComponent } from './components/league-create-modal/league-create-modal.component';
 import { LeagueSelectableComponent } from './components/league-selectable/league-selectable.component';
+import { PositionSelectableComponent } from './components/position-selectable/position-selectable.component';
 
 
 
@@ -18,7 +19,9 @@ import { LeagueSelectableComponent } from './components/league-selectable/league
     TeamCreateModalComponent, 
     TeamSelectableComponent, 
     LeagueCreateModalComponent, 
-    LeagueSelectableComponent],
+    LeagueSelectableComponent, 
+    PositionSelectableComponent
+  ],
   imports: [
     CommonModule,
     IonicModule,
@@ -31,7 +34,8 @@ import { LeagueSelectableComponent } from './components/league-selectable/league
     TeamCreateModalComponent, 
     TeamSelectableComponent, 
     LeagueCreateModalComponent, 
-    LeagueSelectableComponent
+    LeagueSelectableComponent,
+    PositionSelectableComponent
   ]
 })
 export class SharedModule { }

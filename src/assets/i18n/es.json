@@ -14,6 +14,7 @@
     "MENU": {
       "TITLE": "Menú",
       "HOME": "Inicio",
+      "ABOUT": "Contacto",
       "LEAGUES": "Ligas",
       "LOGOUT": "Cerrar sesión",
       "PROFILE": "Perfil",
@@ -52,7 +53,10 @@
         "ERRORS": {
           "NAME_REQUIRED": "El nombre es obligatorio",
           "NAME_MIN_LENGTH": "El nombre debe tener más de 2 caracteres"
-          }
+          },
+          "MESSAGES":{
+              "DELETE_CONFIRM":"¿Deseas borrar esta liga?"
+            }
       },
       "LEAGUE_SELECTABLE":{
         "NONE": "Ninguna",
@@ -73,7 +77,10 @@
             "NAME_REQUIRED": "El nombre es obligatorio",
             "NAME_MIN_LENGTH": "El nombre del equipo tiene que tener una longitud de más de 2 caracteres",
             "PATTERN": "El número de jugadores en plantilla ha de ser positivo"
-            }
+            },
+            "MESSAGES":{
+                "DELETE_CONFIRM":"¿Deseas borrar este equipo?"
+              }
       },
       "TEAM_SELECTABLE":{
         "NONE": "Ninguno",
@@ -91,7 +98,12 @@
           "NATIONALITY":"Nacionalidad",
           "DORSAL":"Dorsal",
           "BIRTHDATE":"Fecha de nacimiento",
+          "SELECT_POSITION": "Selecciona una posición",
           "POSITION":"Posición",
+          "POSITION_GOALKEEPER":"Portero",
+          "POSITION_DEFENDER":"Defensa",
+          "POSITION_MIDFIELDER":"Mediocentro",
+          "POSITION_FORWARD":"Delantero",
           "TEAM":"Equipo",
           "SUBMIT": "Registrar",
           "UPDATE": "Actualizar",
@@ -105,6 +117,24 @@
             "PATTERN": "El dorsal debe ser un número positivo",
             "BIRTHDATE_REQUIRED": "La fecha de nacimiento es obligatoria",
             "POSITION_REQUIRED": "La posición es obligatoria"
+            },
+          "MESSAGES":{
+              "DELETE_CONFIRM":"¿Deseas borrar este jugador?"
             }
+      },
+      "HOME": {
+        "TITLE": "INICIO",
+        "LEAGUES": "Explora las ligas junto a sus respectivos equipos.",
+        "TEAMS": "Consulta los equipos participantes, su número de jugadores y la información de estos",
+        "PLAYERS": "Descubre información detallada de los jugadores.",
+        "CONTACT": "¿Tienes preguntas? Contáctanos para obtener más información.",
+        "SEE_LEAGUES": "Ver ligas",
+        "SEE_TEAMS": "Ver equipos",
+        "SEE_PLAYERS": "Ver jugadores",
+        "SEE_CONTACT": "Contactar"
+      },
+      "ABOUT":{
+        "TITLE": "CONTACTO",
+        "ME": "¡Hola! Soy Alonso, creador de esta página que usa ionic, angular y conexión a servicios de strapi, soy estudiante de 2ºDAM en el centro C.P.I.F.P. Alan Turing, espero que os guste el resto de la página"
       }
   }

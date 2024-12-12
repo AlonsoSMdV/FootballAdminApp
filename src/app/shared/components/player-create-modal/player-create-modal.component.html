@@ -70,13 +70,9 @@
   </ion-text>
   <!-- Posicion -->
   <ion-item>
-    <ion-input [label]="'PLAYERS.POSITION' | translate" label-placement="stacked" type="text" formControlName="position"></ion-input>
+    <ion-label position="stacked">{{ 'PLAYERS.POSITION' | translate }}</ion-label>
+    <app-position-selectable formControlName="position"></app-position-selectable>
   </ion-item>
-  
-  <ion-text color="danger" *ngIf="position?.invalid && (position?.dirty || position?.touched)">
-    <p *ngIf="nationality?.errors?.['required']">{{ 'PLAYERS.ERRORS.POSITION_REQUIRED' | translate }}</p>
-  </ion-text>
-
   <ion-item>
     <ion-label position="stacked">{{ 'PLAYERS.TEAM' | translate }}</ion-label>
       <app-team-selectable formControlName="team"></app-team-selectable>

@@ -3,7 +3,7 @@ import { IBaseMapping } from "../intefaces/base-mapping.interface";
 import { Paginated } from "../../models/paginated.model";
 import { Users } from "../../models/users.model";
 
-interface PersonRaw{
+interface UserRaw{
     id:string,
     name:{
         title:string;
@@ -31,12 +31,12 @@ interface PersonRaw{
     setUpdate(data: any) {
         throw new Error("Method not implemented.");
     }
-    getPaginated(page:number, pageSize:number, pages:number, data: PersonRaw[]): Paginated<Users> {
-        return {page:page, pageSize:pageSize, pages:pages, data:data.map<Users>((d:PersonRaw)=>{
+    getPaginated(page:number, pageSize:number, pages:number, data: UserRaw[]): Paginated<Users> {
+        return {page:page, pageSize:pageSize, pages:pages, data:data.map<Users>((d:UserRaw)=>{
             return this.getOne(d);
         })};
     }
-    getOne(data: PersonRaw):Users {
+    getOne(data: UserRaw):Users {
         return {
             id:data.id, 
             name:data.name.first, 
@@ -51,13 +51,13 @@ interface PersonRaw{
                 thumbnail:data.picture.thumbnail
             }};
     }
-    getAdded(data: PersonRaw):Users {
+    getAdded(data: UserRaw):Users {
         return this.getOne(data);
     }
-    getUpdated(data: PersonRaw):Users {
+    getUpdated(data: UserRaw):Users {
         return this.getOne(data);
     }
-    getDeleted(data: PersonRaw):Users {
+    getDeleted(data: UserRaw):Users {
         return this.getOne(data);
     }
   }

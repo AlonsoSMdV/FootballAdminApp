@@ -26,22 +26,8 @@ interface UserAttributes {
     createdAt: string
     updatedAt: string
   }
-interface GroupRaw{
-    data: GroupData,
-    meta: Meta
-}
 
-interface GroupData {
-    id: number
-    attributes: GroupAttributes
-}
   
-interface GroupAttributes {
-    name: string
-    createdAt: string
-    updatedAt: string
-    publishedAt: string
-}
   
 
 interface PersonRaw {
@@ -69,9 +55,6 @@ interface PersonAttributes {
     picture:MediaRaw | number | null
 }
 
-interface GroupAttributes {
-    name: string
-}
 
 interface Meta {}
 

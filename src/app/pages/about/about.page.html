@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{'ABOUT.TITLE' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div class="about-container">
+    <!-- Imagen -->
+    <img src="assets/img/profile.jpg" alt="Profile Picture" class="profile-picture">
+
+    <!-- Nombre -->
+    <h1 class="name">Alonso Sánchez Moreno de Vega</h1>
+
+    <!-- Redes Sociales -->
+    <div class="social-links">
+      <ion-button fill="clear" color="success" href="https://github.com/AlonsoSMdV" target="_blank">
+        <ion-icon slot="icon-only" name="logo-github"></ion-icon>
+      </ion-button>
+    </div>
+
+    <!-- Información adicional -->
+    <p class="biography">
+      {{ 'ABOUT.ME' | translate }}
+    </p>
+  </div>
+</ion-content>

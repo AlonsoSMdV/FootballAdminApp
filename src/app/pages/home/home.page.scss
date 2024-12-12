@@ -25,3 +25,63 @@
 #container a {
   text-decoration: none;
 }
+
+// Variables de colores para mantener consistencia
+$primary-color: #004d00; // Verde oscuro
+$secondary-color: #1a1a1a; // Fondo oscuro
+$card-background: #333333; // Fondo de las tarjetas
+$button-color: #0066ff; // Azul para los botones
+$text-color: #ffffff; // Color del texto blanco
+
+ion-content {
+  --background: $secondary-color; // Fondo oscuro general
+  background-image: linear-gradient(to bottom, #000000, #1c301d); // Gradiente de fondo
+  color: $text-color; // Texto blanco por defecto
+}
+
+// Estilos para las secciones específicas
+section {
+  margin: 16px;
+
+  ion-card {
+    --background: $card-background;
+    background-color: rgba(51, 51, 51, 0.8); // Fondo semitransparente
+    border-radius: 8px; // Esquinas redondeadas
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); // Sombra para destacar
+    color: $text-color;
+
+    ion-card-header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+      ion-card-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: $text-color;
+      }
+    }
+
+    ion-card-content {
+      font-size: 1rem;
+      line-height: 1.6;
+
+      ion-button {
+        --background: $button-color;
+        --color: $text-color;
+        border-radius: 4px;
+
+        &:hover {
+          --background: darken($button-color, 10%);
+        }
+      }
+    }
+  }
+}
+
+
+ion-toolbar {
+  --background: none !important; /* Elimina el fondo */
+  background-color: #121212;
+  --ion-background-color: transparent !important; /* Compatibilidad con temas de Ionic */
+  box-shadow: none; /* Elimina la sombra */
+  border: none; /* Elimina cualquier borde */
+}

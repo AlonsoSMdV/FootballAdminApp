@@ -105,7 +105,7 @@ export class TeamsPage implements OnInit {
 
   async onDeleteTeam(team: Team) {
     const alert = await this.alertCtrl.create({
-      header: await this.translate.get('PEOPLE.MESSAGES.DELETE_CONFIRM').toPromise(),
+      header: await this.translate.get('TEAMS.MESSAGES.DELETE_CONFIRM').toPromise(),
       buttons: [
         {
           text: 'Cancel',

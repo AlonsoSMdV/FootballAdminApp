@@ -1,8 +1,7 @@
 // src/app/repositories/repository.tokens.ts
 import { InjectionToken } from '@angular/core';
 import { IBaseRepository } from './intefaces/base-repository.interface';
-import { ITasksRepository } from './intefaces/tasks-repository.interface';
-import { IPeopleRepository } from './intefaces/users-repository.interface';
+import { IUserRepository } from './intefaces/users-repository.interface';
 import { IBaseMapping } from './intefaces/base-mapping.interface';
 import { Users } from '../models/users.model';
 import { IStrapiAuthentication } from '../services/interfaces/strapi-authentication.interface';
@@ -19,11 +18,8 @@ export const LEAGUE_RESOURCE_NAME_TOKEN = new InjectionToken<string>('LeagueReso
 export const TEAM_RESOURCE_NAME_TOKEN = new InjectionToken<string>('TeamResourceName');
 export const PLAYER_RESOURCE_NAME_TOKEN = new InjectionToken<string>('PlayerResourceName');
 export const PEOPLE_RESOURCE_NAME_TOKEN = new InjectionToken<string>('PeopleResourceName');
-export const GROUPS_RESOURCE_NAME_TOKEN = new InjectionToken<string>('GroupsResourceName');
 export const REPOSITORY_TOKEN = new InjectionToken<IBaseRepository<any>>('REPOSITORY_TOKEN');
-export const PEOPLE_REPOSITORY_TOKEN = new InjectionToken<IPeopleRepository>('IPeopleRepository');
-export const GROUPS_REPOSITORY_TOKEN = new InjectionToken<IPeopleRepository>('IGroupsRepository');
-export const TASKS_REPOSITORY_TOKEN = new InjectionToken<ITasksRepository>('ITasksRepository');
+export const USER_REPOSITORY_TOKEN = new InjectionToken<IUserRepository>('IUserRepository');
 export const LEAGUE_REPOSITORY_TOKEN = new InjectionToken<ILeagueRepository>('ILeagueRepository');
 export const PLAYER_REPOSITORY_TOKEN = new InjectionToken<IPlayerRepository>('IPlayerRepository');
 export const TEAM_REPOSITORY_TOKEN = new InjectionToken<ITeamRepository>('ITeamRepository');
@@ -32,17 +28,14 @@ export const API_URL_TOKEN = new InjectionToken<string>('ApiUrl');
 export const LEAGUE_API_URL_TOKEN = new InjectionToken<string>('LeagueApiUrl');
 export const TEAM_API_URL_TOKEN = new InjectionToken<string>('TeamApiUrl');
 export const PLAYER_API_URL_TOKEN = new InjectionToken<string>('PlayerApiUrl');
-export const PEOPLE_API_URL_TOKEN = new InjectionToken<string>('PeopleApiUrl');
-export const GROUPS_API_URL_TOKEN = new InjectionToken<string>('GroupsApiUrl');
-export const TASKS_API_URL_TOKEN = new InjectionToken<string>('TasksApiUrl');
+export const USER_API_URL_TOKEN = new InjectionToken<string>('UserApiUrl');
 export const AUTH_SIGN_IN_API_URL_TOKEN = new InjectionToken<string>('AuthSignInApiUrl');
 export const AUTH_SIGN_UP_API_URL_TOKEN = new InjectionToken<string>('AuthSignUpApiUrl');
 export const AUTH_ME_API_URL_TOKEN = new InjectionToken<string>('AuthMeApiUrl');
 export const UPLOAD_API_URL_TOKEN = new InjectionToken<string>('UploadApiUrl');
 
 export const REPOSITORY_MAPPING_TOKEN = new InjectionToken<IBaseMapping<any>>('IBaseRepositoryMapping');
-export const PEOPLE_REPOSITORY_MAPPING_TOKEN = new InjectionToken<IBaseMapping<Users>>('IPeopleRepositoryMapping');
-export const GROUPS_REPOSITORY_MAPPING_TOKEN = new InjectionToken<IBaseMapping<Users>>('IGroupsRepositoryMapping');
+export const USER_REPOSITORY_MAPPING_TOKEN = new InjectionToken<IBaseMapping<Users>>('IUserRepositoryMapping');
 export const LEAGUE_REPOSITORY_MAPPING_TOKEN = new InjectionToken<IBaseMapping<League>>('ILeaguesRepositoryMapping');
 export const PLAYER_REPOSITORY_MAPPING_TOKEN = new InjectionToken<IBaseMapping<Player>>('IPlayerRepositoryMapping');
 export const TEAM_REPOSITORY_MAPPING_TOKEN = new InjectionToken<IBaseMapping<Team>>('ITeamRepositoryMapping');

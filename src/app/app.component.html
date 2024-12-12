@@ -1,7 +1,7 @@
 <ion-content>
   <ion-split-pane contentId="mainContent" style="--side-max-width:125px;">
     <!-- Sidebar menu visible on larger screens -->
-    <ion-menu contentId="mainContent" side="start" menuId="mainMenu" #menu [disabled]="!(authSvc.authenticated$ | async)">
+    <ion-menu  *ngIf="showMenu" contentId="mainContent" side="start" menuId="mainMenu" #menu [disabled]="!(authSvc.authenticated$ | async)">
       <ion-header>
         <ion-toolbar>
           <ion-title>{{ 'MENU.TITLE' | translate }}</ion-title>
@@ -19,6 +19,7 @@
           </ion-item>
           <ion-item  (click)="menu.close()" routerLink="/home" routerDirection="root">{{ 'MENU.HOME' | translate }}</ion-item>
           <ion-item (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" routerLink="/leagues" routerDirection="root">{{ 'MENU.LEAGUES' | translate }}</ion-item>
+          <ion-item (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" routerLink="/about" routerDirection="root">{{ 'MENU.ABOUT' | translate }}</ion-item>
           <ion-item lines="none" style="display: flex; align-items: center;">
             <ion-label>{{ currentLang === 'es' ? 'Español' : 'English' }}</ion-label>
             <ion-toggle

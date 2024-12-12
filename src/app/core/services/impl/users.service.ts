@@ -1,18 +1,18 @@
 // src/app/services/impl/people.service.ts
 import { Injectable, Inject } from '@angular/core';
 import { BaseService } from './base-service.service';
-import { IPeopleService } from '../interfaces/users-service.interface';
+import { IUserService } from '../interfaces/users-service.interface';
 import { Users } from '../../models/users.model';
-import { PEOPLE_REPOSITORY_TOKEN } from '../../repositories/repository.tokens';
-import { IPeopleRepository } from '../../repositories/intefaces/users-repository.interface';
+import { USER_REPOSITORY_TOKEN } from '../../repositories/repository.tokens';
+import { IUserRepository } from '../../repositories/intefaces/users-repository.interface';
 import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService extends BaseService<Users> implements IPeopleService {
+export class UsersService extends BaseService<Users> implements IUserService {
   constructor(
-    @Inject(PEOPLE_REPOSITORY_TOKEN) repository: IPeopleRepository
+    @Inject(USER_REPOSITORY_TOKEN) repository: IUserRepository
   ) {
     super(repository);
   }

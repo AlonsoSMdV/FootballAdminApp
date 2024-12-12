@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BaseAuthenticationService } from './core/services/impl/base-authentication.service';
 import { LanguageService } from './core/services/language.service';
 
@@ -8,16 +8,24 @@ import { LanguageService } from './core/services/language.service';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   showMenu: boolean = true;
   currentLang: string;
 
   constructor(
     private languageService: LanguageService,
     public authSvc: BaseAuthenticationService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
     this.currentLang = this.languageService.getStoredLanguage();
+  }
+  ngOnInit(){
+    this.router.events.subscribe(() => {
+      // Chequear la ruta actual y ocultar el menú si es la página Splash
+      const currentRoute = this.router.url;
+      this.showMenu = currentRoute !== '/splash'; // O el nombre de tu ruta splash
+    });
   }
 
   /*isDarkTheme = false;

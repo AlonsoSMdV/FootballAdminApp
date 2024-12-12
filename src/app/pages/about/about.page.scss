@@ -1,0 +1,42 @@
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+ion-content{
+  --background: none;
+  background-image: linear-gradient(to bottom, #000000, #1c301d); /* Gradiente */
+  color: white;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 75%;
+  object-fit: cover;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.biography {
+  font-size: 16px;
+  color: #ffffff;
+  max-width: 400px;
+}

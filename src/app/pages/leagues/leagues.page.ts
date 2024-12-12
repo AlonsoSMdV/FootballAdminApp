@@ -103,7 +103,7 @@ export class LeaguesPage implements OnInit {
 
   async onDeleteLeague(league: League) {
     const alert = await this.alertCtrl.create({
-      header: await this.translate.get('PEOPLE.MESSAGES.DELETE_CONFIRM').toPromise(),
+      header: await this.translate.get('LEAGUES.MESSAGES.DELETE_CONFIRM').toPromise(),
       buttons: [
         {
           text: 'Cancel',

@@ -14,6 +14,7 @@
     "MENU": {
       "TITLE": "Menu",
       "HOME": "Home",
+      "ABOUT": "Contact",
       "LEAGUES": "Leagues",
       "LOGOUT": "Logout",
       "PROFILE": "Profile",
@@ -51,6 +52,9 @@
           "ERRORS": {
             "NAME_REQUIRED": "Name is required",
             "NAME_MIN_LENGTH": "Name must be at least 2 characters long"
+            },
+          "MESSAGES":{
+              "DELETE_CONFIRM":"You want to delete this league?"
             }
         },
         "LEAGUE_SELECTABLE":{
@@ -72,6 +76,9 @@
             "NAME_REQUIRED": "Name is required",
             "NAME_MIN_LENGTH": "Name must be at least 2 characters long",
             "PATTERN": "The number of players in a team neds to be positive"
+            },
+            "MESSAGES":{
+              "DELETE_CONFIRM":"You want to delete this team?"
             }
         },
         "TEAM_SELECTABLE":{
@@ -90,7 +97,12 @@
           "NATIONALITY":"Nationality",
           "DORSAL":"Dorsal",
           "BIRTHDATE":"Birthdate",
+          "SELECT_POSITION": "Select position",
           "POSITION":"Position",
+          "POSITION_GOALKEEPER":"Goalkeeper",
+          "POSITION_DEFENDER":"Defender",
+          "POSITION_MIDFIELDER":"Midfielder",
+          "POSITION_FORWARD":"Forward",
           "TEAM":"Team",
           "SUBMIT": "Register",
           "UPDATE": "Update",
@@ -104,6 +116,24 @@
             "PATTERN": "Dorsal must be positive",
             "BIRTHDATE_REQUIRED": "Birthdate is required",
             "POSITION_REQUIRED": "Position is required"
+            },
+            "MESSAGES":{
+              "DELETE_CONFIRM":"You want to delete this player?"
             }
-        }
+        },
+        "HOME": {
+          "TITLE": "Home",
+          "LEAGUES": "Explore active leagues and their teams.",
+          "TEAMS": "Check out participating teams, their number of players, and information about them.",
+          "PLAYERS": "Discover detailed information about players.",
+          "CONTACT": "Have questions? Contact us for more information.",
+          "SEE_LEAGUES": "See leagues",
+          "SEE_TEAMS": "See teams",
+          "SEE_PLAYERS": "See players",
+          "SEE_CONTACT": "Contact"
+        },
+      "ABOUT":{
+        "TITLE": "ABOUT",
+        "ME": "Hello! I'm Alonso, the creator of this page, which uses Ionic, Angular, and connects to Strapi services. I'm a 2nd-year DAM student at the C.P.I.F.P. Alan Turing center. I hope you enjoy the rest of the page!"
+      }
   } 

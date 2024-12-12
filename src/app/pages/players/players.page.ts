@@ -113,7 +113,7 @@ export class PlayersPage implements OnInit {
 
   async onDeletePlayer(player: Player) {
     const alert = await this.alertCtrl.create({
-      header: await this.translate.get('PEOPLE.MESSAGES.DELETE_CONFIRM').toPromise(),
+      header: await this.translate.get('PLAYERS.MESSAGES.DELETE_CONFIRM').toPromise(),
       buttons: [
         {
           text: 'Cancel',

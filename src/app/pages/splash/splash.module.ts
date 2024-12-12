@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { SplashPageRoutingModule } from './splash-routing.module';
-
+import player from 'lottie-web';
 import { SplashPage } from './splash.page';
 
 @NgModule({
@@ -14,7 +14,6 @@ import { SplashPage } from './splash.page';
     FormsModule,
     IonicModule,
     SplashPageRoutingModule
-  ],
-  declarations: [SplashPage]
+  ]
 })
 export class SplashPageModule {}
