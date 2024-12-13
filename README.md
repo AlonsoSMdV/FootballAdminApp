@@ -12,7 +12,7 @@
 - **Login**: Una comprobación de que realmente existe ese usuario.
 - **Register**: Un registro en el cual se ha de indicar el nombre, apellidos, email y contraseña.
 - **Splash/Lottie**:Pantalla de carga.
-- **Integración de ControlValueAccesor**
+- **Integración de CustomValueAccesor**
 
 ## Tecnologías
 
