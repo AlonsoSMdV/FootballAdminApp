@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://futmanager.netlify.app'
+  apiUrl: 'http://localhost:1337'
 };
 
 /*

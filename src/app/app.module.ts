@@ -34,6 +34,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SharedModule } from './shared/shared.module';
 import player from 'lottie-web';
 import { provideLottieOptions } from 'ngx-lottie';
+import { environment } from 'src/environments/environment';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -65,14 +66,14 @@ export function createTranslateLoader(http: HttpClient) {
     {provide: LEAGUE_RESOURCE_NAME_TOKEN, useValue: 'leagues'},
     {provide: TEAM_RESOURCE_NAME_TOKEN, useValue: 'teams'},
     {provide: PLAYER_RESOURCE_NAME_TOKEN, useValue: 'players'},
-    {provide: LEAGUE_API_URL_TOKEN, useValue: 'http://localhost:1337/api'},
-    {provide: TEAM_API_URL_TOKEN, useValue: 'http://localhost:1337/api'},
-    {provide: PLAYER_API_URL_TOKEN, useValue: 'http://localhost:1337/api'},
-    {provide: USER_API_URL_TOKEN, useValue: 'http://localhost:1337/api'},
-    { provide: AUTH_SIGN_IN_API_URL_TOKEN, useValue: 'http://localhost:1337/api/auth/local' },
-    { provide: AUTH_SIGN_UP_API_URL_TOKEN, useValue: 'http://localhost:1337/api/auth/local/register' },
-    { provide: AUTH_ME_API_URL_TOKEN, useValue: 'http://localhost:1337/api/users/me' },
-    { provide: UPLOAD_API_URL_TOKEN, useValue: 'http://localhost:1337/api/upload' },
+    {provide: LEAGUE_API_URL_TOKEN, useValue: `${environment.apiUrl}/api`},
+    {provide: TEAM_API_URL_TOKEN, useValue: `${environment.apiUrl}/api`},
+    {provide: PLAYER_API_URL_TOKEN, useValue: `${environment.apiUrl}/api`},
+    {provide: USER_API_URL_TOKEN, useValue: `${environment.apiUrl}/api`},
+    { provide: AUTH_SIGN_IN_API_URL_TOKEN, useValue: `${environment.apiUrl}/api/auth/local` },
+    { provide: AUTH_SIGN_UP_API_URL_TOKEN, useValue:  `${environment.apiUrl}/api/auth/local/register` },
+    { provide: AUTH_ME_API_URL_TOKEN, useValue: `${environment.apiUrl}/api/users/me` },
+    { provide: UPLOAD_API_URL_TOKEN, useValue: `${environment.apiUrl}/api/upload` },
 
     {
       provide: USER_REPOSITORY_MAPPING_TOKEN,
