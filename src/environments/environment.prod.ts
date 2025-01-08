@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "https://footballcompsstrapi.onrender.com"
+  apiUrl: "https://footballcompsstrapiv2.onrender.com"
 };
