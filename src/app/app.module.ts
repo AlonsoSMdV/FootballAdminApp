@@ -18,7 +18,7 @@ import { LEAGUE_API_URL_TOKEN, LEAGUE_REPOSITORY_MAPPING_TOKEN, LEAGUE_REPOSITOR
   BACKEND_TOKEN,
   USER_REPOSITORY_MAPPING_TOKEN,
   USER_API_URL_TOKEN,
-  PEOPLE_RESOURCE_NAME_TOKEN} from './core/repositories/repository.tokens';
+  USER_RESOURCE_NAME_TOKEN} from './core/repositories/repository.tokens';
 import { LeagueService } from './core/services/impl/league.service';
 import { PlayerService } from './core/services/impl/player.service';
 import { TeamService } from './core/services/impl/team.service';
@@ -62,7 +62,7 @@ export function createTranslateLoader(http: HttpClient) {
 
     {provide: USER_REPOSITORY_TOKEN, useClass: UsersService},
     {provide: BACKEND_TOKEN, useValue: 'strapi'},
-    {provide: PEOPLE_RESOURCE_NAME_TOKEN, useValue: 'usuarios'},
+    {provide: USER_RESOURCE_NAME_TOKEN, useValue: 'usuarios'},
     {provide: LEAGUE_RESOURCE_NAME_TOKEN, useValue: 'leagues'},
     {provide: TEAM_RESOURCE_NAME_TOKEN, useValue: 'teams'},
     {provide: PLAYER_RESOURCE_NAME_TOKEN, useValue: 'players'},
@@ -91,15 +91,14 @@ export function createTranslateLoader(http: HttpClient) {
       provide: PLAYER_REPOSITORY_MAPPING_TOKEN,
       useClass: PlayerMappingStrapi
     },
-    LeaguesMappingFactory,
-    TeamsMappingFactory,
-    PlayersMappingFactory,
+    LeaguesRepositoryFactory,
+    TeamsRepositoryFactory,
+    PlayersRepositoryFactory,
     UserRepositoryFactory,
     AuthMappingFactory,
     LeaguesRepositoryFactory,
     TeamsRepositoryFactory,
     PlayersRepositoryFactory,
-    UserMappingFactory,
     
     {
       provide: 'LeagueService',

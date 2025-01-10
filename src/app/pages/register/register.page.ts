@@ -23,7 +23,7 @@ export class RegisterPage {
     private router: Router,
     private route:ActivatedRoute,
     private authSvc:BaseAuthenticationService,
-    private peopleSvc:UsersService,
+    private userSvc:UsersService,
     private languageService: LanguageService
   ) {
     this.registerForm = this.fb.group({
@@ -52,7 +52,13 @@ export class RegisterPage {
             ...this.registerForm.value,
             userId: resp.id.toString()
           };
-          this.router.navigate(['/home'])
+          this.userSvc.add(userData).subscribe({
+            next: resp => {
+              const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
+              this.router.navigateByUrl(returnUrl);
+            },
+            error: err => {}
+          });
         },
         error: err => {
           console.log(err);
