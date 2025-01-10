@@ -7,7 +7,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
-import { LeaguesRepositoryFactory, TeamsRepositoryFactory, PlayersRepositoryFactory, AuthMappingFactory, AuthenticationServiceFactory, UserRepositoryFactory, MediaServiceFactory } from './core/repositories/repository.factory';
+import { LeaguesRepositoryFactory, TeamsRepositoryFactory, PlayersRepositoryFactory, AuthMappingFactory, AuthenticationServiceFactory, UserRepositoryFactory, MediaServiceFactory, PlayersMappingFactory, TeamsMappingFactory, LeaguesMappingFactory, UserMappingFactory } from './core/repositories/repository.factory';
 import { LEAGUE_API_URL_TOKEN, LEAGUE_REPOSITORY_MAPPING_TOKEN, LEAGUE_REPOSITORY_TOKEN, LEAGUE_RESOURCE_NAME_TOKEN, 
   TEAM_API_URL_TOKEN, TEAM_REPOSITORY_MAPPING_TOKEN, TEAM_REPOSITORY_TOKEN, TEAM_RESOURCE_NAME_TOKEN, 
   PLAYER_API_URL_TOKEN, PLAYER_REPOSITORY_MAPPING_TOKEN, PLAYER_REPOSITORY_TOKEN,PLAYER_RESOURCE_NAME_TOKEN,
@@ -62,7 +62,7 @@ export function createTranslateLoader(http: HttpClient) {
 
     {provide: USER_REPOSITORY_TOKEN, useClass: UsersService},
     {provide: BACKEND_TOKEN, useValue: 'strapi'},
-    {provide: PEOPLE_RESOURCE_NAME_TOKEN, useValue: 'users'},
+    {provide: PEOPLE_RESOURCE_NAME_TOKEN, useValue: 'usuarios'},
     {provide: LEAGUE_RESOURCE_NAME_TOKEN, useValue: 'leagues'},
     {provide: TEAM_RESOURCE_NAME_TOKEN, useValue: 'teams'},
     {provide: PLAYER_RESOURCE_NAME_TOKEN, useValue: 'players'},
@@ -91,14 +91,16 @@ export function createTranslateLoader(http: HttpClient) {
       provide: PLAYER_REPOSITORY_MAPPING_TOKEN,
       useClass: PlayerMappingStrapi
     },
-    LeaguesRepositoryFactory,
-    TeamsRepositoryFactory,
-    PlayersRepositoryFactory,
+    LeaguesMappingFactory,
+    TeamsMappingFactory,
+    PlayersMappingFactory,
     UserRepositoryFactory,
     AuthMappingFactory,
     LeaguesRepositoryFactory,
     TeamsRepositoryFactory,
     PlayersRepositoryFactory,
+    UserMappingFactory,
+    
     {
       provide: 'LeagueService',
       useClass:LeagueService
@@ -110,7 +112,7 @@ export function createTranslateLoader(http: HttpClient) {
       useClass:PlayerService
     },
     {
-      provide: 'PeopleService',
+      provide: 'UsersService',
       useClass: UsersService
     },
 

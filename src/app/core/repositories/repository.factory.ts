@@ -50,12 +50,13 @@ export function createBaseRepositoryFactory<T extends Model>(
   };
 };
 
-type modelT = 'league' | 'team' | 'player'
+type modelT = 'league' | 'team' | 'player' | 'usuario'
 
 const mtMapping: Record<modelT, new() => IBaseMapping<any>> = {
   league: LeagueMappingStrapi,
   team: TeamMappingStrapi,
-  player: PlayerMappingStrapi
+  player: PlayerMappingStrapi,
+  usuario: UsersMappingStrapi
 }
 
 export function createBaseMappingFactory<T extends Model>(
@@ -123,6 +124,11 @@ export const PlayersMappingFactory = createBaseMappingFactory<Player>(
   'player'
 );
 
+export const UserMappingFactory = createBaseMappingFactory<Users>(
+  USER_REPOSITORY_MAPPING_TOKEN,
+  [BACKEND_TOKEN],
+  'usuario'
+);
 export const AuthMappingFactory: FactoryProvider = createBaseAuthMappingFactory(AUTH_MAPPING_TOKEN, [BACKEND_TOKEN]);
 
 export const AuthenticationServiceFactory:FactoryProvider = {
