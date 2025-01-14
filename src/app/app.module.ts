@@ -18,7 +18,7 @@ import { LEAGUE_API_URL_TOKEN, LEAGUE_REPOSITORY_MAPPING_TOKEN, LEAGUE_REPOSITOR
   BACKEND_TOKEN,
   USER_REPOSITORY_MAPPING_TOKEN,
   USER_API_URL_TOKEN,
-  USER_RESOURCE_NAME_TOKEN} from './core/repositories/repository.tokens';
+  USER_RESOURCE_NAME_TOKEN, FIREBASE_CONFIG_TOKEN} from './core/repositories/repository.tokens';
 import { LeagueService } from './core/services/impl/league.service';
 import { PlayerService } from './core/services/impl/player.service';
 import { TeamService } from './core/services/impl/team.service';
@@ -61,7 +61,7 @@ export function createTranslateLoader(http: HttpClient) {
     provideHttpClient(),
 
     {provide: USER_REPOSITORY_TOKEN, useClass: UsersService},
-    {provide: BACKEND_TOKEN, useValue: 'strapi'},
+    {provide: BACKEND_TOKEN, useValue: 'firebase'},
     {provide: USER_RESOURCE_NAME_TOKEN, useValue: 'usuarios'},
     {provide: LEAGUE_RESOURCE_NAME_TOKEN, useValue: 'leagues'},
     {provide: TEAM_RESOURCE_NAME_TOKEN, useValue: 'teams'},
@@ -74,6 +74,15 @@ export function createTranslateLoader(http: HttpClient) {
     { provide: AUTH_SIGN_UP_API_URL_TOKEN, useValue:  `${environment.apiUrl}/api/auth/local/register` },
     { provide: AUTH_ME_API_URL_TOKEN, useValue: `${environment.apiUrl}/api/users/me` },
     { provide: UPLOAD_API_URL_TOKEN, useValue: `${environment.apiUrl}/api/upload` },
+    { provide: FIREBASE_CONFIG_TOKEN, useValue:
+      {
+        apiKey: "AIzaSyAypMZSz9Vgg0DUsGw1jLbzgUS3uNs86tg",
+        authDomain: "footballcomps-f5afd.firebaseapp.com",
+        projectId: "footballcomps-f5afd",
+        storageBucket: "footballcomps-f5afd.firebasestorage.app",
+        messagingSenderId: "1036668813891"
+      }
+    },
 
     {
       provide: USER_REPOSITORY_MAPPING_TOKEN,
