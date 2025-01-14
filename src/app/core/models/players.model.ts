@@ -9,4 +9,5 @@ export interface Player extends Model{
   dorsal: number;
   position: string;
   team?: string;
+  userId?: string;
 }
