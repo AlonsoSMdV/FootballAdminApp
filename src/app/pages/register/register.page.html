@@ -21,10 +21,16 @@
         <ion-input labelPlacement="floating" label="{{'REGISTER.EMAIL'|translate}}" type="email" formControlName="email" autocomplete="off" required></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input labelPlacement="floating" label="{{'REGISTER.PASSWORD'|translate}}" type="password" formControlName="password" required></ion-input>
+        <ion-input labelPlacement="floating" label="{{ 'REGISTER.PASSWORD' | translate }}" [type]="isPasswordVisible ? 'text' : 'password'" formControlName="password" required></ion-input>
+        <ion-button fill="clear" slot="end" (click)="toggleVisibility()"type="button">
+          <ion-icon color="success" [name]="isPasswordVisible ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
+        </ion-button>
       </ion-item>
       <ion-item>
-        <ion-input labelPlacement="floating" label="{{'REGISTER.REPEAT_PASSWORD'|translate}}" type="password" formControlName="confirmPassword" required></ion-input>
+        <ion-input labelPlacement="floating" label="{{ 'REGISTER.REPEAT_PASSWORD' | translate }}" [type]="isPasswordVisible ? 'text' : 'password'" formControlName="password" required></ion-input>
+        <ion-button fill="clear" slot="end" (click)="toggleVisibility()"type="button">
+          <ion-icon color="success" [name]="isPasswordVisible ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
+        </ion-button>
       </ion-item>
       <ion-text class="input-error" color="danger" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
         <p *ngIf="name?.errors?.['required']">*Debe introducir su nombre</p>

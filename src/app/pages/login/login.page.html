@@ -15,7 +15,10 @@
           <ion-input labelPlacement="floating" label="{{'LOGIN.EMAIL' | translate}}" type="email" formControlName="email" required></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input labelPlacement="floating" label="{{'LOGIN.PASSWORD'|translate}}" type="password" formControlName="password" required></ion-input>
+          <ion-input labelPlacement="floating" label="{{ 'LOGIN.PASSWORD' | translate }}" [type]="isPasswordVisible ? 'text' : 'password'" formControlName="password" required></ion-input>
+          <ion-button fill="clear" slot="end" (click)="toggleVisibility()"type="button">
+            <ion-icon color="success" [name]="isPasswordVisible ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
+          </ion-button>
         </ion-item>
         <ion-text class="input-error" color="danger" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
           <p *ngIf="email?.errors?.['required']">*Debe introducir un email</p>

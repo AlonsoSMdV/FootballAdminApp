@@ -14,6 +14,7 @@ export class LoginPage {
   currentLang:string
   loginForm: FormGroup;
   img: string|undefined = './../../../assets/img/campo-futbol2.jpg';
+  isPasswordVisible: boolean = false
 
 
   constructor(
@@ -29,6 +30,10 @@ export class LoginPage {
     });
 
     this.currentLang = this.languageService.getStoredLanguage();
+  }
+
+  toggleVisibility(){
+    this.isPasswordVisible = !this.isPasswordVisible
   }
 
   changeLanguage(lang: string) {

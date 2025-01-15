@@ -17,6 +17,7 @@ export class RegisterPage {
   currentLang:string  
   registerForm: FormGroup;
   img: string|undefined = './../../../assets/img/campo-futbol2.jpg';
+  isPasswordVisible: boolean = false
 
   constructor(
     private fb: FormBuilder,
@@ -37,6 +38,11 @@ export class RegisterPage {
 
     this.currentLang = this.languageService.getStoredLanguage();
   }
+
+  toggleVisibility(){
+    this.isPasswordVisible = !this.isPasswordVisible
+  }
+
   changeLanguage(lang: string) {
     this.languageService.changeLanguage(lang);
     this.currentLang = lang;
