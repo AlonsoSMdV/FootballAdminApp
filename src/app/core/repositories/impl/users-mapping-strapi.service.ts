@@ -46,7 +46,6 @@ interface PersonData {
 interface PersonAttributes {
     name: string
     surname: string
-    gender: string
     birthdate?: string
     createdAt?: string
     updatedAt?: string
@@ -62,24 +61,12 @@ interface Meta {}
     providedIn: 'root'
   })
   export class UsersMappingStrapi implements IBaseMapping<Users> {
-    toGenderMapping:any = {
-        Masculino:'male',
-        Femenino:'female',
-        Otros:'other'
-    };
-    
-    fromGenderMapping:any = {
-        male:'Masculino',
-        female:'Femenino',
-        other:'Otros'
-    };
 
     setAdd(data: Users):PersonData {
         return {
             data:{
                 name:data.name,
                 surname:data.surname,
-                gender: this.toGenderMapping[data.gender],
                 user:data.userId?Number(data.userId):null,
                 picture:data.picture?Number(data.picture):null
             }
@@ -93,9 +80,6 @@ interface Meta {}
                 case 'name': mappedData.name = data[key];
                 break;
                 case 'surname': mappedData.surname = data[key];
-                break;
-                case 'gender': mappedData.gender = this.toGenderMapping[data[key]!];
-                break;
                 break;
                 case 'userId': mappedData.user = data[key] ? Number(data[key]) : null;
                 break;
@@ -124,7 +108,6 @@ interface Meta {}
             id: id.toString(),
             name: attributes.name,
             surname: attributes.surname,
-            gender: this.fromGenderMapping[attributes.gender],
             userId: typeof attributes.user === 'object' ? attributes.user?.data?.id.toString() : undefined,
             picture: typeof attributes.picture === 'object' ? {
                 url: attributes.picture?.data?.attributes?.url,

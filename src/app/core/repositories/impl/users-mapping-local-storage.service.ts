@@ -11,7 +11,6 @@ interface UserRaw{
         last:string;
     },
     age:number,
-    genero:string,
     picture:{
         url:string,
         large:string,
@@ -42,7 +41,6 @@ interface UserRaw{
             name:data.name.first, 
             surname:data.name.last, 
             age:data.age,
-            gender:data.genero,
             picture:{
                 url:data.picture.url,
                 large:data.picture.large, 

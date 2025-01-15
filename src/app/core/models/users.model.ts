@@ -6,7 +6,6 @@ export interface Users extends Model{
     surname:string,
     age?:number,
     email?:string, //TODO: Quitar interrogación más adelante
-    gender:string,
     picture?:{
         url:string | undefined,
         large:string | undefined,
