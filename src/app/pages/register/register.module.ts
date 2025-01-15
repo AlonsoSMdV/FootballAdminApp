@@ -8,6 +8,7 @@ import { RegisterPageRoutingModule } from './register-routing.module';
 
 import { RegisterPage } from './register.page';
 import { TranslateModule } from '@ngx-translate/core';
+import { PasswordTogglePipe } from 'src/app/core/pipes/password-toggle.pipe';
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
     IonicModule,
     RegisterPageRoutingModule,
     ReactiveFormsModule,
-    TranslateModule.forChild()
+    TranslateModule.forChild(), PasswordTogglePipe
   ],
   declarations: [RegisterPage]
 })

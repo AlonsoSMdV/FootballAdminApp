@@ -15,7 +15,7 @@
           <ion-input labelPlacement="floating" label="{{'LOGIN.EMAIL' | translate}}" type="email" formControlName="email" required></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input labelPlacement="floating" label="{{ 'LOGIN.PASSWORD' | translate }}" [type]="isPasswordVisible ? 'text' : 'password'" formControlName="password" required></ion-input>
+          <ion-input labelPlacement="floating" label="{{ 'LOGIN.PASSWORD' | translate }}" [type]="isPasswordVisible | passwordToggle" formControlName="password" required></ion-input>
           <ion-button fill="clear" slot="end" (click)="toggleVisibility()"type="button">
             <ion-icon color="success" [name]="isPasswordVisible ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
           </ion-button>
