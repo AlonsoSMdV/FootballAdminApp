@@ -31,6 +31,9 @@ import { TeamMappingFirebaseService } from './impl/team-mapping-firebase.service
 import { PlayerMappingFirebaseService } from './impl/player-mapping-firebase.service';
 import { FirebaseAuthenticationService } from '../services/impl/firebase-authentication.service';
 import { FirebaseAuthMappingService } from '../services/impl/firebase-auth-mapping.service';
+import { LeagueJsonServerStorageMapping } from './impl/league-mapping-json-server.service';
+import { TeamJsonServerStorageMapping } from './impl/team-mapping-json-server.service';
+import { PlayerJsonServerStorageMapping } from './impl/player-mapping-json-server.service';
 
 export function createBaseRepositoryFactory<T extends Model>(
   token: InjectionToken<IBaseRepository<T>>,
@@ -47,8 +50,8 @@ export function createBaseRepositoryFactory<T extends Model>(
           return new JsonServerRepositoryService<T>(http, auth,apiURL, resource, mapping);
         case 'strapi':
           return new StrapiRepositoryService<T>(http, auth, apiURL, resource, mapping);
-          case 'firebase':
-            return new BaseRepositoryFirebaseService<T>(firebaseConfig, resource, mapping);
+        case 'firebase':
+          return new BaseRepositoryFirebaseService<T>(firebaseConfig, resource, mapping);
         default:
           throw new Error("BACKEND NOT IMPLEMENTED");
       }
@@ -57,51 +60,64 @@ export function createBaseRepositoryFactory<T extends Model>(
   };
 };
 
-type modelT = 'league' | 'team' | 'player' | 'usuario'
-
-const mtMapping: Record<modelT, new() => IBaseMapping<any>> = {
-  league: LeagueMappingStrapi,
-  team: TeamMappingStrapi,
-  player: PlayerMappingStrapi,
-  usuario: UsersMappingStrapi
-}
-
-
 export function createBaseMappingFactory<T extends Model>(
   token: InjectionToken<IBaseMapping<T>>,
   dependencies: any[],
-  modelType: modelT,
-  newModelType: 'league' | 'team' | 'player' | 'usuario'
+  modelType: 'league' | 'team' | 'player' | 'usuario'
 ): FactoryProvider {
   return {
     provide: token,
     useFactory: (backend: string, firebaseConfig?: any) => {
       switch (backend) {
-        case 'strapi':
-          const MappingClass = mtMapping[modelType]
-          if(!MappingClass){
-            throw new Error(`modelType not found`)
+        case 'local-storage':
+          return modelType === 'league' 
+          if (modelType === 'league') {
+            return new LeagueJsonServerStorageMapping()
+          }else if(modelType === 'team') {
+            return new TeamJsonServerStorageMapping()
+          }else if(modelType === 'player') {
+            return new PlayerJsonServerStorageMapping()
+          }else{
+            return new UsersMappingStrapi()
           }
-          return new MappingClass
-        
+        case 'json-server':
+          return modelType === 'league'
+          if (modelType === 'league') {
+            return new LeagueJsonServerStorageMapping()
+          }else if(modelType === 'team') {
+            return new TeamJsonServerStorageMapping()
+          }else if(modelType === 'player') {
+            return new PlayerJsonServerStorageMapping()
+          }
+        case 'strapi':
+          if (modelType === 'league') {
+            return new LeagueMappingStrapi
+          }else if(modelType === 'team') {
+            return new TeamMappingStrapi
+          }else if(modelType === 'player') {
+            return new PlayerMappingStrapi
+          }else{
+            return new UsersMappingStrapi()
+          }
         case 'firebase':
-          if (newModelType === 'league') {
+          
+          if (modelType === 'league') {
             return new LeagueMappingFirebaseService(firebaseConfig)
-          }else if(newModelType === 'team') {
+          }else if(modelType === 'team') {
             return new TeamMappingFirebaseService(firebaseConfig)
-          }else if(newModelType === 'player') {
+          }else if(modelType === 'player') {
             return new PlayerMappingFirebaseService(firebaseConfig)
           }else{
             return new UsersMappingStrapi()
           }
-        
         default:
-          throw new Error('BACKEND NOT IMPLEMENTED')
-    }
+          throw new Error("BACKEND NOT IMPLEMENTED");
+      }
+    },
     deps: dependencies
-  },
+  };
 };
-}
+
 
 export function createBaseAuthMappingFactory(token: InjectionToken<IAuthMapping>, dependencies:any[]): FactoryProvider {
   return {
@@ -114,10 +130,11 @@ export function createBaseAuthMappingFactory(token: InjectionToken<IAuthMapping>
           throw new Error("BACKEND NOT IMPLEMENTED");
         case 'json-server':
           throw new Error("BACKEND NOT IMPLEMENTED");
+        
         case 'strapi':
           return new StrapiAuthMappingService();
         case 'firebase':
-            return new FirebaseAuthMappingService();
+          return new FirebaseAuthMappingService();
         default:
           throw new Error("BACKEND NOT IMPLEMENTED");
       }
@@ -127,39 +144,36 @@ export function createBaseAuthMappingFactory(token: InjectionToken<IAuthMapping>
 };
 
 
-
 export const LeaguesMappingFactory = createBaseMappingFactory<League>(
   LEAGUE_REPOSITORY_MAPPING_TOKEN, 
   [BACKEND_TOKEN, FIREBASE_CONFIG_TOKEN],
-  'league',
   'league'
 );
 
 export const TeamsMappingFactory = createBaseMappingFactory<Team>(
   TEAM_REPOSITORY_MAPPING_TOKEN, 
   [BACKEND_TOKEN, FIREBASE_CONFIG_TOKEN],
-  'team',
   'team'
 );
 
 export const PlayersMappingFactory = createBaseMappingFactory<Player>(
   PLAYER_REPOSITORY_MAPPING_TOKEN, 
   [BACKEND_TOKEN, FIREBASE_CONFIG_TOKEN],
-  'player',
   'player'
 );
 
 export const UserMappingFactory = createBaseMappingFactory<Users>(
   USER_REPOSITORY_MAPPING_TOKEN,
   [BACKEND_TOKEN, FIREBASE_CONFIG_TOKEN],
-  'usuario',
   'usuario'
 );
+
+
 export const AuthMappingFactory: FactoryProvider = createBaseAuthMappingFactory(AUTH_MAPPING_TOKEN, [BACKEND_TOKEN]);
 
 export const AuthenticationServiceFactory:FactoryProvider = {
   provide: BaseAuthenticationService,
-  useFactory: (backend:string, firebaseConfig: any, signIn:string, signUp:string, meUrl:string, mapping:IAuthMapping, http:HttpClient) => {
+  useFactory: (backend:string, firebaseConfig:any, signIn:string, signUp:string, meUrl:string, mapping:IAuthMapping, http:HttpClient) => {
     switch(backend){
       case 'http':
         throw new Error("BACKEND NOT IMPLEMENTED");
@@ -170,7 +184,7 @@ export const AuthenticationServiceFactory:FactoryProvider = {
       case 'strapi':
         return new StrapiAuthenticationService(signIn, signUp, meUrl, mapping, http);
       case 'firebase':
-          return new FirebaseAuthenticationService(firebaseConfig, mapping);
+        return new FirebaseAuthenticationService(firebaseConfig, mapping);
       default:
         throw new Error("BACKEND NOT IMPLEMENTED");
     }
@@ -181,7 +195,7 @@ export const AuthenticationServiceFactory:FactoryProvider = {
 
 export const MediaServiceFactory:FactoryProvider = {
   provide: BaseMediaService,
-  useFactory: (backend:string, upload:string, auth:IStrapiAuthentication, http:HttpClient) => {
+  useFactory: (backend:string, firebaseConfig:any, upload:string, auth:IStrapiAuthentication, http:HttpClient) => {
     switch(backend){
       case 'http':
         throw new Error("BACKEND NOT IMPLEMENTED");
@@ -189,6 +203,7 @@ export const MediaServiceFactory:FactoryProvider = {
         throw new Error("BACKEND NOT IMPLEMENTED");
       case 'json-server':
         throw new Error("BACKEND NOT IMPLEMENTED");
+      case 'firebase':
       case 'strapi':
         return new StrapiMediaService(upload, auth, http);
       default:
@@ -200,18 +215,48 @@ export const MediaServiceFactory:FactoryProvider = {
 };
 
 
-
 export const UserRepositoryFactory: FactoryProvider = createBaseRepositoryFactory<Users>(USER_REPOSITORY_TOKEN,
-  [BACKEND_TOKEN, HttpClient, BaseAuthenticationService, USER_API_URL_TOKEN, USER_RESOURCE_NAME_TOKEN, USER_REPOSITORY_MAPPING_TOKEN, FIREBASE_CONFIG_TOKEN]
+  [
+    BACKEND_TOKEN, 
+    HttpClient, 
+    BaseAuthenticationService, 
+    USER_API_URL_TOKEN, 
+    USER_RESOURCE_NAME_TOKEN, 
+    USER_REPOSITORY_MAPPING_TOKEN, 
+    FIREBASE_CONFIG_TOKEN
+  ]
 );
 export const LeaguesRepositoryFactory: FactoryProvider = createBaseRepositoryFactory<League>(LEAGUE_REPOSITORY_TOKEN,
-  [BACKEND_TOKEN, HttpClient, BaseAuthenticationService, LEAGUE_API_URL_TOKEN, LEAGUE_RESOURCE_NAME_TOKEN, LEAGUE_REPOSITORY_MAPPING_TOKEN, FIREBASE_CONFIG_TOKEN]
+  [
+    BACKEND_TOKEN, 
+    HttpClient, 
+    BaseAuthenticationService, 
+    LEAGUE_API_URL_TOKEN, 
+    LEAGUE_RESOURCE_NAME_TOKEN, 
+    LEAGUE_REPOSITORY_MAPPING_TOKEN, 
+    FIREBASE_CONFIG_TOKEN
+  ]
 );
 
 export const TeamsRepositoryFactory: FactoryProvider = createBaseRepositoryFactory<Team>(TEAM_REPOSITORY_TOKEN,
-  [BACKEND_TOKEN, HttpClient, BaseAuthenticationService, TEAM_API_URL_TOKEN, TEAM_RESOURCE_NAME_TOKEN, TEAM_REPOSITORY_MAPPING_TOKEN, FIREBASE_CONFIG_TOKEN]
+  [
+    BACKEND_TOKEN, 
+    HttpClient, 
+    BaseAuthenticationService, 
+    TEAM_API_URL_TOKEN, 
+    TEAM_RESOURCE_NAME_TOKEN, 
+    TEAM_REPOSITORY_MAPPING_TOKEN, 
+    FIREBASE_CONFIG_TOKEN
+  ]
 );
 
 export const PlayersRepositoryFactory: FactoryProvider = createBaseRepositoryFactory<Player>(PLAYER_REPOSITORY_TOKEN,
-  [BACKEND_TOKEN, HttpClient, BaseAuthenticationService, PLAYER_API_URL_TOKEN, PLAYER_RESOURCE_NAME_TOKEN, PLAYER_REPOSITORY_MAPPING_TOKEN, FIREBASE_CONFIG_TOKEN]
+  [
+    BACKEND_TOKEN, 
+    HttpClient, 
+    BaseAuthenticationService, 
+    PLAYER_API_URL_TOKEN, 
+    PLAYER_RESOURCE_NAME_TOKEN, 
+    PLAYER_REPOSITORY_MAPPING_TOKEN, 
+    FIREBASE_CONFIG_TOKEN]
 );
