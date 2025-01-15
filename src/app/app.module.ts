@@ -86,6 +86,7 @@ export function createTranslateLoader(http: HttpClient) {
         messagingSenderId: "1036668813891"
       }
     },
+    UserMappingFactory,
     LeaguesMappingFactory,
     TeamsMappingFactory,
     PlayersMappingFactory,

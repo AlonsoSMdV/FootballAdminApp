@@ -45,9 +45,9 @@ export class LeagueMappingFirebaseService implements IBaseMapping<League>{
   setAdd(data: League): FirebaseLeague {
     let dataMapping:FirebaseLeague = {
       name: data.name,
-    }
+    };
     if(dataMapping.userId){
-      dataMapping.userId = doc(this.db, 'league', data.userId || '')
+      dataMapping.userId = doc(this.db, 'leagues', data.userId || '')
     }
     return dataMapping;
   }

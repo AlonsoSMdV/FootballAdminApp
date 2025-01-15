@@ -56,13 +56,13 @@ export class PlayerMappingFirebaseService implements IBaseMapping<Player>{
       birthdate: data.birthdate,
       nationality: data.nationality,
       dorsal: data.dorsal,
-      position: data.position,
+      position: data.position
     }
     if(dataMapping.team){
-      dataMapping.team = doc(this.db, 'team', data.team || '')
+      dataMapping.team = doc(this.db, 'teams', data.team || '')
     }
     if(dataMapping.userId){
-      dataMapping.userId = doc(this.db, 'player', data.userId || '')
+      dataMapping.userId = doc(this.db, 'players', data.userId || '')
     }
     return dataMapping;
   }

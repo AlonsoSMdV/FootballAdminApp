@@ -49,7 +49,7 @@ export class TeamMappingFirebaseService implements IBaseMapping<Team>{
       numberOfPlayers: data.numberOfPlayers
     }
     if(dataMapping.league){
-      dataMapping.league = doc(this.db, 'league', data.league || '')
+      dataMapping.league = doc(this.db, 'leagues', data.league || '')
     }
     if(dataMapping.userId){
       dataMapping.userId = doc(this.db, 'team', data.userId || '')
@@ -60,7 +60,7 @@ export class TeamMappingFirebaseService implements IBaseMapping<Team>{
     const result: any = {};
     if (data.name) result.name = data.name;
     if (data.numberOfPlayers) result.numberOfPlayers = data.numberOfPlayers;
-    if (data.league) result.league = doc(this.db, 'league', data.league || '');
+    if (data.league) result.league = doc(this.db, 'leagues', data.league || '');
     if (data.userId) result.user = data.userId || '';
     return result;
   }
