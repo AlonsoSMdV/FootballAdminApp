@@ -125,3 +125,64 @@ ion-item ion-label {
   font-weight: 500;
   margin-bottom: 10px;
 }
+
+/* Estilo del botón de fecha */
+.date-button {
+  --background: none !important;
+  --color: rgba(255, 255, 255) !important;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-radius: 8px;
+  --border-width: 1px;
+  --border-style: solid;
+  --box-shadow: none;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  margin: 8px auto; /* Centro horizontal */
+  width: 80%; /* Reduce el ancho para centrarlo mejor */
+  max-width: 300px; /* Ancho máximo para pantallas más grandes */
+  font-size: 14px;
+  text-align: center; /* Centro del texto */
+  display: flex; /* Usar flexbox */
+  align-items: center; /* Centra verticalmente el contenido */
+  justify-content: center; /* Centro horizontal */
+}
+
+.date-button ion-icon {
+  margin-left: 8px;
+  color: #ffffff;
+}
+
+/* Estilo del modal del calendario */
+.date-picker-modal {
+  --height: auto;
+  --width: 90%;
+  --max-width: 350px;
+  --border-radius: 8px;
+}
+
+.date-picker-modal ion-datetime {
+  --background: rgb(0, 0, 0, 0.1);
+  --ion-color-primary: #355e38;
+  --ion-color-primary-contrast: rgb(0, 0, 0);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.date-picker-modal ion-datetime::part(active) {
+  background: #355e38;
+  color: rgb(0, 0, 0);
+}
+
+.date-picker-modal ion-datetime::part(button-clear),
+.date-picker-modal ion-datetime::part(button-done) {
+  color: #355e38;
+}
+
+/* Ajustes responsive */
+@media (max-width: 600px) {
+  .date-picker-modal {
+    --width: 95%;
+  }
+}

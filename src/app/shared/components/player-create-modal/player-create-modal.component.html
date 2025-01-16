@@ -61,10 +61,34 @@
   </ion-text>
   <!-- Fecha Nacimiento -->
   <ion-item>
-    <ion-input [label]="'PLAYERS.BIRTHDATE' | translate" label-placement="stacked" type="text" formControlName="birthdate" placeholder="AAAA-MM-DD">
-      
-    </ion-input>
-  </ion-item>
+    <ion-input [label]="'PLAYERS.BIRTHDATE' | translate" label-placement="stacked" type="text" formControlName="birthdate"></ion-input>
+    <ion-button 
+    class="date-button" 
+    fill="outline" 
+    expand="block"
+    (click)="openDatePicker()">
+    {{ getBirthdate.value ? (getBirthdate.value | date:'dd-MM-yyyy') : 'PLAYERS.SELECT_DATE'|translate }}
+    <ion-icon name="calendar-outline" slot="start"></ion-icon>
+  </ion-button> 
+  <ion-modal 
+    [isOpen]="isDatePickerOpen" 
+    (didDismiss)="isDatePickerOpen = false"
+    class="date-picker-modal">
+    <ng-template>
+      <ion-datetime
+        #datetime
+        presentation="date"
+        [value]="birthdate.value"
+        (ionChange)="onDateChange($event)"
+        [showDefaultButtons]="true"
+        cancelText="{{'COMMON.CANCEL'|translate}}"
+        doneText="{{'COMMON.ACCEPT'|translate}}">
+        <div slot="title">{{'PLAYERS.SELECT_DATE'|translate}}</div>
+      </ion-datetime>
+    </ng-template>
+  </ion-modal>
+    <div slot="title">{{'PLAYERS.SELECT_DATE'|translate}}</div>
+</ion-item>
   <ion-text color="danger" *ngIf="birthdate?.invalid && (birthdate?.dirty || birthdate?.touched)">
     <p *ngIf="nationality?.errors?.['required']">{{ 'PLAYERS.ERRORS.BIRTHDATE_REQUIRED' | translate }}</p>
   </ion-text>
