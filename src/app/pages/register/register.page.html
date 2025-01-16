@@ -27,9 +27,9 @@
         </ion-button>
       </ion-item>
       <ion-item>
-        <ion-input labelPlacement="floating" label="{{ 'REGISTER.REPEAT_PASSWORD' | translate }}" [type]="isPasswordVisible | passwordToggle" formControlName="password" required></ion-input>
-        <ion-button fill="clear" slot="end" (click)="toggleVisibility()"type="button">
-          <ion-icon color="success" [name]="isPasswordVisible ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
+        <ion-input labelPlacement="floating" label="{{ 'REGISTER.REPEAT_PASSWORD' | translate }}" [type]="isConfirmPasswordVisible | passwordToggle" formControlName="confirmPassword" required></ion-input>
+        <ion-button fill="clear" slot="end" (click)="toggleConfirmVisibility()"type="button">
+          <ion-icon color="success" [name]="isConfirmPasswordVisible ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
         </ion-button>
       </ion-item>
       <ion-text class="input-error" color="danger" *ngIf="name?.invalid && (name?.dirty || name?.touched)">

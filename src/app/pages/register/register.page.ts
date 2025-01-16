@@ -18,6 +18,7 @@ export class RegisterPage {
   registerForm: FormGroup;
   img: string|undefined = './../../../assets/img/campo-futbol2.jpg';
   isPasswordVisible: boolean = false
+  isConfirmPasswordVisible: boolean = false
 
   constructor(
     private fb: FormBuilder,
@@ -43,6 +44,10 @@ export class RegisterPage {
     this.isPasswordVisible = !this.isPasswordVisible
   }
 
+  toggleConfirmVisibility(){
+    this.isConfirmPasswordVisible = !this.isConfirmPasswordVisible
+  }
+
   changeLanguage(lang: string) {
     this.languageService.changeLanguage(lang);
     this.currentLang = lang;
@@ -58,6 +63,7 @@ export class RegisterPage {
             ...this.registerForm.value,
             userId: resp.id.toString()
           };
+          
           this.userSvc.add(userData).subscribe({
             next: resp => {
               const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
