@@ -9,7 +9,9 @@
       },
       "SUCCESS": {
         "SAVE": "Changes saved successfully"
-      }
+      },
+      "ACCEPT": "Accept",
+      "CANCEL": "Cancel"
     },
     "MENU": {
       "TITLE": "Menu",
@@ -97,6 +99,7 @@
           "NATIONALITY":"Nationality",
           "DORSAL":"Dorsal",
           "BIRTHDATE":"Birthdate",
+          "SELECT_DATE": "Select date",
           "SELECT_POSITION": "Select position",
           "POSITION":"Position",
           "POSITION_GOALKEEPER":"Goalkeeper",

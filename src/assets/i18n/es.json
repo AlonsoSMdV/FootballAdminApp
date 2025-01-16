@@ -9,7 +9,9 @@
       },
       "SUCCESS": {
         "SAVE": "Cambios guardados correctamente"
-      }
+      },
+      "ACCEPT": "Aceptar",
+      "CANCEL": "Cancelar"
     },
     "MENU": {
       "TITLE": "Menú",
@@ -98,6 +100,7 @@
           "NATIONALITY":"Nacionalidad",
           "DORSAL":"Dorsal",
           "BIRTHDATE":"Fecha de nacimiento",
+          "SELECT_DATE": "Seleccionar fecha",
           "SELECT_POSITION": "Selecciona una posición",
           "POSITION":"Posición",
           "POSITION_GOALKEEPER":"Portero",
