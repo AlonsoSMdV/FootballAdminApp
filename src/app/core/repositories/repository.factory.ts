@@ -26,14 +26,15 @@ import { League } from '../models/leagues.model';
 import { Team } from '../models/teams.model';
 import { Player } from '../models/players.model';
 import { BaseRepositoryFirebaseService } from './impl/base-repository-firebase.service';
-import { LeagueMappingFirebaseService } from './impl/league-mapping-firebase.service';
-import { TeamMappingFirebaseService } from './impl/team-mapping-firebase.service';
-import { PlayerMappingFirebaseService } from './impl/player-mapping-firebase.service';
+import { LeagueMappingFirebase } from './impl/league-mapping-firebase.service';
+import { TeamMappingFirebase } from './impl/team-mapping-firebase.service';
+import { PlayerMappingFirebase } from './impl/player-mapping-firebase.service';
 import { FirebaseAuthenticationService } from '../services/impl/firebase-authentication.service';
 import { FirebaseAuthMappingService } from '../services/impl/firebase-auth-mapping.service';
 import { LeagueJsonServerStorageMapping } from './impl/league-mapping-json-server.service';
 import { TeamJsonServerStorageMapping } from './impl/team-mapping-json-server.service';
 import { PlayerJsonServerStorageMapping } from './impl/player-mapping-json-server.service';
+import { UsersMappingFirebase } from './impl/users-mapping-firebase.service';
 
 export function createBaseRepositoryFactory<T extends Model>(
   token: InjectionToken<IBaseRepository<T>>,
@@ -102,13 +103,13 @@ export function createBaseMappingFactory<T extends Model>(
         case 'firebase':
           
           if (modelType === 'league') {
-            return new LeagueMappingFirebaseService(firebaseConfig)
+            return new LeagueMappingFirebase(firebaseConfig)
           }else if(modelType === 'team') {
-            return new TeamMappingFirebaseService(firebaseConfig)
+            return new TeamMappingFirebase(firebaseConfig)
           }else if(modelType === 'player') {
-            return new PlayerMappingFirebaseService(firebaseConfig)
+            return new PlayerMappingFirebase(firebaseConfig)
           }else{
-            return new UsersMappingStrapi()
+            return new UsersMappingFirebase(firebaseConfig);
           }
         default:
           throw new Error("BACKEND NOT IMPLEMENTED");

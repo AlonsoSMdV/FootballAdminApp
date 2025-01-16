@@ -40,7 +40,6 @@ interface UserRaw{
             id:data.id, 
             name:data.name.first, 
             surname:data.name.last, 
-            age:data.age,
             picture:{
                 url:data.picture.url,
                 large:data.picture.large, 

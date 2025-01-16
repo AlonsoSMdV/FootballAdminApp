@@ -35,9 +35,9 @@ import { SharedModule } from './shared/shared.module';
 import player from 'lottie-web';
 import { provideLottieOptions } from 'ngx-lottie';
 import { environment } from 'src/environments/environment';
-import { LeagueMappingFirebaseService } from './core/repositories/impl/league-mapping-firebase.service';
-import { TeamMappingFirebaseService } from './core/repositories/impl/team-mapping-firebase.service';
-import { PlayerMappingFirebaseService } from './core/repositories/impl/player-mapping-firebase.service';
+import { LeagueMappingFirebase } from './core/repositories/impl/league-mapping-firebase.service';
+import { TeamMappingFirebase } from './core/repositories/impl/team-mapping-firebase.service';
+import { PlayerMappingFirebase } from './core/repositories/impl/player-mapping-firebase.service';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');

@@ -4,7 +4,6 @@ import { Model } from "./base.model";
 export interface Users extends Model{
     name:string,
     surname:string,
-    age?:number,
     email?:string, //TODO: Quitar interrogación más adelante
     picture?:{
         url:string | undefined,
