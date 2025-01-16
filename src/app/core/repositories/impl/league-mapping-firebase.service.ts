@@ -11,7 +11,7 @@ import { FIREBASE_CONFIG_TOKEN } from "../repository.tokens";
 @Injectable({
   providedIn: 'root'
 })
-export class LeagueMappingFirebaseService implements IBaseMapping<League>{
+export class LeagueMappingFirebase implements IBaseMapping<League>{
   
   private db: Firestore;
   

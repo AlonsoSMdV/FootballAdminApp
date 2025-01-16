@@ -10,7 +10,7 @@ import { FirebasePlayer } from "../../models/firebase-player.model";
 @Injectable({
   providedIn: 'root'
 })
-export class PlayerMappingFirebaseService implements IBaseMapping<Player>{
+export class PlayerMappingFirebase implements IBaseMapping<Player>{
   
   private db: Firestore;
   

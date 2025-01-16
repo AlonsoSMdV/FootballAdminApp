@@ -10,7 +10,7 @@ import { FIREBASE_CONFIG_TOKEN } from "../repository.tokens";
 @Injectable({
   providedIn: 'root'
 })
-export class TeamMappingFirebaseService implements IBaseMapping<Team>{
+export class TeamMappingFirebase implements IBaseMapping<Team>{
   
   private db: Firestore;
   
