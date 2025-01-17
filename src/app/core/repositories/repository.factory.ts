@@ -35,6 +35,8 @@ import { LeagueJsonServerStorageMapping } from './impl/league-mapping-json-serve
 import { TeamJsonServerStorageMapping } from './impl/team-mapping-json-server.service';
 import { PlayerJsonServerStorageMapping } from './impl/player-mapping-json-server.service';
 import { UsersMappingFirebase } from './impl/users-mapping-firebase.service';
+import { IAuthentication } from '../services/interfaces/authentication.interface';
+import { FirebaseMediaService } from '../services/impl/firebase-media.service';
 
 export function createBaseRepositoryFactory<T extends Model>(
   token: InjectionToken<IBaseRepository<T>>,
@@ -196,7 +198,7 @@ export const AuthenticationServiceFactory:FactoryProvider = {
 
 export const MediaServiceFactory:FactoryProvider = {
   provide: BaseMediaService,
-  useFactory: (backend:string, firebaseConfig:any, upload:string, auth:IStrapiAuthentication, http:HttpClient) => {
+  useFactory: (backend:string, firebaseConfig:any, upload:string, auth:IAuthentication, http:HttpClient) => {
     switch(backend){
       case 'http':
         throw new Error("BACKEND NOT IMPLEMENTED");
@@ -205,8 +207,9 @@ export const MediaServiceFactory:FactoryProvider = {
       case 'json-server':
         throw new Error("BACKEND NOT IMPLEMENTED");
       case 'firebase':
+        return new FirebaseMediaService(firebaseConfig, auth)
       case 'strapi':
-        return new StrapiMediaService(upload, auth, http);
+        return new StrapiMediaService(upload, auth as IStrapiAuthentication, http);
       default:
         throw new Error("BACKEND NOT IMPLEMENTED");
     }

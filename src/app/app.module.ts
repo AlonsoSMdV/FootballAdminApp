@@ -83,7 +83,9 @@ export function createTranslateLoader(http: HttpClient) {
         authDomain: "footballcomps-f5afd.firebaseapp.com",
         projectId: "footballcomps-f5afd",
         storageBucket: "footballcomps-f5afd.firebasestorage.app",
-        messagingSenderId: "1036668813891"
+        messagingSenderId: "1036668813891",
+        appId: "1:1036668813891:web:1af654984665fdaae78af6",
+        measurementId: "G-FR5S50J8LC"
       }
     },
     UserMappingFactory,
