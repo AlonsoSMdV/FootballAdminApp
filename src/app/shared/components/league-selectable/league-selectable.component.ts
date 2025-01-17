@@ -39,12 +39,12 @@ export class LeagueSelectableComponent  implements OnInit {
   }
   
   onLoadLeagues(){
-    this.loadLeagues();
+    this.loadLeagues("");
   }
 
   
 
-  private async loadLeagues(){
+  private async loadLeagues(filter: string){
     this.page = 1;
     this.leagueSvc.getAll(this.page, this.pageSize).subscribe({
       next:response=>{
@@ -104,6 +104,14 @@ export class LeagueSelectableComponent  implements OnInit {
   }
 
   ngOnInit() {}
+
+  private async filter(filtering:string){
+    this.loadLeagues(filtering);
+  }
+
+  onFilter(evt:any){
+    this.filter(evt.detail.value)
+  }
 
 
   onGroupClicked(popover:IonPopover, group:League){

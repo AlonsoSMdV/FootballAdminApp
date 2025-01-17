@@ -13,7 +13,7 @@
         <ion-list class="list-scrollable">
           <div class="fixed-search">
             <ion-item>
-              <ion-input #search [placeholder]="'LEAGUE_SELECTABLE.SEARCH' | translate" type="text" debounce="200"></ion-input>
+              <ion-input #search [placeholder]="'LEAGUE_SELECTABLE.SEARCH' | translate" (ionInput)="onFilter($event)" type="text" debounce="200"></ion-input>
               <ion-button color="medium" slot="end" fill="clear" (click)="clearSearch(search)"><ion-icon slot="icon-only" name="close-outline"></ion-icon></ion-button>
             </ion-item>
 

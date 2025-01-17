@@ -1,16 +1,59 @@
 .popover-content {
-  max-height: 300px; /* Define aquí la altura máxima */
-  overflow-y: auto; /* Habilita el desplazamiento vertical */
+  height: 300px;
+  /* Remove the overflow here since we'll handle it in scrollable-content */
+  overflow: hidden;
 }
 
 .fixed-search {
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: white; /* Fondo para que no se superponga con el contenido */
+  background-color: #355e38 ;
+  /* Add a subtle shadow to separate it from content */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .scrollable-content {
-  max-height: 300px; /* Define la altura máxima deseada */
-  overflow-y: auto; /* Habilita el desplazamiento vertical */
+  height: 300px;
+  overflow-y: auto;
+  
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #355e38 rgba(255, 255, 255, 0.1);
+  
+  /* Chrome/Safari/Edge */
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #355e38;
+    border-radius: 4px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #355e38;
+    border-radius: 4px;
+  }
+  
+  /* Hover state */
+  &:hover {
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #589e5c;
+      border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: #589e5c;
+    }
+  }
+}
+
+/* Make sure the ion-list doesn't add its own scroll */
+.list-scrollable {
+  overflow: hidden;
 }
