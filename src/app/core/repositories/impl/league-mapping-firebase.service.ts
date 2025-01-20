@@ -30,6 +30,13 @@ export class LeagueMappingFirebase implements IBaseMapping<League>{
     return {
       id: data.id,
       name: data.name,
+      picture: data.picture ? {
+        url: data.picture,
+        large: data.picture,
+        medium: data.picture,
+        small: data.picture,
+        thumbnail: data.picture
+      }: undefined,
       userId: data.userId?.id 
     };
   }
@@ -45,6 +52,7 @@ export class LeagueMappingFirebase implements IBaseMapping<League>{
   setAdd(data: League): FirebaseLeague {
     let dataMapping:FirebaseLeague = {
       name: data.name,
+      picture: data.picture ? data.picture.url : ''
     };
     if(dataMapping.userId){
       dataMapping.userId = doc(this.db, 'leagues', data.userId || '')
@@ -54,6 +62,7 @@ export class LeagueMappingFirebase implements IBaseMapping<League>{
   setUpdate(data: Partial<League>): FirebaseLeague {
     const result: any = {};
     if (data.name) result.name = data.name;
+    if (data.picture) result.picture = data.picture;
     if (data.userId) result.user = data.userId || '';
     return result;
   }
