@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
 import { League } from 'src/app/core/models/leagues.model';
 import { Paginated } from 'src/app/core/models/paginated.model';
+import { BaseMediaService } from 'src/app/core/services/impl/base-media.service';
 import { LeagueService } from 'src/app/core/services/impl/league.service';
 import { LanguageService } from 'src/app/core/services/language.service';
 import { LeagueCreateModalComponent } from 'src/app/shared/components/league-create-modal/league-create-modal.component';
@@ -24,7 +25,8 @@ export class LeaguesPage implements OnInit {
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
     private translate: TranslateService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private mediaSvc: BaseMediaService
   ) { 
     this.currentLang = this.languageService.getStoredLanguage();
   }
@@ -72,7 +74,11 @@ export class LeaguesPage implements OnInit {
         league: league
       }:{})
     });
-    modal.onDidDismiss().then((response:any)=>{
+    modal.onDidDismiss().then(async (response)=>{
+      const base64Response = await fetch(response.data.picture);
+      const blob = await base64Response.blob();
+      const uploadedBlob = await lastValueFrom(this.mediaSvc.upload(blob));
+      response.data.picture = uploadedBlob[0];
       switch (response.role) {
         case 'new':
           this.leagueSvc.add(response.data).subscribe({
