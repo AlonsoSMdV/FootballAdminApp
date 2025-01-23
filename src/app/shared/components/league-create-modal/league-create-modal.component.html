@@ -27,6 +27,8 @@
       <p *ngIf="name?.errors?.['required']">{{ 'LEAGUES.ERRORS.NAME_REQUIRED' | translate }}</p>
       <p *ngIf="name?.errors?.['minlength']">{{ 'LEAGUES.ERRORS.NAME_MIN_LENGTH' | translate }}</p>
     </ion-text>
+
+    
     <!-- Botón de Envío -->
     <ion-button color="success" [disabled]="!formGroup.valid || !formGroup.dirty" expand="full" type="submit" >
       @if (mode=='edit') {
@@ -35,6 +37,12 @@
       @else {
         {{ 'LEAGUES.SUBMIT' | translate }}
       }
+    </ion-button>
+
+    <ion-button expand="block" color="transparent" class="picture-button">
+      <app-picture-selectable formControlName="picture"></app-picture-selectable>
+      <ion-icon name="cloud-upload-outline" slot="end"></ion-icon>
+      {{ 'LEAGUES.SELECT_IMAGE' | translate }}
     </ion-button>
   </form>
 

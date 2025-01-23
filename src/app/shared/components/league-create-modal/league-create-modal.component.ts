@@ -20,6 +20,7 @@ export class LeagueCreateModalComponent  implements OnInit {
       this.mode = 'edit';
     
     this.formGroup.controls['name'].setValue(_league.name);
+    this.formGroup.controls['picture'].setValue(_league.picture);
   }
 
   constructor(
@@ -29,7 +30,9 @@ export class LeagueCreateModalComponent  implements OnInit {
   ) { 
     this.isMobile = this.platform.is('ios') || this.platform.is('android');
     this.formGroup = this.fb.group({
-      name:['', [Validators.required, Validators.minLength(2)]]
+      name:['', [Validators.required, Validators.minLength(2)]],
+      picture:['']
+      
     });
   }
   

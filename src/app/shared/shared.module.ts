@@ -10,6 +10,7 @@ import { TeamSelectableComponent } from './components/team-selectable/team-selec
 import { LeagueCreateModalComponent } from './components/league-create-modal/league-create-modal.component';
 import { LeagueSelectableComponent } from './components/league-selectable/league-selectable.component';
 import { PositionSelectableComponent } from './components/position-selectable/position-selectable.component';
+import { PictureSelectableComponent } from './components/picture-selectable/picture-selectable.component';
 
 
 
@@ -20,7 +21,8 @@ import { PositionSelectableComponent } from './components/position-selectable/po
     TeamSelectableComponent, 
     LeagueCreateModalComponent, 
     LeagueSelectableComponent, 
-    PositionSelectableComponent
+    PositionSelectableComponent,
+    PictureSelectableComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { PositionSelectableComponent } from './components/position-selectable/po
     TeamSelectableComponent, 
     LeagueCreateModalComponent, 
     LeagueSelectableComponent,
-    PositionSelectableComponent
+    PositionSelectableComponent,
+    PictureSelectableComponent
   ]
 })
 export class SharedModule { }
