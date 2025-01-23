@@ -48,7 +48,8 @@ export class UsersMappingFirebase implements IBaseMapping<Users>{
     let dataMapping:FirebaseUser = {
         name: data.name,
         surname: data.surname,
-        email: data.email
+        email: data.email,
+        userId: data.userId || ''
     }
     return dataMapping;
   }

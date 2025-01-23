@@ -8,6 +8,7 @@ export interface FirebaseUser{
         medium:string | undefined,
         small:string | undefined,
         thumbnail:string | undefined
-    }
+    },
+    userId: string
 }
     

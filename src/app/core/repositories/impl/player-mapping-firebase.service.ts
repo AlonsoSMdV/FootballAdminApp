@@ -58,10 +58,10 @@ export class PlayerMappingFirebase implements IBaseMapping<Player>{
       dorsal: data.dorsal,
       position: data.position
     }
-    if(dataMapping.team){
+    if(data.team){
       dataMapping.team = doc(this.db, 'teams', data.team || '')
     }
-    if(dataMapping.userId){
+    if(data.userId){
       dataMapping.userId = doc(this.db, 'players', data.userId || '')
     }
     return dataMapping;

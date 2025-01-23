@@ -54,7 +54,7 @@ export class LeagueMappingFirebase implements IBaseMapping<League>{
       name: data.name,
       picture: data.picture ? data.picture.url : ''
     };
-    if(dataMapping.userId){
+    if(data.userId){
       dataMapping.userId = doc(this.db, 'leagues', data.userId || '')
     }
     return dataMapping;

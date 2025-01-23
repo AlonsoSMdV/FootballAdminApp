@@ -48,10 +48,10 @@ export class TeamMappingFirebase implements IBaseMapping<Team>{
       name: data.name,
       numberOfPlayers: data.numberOfPlayers
     }
-    if(dataMapping.league){
+    if(data.league){
       dataMapping.league = doc(this.db, 'leagues', data.league || '')
     }
-    if(dataMapping.userId){
+    if(data.userId){
       dataMapping.userId = doc(this.db, 'team', data.userId || '')
     }
     return dataMapping;
