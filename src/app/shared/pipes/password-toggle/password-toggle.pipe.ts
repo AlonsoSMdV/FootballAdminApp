@@ -2,8 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 
 @Pipe({
-  name: 'passwordToggle',
-  standalone: true
+  name: 'passwordToggle'
 })
 export class PasswordTogglePipe implements PipeTransform {
   transform(isPasswordVisible: boolean): string {

@@ -1,4 +1,4 @@
-import { PasswordTogglePipe } from './password-toggle.pipe';
+import { PasswordTogglePipe } from '../password-toggle/password-toggle.pipe';
 
 describe('PasswordTogglePipe', () => {
   it('create an instance', () => {

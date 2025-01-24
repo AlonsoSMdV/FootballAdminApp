@@ -6,6 +6,7 @@ import { BaseAuthenticationService } from 'src/app/core/services/impl/base-authe
 import { UsersService } from 'src/app/core/services/impl/users.service';
 import { LanguageService } from 'src/app/core/services/language.service';
 import { passwordValidator, passwordsMatchValidator } from 'src/app/core/utils/validators';
+import { PasswordTogglePipe } from 'src/app/shared/pipes/password-toggle/password-toggle.pipe';
 
 @Component({
   selector: 'app-register',
@@ -38,6 +39,7 @@ export class RegisterPage {
     { validators: passwordsMatchValidator });
 
     this.currentLang = this.languageService.getStoredLanguage();
+  
   }
 
   toggleVisibility(){

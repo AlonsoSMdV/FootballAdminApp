@@ -10,7 +10,8 @@ import { LoginPage } from './login.page';
 import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { PasswordTogglePipe } from "../../core/pipes/password-toggle.pipe";
+import { PasswordTogglePipe } from "../../shared/pipes/password-toggle/password-toggle.pipe";
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -19,8 +20,9 @@ import { PasswordTogglePipe } from "../../core/pipes/password-toggle.pipe";
     FormsModule,
     IonicModule,
     LoginPageRoutingModule,
+    SharedModule,
     ReactiveFormsModule,
-    TranslateModule.forChild(), PasswordTogglePipe
+    TranslateModule.forChild()
 ],
   declarations: [LoginPage]
 })
