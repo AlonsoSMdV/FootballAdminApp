@@ -1,0 +1,111 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="page-title">{{ 'PROFILE.TITLE' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" class="page-title">{{ 'PROFILE.TITLE' | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form-container">
+    <ion-grid>
+      <ion-row>
+        <!-- Imagen de perfil -->
+        <ion-col size="12" size-md="4" class="ion-text-center">
+          <ion-card class="profile-card">
+            <ion-card-header>
+              <ion-card-title>{{ 'PROFILE.PICTURE' | translate }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <app-picture-selectable formControlName="picture"></app-picture-selectable>
+            </ion-card-content>
+          </ion-card>
+          <ion-button
+        [disabled]="!formGroup.valid || !formGroup.dirty"
+        expand="full"
+        type="submit"
+        class="save-button"
+        color="danger"
+      >
+        {{ 'COMMON.LOGOUT' | translate }}
+      </ion-button>
+        </ion-col>
+
+        <!-- Información básica del usuario -->
+        <ion-col size="12" size-md="8">
+          <ion-list class="profile-list">
+            <!-- Nombre y Apellidos (juntos en una fila en pantallas grandes) -->
+            <ion-row>
+              <ion-col size="12" size-md="6">
+                <ion-item>
+                  <ion-input
+                    class="styled-input"
+                    [label]="'PERSON.NAME' | translate"
+                    label-placement="stacked"
+                    type="text"
+                    formControlName="name"
+                  ></ion-input>
+                </ion-item>
+                <ion-text color="danger" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+                  <p *ngIf="name?.errors?.['required']">{{ 'PERSON.ERRORS.NAME_REQUIRED' | translate }}</p>
+                  <p *ngIf="name?.errors?.['minlength']">{{ 'PERSON.ERRORS.NAME_MIN_LENGTH' | translate }}</p>
+                </ion-text>
+              </ion-col>
+
+              <ion-col size="12" size-md="6">
+                <ion-item>
+                  <ion-input
+                    class="styled-input"
+                    [label]="'PERSON.SURNAME' | translate"
+                    label-placement="stacked"
+                    type="text"
+                    formControlName="surname"
+                  ></ion-input>
+                </ion-item>
+                <ion-text color="danger" *ngIf="surname?.invalid && (surname?.dirty || surname?.touched)">
+                  <p *ngIf="surname?.errors?.['required']">{{ 'PERSON.ERRORS.SURNAME_REQUIRED' | translate }}</p>
+                  <p *ngIf="surname?.errors?.['minlength']">{{ 'PERSON.ERRORS.SURNAME_MIN_LENGTH' | translate }}</p>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+
+            <!-- Correo electrónico -->
+            <ion-item>
+              <ion-input
+                class="styled-input"
+                [label]="'PERSON.EMAIL' | translate"
+                label-placement="stacked"
+                type="email"
+                formControlName="email"
+              ></ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+              <p *ngIf="email?.errors?.['required']">{{ 'PERSON.ERRORS.EMAIL_REQUIRED' | translate }}</p>
+              <p *ngIf="email?.errors?.['email']">{{ 'PERSON.ERRORS.EMAIL_INVALID' | translate }}</p>
+            </ion-text>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!-- Botón para guardar cambios -->
+    <div class="ion-padding">
+      <ion-button
+        [disabled]="!formGroup.valid || !formGroup.dirty"
+        expand="full"
+        type="submit"
+        class="save-button"
+        color="success"
+      >
+        {{ 'PROFILE.UPDATE' | translate }}
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

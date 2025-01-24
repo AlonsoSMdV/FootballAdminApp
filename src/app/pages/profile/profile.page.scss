@@ -1,0 +1,47 @@
+ion-content {
+    --background: none;
+    background-image: linear-gradient(to bottom, #000000, #1c301d);
+    color: white;
+  }
+  
+  ion-toolbar {
+    --background: #121212;
+    box-shadow: none;
+  }
+  
+  .page-title {
+    color: white;
+    font-weight: bold;
+  }
+  
+  .form-container {
+    margin: 16px;
+  }
+  
+  .profile-card {
+    background-color: transparent !important;
+    color: white;
+    padding: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .profile-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  .styled-input {
+    --background: transparent;
+    --color: white;
+    border-radius: 8px;
+    padding: 8px;
+  }
+  
+  .styled-textarea {
+    min-height: 80px;
+  }
+  
+  .save-button {
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+  }
