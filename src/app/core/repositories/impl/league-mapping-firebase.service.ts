@@ -52,7 +52,7 @@ export class LeagueMappingFirebase implements IBaseMapping<League>{
   setAdd(data: League): FirebaseLeague {
     let dataMapping:FirebaseLeague = {
       name: data.name,
-      picture: data.picture ? data.picture.url : ''
+      picture: data.picture?.url || ''
     };
     if(data.userId){
       dataMapping.userId = doc(this.db, 'usuarios', data.userId || '')

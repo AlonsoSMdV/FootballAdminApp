@@ -2,6 +2,11 @@
   margin-right: 15px;
 }
 
+.league-img {
+  max-width: 40px; /* Ajusta el tamaño máximo según lo que sea más adecuado */
+  max-height: 40px; /* Para mantener un aspecto cuadrado */
+}
+
 .league-card {
   position: relative;
   overflow: hidden;
@@ -10,7 +15,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Asegura separación entre contenido y botones */
-  height: 100px; /* Ajusta el tamaño según sea necesario */
+  height: auto; /* Ajusta el tamaño según sea necesario */
 }
 
 /* Al pasar el ratón, agrandamos la tarjeta */

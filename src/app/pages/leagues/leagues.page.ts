@@ -78,10 +78,23 @@ export class LeaguesPage implements OnInit {
       const base64Response = await fetch(response.data.picture);
       const blob = await base64Response.blob();
       const uploadedBlob = await lastValueFrom(this.mediaSvc.upload(blob));
-      response.data.picture = uploadedBlob[0];
+      const pictureUrl = uploadedBlob.map(url => url.toString())
+      response.data.picture = pictureUrl
+
+      let league: League = {
+        id: '',
+        name: response.data.name,
+        picture: {
+          url: pictureUrl[0],
+          large: pictureUrl[0],
+          medium: pictureUrl[0],
+          small: pictureUrl[0],
+          thumbnail: pictureUrl[0],
+        }
+      }
       switch (response.role) {
         case 'new':
-          this.leagueSvc.add(response.data).subscribe({
+          this.leagueSvc.add(league).subscribe({
             next:res=>{
               this.getLeagues();
             },
@@ -89,7 +102,7 @@ export class LeaguesPage implements OnInit {
           });
           break;
         case 'edit':
-          this.leagueSvc.update(league!.id, response.data).subscribe({
+          this.leagueSvc.update(league!.id, league).subscribe({
             next:res=>{
               this.getLeagues();
             },
