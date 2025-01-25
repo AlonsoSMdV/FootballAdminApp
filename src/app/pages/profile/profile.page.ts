@@ -51,8 +51,8 @@ export class ProfilePage implements OnInit {
               email:user.email,
               userId:user.id,
               picture: typeof this.user.picture === 'object' ? 
-                           this.user.picture.url : 
-                           undefined
+                            this.user.picture.url : 
+                            undefined
             };
             this.formGroup.patchValue(updatedPerson);
           }

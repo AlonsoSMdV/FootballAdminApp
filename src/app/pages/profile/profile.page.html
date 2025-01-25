@@ -17,29 +17,8 @@
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form-container">
     <ion-grid>
       <ion-row>
-        <!-- Imagen de perfil -->
-        <ion-col size="12" size-md="4" class="ion-text-center">
-          <ion-card class="profile-card">
-            <ion-card-header>
-              <ion-card-title>{{ 'PROFILE.PICTURE' | translate }}</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <app-picture-selectable formControlName="picture"></app-picture-selectable>
-            </ion-card-content>
-          </ion-card>
-          <ion-button
-        [disabled]="!formGroup.valid || !formGroup.dirty"
-        expand="full"
-        type="submit"
-        class="save-button"
-        color="danger"
-      >
-        {{ 'COMMON.LOGOUT' | translate }}
-      </ion-button>
-        </ion-col>
-
-        <!-- Información básica del usuario -->
-        <ion-col size="12" size-md="8">
+        <!-- Formulario a la izquierda -->
+        <ion-col size="12" size-md="7">
           <ion-list class="profile-list">
             <!-- Nombre y Apellidos (juntos en una fila en pantallas grandes) -->
             <ion-row>
@@ -47,7 +26,7 @@
                 <ion-item>
                   <ion-input
                     class="styled-input"
-                    [label]="'PERSON.NAME' | translate"
+                    [label]="'PROFILE.NAME' | translate"
                     label-placement="stacked"
                     type="text"
                     formControlName="name"
@@ -63,7 +42,7 @@
                 <ion-item>
                   <ion-input
                     class="styled-input"
-                    [label]="'PERSON.SURNAME' | translate"
+                    [label]="'PROFILE.SURNAMES' | translate"
                     label-placement="stacked"
                     type="text"
                     formControlName="surname"
@@ -80,7 +59,7 @@
             <ion-item>
               <ion-input
                 class="styled-input"
-                [label]="'PERSON.EMAIL' | translate"
+                [label]="'PROFILE.EMAIL' | translate"
                 label-placement="stacked"
                 type="email"
                 formControlName="email"
@@ -91,6 +70,25 @@
               <p *ngIf="email?.errors?.['email']">{{ 'PERSON.ERRORS.EMAIL_INVALID' | translate }}</p>
             </ion-text>
           </ion-list>
+        </ion-col>
+
+        <!-- Imagen de perfil a la derecha -->
+        <ion-col size="12" size-md="5" class="ion-text-center">
+          <ion-card class="profile-card">
+            <ion-card-header>
+              <ion-card-title>{{ 'PROFILE.PICTURE' | translate }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <app-picture-selectable formControlName="picture"></app-picture-selectable>
+            </ion-card-content>
+          </ion-card>
+          <ion-button
+            expand="full"
+            class="save-button"
+            color="danger"
+          >
+            {{ 'MENU.LOGOUT' | translate }}
+          </ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

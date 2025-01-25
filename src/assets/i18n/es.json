@@ -25,7 +25,11 @@
     "PROFILE": {
       "TITLE": "Perfil",
       "SUBTITLE": "Tu información personal",
-      "UPDATE": "Actualizar"
+      "UPDATE": "Actualizar",
+      "PICTURE": "Foto de perfil",
+      "NAME": "Nombre",
+      "SURNAMES": "Apellidos",
+      "EMAIL":"Correo electrónico"
     },
     "LOGIN": {
       "TITLE": "Iniciar Sesión",

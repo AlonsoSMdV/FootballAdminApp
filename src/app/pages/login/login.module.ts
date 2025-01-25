@@ -10,7 +10,6 @@ import { LoginPage } from './login.page';
 import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { PasswordTogglePipe } from "../../shared/pipes/password-toggle/password-toggle.pipe";
 import { SharedModule } from 'src/app/shared/shared.module';
 
 

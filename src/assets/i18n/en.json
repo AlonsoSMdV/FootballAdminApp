@@ -24,7 +24,12 @@
     },
     "PROFILE": {
       "TITLE": "Profile",
-      "SUBTITLE": "Your personal information"
+      "SUBTITLE": "Your personal information",
+      "UPDATE": "Update",
+      "PICTURE": "Profile photo",
+      "NAME": "Name",
+      "SURNAMES": "Surnames",
+      "EMAIL":"Email"
     },
     "LOGIN": {
       "TITLE": "Log In",
