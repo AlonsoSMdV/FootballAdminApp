@@ -15,7 +15,6 @@ import { UsersService } from 'src/app/core/services/impl/users.service';
 })
 export class ProfilePage implements OnInit {
 
-  genders:string[] = ['Masculino', 'Femenino', 'Otros'];
   formGroup: FormGroup;
   user?: Users | null;
 
