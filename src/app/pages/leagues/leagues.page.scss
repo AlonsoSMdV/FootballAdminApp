@@ -1,66 +1,251 @@
-.createLeague{
-  margin-right: 15px;
+/* leagues.page.scss */
+:host {
+  --primary-color: #00ff88;
+  --secondary-color: #2a2a72;
+  --accent-color: #ff3366;
+  --background-dark: #131313;
+  --card-bg: rgba(255, 255, 255, 0.1);
 }
 
-.league-img {
-  max-width: 40px; /* Ajusta el tamaño máximo según lo que sea más adecuado */
-  max-height: 40px; /* Para mantener un aspecto cuadrado */
+// Header Styles
+ion-header {
+  ion-toolbar {
+    --background: transparent;
+    backdrop-filter: blur(10px);
+    
+    ion-title {
+      font-weight: 700;
+      background: linear-gradient(45deg, var(--primary-color), #00ffcc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1.5rem;
+    }
+
+    .create-button {
+      --background: linear-gradient(45deg, var(--primary-color), #00ffcc);
+      --border-radius: 20px;
+      --padding-start: 15px;
+      --padding-end: 15px;
+      margin-right: 16px;
+      
+      ion-icon {
+        margin-right: 8px;
+      }
+    }
+  }
 }
 
-.league-card {
-  position: relative;
+// Content Styles
+.league-content {
+  --background: var(--background-dark);
+}
+
+.background-shapes {
+  position: fixed;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-  padding: 16px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 0;
+  
+  .shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: floatAnimation 20s infinite ease-in-out;
+  }
+  
+  .shape-1 {
+    background: var(--primary-color);
+    width: 300px;
+    height: 300px;
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
+  }
+  
+  .shape-2 {
+    background: var(--secondary-color);
+    width: 400px;
+    height: 400px;
+    bottom: -150px;
+    right: -150px;
+    animation-delay: -5s;
+  }
+  
+  .shape-3 {
+    background: var(--accent-color);
+    width: 250px;
+    height: 250px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -10s;
+  }
+}
+
+// Grid Layout
+.leagues-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+// Card Styles
+.league-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    
+    .glow-effect {
+      opacity: 1;
+    }
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+}
+
+// League Header
+.league-header {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Asegura separación entre contenido y botones */
-  height: auto; /* Ajusta el tamaño según sea necesario */
+  align-items: center;
+  margin-bottom: 20px;
+  
+  .league-image-container {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+    
+    .league-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    
+    .glow-effect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, 
+        rgba(var(--primary-color), 0.5), 
+        transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+  }
+
+  .league-name {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0;
+  }
 }
 
-/* Al pasar el ratón, agrandamos la tarjeta */
-.league-card:hover {
-  transform: scale(1.1); /* Incrementa el tamaño */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Añade sombra */
-  z-index: 1; /* Trae la tarjeta al frente */
-}
-
-/* Estilo del texto */
-.league-label {
-  color: white !important;
-  font-size: 16px;
-  text-align: center;
-  margin-bottom: auto; /* Empuja los botones hacia abajo */
-}
-
-/* Botones alineados en la parte inferior */
-.button-container {
+// Action Buttons
+.action-buttons {
   display: flex;
-  justify-content: center; /* Espacia los botones horizontalmente */
-  margin-top: 16px;
+  gap: 10px;
+  justify-content: flex-end;
+  
+  .action-btn {
+    background: none;
+    border: none;
+    color: white;
+    padding: 8px;
+    border-radius: 12px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s;
+    
+    ion-icon {
+      font-size: 1.5rem;
+    }
+    
+    .tooltip {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    
+    &:hover {
+      .tooltip {
+        opacity: 1;
+      }
+    }
+    
+    &.info {
+      &:hover {
+        background: rgba(var(--primary-color), 0.2);
+        color: var(--primary-color);
+      }
+    }
+    
+    &.edit {
+      &:hover {
+        background: rgba(var(--secondary-color), 0.2);
+        color: var(--secondary-color);
+      }
+    }
+    
+    &.delete {
+      &:hover {
+        background: rgba(var(--accent-color), 0.2);
+        color: var(--accent-color);
+      }
+    }
+  }
 }
 
-ion-button {
-  flex: 0 1 auto; /* Asegura que los botones no crezcan ni se reduzcan */
+// Animations
+@keyframes floatAnimation {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(5%, 5%);
+  }
+  50% {
+    transform: translate(-5%, 2%);
+  }
+  75% {
+    transform: translate(3%, -5%);
+  }
 }
 
-ion-content {
-  --background: none;
-  background-image: linear-gradient(to bottom, #000000, #1c301d); /* Gradiente */
-  color: white;
-}
-
-ion-item {
-  --background: none !important; /* Sobrescribe el fondo predeterminado */
-  background-color: transparent !important; /* Asegura la transparencia */
-  --ion-background-color: transparent !important; /* Compatibilidad con variables de Ionic */
-  --color: white; /* Ajusta el color del texto */
-}
-
-ion-toolbar {
-  --background: none !important; /* Elimina el fondo */
-  background-color: #121212;
-  --ion-background-color: transparent !important; /* Compatibilidad con temas de Ionic */
-  box-shadow: none; /* Elimina la sombra */
-  border: none; /* Elimina cualquier borde */
+// Responsive Adjustments
+@media (max-width: 768px) {
+  .leagues-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 10px;
+  }
+  
+  .league-header .league-name {
+    font-size: 1.1rem;
+  }
 }

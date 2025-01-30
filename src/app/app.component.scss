@@ -1,80 +1,179 @@
-ion-toolbar {
-  position: relative;
-  
-    ion-fab {
-    position: absolute;
-    right: 10px;
-    top: 5%;
-    transform: translateY(-50%);
+/* app.component.scss */
+:host {
+  --menu-bg: #1a1a1a;
+  --menu-text: #ffffff;
+  --menu-item-hover: rgba(255, 255, 255, 0.1);
+  --menu-border: rgba(255, 255, 255, 0.1);
+  --accent-color: #00ff88;
+}
 
-    ion-fab-list {
-      margin-right: 55px;
+.menu-content {
+  --background: var(--menu-bg);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+}
+
+// Profile Section
+.profile-section {
+  position: relative;
+  padding: 2rem 1.5rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+
+  .profile-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 150%;
+    background: linear-gradient(45deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 255, 0.1));
+    transform: skewY(-5deg);
+    transform-origin: top left;
+  }
+
+  .profile-info {
+    position: relative;
+    z-index: 1;
+  }
+
+  .avatar-container {
+    position: relative;
+    width: 80px;
+    margin: 0 auto 1rem;
+    cursor: pointer;
+
+    ion-avatar {
+      width: 80px;
+      height: 80px;
+      border: 3px solid var(--accent-color);
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    .status-dot {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      width: 12px;
+      height: 12px;
+      background-color: var(--accent-color);
+      border-radius: 50%;
+      border: 2px solid var(--menu-bg);
+      box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    }
+  }
+
+  .username {
+    color: var(--menu-text);
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+  }
+}
+
+// Menu Items
+.menu-items {
+  padding: 1rem;
+
+  .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    color: var(--menu-text);
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+
+    ion-icon {
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      color: var(--accent-color);
+    }
+
+    span {
+      font-weight: 500;
+    }
+
+    &:hover {
+      background: var(--menu-item-hover);
+      transform: translateX(5px);
+    }
+
+    &.language-toggle {
+      justify-content: space-between;
       
-      ion-fab-button {
-        --background: var(--ion-color-light);
-        --color: var(--ion-color-dark);
-        
-        &.ion-color-success {
-          --background: var(--ion-color-success);
-          --color: var(--ion-color-success-contrast);
-        }
+      .custom-toggle {
+        --background: rgba(255, 255, 255, 0.1);
+        --background-checked: var(--accent-color);
+        --handle-background: white;
+        --handle-background-checked: white;
       }
     }
   }
 }
 
-ion-content {
-  --background: none;
-  background-image: linear-gradient(to bottom, #355e38, #000000); /* Gradiente */
-  color: white;
+// Logout Section
+.logout-section {
+  position: absolute;
+  bottom: 2rem;
+  left: 1rem;
+  right: 1rem;
+
+  .logout-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(255, 59, 48, 0.1);
+    border: none;
+    border-radius: 12px;
+    color: #ff3b30;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    ion-icon {
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    &:hover {
+      background: rgba(255, 59, 48, 0.2);
+      transform: translateY(-2px);
+    }
+  }
 }
 
-ion-item {
-  --background: none !important; /* Sobrescribe el fondo predeterminado */
-  background-color: transparent !important; /* Asegura la transparencia */
-  --ion-background-color: transparent !important; /* Compatibilidad con variables de Ionic */
-  --color: white; /* Ajusta el color del texto */
+// Split Pane Adjustments
+ion-split-pane {
+  --side-min-width: 280px;
+  --side-max-width: 280px;
 }
 
-ion-list {
-  --ion-background-color: transparent !important; /* Asegura transparencia en listas */
-  background-color: transparent !important;
+// Dark Mode Optimizations
+@media (prefers-color-scheme: dark) {
+  :host {
+    --menu-bg: #1a1a1a;
+    --menu-text: #ffffff;
+    --menu-item-hover: rgba(255, 255, 255, 0.05);
+  }
 }
 
-ion-footer {
-  --background: none !important; /* Elimina el fondo predeterminado */
-  background-color: transparent !important; /* Hace el fondo transparente */
-  --ion-background-color: transparent !important; /* Compatibilidad con Ionic */
-  box-shadow: none; /* Elimina cualquier sombra */
-  border-top: none; /* Elimina bordes superiores */
-}
+// Responsive Adjustments
+@media (max-width: 768px) {
+  ion-split-pane {
+    --side-min-width: 250px;
+    --side-max-width: 250px;
+  }
 
-ion-toolbar {
-  --background: none !important; /* Elimina el fondo */
-  background-color: transparent !important;
-  --ion-background-color: transparent !important; /* Compatibilidad con temas de Ionic */
-  box-shadow: none; /* Elimina la sombra */
-  border: none; /* Elimina cualquier borde */
-}
-
-.page-title {
-  color: white;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
-
-ion-footer ion-item {
-  --background: none !important; /* Fondo transparente */
-  background-color: transparent !important;
-  --ion-background-color: transparent !important;
-}
-
-ion-icon {
-  color: white; /* Asegura que los íconos sean visibles */
-}
-
-ion-label {
-  color: white; /* Si usas texto dentro del toolbar, hazlo visible */
+  .profile-section {
+    padding: 1.5rem 1rem;
+  }
 }

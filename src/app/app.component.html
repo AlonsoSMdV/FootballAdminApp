@@ -1,42 +1,60 @@
+<!-- app.component.html -->
 <ion-content>
-  <ion-split-pane contentId="mainContent" style="--side-max-width:125px;">
-    <!-- Sidebar menu visible on larger screens -->
-    <ion-menu  *ngIf="showMenu" contentId="mainContent" side="start" menuId="mainMenu" #menu [disabled]="!(authSvc.authenticated$ | async)">
-      <ion-header>
-        <ion-toolbar>
-          <ion-title class="page-title">{{ 'MENU.TITLE' | translate }}</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="menuContent">
-        <ion-list>
-          <ion-item>
-            <ion-avatar slot="start" (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" routerLink="/profile">
-              <img [src]="'https://ionicframework.com/docs/img/demos/avatar.svg'" alt="Avatar" />
-            </ion-avatar>
-            <ion-label>
-              <h3>{{ (authSvc.user$ | async)?.username }}</h3>
-            </ion-label>
-          </ion-item>
-          <ion-item  (click)="menu.close()" routerLink="/home" routerDirection="root">{{ 'MENU.HOME' | translate }}</ion-item>
-          <ion-item (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" routerLink="/leagues" routerDirection="root">{{ 'MENU.LEAGUES' | translate }}</ion-item>
-          <ion-item (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" routerLink="/about" routerDirection="root">{{ 'MENU.ABOUT' | translate }}</ion-item>
-          <ion-item lines="none" style="display: flex; align-items: center;">
-            <ion-label>{{ currentLang === 'es' ? 'Español' : 'English' }}</ion-label>
+  <ion-split-pane contentId="mainContent" style="--side-max-width: 280px;">
+    <ion-menu *ngIf="showMenu" contentId="mainContent" side="start" menuId="mainMenu" #menu [disabled]="!(authSvc.authenticated$ | async)">
+      <ion-content class="menu-content">
+        <!-- Profile Section -->
+        <div class="profile-section" *ngIf="(authSvc.authenticated$ | async)">
+          <div class="profile-background"></div>
+          <div class="profile-info">
+            <div class="avatar-container" routerLink="/profile" (click)="menu.close()">
+              <ion-avatar>
+                <img [src]="'https://ionicframework.com/docs/img/demos/avatar.svg'" alt="Avatar" />
+              </ion-avatar>
+              <div class="status-dot"></div>
+            </div>
+            <h2 class="username">{{ (authSvc.user$ | async)?.username }}</h2>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="menu-items">
+          <a class="menu-item" routerLink="/home" routerDirection="root" (click)="menu.close()">
+            <ion-icon name="home-outline"></ion-icon>
+            <span>{{ 'MENU.HOME' | translate }}</span>
+          </a>
+
+          <a class="menu-item" *ngIf="(authSvc.authenticated$ | async)" routerLink="/leagues" routerDirection="root" (click)="menu.close()">
+            <ion-icon name="trophy-outline"></ion-icon>
+            <span>{{ 'MENU.LEAGUES' | translate }}</span>
+          </a>
+
+          <a class="menu-item" *ngIf="(authSvc.authenticated$ | async)" routerLink="/about" routerDirection="root" (click)="menu.close()">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ 'MENU.ABOUT' | translate }}</span>
+          </a>
+
+          <!-- Language Toggle -->
+          <div class="menu-item language-toggle">
+            <ion-icon name="language-outline"></ion-icon>
+            <span>{{ currentLang === 'es' ? 'Español' : 'English' }}</span>
             <ion-toggle
+              class="custom-toggle"
               [checked]="currentLang === 'es'"
               (ionChange)="changeLanguage($event.detail.checked ? 'es' : 'en')"
               color="success">
             </ion-toggle>
-          </ion-item>
-        </ion-list>
+          </div>
+        </div>
+
+        <!-- Logout Button -->
+        <div class="logout-section" *ngIf="(authSvc.authenticated$ | async)">
+          <button class="logout-button" (click)="logout(); menu.close()">
+            <ion-icon name="log-out-outline"></ion-icon>
+            <span>Cerrar Sesión</span>
+          </button>
+        </div>
       </ion-content>
-      <ion-footer>
-        <ion-toolbar>
-          <ion-item lines="none"  (click)="menu.close()" *ngIf="(authSvc.authenticated$ | async)" (click)="logout()" button>
-            <ion-icon color="danger"name="log-out-outline"></ion-icon>
-          </ion-item>
-        </ion-toolbar>
-      </ion-footer>
     </ion-menu>
 
     <!-- Main content -->

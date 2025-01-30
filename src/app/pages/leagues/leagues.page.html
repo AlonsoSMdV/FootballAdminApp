@@ -1,40 +1,50 @@
-<ion-header [translucent]="true">
+<!-- leagues.page.html -->
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-  </ion-buttons>
-
-  <ion-title>{{'LEAGUES.TITLE' | translate}}</ion-title>
-
-  <ion-button color="success" class="createLeague" slot="end" (click)="onAddLeague()">{{'LEAGUES.CREATE' | translate}}</ion-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="animate-title">{{'LEAGUES.TITLE' | translate}}</ion-title>
+    <ion-button class="create-button" slot="end" (click)="onAddLeague()">
+      <ion-icon name="add-circle-outline"></ion-icon>
+      {{'LEAGUES.CREATE' | translate}}
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{'LEAGUES.TITLE' | translate}}</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-grid>
-  <ion-row>
-    <ion-col size="6" size-md="6" *ngFor="let league of (leagues$ | async), let i = index">
-      <ion-card class="league-card" [style.background-image]="'url('+img+')'" [style.background-size]="'cover'" [style.background-position]="'center'">
-        <img src="{{league.picture?.url}}" alt="league logo" class="legaue-img"/>
-        <ion-label class="league-label">{{league.name}}</ion-label>
-        <div class="button-container">
-          <ion-button color="success" routerLink="/teams">
-            <ion-icon name="information-outline" slot="icon-only"></ion-icon>
-          </ion-button>
-          <ion-button color="danger" (click)="onDeleteLeague(league)">
-            <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
-          </ion-button>
-          <ion-button color="primary" (click)="openLeague(league, i)">
-            <ion-icon name="create-outline" slot="icon-only"></ion-icon>
-          </ion-button>
+<ion-content class="league-content">
+  <div class="background-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+
+  <div class="leagues-grid">
+    <div class="league-card" *ngFor="let league of (leagues$ | async), let i = index">
+      <div class="card-content">
+        <div class="league-header">
+          <div class="league-image-container">
+            <img [src]="league.picture?.url || img" alt="league logo" class="league-img"/>
+            <div class="glow-effect"></div>
+          </div>
+          <h2 class="league-name">{{league.name}}</h2>
         </div>
-      </ion-card>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+
+        <div class="action-buttons">
+          <button class="action-btn info" routerLink="/teams">
+            <ion-icon name="information-circle"></ion-icon>
+            <span class="tooltip">Info</span>
+          </button>
+          <button class="action-btn edit" (click)="openLeague(league, i)">
+            <ion-icon name="create"></ion-icon>
+            <span class="tooltip">Editar</span>
+          </button>
+          <button class="action-btn delete" (click)="onDeleteLeague(league)">
+            <ion-icon name="trash"></ion-icon>
+            <span class="tooltip">Eliminar</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
