@@ -75,26 +75,32 @@ export class LeaguesPage implements OnInit {
       }:{})
     });
     modal.onDidDismiss().then(async (response)=>{
-      const base64Response = await fetch(response.data.picture);
-      const blob = await base64Response.blob();
-      const uploadedBlob = await lastValueFrom(this.mediaSvc.upload(blob));
-      const pictureUrl = uploadedBlob.map(url => url.toString())
-      response.data.picture = pictureUrl
-
-      let league: League = {
-        id: '',
-        name: response.data.name,
-        picture: {
-          url: pictureUrl[0],
-          large: pictureUrl[0],
-          medium: pictureUrl[0],
-          small: pictureUrl[0],
-          thumbnail: pictureUrl[0],
+      let newLeague : any = null
+      if (response.data.picture) {
+        const base64Response = await fetch(response.data.picture);
+        const blob = await base64Response.blob();
+        const uploadedBlob = await lastValueFrom(this.mediaSvc.upload(blob));
+        const pictureUrl = uploadedBlob.map(url => url.toString())
+        response.data.picture = pictureUrl
+  
+        newLeague = {
+          name: response.data.name,
+          picture: {
+            url: pictureUrl[0],
+            large: pictureUrl[0],
+            medium: pictureUrl[0],
+            small: pictureUrl[0],
+            thumbnail: pictureUrl[0],
+          }
+        }
+      }else{
+        newLeague = {
+          name: response.data.name
         }
       }
       switch (response.role) {
         case 'new':
-          this.leagueSvc.add(league).subscribe({
+          this.leagueSvc.add(newLeague).subscribe({
             next:res=>{
               this.getLeagues();
             },
@@ -102,7 +108,7 @@ export class LeaguesPage implements OnInit {
           });
           break;
         case 'edit':
-          this.leagueSvc.update(league!.id, league).subscribe({
+          this.leagueSvc.update(league!.id, newLeague).subscribe({
             next:res=>{
               this.getLeagues();
             },
