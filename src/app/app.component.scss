@@ -57,6 +57,14 @@ ion-toolbar {
   border: none; /* Elimina cualquier borde */
 }
 
+.page-title {
+  color: white;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
 ion-footer ion-item {
   --background: none !important; /* Fondo transparente */
   background-color: transparent !important;

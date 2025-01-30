@@ -32,7 +32,14 @@ export class UsersMappingFirebase implements IBaseMapping<Users>{
       id: data.id,
       name: data.name,
       surname: data.surname,
-      email: data.email
+      email: data.email,
+      picture: data.picture ? {
+        url: data.picture,
+        large: data.picture,
+        medium: data.picture,
+        small: data.picture,
+        thumbnail: data.picture
+      }: undefined,
     };
   }
   getAdded(data: { id: string } & FirebaseUser): Users {
@@ -49,7 +56,8 @@ export class UsersMappingFirebase implements IBaseMapping<Users>{
         name: data.name,
         surname: data.surname,
         email: data.email,
-        userId: data.userId || ''
+        userId: data.userId || '',
+        picture: data.picture?.url || ''
     }
     return dataMapping;
   }
@@ -58,6 +66,7 @@ export class UsersMappingFirebase implements IBaseMapping<Users>{
     if (data.name) result.name = data.name;
     if (data.surname) result.surname = data.surname;
     if (data.email) result.email = data.email;
+    if (data.picture) result.picture = data.picture;
     return result;
   }
   

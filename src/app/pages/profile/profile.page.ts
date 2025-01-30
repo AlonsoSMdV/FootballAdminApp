@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { lastValueFrom } from 'rxjs';
@@ -25,7 +26,9 @@ export class ProfilePage implements OnInit {
     private mediaSvc:BaseMediaService,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private translateSvc: TranslateService
+    private translateSvc: TranslateService,
+    private router: Router
+    
   ) {
     this.formGroup = this.fb.group({
       name: ['', [Validators.required]],
@@ -67,6 +70,12 @@ export class ProfilePage implements OnInit {
     } finally {
       await loading.dismiss();
     }
+  }
+
+  logout() {
+    this.authSvc.signOut().subscribe(()=>{
+      this.router.navigate(['/login']);
+    });
   }
 
   async onSubmit() {

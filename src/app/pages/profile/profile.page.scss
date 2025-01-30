@@ -1,47 +1,131 @@
 ion-content {
-    --background: none;
-    background-image: linear-gradient(to bottom, #000000, #1c301d);
-    color: white;
-  }
+  --background: none;
+  background: linear-gradient(-45deg, #000000, #1a472a, #255334, #0d1f0f);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+/* Glassmorphism toolbar */
+ion-toolbar {
+  --background: rgba(18, 18, 18, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.page-title {
+  color: white;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Form styling */
+.form-container {
+  margin: 24px;
+}
+
+.profile-list {
+  background: linear-gradient(135deg, rgba(113, 178, 128, 0.2), rgba(19, 78, 94, 0.2));
+  border-radius: 16px;
+  padding: 16px;
+  backdrop-filter: blur(12px);
+}
+
+/* Card effects */
+.profile-card {
+  background: rgba(255, 255, 255, 0.1) ;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Input styling */
+.styled-input {
+  --background: transparent !important;
+  --color: white;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --border-radius: 16px;
+  margin: 8px 0;
   
-  ion-toolbar {
-    --background: #121212;
-    box-shadow: none;
-  }
-  
-  .page-title {
-    color: white;
+}
+
+ion-item {
+  --background: transparent;
+  --border-color: rgba(255, 255, 255, 0.2);
+  --border-radius: 16px;
+  --padding-start: 0;
+  margin: 8px 0;
+}
+
+/* Button effects */
+.save-button, .delete-button {
+  border-radius: 16px !important;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     font-weight: bold;
-  }
-  
-  .form-container {
-    margin: 16px;
-  }
-  
-  .profile-card {
-    background-color: transparent !important;
-    color: white;
-    padding: 16px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .profile-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  }
-  
-  .styled-input {
-    --background: transparent;
-    --color: white;
-    border-radius: 8px;
-    padding: 8px;
-  }
-  
-  .styled-textarea {
-    min-height: 80px;
-  }
-  
-  .save-button {
-    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    font-weight: bold;
-  }
+    margin: 12px 0;
+   
+}
+
+.save-button:hover {
+  --box-shadow: 0 12px 24px rgba(46, 204, 113, 0.4);
+  transform: translateY(-2px);
+}
+.delete-button:hover {
+  --box-shadow: 0 12px 24px rgba(204, 46, 46, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Error messages */
+ion-text[color="danger"] {
+  font-size: 12px;
+  margin-left: 16px;
+  opacity: 0.9;
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
+}
+
+/* Custom scrollbar */
+ion-content::part(scroll) {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+ion-content::part(scroll)::-webkit-scrollbar {
+  width: 6px;
+}
+
+ion-content::part(scroll)::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+/* Profile picture area enhancement */
+app-picture-selectable {
+  display: block;
+  padding: 16px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  border-radius: 3px;
+}
+
+app-picture-selectable:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
