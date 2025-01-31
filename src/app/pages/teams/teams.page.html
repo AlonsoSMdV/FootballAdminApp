@@ -12,37 +12,37 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">teams</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="team-content">
   <ion-grid>
     <ion-row>
-      <ion-col size="12" size-md="12" *ngFor="let team of (teams$ | async); let i=index">
-        <ion-card class="card-content" [style.background-image]="'url('+img+')'" [style.background-size]="'cover'" [style.background-position]="'center'">
-          <!-- Contenido principal -->
-          <div class="content">
-            <ion-label>
-              {{'TEAMS.NAME' | translate}}: {{team.name}}<br>
-            </ion-label>
-            <ion-label>
-              {{'TEAMS.NOFPLAYERS' | translate}}: {{team.numberOfPlayers}}
-            </ion-label>
-          </div>
-          <!-- Botones -->
-          <div class="button-container">
-            <ion-button color="success" routerLink="/players">
-              <ion-icon name="information-outline" slot="icon-only"></ion-icon>
-            </ion-button>
-            <ion-button color="danger" (click)="onDeleteTeam(team)">
-              <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
-            </ion-button>
-            <ion-button color="primary" (click)="openTeam(team, i)">
-              <ion-icon name="create-outline" slot="icon-only"></ion-icon>
-            </ion-button>
-          </div>
+      <ion-col 
+        size="12"
+        size-sm="12" 
+        *ngFor="let team of (teams$ | async), let i = index"
+      >
+        <ion-card>
+          <ion-card-content>
+            <div class="team-header">
+              <div class="team-image-container">
+                <img [src]="img" alt="team logo" class="team-img"/>
+                <div class="glow-effect"></div>
+              </div>
+              <h2 class="team-name">{{team.name}}</h2>
+              <h2 class="team-nPlayers">{{team.numberOfPlayers}}</h2>
+            </div>
+
+            <div class="action-buttons">
+              <ion-button fill="clear" class="info" routerLink="/teams">
+                <ion-icon name="information-circle" slot="icon-only"></ion-icon>
+              </ion-button>
+              <ion-button fill="clear" class="edit" (click)="openTeam(team, i)">
+                <ion-icon name="create" slot="icon-only"></ion-icon>
+              </ion-button>
+              <ion-button fill="clear" class="delete" (click)="onDeleteTeam(team)">
+                <ion-icon name="trash" slot="icon-only"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
