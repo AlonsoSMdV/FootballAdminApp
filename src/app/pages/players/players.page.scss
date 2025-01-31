@@ -37,107 +37,137 @@ ion-header {
   }
 }
   
-  ion-fab {
-    position: absolute;
-    right: 10px;
-    top: 5%;
-    transform: translateY(-50%);
-
-    ion-fab-list {
-      margin-right: 55px;
-      
-      ion-fab-button {
-        --background: var(--ion-color-light);
-        --color: var(--ion-color-dark);
-        
-        &.ion-color-success {
-          --background: var(--ion-color-success);
-          --color: var(--ion-color-success-contrast);
-        }
-      }
-    }
-  }
-.card-content {
-  display: flex; /* Flexbox para alinear todo en la misma línea */
-  align-items: center; /* Alinea los elementos verticalmente al centro */
-  justify-content: space-between; /* Espacio entre contenido y botones */
-  gap: 10px; /* Espacio entre los elementos */
-}
-
-.content {
-  display: flex; /* Alinea las etiquetas en fila */
-  flex-direction: column; /* Mantén las etiquetas en columna */
-}
-
-.button-container {
-  display: flex; /* Botones alineados horizontalmente */
-  gap: 10px; /* Espacio entre botones */
-}
-
-ion-img {
-  width: 50px; /* Ajusta el tamaño según sea necesario */
-  height: 50px;
-  object-fit: cover; /* Asegura que las imágenes se vean correctamente */
-  border-radius: 50%; /* Para imágenes circulares */
-}
-
-ion-label {
-  flex: 1; /* Permite que las etiquetas ocupen espacio restante */
-  text-align: center; /* Alinea el texto */
-}
-
-ion-card {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.createPlayer{
-  margin-right: 15px;
-}
-
-.card-container ion-card {
-  transition: transform 0.3s ease; /* Transición suave al ampliar */
-  cursor: pointer; /* Cambia el cursor para indicar interactividad */
-}
-
-.card-container ion-card:hover {
-  transform: scale(1.1); /* Amplía la tarjeta al pasar el ratón */
-}
-
-.card-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.player-label{
-  color: white;
-}
-
-.button-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px; /* Espaciado entre botones y contenido */
-}
-
+// Content Styles
 ion-content {
   --background: none;
-  background-image: linear-gradient(to bottom, #000000, #1c301d); /* Gradiente */
-  color: white;
+  background-image: linear-gradient(to bottom, #1c301d, #000000);
 }
 
-ion-item {
-  --background: none !important; /* Sobrescribe el fondo predeterminado */
-  background-color: transparent !important; /* Asegura la transparencia */
-  --ion-background-color: transparent !important; /* Compatibilidad con variables de Ionic */
-  --color: white; /* Ajusta el color del texto */
+// Grid Layout
+ion-grid {
+  padding: 20px;
 }
 
-ion-toolbar {
-  --background: none !important; /* Elimina el fondo */
-  background-color: #121212;
-  --ion-background-color: transparent !important; /* Compatibilidad con temas de Ionic */
-  box-shadow: none; /* Elimina la sombra */
-  border: none; /* Elimina cualquier borde */
+ion-row {
+  margin: 0;
+}
+
+ion-col {
+  padding: 10px;
+}
+
+// Card Styles
+ion-card {
+  height: var(--card-height);
+  margin: 0;
+  background: var(--card-bg);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    
+    .glow-effect {
+      opacity: 1;
+    }
+  }
+}
+
+ion-card-content {
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+// League Header
+.player-header {
+  display: flex;
+  flex-direction: column; /* Asegura que el contenido se apile verticalmente */
+  align-items: center; /* Centra los elementos horizontalmente */
+  text-align: center;
+  margin-bottom: 20px;
+  
+  .player-image-container {
+    position: relative;
+    display: flex;
+    justify-content: center; /* Centra la imagen horizontalmente */
+    align-items: center;
+    width: 250px;
+    height: 150px;
+    margin-right: 15px;
+    
+    .player-img {
+      width:75%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    
+    .glow-effect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, 
+        rgba(var(--primary-color), 0.5), 
+        transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+  }
+
+  .player-name {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 10px;
+    word-break: break-word;
+  }
+}
+
+// Action Buttons
+.action-buttons {
+  display: flex;
+  gap: 15px; // Aumentado el espacio entre botones
+  justify-content: center;
+  margin-top: auto; // Asegura que los botones estén al final de la card
+  
+  ion-button {
+    --padding-start: 20px;  // Aumentado el padding
+    --padding-end: 20px;    // Aumentado el padding
+    --border-radius: 12px;
+    width: 64px;
+    height: 64px;
+    
+    ion-icon {
+      font-size: 64px !important;    // Iconos más grandes
+    }
+    
+    &.info {
+      --background: rgba(var(--primary-color), 0.2);
+      --color: var(--primary-color);
+    }
+    
+    &.edit {
+      --background: rgba(var(--secondary-color), 0.2);
+      --color: var(--secondary-color);
+    }
+    
+    &.delete {
+      --background: rgba(var(--accent-color), 0.2);
+      --color: var(--accent-color);
+    }
+
+    &:hover {
+      --background: rgba(255, 255, 255, 0.15);  // Efecto hover más visible
+      transform: scale(1.1);                     // Efecto de escala al hover
+      transition: all 0.2s ease;
+    }
+  }
 }
