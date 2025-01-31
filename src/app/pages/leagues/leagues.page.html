@@ -13,38 +13,39 @@
 </ion-header>
 
 <ion-content class="league-content">
-  <div class="background-shapes">
-    <div class="shape shape-1"></div>
-    <div class="shape shape-2"></div>
-    <div class="shape shape-3"></div>
-  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col 
+        size="12"
+        size-sm="6" 
+        size-md="4" 
+        size-lg="3" 
+        *ngFor="let league of (leagues$ | async), let i = index"
+      >
+        <ion-card>
+          <ion-card-content>
+            <div class="league-header">
+              <div class="league-image-container">
+                <img [src]="league.picture?.url || img" alt="league logo" class="league-img"/>
+                <div class="glow-effect"></div>
+              </div>
+              <h2 class="league-name">{{league.name}}</h2>
+            </div>
 
-  <div class="leagues-grid">
-    <div class="league-card" *ngFor="let league of (leagues$ | async), let i = index">
-      <div class="card-content">
-        <div class="league-header">
-          <div class="league-image-container">
-            <img [src]="league.picture?.url || img" alt="league logo" class="league-img"/>
-            <div class="glow-effect"></div>
-          </div>
-          <h2 class="league-name">{{league.name}}</h2>
-        </div>
-
-        <div class="action-buttons">
-          <button class="action-btn info" routerLink="/teams">
-            <ion-icon name="information-circle"></ion-icon>
-            <span class="tooltip">Info</span>
-          </button>
-          <button class="action-btn edit" (click)="openLeague(league, i)">
-            <ion-icon name="create"></ion-icon>
-            <span class="tooltip">Editar</span>
-          </button>
-          <button class="action-btn delete" (click)="onDeleteLeague(league)">
-            <ion-icon name="trash"></ion-icon>
-            <span class="tooltip">Eliminar</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+            <div class="action-buttons">
+              <ion-button fill="clear" class="info" routerLink="/teams">
+                <ion-icon name="information-circle" slot="icon-only"></ion-icon>
+              </ion-button>
+              <ion-button fill="clear" class="edit" (click)="openLeague(league, i)">
+                <ion-icon name="create" slot="icon-only"></ion-icon>
+              </ion-button>
+              <ion-button fill="clear" class="delete" (click)="onDeleteLeague(league)">
+                <ion-icon name="trash" slot="icon-only"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

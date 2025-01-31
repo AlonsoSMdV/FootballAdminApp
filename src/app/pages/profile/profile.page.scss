@@ -1,108 +1,177 @@
+:host {
+  --primary-color: #00ff88;
+  --secondary-color: #5050db;
+  --accent-color: #ff3366;
+  --background-dark: #131313;
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --card-height: 300px;
+  --card-width: 300px;
+}
+
+// Header Styles
+ion-header {
+  ion-toolbar {
+    --background: transparent;
+    backdrop-filter: blur(10px);
+    
+    ion-title {
+      font-weight: 700;
+      background: linear-gradient(45deg, var(--primary-color), #00ffcc);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1.5rem;
+    }
+
+    .create-button {
+      --background: linear-gradient(45deg, var(--primary-color), #00ffcc);
+      --border-radius: 20px;
+      --padding-start: 15px;
+      --padding-end: 15px;
+      margin-right: 16px;
+      
+      ion-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+/* Base gradient background */
 ion-content {
   --background: none;
-  background: linear-gradient(-45deg, #000000, #1a472a, #255334, #0d1f0f);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
+  background-image: linear-gradient(to bottom, #000000, #1c301d);
 }
 
-@keyframes gradientBG {
-  0% { background-position: 0% 50% }
-  50% { background-position: 100% 50% }
-  100% { background-position: 0% 50% }
-}
-
-/* Glassmorphism toolbar */
+/* Toolbar styling */
 ion-toolbar {
-  --background: rgba(18, 18, 18, 0.8);
+  --background: rgba(26, 26, 26, 0.95);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .page-title {
-  color: white;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  color: #00ff9d;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
-/* Form styling */
+/* Form container */
 .form-container {
-  margin: 24px;
+  margin: 16px;
 }
 
-.profile-list {
-  background: linear-gradient(135deg, rgba(113, 178, 128, 0.2), rgba(19, 78, 94, 0.2));
-  border-radius: 16px;
-  padding: 16px;
-  backdrop-filter: blur(12px);
-}
-
-/* Card effects */
+/* Profile card styling to match league cards */
 .profile-card {
-  background: rgba(255, 255, 255, 0.1) ;
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(21, 71, 52, 0.6);
   border-radius: 16px;
-  padding: 20px;
+  border: 1px solid rgba(0, 255, 157, 0.1);
+  margin: 16px;
+  overflow: hidden;
   transition: all 0.3s ease;
 }
 
 .profile-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px);
+  border-color: rgba(0, 255, 157, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 255, 157, 0.1);
+}
+
+.profile-card ion-card-header {
+  background: rgba(21, 71, 52, 0.8);
+  border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+}
+
+.profile-card ion-card-title {
+  color: #00ff9d;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Profile list container */
+.profile-list {
+  background: rgba(21, 71, 52, 0.6);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 255, 157, 0.1);
+  padding: 16px;
+  margin: 16px 0;
 }
 
 /* Input styling */
-.styled-input {
-  --background: transparent !important;
-  --color: white;
-  --padding-start: 16px;
-  --padding-end: 16px;
-  --border-radius: 16px;
-  margin: 8px 0;
-  
-}
-
 ion-item {
-  --background: transparent;
-  --border-color: rgba(255, 255, 255, 0.2);
-  --border-radius: 16px;
-  --padding-start: 0;
+  --background: rgba(21, 71, 52, 0.4);
+  --border-color: rgba(0, 255, 157, 0.1);
+  --border-radius: 12px;
+  --border-width: 1px;
+  --padding-start: 16px;
+  --highlight-color: #00ff9d;
   margin: 8px 0;
 }
 
-/* Button effects */
+.styled-input {
+  --color: white;
+  --placeholder-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Button styling */
 .save-button, .delete-button {
-  border-radius: 16px !important;
-  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    font-weight: bold;
-    margin: 12px 0;
-   
+  --border-radius: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 8px 0;
+  height: 48px;
+}
+
+.save-button {
+  --background: #00ff9d;
+  --color: #1a1a1a;
 }
 
 .save-button:hover {
-  --box-shadow: 0 12px 24px rgba(46, 204, 113, 0.4);
+  --background: #00ff9d;
   transform: translateY(-2px);
+  box-shadow: 0 8px 16px  rgba(0, 255, 157, 0.2);
 }
+
 .delete-button:hover {
-  --box-shadow: 0 12px 24px rgba(204, 46, 46, 0.4);
+  --background: #ff4961;
   transform: translateY(-2px);
+  box-shadow: 0 8px 16px  rgba(255, 73, 97, 0.2);
+}
+
+.delete-button {
+  --background: #ff4961;
+  --color: white;
+}
+
+/* Picture selectable component */
+app-picture-selectable {
+  display: block;
+  background: rgba(21, 71, 52, 0.4);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 255, 157, 0.1);
+  padding: 16px;
+  margin: 16px 0;
+  transition: all 0.3s ease;
+}
+
+app-picture-selectable:hover {
+  background: rgba(21, 71, 52, 0.6);
+  border-color: rgba(0, 255, 157, 0.3);
 }
 
 /* Error messages */
 ion-text[color="danger"] {
-  font-size: 12px;
-  margin-left: 16px;
-  opacity: 0.9;
-  text-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
+  color: #ff4961;
+  font-size: 0.8rem;
+  margin: 4px 0 0 16px;
+  display: block;
 }
 
 /* Custom scrollbar */
 ion-content::part(scroll) {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+  scrollbar-color: #00ff9d rgba(21, 71, 52, 0.4);
 }
 
 ion-content::part(scroll)::-webkit-scrollbar {
@@ -110,22 +179,10 @@ ion-content::part(scroll)::-webkit-scrollbar {
 }
 
 ion-content::part(scroll)::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
+  background: #00ff9d;
   border-radius: 3px;
 }
 
-/* Profile picture area enhancement */
-app-picture-selectable {
-  display: block;
-  padding: 16px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  border-radius: 3px;
-}
-
-app-picture-selectable:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: scale(1.05);
+ion-content::part(scroll)::-webkit-scrollbar-track {
+  background: rgba(21, 71, 52, 0.4);
 }

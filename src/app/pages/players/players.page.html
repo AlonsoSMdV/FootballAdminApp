@@ -1,11 +1,14 @@
-<ion-header [translucent]="true">
+<!-- leagues.page.html -->
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-  </ion-buttons>
-
-  <ion-title>{{'PLAYERS.TITLE' | translate}}</ion-title>
-  <ion-button color="success" class="createPlayer" slot="end"(click)="onAddPlayer()">{{'PLAYERS.CREATE' | translate}}</ion-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="animate-title">{{'PLAYERS.TITLE' | translate}}</ion-title>
+    <ion-button class="create-button" slot="end" (click)="onAddPlayer()">
+      <ion-icon name="add-circle-outline"></ion-icon>
+      {{'PLAYERS.CREATE' | translate}}
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 

@@ -1,4 +1,41 @@
+:host {
+  --primary-color: #00ff88;
+  --secondary-color: #5050db;
+  --accent-color: #ff3366;
+  --background-dark: #131313;
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --card-height: 300px;
+  --card-width: 300px;
+}
 
+// Header Styles
+ion-header {
+  ion-toolbar {
+    --background: transparent;
+    backdrop-filter: blur(10px);
+    
+    ion-title {
+      font-weight: 700;
+      background: linear-gradient(45deg, var(--primary-color), #00ffcc);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1.5rem;
+    }
+
+    .create-button {
+      --background: linear-gradient(45deg, var(--primary-color), #00ffcc);
+      --border-radius: 20px;
+      --padding-start: 15px;
+      --padding-end: 15px;
+      margin-right: 16px;
+      
+      ion-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+}
   
   ion-fab {
     position: absolute;

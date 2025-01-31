@@ -1,15 +1,16 @@
-<ion-header [translucent]="true">
+<!-- leagues.page.html -->
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-  </ion-buttons>
-  
-  <ion-title>{{'TEAMS.TITLE' | translate}}</ion-title>
-
-  <ion-button color="success" class="createTeam" slot="end" (click)="onAddTeam()">{{'TEAMS.CREATE' | translate}}</ion-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="animate-title">{{'TEAMS.TITLE' | translate}}</ion-title>
+    <ion-button class="create-button" slot="end" (click)="onAddTeam()">
+      <ion-icon name="add-circle-outline"></ion-icon>
+      {{'TEAMS.CREATE' | translate}}
+    </ion-button>
   </ion-toolbar>
 </ion-header>
-
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
