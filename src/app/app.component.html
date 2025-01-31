@@ -29,6 +29,11 @@
             <span>{{ 'MENU.LEAGUES' | translate }}</span>
           </a>
 
+          <a class="menu-item" *ngIf="(authSvc.authenticated$ | async)" routerLink="/matches" routerDirection="root" (click)="menu.close()">
+            <ion-icon name="football-outline"></ion-icon>
+            <span>{{ 'MENU.MATCHES' | translate }}</span>
+          </a>
+
           <a class="menu-item" *ngIf="(authSvc.authenticated$ | async)" routerLink="/about" routerDirection="root" (click)="menu.close()">
             <ion-icon name="information-circle-outline"></ion-icon>
             <span>{{ 'MENU.ABOUT' | translate }}</span>
