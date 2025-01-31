@@ -21,7 +21,7 @@ export class AppComponent implements OnInit{
     public authSvc: BaseAuthenticationService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private userSvc: UsersService
+    public userSvc: UsersService
   ) {
     this.currentLang = this.languageService.getStoredLanguage();
   }
