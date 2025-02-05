@@ -71,7 +71,7 @@ export class BaseRepositoryFirebaseService<T extends Model> implements IBaseRepo
             filterValue = doc(this.db, value); // Convertir la cadena a DocumentReference
           }else if(field === 'team' && typeof value === 'string'){
             filterValue = doc(this.db, value); // Convertir la cadena a DocumentReference
-          }else if(field === 'userId' && typeof value === 'string'){
+          }else if(field === 'user' && typeof value === 'string'){
             filterValue = doc(this.db, value);
           }
 

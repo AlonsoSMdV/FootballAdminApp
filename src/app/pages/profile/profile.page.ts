@@ -45,8 +45,9 @@ export class ProfilePage implements OnInit {
     try {
       const user = await this.authSvc.getCurrentUser();
       if(user){
+        console.log(user.id)
           this.user = await lastValueFrom(this.userSvc.getByUserId(user.id));
-          console.log(this.user);
+          console.log(this.user, "Usuario");
           if (this.user) {
             const updatedPerson: any = {
               ...this.user,

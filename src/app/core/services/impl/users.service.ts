@@ -19,7 +19,7 @@ export class UsersService extends BaseService<Users> implements IUserService {
   
   // Implementa métodos específicos si los hay
   getByUserId(userId: string): Observable<Users | null> {
-    return this.repository.getAll(1, 1, {user: userId}).pipe(
+    return this.repository.getAll(1, 1, {userId: userId}).pipe(
       map(res => Array.isArray(res) ? res[0] || null : res.data[0] || null)
     );
   }
