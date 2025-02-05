@@ -5,13 +5,14 @@ import { ITeamService } from "../interfaces/team-service.interface";
 import { BaseService } from "./base-service.service";
 import { Observable } from "rxjs";
 import { Paginated } from "../../models/paginated.model";
+import { ITeamRepository } from "../../repositories/intefaces/team-repository.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeamService extends BaseService<Team> implements ITeamService {
   constructor(
-    @Inject(TEAM_REPOSITORY_TOKEN) repository: ITeamService
+    @Inject(TEAM_REPOSITORY_TOKEN) repository: ITeamRepository
   ) {
     super(repository);
   }
