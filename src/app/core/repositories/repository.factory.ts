@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { BaseRepositoryHttpService } from './impl/base-repository-http.service';
 import { IBaseRepository } from './intefaces/base-repository.interface';
 import { Users } from '../models/users.model';
-import { AUTH_MAPPING_TOKEN, AUTH_ME_API_URL_TOKEN, AUTH_SIGN_IN_API_URL_TOKEN, AUTH_SIGN_UP_API_URL_TOKEN, BACKEND_TOKEN,  LEAGUE_API_URL_TOKEN, LEAGUE_REPOSITORY_MAPPING_TOKEN, LEAGUE_REPOSITORY_TOKEN, LEAGUE_RESOURCE_NAME_TOKEN, USER_API_URL_TOKEN, USER_REPOSITORY_MAPPING_TOKEN, USER_REPOSITORY_TOKEN, USER_RESOURCE_NAME_TOKEN, PLAYER_API_URL_TOKEN, PLAYER_REPOSITORY_MAPPING_TOKEN, PLAYER_REPOSITORY_TOKEN, PLAYER_RESOURCE_NAME_TOKEN, TEAM_API_URL_TOKEN, TEAM_REPOSITORY_MAPPING_TOKEN, TEAM_REPOSITORY_TOKEN, TEAM_RESOURCE_NAME_TOKEN, UPLOAD_API_URL_TOKEN, FIREBASE_CONFIG_TOKEN, FIREBASE_COLLECTION_TOKEN } from './repository.tokens';
+import { AUTH_MAPPING_TOKEN, AUTH_ME_API_URL_TOKEN, AUTH_SIGN_IN_API_URL_TOKEN, AUTH_SIGN_UP_API_URL_TOKEN, BACKEND_TOKEN,  LEAGUE_API_URL_TOKEN, LEAGUE_REPOSITORY_MAPPING_TOKEN, LEAGUE_REPOSITORY_TOKEN, LEAGUE_RESOURCE_NAME_TOKEN, USER_API_URL_TOKEN, USER_REPOSITORY_MAPPING_TOKEN, USER_REPOSITORY_TOKEN, USER_RESOURCE_NAME_TOKEN, PLAYER_API_URL_TOKEN, PLAYER_REPOSITORY_MAPPING_TOKEN, PLAYER_REPOSITORY_TOKEN, PLAYER_RESOURCE_NAME_TOKEN, TEAM_API_URL_TOKEN, TEAM_REPOSITORY_MAPPING_TOKEN, TEAM_REPOSITORY_TOKEN, TEAM_RESOURCE_NAME_TOKEN, UPLOAD_API_URL_TOKEN, FIREBASE_CONFIG_TOKEN, FIREBASE_COLLECTION_TOKEN, MATCH_REPOSITORY_MAPPING_TOKEN, MATCH_REPOSITORY_TOKEN, MATCH_API_URL_TOKEN, MATCH_RESOURCE_NAME_TOKEN } from './repository.tokens';
 import { BaseRespositoryLocalStorageService } from './impl/base-repository-local-storage.service';
 import { Model } from '../models/base.model';
 import { IBaseMapping } from './intefaces/base-mapping.interface';
@@ -37,6 +37,8 @@ import { PlayerJsonServerStorageMapping } from './impl/player-mapping-json-serve
 import { UsersMappingFirebase } from './impl/users-mapping-firebase.service';
 import { IAuthentication } from '../services/interfaces/authentication.interface';
 import { FirebaseMediaService } from '../services/impl/firebase-media.service';
+import { MatchMappingFirebase } from './impl/match-mapping-firebase.service';
+import { Match } from '../models/matches.model';
 
 export function createBaseRepositoryFactory<T extends Model>(
   token: InjectionToken<IBaseRepository<T>>,
@@ -66,7 +68,7 @@ export function createBaseRepositoryFactory<T extends Model>(
 export function createBaseMappingFactory<T extends Model>(
   token: InjectionToken<IBaseMapping<T>>,
   dependencies: any[],
-  modelType: 'league' | 'team' | 'player' | 'usuario'
+  modelType: 'league' | 'team' | 'player' | 'match' | 'usuario'
 ): FactoryProvider {
   return {
     provide: token,
@@ -110,6 +112,8 @@ export function createBaseMappingFactory<T extends Model>(
             return new TeamMappingFirebase(firebaseConfig)
           }else if(modelType === 'player') {
             return new PlayerMappingFirebase(firebaseConfig)
+          }else if(modelType === 'match'){
+            return new MatchMappingFirebase(firebaseConfig)
           }else{
             return new UsersMappingFirebase(firebaseConfig);
           }
@@ -164,6 +168,13 @@ export const PlayersMappingFactory = createBaseMappingFactory<Player>(
   [BACKEND_TOKEN, FIREBASE_CONFIG_TOKEN],
   'player'
 );
+
+export const MatchMappingFactoty = createBaseMappingFactory<Match>(
+  MATCH_REPOSITORY_MAPPING_TOKEN, 
+  [BACKEND_TOKEN, FIREBASE_CONFIG_TOKEN],
+  'match'
+);
+
 
 export const UserMappingFactory = createBaseMappingFactory<Users>(
   USER_REPOSITORY_MAPPING_TOKEN,
@@ -262,5 +273,16 @@ export const PlayersRepositoryFactory: FactoryProvider = createBaseRepositoryFac
     PLAYER_API_URL_TOKEN, 
     PLAYER_RESOURCE_NAME_TOKEN, 
     PLAYER_REPOSITORY_MAPPING_TOKEN, 
+    FIREBASE_CONFIG_TOKEN]
+);
+
+export const MatchRepositoryFactory: FactoryProvider = createBaseRepositoryFactory<Match>(MATCH_REPOSITORY_TOKEN,
+  [
+    BACKEND_TOKEN, 
+    HttpClient, 
+    BaseAuthenticationService, 
+    MATCH_API_URL_TOKEN, 
+    MATCH_RESOURCE_NAME_TOKEN, 
+    MATCH_REPOSITORY_MAPPING_TOKEN, 
     FIREBASE_CONFIG_TOKEN]
 );
