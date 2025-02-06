@@ -7,14 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { MatchesPageRoutingModule } from './matches-routing.module';
 
 import { MatchesPage } from './matches.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MatchesPageRoutingModule
-  ],
+    MatchesPageRoutingModule,
+        TranslateModule.forChild()],
   declarations: [MatchesPage]
 })
 export class MatchesPageModule {}

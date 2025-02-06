@@ -1,13 +1,51 @@
-<ion-header [translucent]="true">
+<!-- leagues.page.html -->
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>matches</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="animate-title">{{'MATCHES.TITLE' | translate}}</ion-title>
+    <ion-button class="create-button" slot="end">
+      <ion-icon name="add-circle-outline"></ion-icon>
+      {{'MACTHES.CREATE' | translate}}
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">matches</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="match-content">
+  <ion-grid>
+    <ion-row>
+      <ion-col 
+        size="12"
+        size-sm="6" 
+        size-md="4" 
+        size-lg="3" 
+        *ngFor="let match of (matches$ | async), let i = index"
+      >
+        <ion-card>
+          <ion-card-content>
+            <div class="match-header">
+              <h2 class="match-day">{{match.day}}</h2>
+              <h2 class="match-res">{{match.result}}</h2>
+              <h2 class="match-hour">{{match.hour}}</h2>
+              <h2 class="match-place">{{match.place}}</h2>
+              <h2 class="match-day">{{match.day}}</h2>
+            </div>
+
+            <div class="action-buttons">
+              <ion-button fill="clear" class="info" routerLink="/teams">
+                <ion-icon name="information-circle" slot="icon-only"></ion-icon>
+              </ion-button>
+              <ion-button fill="clear" class="edit" >
+                <ion-icon name="create" slot="icon-only"></ion-icon>
+              </ion-button>
+              <ion-button fill="clear" class="delete">
+                <ion-icon name="trash" slot="icon-only"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

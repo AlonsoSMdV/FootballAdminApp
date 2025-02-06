@@ -7,7 +7,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
-import { LeaguesRepositoryFactory, TeamsRepositoryFactory, PlayersRepositoryFactory, AuthMappingFactory, AuthenticationServiceFactory, UserRepositoryFactory, MediaServiceFactory, PlayersMappingFactory, TeamsMappingFactory, LeaguesMappingFactory, UserMappingFactory } from './core/repositories/repository.factory';
+import { LeaguesRepositoryFactory, TeamsRepositoryFactory, PlayersRepositoryFactory, AuthMappingFactory, AuthenticationServiceFactory, UserRepositoryFactory, MediaServiceFactory, PlayersMappingFactory, TeamsMappingFactory, LeaguesMappingFactory, UserMappingFactory, MatchMappingFactoty, MatchRepositoryFactory } from './core/repositories/repository.factory';
 import { LEAGUE_API_URL_TOKEN, LEAGUE_REPOSITORY_MAPPING_TOKEN, LEAGUE_REPOSITORY_TOKEN, LEAGUE_RESOURCE_NAME_TOKEN, 
   TEAM_API_URL_TOKEN, TEAM_REPOSITORY_MAPPING_TOKEN, TEAM_REPOSITORY_TOKEN, TEAM_RESOURCE_NAME_TOKEN, 
   PLAYER_API_URL_TOKEN, PLAYER_REPOSITORY_MAPPING_TOKEN, PLAYER_REPOSITORY_TOKEN,PLAYER_RESOURCE_NAME_TOKEN,
@@ -18,7 +18,9 @@ import { LEAGUE_API_URL_TOKEN, LEAGUE_REPOSITORY_MAPPING_TOKEN, LEAGUE_REPOSITOR
   BACKEND_TOKEN,
   USER_REPOSITORY_MAPPING_TOKEN,
   USER_API_URL_TOKEN,
-  USER_RESOURCE_NAME_TOKEN, FIREBASE_CONFIG_TOKEN} from './core/repositories/repository.tokens';
+  USER_RESOURCE_NAME_TOKEN, FIREBASE_CONFIG_TOKEN,
+  MATCH_RESOURCE_NAME_TOKEN,
+  MATCH_API_URL_TOKEN} from './core/repositories/repository.tokens';
 import { LeagueService } from './core/services/impl/league.service';
 import { PlayerService } from './core/services/impl/player.service';
 import { TeamService } from './core/services/impl/team.service';
@@ -38,6 +40,7 @@ import { environment } from 'src/environments/environment';
 import { LeagueMappingFirebase } from './core/repositories/impl/league-mapping-firebase.service';
 import { TeamMappingFirebase } from './core/repositories/impl/team-mapping-firebase.service';
 import { PlayerMappingFirebase } from './core/repositories/impl/player-mapping-firebase.service';
+import { MatchService } from './core/services/impl/match.service';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -69,9 +72,11 @@ export function createTranslateLoader(http: HttpClient) {
     {provide: LEAGUE_RESOURCE_NAME_TOKEN, useValue: 'leagues'},
     {provide: TEAM_RESOURCE_NAME_TOKEN, useValue: 'teams'},
     {provide: PLAYER_RESOURCE_NAME_TOKEN, useValue: 'players'},
+    {provide: MATCH_RESOURCE_NAME_TOKEN, useValue: 'matches'},
     {provide: LEAGUE_API_URL_TOKEN, useValue: `${environment.apiUrl}/api`},
     {provide: TEAM_API_URL_TOKEN, useValue: `${environment.apiUrl}/api`},
     {provide: PLAYER_API_URL_TOKEN, useValue: `${environment.apiUrl}/api`},
+    {provide: MATCH_API_URL_TOKEN, useValue: `${environment.apiUrl}/api`},
     {provide: USER_API_URL_TOKEN, useValue: `${environment.apiUrl}/api`},
     { provide: AUTH_SIGN_IN_API_URL_TOKEN, useValue: `${environment.apiUrl}/api/auth/local` },
     { provide: AUTH_SIGN_UP_API_URL_TOKEN, useValue:  `${environment.apiUrl}/api/auth/local/register` },
@@ -88,13 +93,16 @@ export function createTranslateLoader(http: HttpClient) {
         measurementId: "G-FR5S50J8LC"
       }
     },
+
     UserMappingFactory,
     LeaguesMappingFactory,
     TeamsMappingFactory,
     PlayersMappingFactory,
+    MatchMappingFactoty,
     LeaguesRepositoryFactory,
     TeamsRepositoryFactory,
     PlayersRepositoryFactory,
+    MatchRepositoryFactory,
     UserRepositoryFactory,
     AuthMappingFactory,
     
@@ -111,6 +119,10 @@ export function createTranslateLoader(http: HttpClient) {
     {
       provide: 'UsersService',
       useClass: UsersService
+    },
+    {
+      provide: 'MatchService',
+      useClass: MatchService
     },
 
     AuthenticationServiceFactory,
