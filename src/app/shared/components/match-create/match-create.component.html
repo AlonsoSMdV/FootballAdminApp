@@ -2,10 +2,10 @@
   <ion-icon slot="start" name="football"></ion-icon>
   <ion-title>
     @if (mode=='edit') {
-      {{ 'PLAYERS.EDIT' | translate }}
+      {{ 'MATCHES.EDIT' | translate }}
     }
     @else {
-      {{ 'PLAYERS.NEW' | translate }}
+      {{ 'MATCHES.NEW' | translate }}
     }
   </ion-title>
   @if (isMobile) {
@@ -20,7 +20,7 @@
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <!-- Fecha del partido -->
   <ion-item>
-    <ion-input [label]="'PLAYERS.BIRTHDATE' | translate" label-placement="stacked" type="text" formControlName="day"></ion-input>
+    <ion-input [label]="'MATCHES.DAY' | translate" label-placement="stacked" type="text" formControlName="day"></ion-input>
     <ion-button 
     class="date-button" 
     fill="outline" 
@@ -42,14 +42,14 @@
         [showDefaultButtons]="true"
         cancelText="{{'COMMON.CANCEL'|translate}}"
         doneText="{{'COMMON.ACCEPT'|translate}}">
-        <div slot="title">{{'PLAYERS.SELECT_DATE'|translate}}</div>
+        <div slot="title">{{'MATCHES.SELECT_DATE'|translate}}</div>
       </ion-datetime>
     </ng-template>
   </ion-modal>
-    <div slot="title">{{'PLAYERS.SELECT_DATE'|translate}}</div>
+    <div slot="title">{{'MATCHES.SELECT_DATE'|translate}}</div>
 </ion-item>
   <ion-text color="danger" *ngIf="day?.invalid && (day?.dirty || day?.touched)">
-    <p *ngIf="day?.errors?.['required']">{{ 'PLAYERS.ERRORS.BIRTHDATE_REQUIRED' | translate }}</p>
+    <p *ngIf="day?.errors?.['required']">{{ 'MATCHES.ERRORS.DAY_REQUIRED' | translate }}</p>
   </ion-text>
 
   <!-- Hora del partido-->
@@ -82,41 +82,32 @@
   </ion-item>
   <!-- Resultado -->
   <ion-item>
-    <ion-input [label]="'PLAYERS.SURNAME1' | translate" label-placement="stacked" type="text" formControlName="result"></ion-input>
+    <ion-input [label]="'MATCHES.RESULT' | translate" label-placement="stacked" type="text" formControlName="result"></ion-input>
   </ion-item>
-  <ion-text color="danger" *ngIf="result?.invalid && (result?.dirty || result?.touched)">
-    <p *ngIf="result?.errors?.['required']">{{ 'PLAYERS.ERRORS.SURNAME_REQUIRED' | translate }}</p>
-    <p *ngIf="result?.errors?.['minlength']">{{ 'PLAYERS.ERRORS.SURNAME_MIN_LENGTH' | translate }}</p>
-  </ion-text>
 
   <!-- Lugar -->
   <ion-item>
-    <ion-input [label]="'PLAYERS.NATIONALITY' | translate" label-placement="stacked" type="text" formControlName="place"></ion-input>
+    <ion-input [label]="'MATCHES.PLACE' | translate" label-placement="stacked" type="text" formControlName="place"></ion-input>
   </ion-item>
-  <ion-text color="danger" *ngIf="place?.invalid && (place?.dirty || place?.touched)">
-    <p *ngIf="place?.errors?.['required']">{{ 'PLAYERS.ERRORS.NATIONALITY_REQUIRED' | translate }}</p>
-    <p *ngIf="place?.errors?.['minlength']">{{ 'PLAYERS.ERRORS.NATIONALITY_INVALID' | translate }}</p>
-  </ion-text>
 
-  <!-- Equipo local -->
-  <ion-item>
-    <ion-label position="stacked">{{ 'PLAYERS.TEAM' | translate }}</ion-label>
-    <app-team-selectable formControlName="localTeamId"></app-team-selectable>
-  </ion-item>
-  
-  
-  <!-- Equipo local -->
-  <ion-item>
-    <ion-label position="stacked">{{ 'PLAYERS.TEAM' | translate }}</ion-label>
-    <app-team-selectable formControlName="visitorTeamId"></app-team-selectable>
-  </ion-item>
+<!-- Equipo local -->
+<ion-item>
+  <ion-label position="stacked">{{ 'MATCHES.TEAM_LOCAL' | translate }}</ion-label>
+  <app-team-selectable formControlName="localTeamId"></app-team-selectable>
+</ion-item>
+
+<!-- Equipo visitante -->
+<ion-item>
+  <ion-label position="stacked">{{ 'MATCHES.TEAM_VISITOR' | translate }}</ion-label>
+  <app-team-selectable formControlName="visitorTeamId"></app-team-selectable>
+</ion-item>
   <!-- Botón de Envío -->
   <ion-button color="success" [disabled]="!formGroup.valid || !formGroup.dirty" expand="full" type="submit" >
     @if (mode=='edit') {
-      {{ 'PLAYERS.UPDATE' | translate }}
+      {{ 'MATCHES.UPDATE' | translate }}
     }
     @else {
-      {{ 'PLAYERS.SUBMIT' | translate }}
+      {{ 'MATCHES.SUBMIT' | translate }}
     }
   </ion-button>
 </form>
