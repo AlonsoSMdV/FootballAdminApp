@@ -58,7 +58,7 @@ export class MatchMappingFirebase implements IBaseMapping<Match>{
       }
       
     if(data.visitorTeamId){
-    dataMapping.userId = doc(this.db, 'teams', data.visitorTeamId || '')
+    dataMapping.visitorTeamId = doc(this.db, 'teams', data.visitorTeamId || '')
     }
 
     if(data.userId){
