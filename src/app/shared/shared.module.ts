@@ -12,6 +12,7 @@ import { LeagueSelectableComponent } from './components/league-selectable/league
 import { PositionSelectableComponent } from './components/position-selectable/position-selectable.component';
 import { PictureSelectableComponent } from './components/picture-selectable/picture-selectable.component';
 import { PasswordTogglePipe } from './pipes/password-toggle/password-toggle.pipe';
+import { MatchCreateComponent } from './components/match-create/match-create.component'
 
 
 
@@ -24,7 +25,8 @@ import { PasswordTogglePipe } from './pipes/password-toggle/password-toggle.pipe
     LeagueSelectableComponent, 
     PositionSelectableComponent,
     PictureSelectableComponent,
-    PasswordTogglePipe
+    PasswordTogglePipe,
+    MatchCreateComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,8 @@ import { PasswordTogglePipe } from './pipes/password-toggle/password-toggle.pipe
     LeagueSelectableComponent,
     PositionSelectableComponent,
     PictureSelectableComponent,
-    PasswordTogglePipe
+    PasswordTogglePipe,
+    MatchCreateComponent
   ]
 })
 export class SharedModule { }

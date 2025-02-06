@@ -1,0 +1,214 @@
+ion-content {
+    --background: none;
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+    --min-height: 100%;
+  }
+  
+  ion-toolbar {
+    --background: #355e38;
+    --color: white;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  ion-toolbar ion-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    margin: 0;
+    text-align: center;
+  }
+  
+  ion-toolbar ion-icon {
+    font-size: 24px;
+    color: white;
+  }
+  
+  ion-buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  ion-button {
+    --background: transparent;
+    --border-radius: 50%;
+    --color: white;
+  }
+  
+  ion-button:hover {
+    --background: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Modal form */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 16px;
+  }
+  
+  ion-item {
+    --background: transparent;
+    --border-color: #ccc;
+  }
+  
+  ion-input {
+    --padding-start: 10px;
+    --padding-end: 10px;
+  }
+  
+  ion-input label {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  ion-text {
+    font-size: 12px;
+    color: #ff3b30;
+    margin-top: -10px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    ion-toolbar {
+      padding: 8px 12px;
+    }
+  
+    ion-title {
+      font-size: 16px;
+    }
+  
+    ion-button {
+      --border-radius: 50%;
+    }
+  
+    form {
+      padding: 10px 12px;
+    }
+  }
+  
+  /* Custom button */
+  ion-button[type="submit"] {
+    background: #28a745;
+    color: white;
+    font-weight: bold;
+    margin-top: 15px;
+    --border-radius: 6px;
+  }
+  
+  ion-button[type="submit"]:disabled {
+    background: #ccc;
+  }
+  
+  ion-button[type="submit"]:not(:disabled):hover {
+    background: #218838;
+  }
+  
+  /* Modal content */
+  .modal-content {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  /* Adjust form labels for better spacing */
+  ion-item ion-label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilo del botón de fecha */
+  .date-button {
+    --background: none !important;
+    --color: rgba(255, 255, 255) !important;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-radius: 8px;
+    --border-width: 1px;
+    --border-style: solid;
+    --box-shadow: none;
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+    margin: 8px auto; /* Centro horizontal */
+    width: 80%; /* Reduce el ancho para centrarlo mejor */
+    max-width: 300px; /* Ancho máximo para pantallas más grandes */
+    font-size: 14px;
+    text-align: center; /* Centro del texto */
+    display: flex; /* Usar flexbox */
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centro horizontal */
+  }
+
+  .time-button {
+    --background: none !important;
+    --color: rgba(255, 255, 255) !important;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-radius: 8px;
+    --border-width: 1px;
+    --border-style: solid;
+    --box-shadow: none;
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+    margin: 8px auto; /* Centro horizontal */
+    width: 80%; /* Reduce el ancho para centrarlo mejor */
+    max-width: 300px; /* Ancho máximo para pantallas más grandes */
+    font-size: 14px;
+    text-align: center; /* Centro del texto */
+    display: flex; /* Usar flexbox */
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centro horizontal */
+  }
+  
+  .date-button ion-icon {
+    margin-left: 8px;
+    color: #ffffff;
+  }
+  
+  .time-button ion-icon {
+    margin-left: 8px;
+    color: #ffffff;
+  }
+  /* Estilo del modal del calendario */
+  .date-picker-modal, .time-picker-modal {
+    --height: auto;
+    --width: 90%;
+    --max-width: 350px;
+    --border-radius: 8px;
+  }
+  
+  .date-picker-modal ion-datetime, .time-picker-modal {
+    --background: rgb(0, 0, 0, 0.1);
+    --ion-color-primary: #355e38;
+    --ion-color-primary-contrast: rgb(0, 0, 0);
+    border-radius: 8px;
+    padding: 16px;
+  }
+  
+  .date-picker-modal ion-datetime::part(active), .time-picker-modal ion-datetime::part(active) {
+    background: #355e38;
+    color: rgb(0, 0, 0);
+  }
+  
+  .date-picker-modal ion-datetime::part(button-clear),
+  .date-picker-modal ion-datetime::part(button-done),.time-picker-modal ion-datetime::part(button-clear), .time-picker-modal ion-datetime::part(button-done) {
+    color: #355e38;
+  }
+  
+  /* Ajustes responsive */
+  @media (max-width: 600px) {
+    .date-picker-modal {
+      --width: 95%;
+    }
+  }

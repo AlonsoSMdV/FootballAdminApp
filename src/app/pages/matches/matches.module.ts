@@ -8,12 +8,14 @@ import { MatchesPageRoutingModule } from './matches-routing.module';
 
 import { MatchesPage } from './matches.page';
 import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    SharedModule,
     MatchesPageRoutingModule,
         TranslateModule.forChild()],
   declarations: [MatchesPage]

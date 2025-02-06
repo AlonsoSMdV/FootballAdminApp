@@ -1,0 +1,124 @@
+<ion-toolbar>
+  <ion-icon slot="start" name="football"></ion-icon>
+  <ion-title>
+    @if (mode=='edit') {
+      {{ 'PLAYERS.EDIT' | translate }}
+    }
+    @else {
+      {{ 'PLAYERS.NEW' | translate }}
+    }
+  </ion-title>
+  @if (isMobile) {
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  }
+</ion-toolbar>
+<ion-content class="ion-padding">
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <!-- Fecha del partido -->
+  <ion-item>
+    <ion-input [label]="'PLAYERS.BIRTHDATE' | translate" label-placement="stacked" type="text" formControlName="day"></ion-input>
+    <ion-button 
+    class="date-button" 
+    fill="outline" 
+    expand="block"
+    (click)="openDatePicker()">
+    {{ getDay.value ? (getDay.value | date:'dd-MM-yyyy') : 'PLAYERS.SELECT_DATE'|translate }}
+    <ion-icon name="calendar-outline" slot="start"></ion-icon>
+  </ion-button> 
+  <ion-modal 
+    [isOpen]="isDatePickerOpen" 
+    (didDismiss)="isDatePickerOpen = false"
+    class="date-picker-modal">
+    <ng-template>
+      <ion-datetime
+        #datetime
+        presentation="date"
+        [value]="day.value"
+        (ionChange)="onDateChange($event)"
+        [showDefaultButtons]="true"
+        cancelText="{{'COMMON.CANCEL'|translate}}"
+        doneText="{{'COMMON.ACCEPT'|translate}}">
+        <div slot="title">{{'PLAYERS.SELECT_DATE'|translate}}</div>
+      </ion-datetime>
+    </ng-template>
+  </ion-modal>
+    <div slot="title">{{'PLAYERS.SELECT_DATE'|translate}}</div>
+</ion-item>
+  <ion-text color="danger" *ngIf="day?.invalid && (day?.dirty || day?.touched)">
+    <p *ngIf="day?.errors?.['required']">{{ 'PLAYERS.ERRORS.BIRTHDATE_REQUIRED' | translate }}</p>
+  </ion-text>
+
+  <!-- Hora del partido-->
+  <ion-item>
+    <ion-input [label]="'MACTHES.TIME' | translate" label-placement="stacked" type="text" formControlName="hour"></ion-input>
+    <ion-button 
+      class="time-button" 
+      fill="outline" 
+      expand="block"
+      (click)="openTimePicker()">
+      {{ getHour.value ? (getHour.value) : 'MATCHES.SELECT_TIME'|translate }}
+      <ion-icon name="time-outline" slot="start"></ion-icon>
+    </ion-button>
+    <ion-modal 
+      [isOpen]="isTimePickerOpen" 
+      (didDismiss)="isTimePickerOpen = false"
+      class="time-picker-modal">
+      <ng-template>
+        <ion-datetime
+          presentation="time"
+          [value]="hour.value"
+          (ionChange)="onTimeChange($event)"
+          [showDefaultButtons]="true"
+          cancelText="{{'COMMON.CANCEL'|translate}}"
+          doneText="{{'COMMON.ACCEPT'|translate}}">
+          <div slot="title">{{'MATCHES.SELECT_TIME'|translate}}</div>
+        </ion-datetime>
+      </ng-template>
+    </ion-modal>
+  </ion-item>
+  <!-- Resultado -->
+  <ion-item>
+    <ion-input [label]="'PLAYERS.SURNAME1' | translate" label-placement="stacked" type="text" formControlName="result"></ion-input>
+  </ion-item>
+  <ion-text color="danger" *ngIf="result?.invalid && (result?.dirty || result?.touched)">
+    <p *ngIf="result?.errors?.['required']">{{ 'PLAYERS.ERRORS.SURNAME_REQUIRED' | translate }}</p>
+    <p *ngIf="result?.errors?.['minlength']">{{ 'PLAYERS.ERRORS.SURNAME_MIN_LENGTH' | translate }}</p>
+  </ion-text>
+
+  <!-- Lugar -->
+  <ion-item>
+    <ion-input [label]="'PLAYERS.NATIONALITY' | translate" label-placement="stacked" type="text" formControlName="place"></ion-input>
+  </ion-item>
+  <ion-text color="danger" *ngIf="place?.invalid && (place?.dirty || place?.touched)">
+    <p *ngIf="place?.errors?.['required']">{{ 'PLAYERS.ERRORS.NATIONALITY_REQUIRED' | translate }}</p>
+    <p *ngIf="place?.errors?.['minlength']">{{ 'PLAYERS.ERRORS.NATIONALITY_INVALID' | translate }}</p>
+  </ion-text>
+
+  <!-- Equipo local -->
+  <ion-item>
+    <ion-label position="stacked">{{ 'PLAYERS.TEAM' | translate }}</ion-label>
+    <app-team-selectable formControlName="localTeamId"></app-team-selectable>
+  </ion-item>
+  
+  
+  <!-- Equipo local -->
+  <ion-item>
+    <ion-label position="stacked">{{ 'PLAYERS.TEAM' | translate }}</ion-label>
+    <app-team-selectable formControlName="visitorTeamId"></app-team-selectable>
+  </ion-item>
+  <!-- Botón de Envío -->
+  <ion-button color="success" [disabled]="!formGroup.valid || !formGroup.dirty" expand="full" type="submit" >
+    @if (mode=='edit') {
+      {{ 'PLAYERS.UPDATE' | translate }}
+    }
+    @else {
+      {{ 'PLAYERS.SUBMIT' | translate }}
+    }
+  </ion-button>
+</form>
+
+</ion-content>

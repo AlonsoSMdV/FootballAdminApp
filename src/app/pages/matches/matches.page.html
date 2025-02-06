@@ -5,7 +5,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title class="animate-title">{{'MATCHES.TITLE' | translate}}</ion-title>
-    <ion-button class="create-button" slot="end">
+    <ion-button class="create-button" slot="end" (click)="onAddMatch()">
       <ion-icon name="add-circle-outline"></ion-icon>
       {{'MACTHES.CREATE' | translate}}
     </ion-button>
@@ -29,11 +29,10 @@
               <h2 class="match-res">{{match.result}}</h2>
               <h2 class="match-hour">{{match.hour}}</h2>
               <h2 class="match-place">{{match.place}}</h2>
-              <h2 class="match-day">{{match.day}}</h2>
             </div>
 
             <div class="action-buttons">
-              <ion-button fill="clear" class="info" routerLink="/teams">
+              <ion-button fill="clear" class="info">
                 <ion-icon name="information-circle" slot="icon-only"></ion-icon>
               </ion-button>
               <ion-button fill="clear" class="edit" >
