@@ -7,8 +7,11 @@
         <div class="profile-section" *ngIf="(authSvc.authenticated$ | async)">
           <div class="profile-background"></div>
           <div class="profile-info">
-            <div class="avatar-container" routerLink="/profile" (click)="menu.close()">
-              <ion-avatar>
+            <div class="avatar-container"  routerLink="/profile" (click)="menu.close()">
+              <ion-avatar *ngIf="(user$ | async)?.picture">
+                <img [src]="(user$ | async)?.picture?.url" alt="Avatar" />
+              </ion-avatar>
+              <ion-avatar *ngIf="!(user$ | async)?.picture">
                 <img [src]="'https://ionicframework.com/docs/img/demos/avatar.svg'" alt="Avatar" />
               </ion-avatar>
               <div class="status-dot"></div>

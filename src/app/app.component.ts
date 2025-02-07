@@ -36,7 +36,7 @@ export class AppComponent implements OnInit{
       const authUser = await this.authSvc.getCurrentUser()
 
       if(authUser){
-        this._user.next(await lastValueFrom(this.userSvc.getById(authUser.id)))
+        this._user.next(await lastValueFrom(this.userSvc.getByUserId(authUser.id)))
       }
     }catch(error){
       console.error(error)
