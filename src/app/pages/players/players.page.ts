@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
 import { Paginated } from 'src/app/core/models/paginated.model';
 import { Player } from 'src/app/core/models/players.model';
+import { BaseMediaService } from 'src/app/core/services/impl/base-media.service';
 import { PlayerService } from 'src/app/core/services/impl/player.service';
 import { LanguageService } from 'src/app/core/services/language.service';
 import { PlayerCreateModalComponent } from 'src/app/shared/components/player-create-modal/player-create-modal.component';
@@ -31,7 +32,8 @@ export class PlayersPage implements OnInit {
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
     private translate: TranslateService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private mediaSvc: BaseMediaService
   ) { 
     this.currentLang = this.languageService.getStoredLanguage();
   }
@@ -88,10 +90,48 @@ export class PlayersPage implements OnInit {
         player: player
       }:{})
     });
-    modal.onDidDismiss().then((response:any)=>{
+    modal.onDidDismiss().then(async (response)=>{
+      let newPlayer : any = null
+      if (response.data.picture) {
+        const base64Response = await fetch(response.data.picture);
+        const blob = await base64Response.blob();
+        const uploadedBlob = await lastValueFrom(this.mediaSvc.upload(blob));
+        const pictureUrl = uploadedBlob.map(url => url.toString())
+        response.data.picture = pictureUrl
+  
+        newPlayer = {
+          name: response.data.name,
+          firstSurname: response.data.firstSurname,
+          secondSurname: response.data.secondSurname,
+          birthdate: response.data.birthdate,
+          nationality: response.data.nationality,
+          dorsal: response.data.dorsal,
+          position: response.data.position,
+          team: response.data.team,
+          picture: {
+            url: pictureUrl[0],
+            large: pictureUrl[0],
+            medium: pictureUrl[0],
+            small: pictureUrl[0],
+            thumbnail: pictureUrl[0],
+          }
+        }
+      }else{
+        newPlayer = {
+          name: response.data.name,
+          firstSurname: response.data.firstSurname,
+          secondSurname: response.data.secondSurname,
+          birthdate: response.data.birthdate,
+          nationality: response.data.nationality,
+          dorsal: response.data.dorsal,
+          position: response.data.position,
+          team: response.data.team
+
+        }
+      }
       switch (response.role) {
         case 'new':
-          this.playerSvc.add(response.data).subscribe({
+          this.playerSvc.add(newPlayer).subscribe({
             next:res=>{
               this.getPlayers();
             },
@@ -99,7 +139,7 @@ export class PlayersPage implements OnInit {
           });
           break;
         case 'edit':
-          this.playerSvc.update(player!.id, response.data).subscribe({
+          this.playerSvc.update(player!.id, newPlayer).subscribe({
             next:res=>{
               this.getPlayers();
             },

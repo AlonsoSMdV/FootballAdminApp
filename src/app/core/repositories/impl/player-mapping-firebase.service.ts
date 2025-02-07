@@ -36,6 +36,13 @@ export class PlayerMappingFirebase implements IBaseMapping<Player>{
       dorsal: data.dorsal,
       position: data.position,
       team: data.team?.id,
+      picture: data.picture ? {
+        url: data.picture,
+        large: data.picture,
+        medium: data.picture,
+        small: data.picture,
+        thumbnail: data.picture
+      }: undefined,
       userId: data.userId?.id 
     };
   }
@@ -56,7 +63,8 @@ export class PlayerMappingFirebase implements IBaseMapping<Player>{
       birthdate: data.birthdate,
       nationality: data.nationality,
       dorsal: data.dorsal,
-      position: data.position
+      position: data.position,
+      picture: data.picture?.url || ''
     }
     if(data.team){
       dataMapping.team = doc(this.db, 'teams', data.team || '')
@@ -76,6 +84,7 @@ export class PlayerMappingFirebase implements IBaseMapping<Player>{
     if (data.dorsal) result.dorsal = data.dorsal;
     if (data.position) result.position = data.position;
     if (data.team) result.team = doc(this.db, 'team', data.team || '');
+    if (data.picture) result.picture = data.picture?.url || '';
     if (data.userId) result.user = data.userId || '';
     return result;
   }
