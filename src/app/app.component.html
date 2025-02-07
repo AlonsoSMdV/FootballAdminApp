@@ -56,7 +56,7 @@
         <div class="logout-section" *ngIf="(authSvc.authenticated$ | async)">
           <button class="logout-button" (click)="logout(); menu.close()">
             <ion-icon name="log-out-outline"></ion-icon>
-            <span>Cerrar Sesión</span>
+            <span>{{ "MENU.LOGOUT" | translate }}</span>
           </button>
         </div>
       </ion-content>
