@@ -31,7 +31,7 @@ export class PlayerCreateModalComponent  implements OnInit {
     this.formGroup.controls['birthdate'].setValue(_player.birthdate)
     this.formGroup.controls['position'].setValue(_player.position);
     this.formGroup.controls['team'].setValue(_player.team)
-    this.formGroup.controls['picture'].setValue(_player.picture)
+    this.formGroup.controls['picture'].setValue(_player.picture?.url)
   }
 
   constructor(
