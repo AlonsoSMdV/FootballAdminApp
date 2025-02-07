@@ -66,7 +66,7 @@ export class UsersMappingFirebase implements IBaseMapping<Users>{
     if (data.name) result.name = data.name;
     if (data.surname) result.surname = data.surname;
     if (data.email) result.email = data.email;
-    if (data.picture) result.picture = data.picture;
+    if (data.picture) result.picture = data.picture?.url || '';
     return result;
   }
   
