@@ -9,5 +9,6 @@ export interface FirebasePlayer{
   dorsal: number;
   position: string;
   team?: DocumentReference;
+  picture?: string;
   userId?: DocumentReference;
 }

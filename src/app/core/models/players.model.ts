@@ -9,5 +9,12 @@ export interface Player extends Model{
   dorsal: number;
   position: string;
   team?: string;
+  picture?:{
+    url: string | undefined,
+    large: string | undefined,
+    medium: string | undefined,
+    small: string | undefined,
+    thumbnail: string | undefined,
+  };
   userId?: string;
 }

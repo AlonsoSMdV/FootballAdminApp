@@ -62,7 +62,7 @@ export class LeagueMappingFirebase implements IBaseMapping<League>{
   setUpdate(data: Partial<League>): FirebaseLeague {
     const result: any = {};
     if (data.name) result.name = data.name;
-    if (data.picture) result.picture = data.picture;
+    if (data.picture) result.picture = data.picture?.url || '';
     if (data.userId) result.user = doc(this.db, 'usuarios', data.userId || '');
     return result;
   }
