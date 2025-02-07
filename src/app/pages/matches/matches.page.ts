@@ -16,7 +16,7 @@ import { MatchCreateComponent } from 'src/app/shared/components/match-create/mat
   styleUrls: ['./matches.page.scss'],
 })
 export class MatchesPage implements OnInit {
-
+  img: string|undefined = './../../../assets/img/imgCard2.jpg'
   currentLang:string
   _matches: BehaviorSubject<Match[]> = new BehaviorSubject<Match[]>([])
   matches$: Observable<Match[]> = this._matches.asObservable()
@@ -114,4 +114,30 @@ export class MatchesPage implements OnInit {
         await this.presentModalMatch('new');
       }
 
+
+    async onDeleteMatch(match: Match) {
+      const alert = await this.alertCtrl.create({
+        header: await this.translate.get('MATCHES.MESSAGES.DELETE_CONFIRM').toPromise(),
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+          },
+          {
+            text: 'OK',
+            role: 'yes',
+            handler: () => {
+              this.matchSvc.delete(match.id).subscribe({
+                next: response => {
+                  this.getMatches();
+                },
+                error: err => {}
+              });
+            }
+          }
+        ]
+      });
+  
+      await alert.present();
+    }
 }
