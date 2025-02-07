@@ -19,6 +19,12 @@ export class PlayersPage implements OnInit {
   currentLang:string
   _players: BehaviorSubject<Player[]> = new BehaviorSubject<Player[]>([]);
   players$: Observable<Player[]> = this._players.asObservable();
+  flippedCards: { [key: string]: boolean } = {};
+
+  toggleFlip(playerId: string) {
+    // Toggle only the clicked card without affecting others
+    this.flippedCards[playerId] = !this.flippedCards[playerId];
+  }
 
   constructor(
     private playerSvc: PlayerService,

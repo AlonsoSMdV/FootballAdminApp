@@ -24,27 +24,67 @@
         *ngFor="let player of (players$ | async), let i = index"
       >
         <ion-card>
-          <ion-card-content>
-            <div class="player-header">
-              <div class="player-image-container">
-                <img [src]="img" alt="league logo" class="player-img"/>
-                <div class="glow-effect"></div>
+          <div class="card-inner" [class.flipped]="flippedCards[player.id]">
+            <!-- Front of the card -->
+            <div class="card-front" (click)="!flippedCards[player.id] && toggleFlip(player.id)">
+              <ion-card-content>
+                <div class="player-header">
+                  <div class="player-image-container">
+                    <img [src]="img" alt="league logo" class="player-img"/>
+                    <div class="glow-effect"></div>
+                  </div>
+                </div>
+              </ion-card-content>
+            </div>
+            
+            <!-- Back of the card -->
+            <div class="card-back">
+              <div class="player-info">
+                <h3>Información del Jugador</h3>
+                <div class="info-row">
+                  <strong>{{'PLAYERS.NAME' | translate}}:</strong>
+                  <span>{{player.name}}</span>
+                </div>
+                <div class="info-row">
+                  <strong>{{'PLAYERS.SURNAME1' | translate}}:</strong>
+                  <span>{{player.firstSurname}}</span>
+                </div>
+                <div class="info-row">
+                  <strong>{{'PLAYERS.SURNAME2' | translate}}:</strong>
+                  <span>{{player.secondSurname}}</span>
+                </div>
+                <div class="info-row">
+                  <strong>{{'PLAYERS.BIRTHDATE' | translate}}:</strong>
+                  <span>{{player.birthdate}}</span>
+                </div>
+                <div class="info-row">
+                  <strong>{{'PLAYERS.DORSAL' | translate}}:</strong>
+                  <span>{{player.dorsal}}</span>
+                </div>
+                <div class="info-row">
+                  <strong>{{'PLAYERS.NATIONALITY' | translate}}:</strong>
+                  <span>{{player.nationality}}</span>
+                </div>
+                <div class="info-row">
+                  <strong>{{'PLAYERS.POSITION' | translate}}:</strong>
+                  <span>{{player.position}}</span>
+                </div>
+                
+                <div class="flip-back-btn">
+                  <ion-button fill="clear" class="edit" (click)="openPlayer(player, i); $event.stopPropagation()">
+                    <ion-icon name="create" slot="icon-only"></ion-icon>
+                  </ion-button>
+                  <ion-button fill="clear" (click)="toggleFlip(player.id); $event.stopPropagation()">
+                    <ion-icon name="arrow-undo" slot="start"></ion-icon>
+                    Volver
+                  </ion-button>
+                  <ion-button fill="clear" class="delete" (click)="onDeletePlayer(player); $event.stopPropagation()">
+                    <ion-icon name="trash" slot="icon-only"></ion-icon>
+                  </ion-button>
+                </div>
               </div>
-              <h2 class="player-name">{{player.name}}</h2>
             </div>
-
-            <div class="action-buttons">
-              <ion-button fill="clear" class="info" (click)="openPlayerDetail(player)">
-                <ion-icon name="information-circle" slot="icon-only"></ion-icon>
-              </ion-button>
-              <ion-button fill="clear" class="edit" (click)="openPlayer(player, i)">
-                <ion-icon name="create" slot="icon-only"></ion-icon>
-              </ion-button>
-              <ion-button fill="clear" class="delete" (click)="onDeletePlayer(player)">
-                <ion-icon name="trash" slot="icon-only"></ion-icon>
-              </ion-button>
-            </div>
-          </ion-card-content>
+          </div>
         </ion-card>
       </ion-col>
     </ion-row>
