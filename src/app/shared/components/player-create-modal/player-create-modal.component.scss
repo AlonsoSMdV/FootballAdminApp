@@ -186,3 +186,25 @@ ion-item ion-label {
     --width: 95%;
   }
 }
+
+/* Adjust form labels for better spacing */
+ion-item ion-label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.picture-button {
+  --border-radius: 4px; /* Adjust this value to control corner roundness */
+  border-radius: var(--border-radius);
+}
+
+.picture-button input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}

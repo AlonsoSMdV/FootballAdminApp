@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';import { Component, Input, OnInit } f
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ModalController, Platform } from '@ionic/angular';
 import { Player } from 'src/app/core/models/players.model';
+import { __param } from 'tslib';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class PlayerCreateModalComponent  implements OnInit {
     this.formGroup.controls['birthdate'].setValue(_player.birthdate)
     this.formGroup.controls['position'].setValue(_player.position);
     this.formGroup.controls['team'].setValue(_player.team)
+    this.formGroup.controls['picture'].setValue(_player.picture)
   }
 
   constructor(
@@ -48,7 +50,8 @@ export class PlayerCreateModalComponent  implements OnInit {
       dorsal:['', [Validators.pattern(/^\d+$/)]],
       birthdate:['', [Validators.required]],
       position:['', [Validators.required, Validators.minLength(2)]],
-      team:[null, [Validators.required]]
+      team:[null, [Validators.required]],
+      picture:['']
     });
   }
   
@@ -98,6 +101,10 @@ export class PlayerCreateModalComponent  implements OnInit {
 
   get team(){
     return this.formGroup.controls['team']
+  }
+
+  get picture(){
+    return this.formGroup.controls['picture']
   }
   
   getDirtyValues(formGroup: FormGroup): any {
