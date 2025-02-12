@@ -1,3 +1,49 @@
+:host {
+  --primary-color: #00ff88;
+  --secondary-color: #5050db;
+  --accent-color: #ff3366;
+  --background-dark: #131313;
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --card-height: 300px;
+  --card-width: 300px;
+}
+
+// Header Styles
+ion-header {
+  ion-toolbar {
+    --background: transparent;
+    backdrop-filter: blur(10px);
+    
+    ion-title {
+      font-weight: 700;
+      background: linear-gradient(45deg, var(--primary-color), #00ffcc);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+/* Base gradient background */
+ion-content {
+  --background: none;
+  background-image: linear-gradient(to bottom, #000000, #1c301d);
+}
+
+/* Toolbar styling */
+ion-toolbar {
+  --background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.page-title {
+  color: #00ff9d;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+
 #container {
   text-align: center;
 
@@ -77,11 +123,3 @@ section {
   }
 }
 
-
-ion-toolbar {
-  --background: none !important; /* Elimina el fondo */
-  background-color: #121212;
-  --ion-background-color: transparent !important; /* Compatibilidad con temas de Ionic */
-  box-shadow: none; /* Elimina la sombra */
-  border: none; /* Elimina cualquier borde */
-}

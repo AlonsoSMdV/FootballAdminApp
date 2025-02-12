@@ -152,7 +152,7 @@
           }
       },
       "HOME": {
-        "TITLE": "INICIO",
+        "TITLE": "Inicio",
         "LEAGUES": "Explora las ligas junto a sus respectivos equipos.",
         "TEAMS": "Consulta los equipos participantes, su número de jugadores y la información de estos",
         "PLAYERS": "Descubre información detallada de los jugadores.",
@@ -163,7 +163,7 @@
         "SEE_CONTACT": "Contactar"
       },
       "ABOUT":{
-        "TITLE": "CONTACTO",
+        "TITLE": "Contacto",
         "ME": "¡Hola! Soy Alonso, creador de esta página que usa ionic, angular y conexión a servicios de strapi, soy estudiante de 2ºDAM en el centro C.P.I.F.P. Alan Turing, espero que os guste el resto de la página"
       }
   }

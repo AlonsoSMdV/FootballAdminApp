@@ -163,7 +163,7 @@
           "SEE_CONTACT": "Contact"
         },
       "ABOUT":{
-        "TITLE": "ABOUT",
+        "TITLE": "About",
         "ME": "Hello! I'm Alonso, the creator of this page, which uses Ionic, Angular, and connects to Strapi services. I'm a 2nd-year DAM student at the C.P.I.F.P. Alan Turing center. I hope you enjoy the rest of the page!"
       }
   } 

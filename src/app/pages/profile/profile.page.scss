@@ -22,18 +22,6 @@ ion-header {
       -webkit-text-fill-color: transparent;
       font-size: 1.5rem;
     }
-
-    .create-button {
-      --background: linear-gradient(45deg, var(--primary-color), #00ffcc);
-      --border-radius: 20px;
-      --padding-start: 15px;
-      --padding-end: 15px;
-      margin-right: 16px;
-      
-      ion-icon {
-        margin-right: 8px;
-      }
-    }
   }
 }
 
@@ -171,7 +159,7 @@ ion-text[color="danger"] {
 /* Custom scrollbar */
 ion-content::part(scroll) {
   scrollbar-width: thin;
-  scrollbar-color: #00ff9d rgba(21, 71, 52, 0.4);
+  scrollbar-color: #0c7c51 rgba(21, 71, 52, 0.4);
 }
 
 ion-content::part(scroll)::-webkit-scrollbar {
@@ -179,7 +167,7 @@ ion-content::part(scroll)::-webkit-scrollbar {
 }
 
 ion-content::part(scroll)::-webkit-scrollbar-thumb {
-  background: #00ff9d;
+  background: #0c7c51;
   border-radius: 3px;
 }
 

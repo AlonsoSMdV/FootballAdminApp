@@ -1,9 +1,20 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>{{'ABOUT.TITLE' | translate}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="animate-title">{{'ABOUT.TITLE' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content class="ion-padding">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" class="page-title">{{ 'ABOUT.TITLE' | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
   <div class="about-container">
     <!-- Imagen -->
     <img src="assets/img/profile.jpg" alt="Profile Picture" class="profile-picture">
