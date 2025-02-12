@@ -7,7 +7,7 @@
     <ion-title class="animate-title">{{'MATCHES.TITLE' | translate}}</ion-title>
     <ion-button class="create-button" slot="end" (click)="onAddMatch()">
       <ion-icon name="add-circle-outline"></ion-icon>
-      {{'MACTHES.CREATE' | translate}}
+      {{'MATCHES.CREATE' | translate}}
     </ion-button>
   </ion-toolbar>
 </ion-header>
@@ -35,12 +35,12 @@
             <div class="teams-container">
               
               <div class="team">
-                <img [src]="img" alt="team 1" class="team-logo"/>
+                <img [src]="match.localTeam?.picture?.url || img" alt="team 1" class="team-logo"/>
                 <span class="team-name">{{match.localTeam?.name}}</span>
               </div>
               <span class="versus">VS</span>
               <div class="team">
-                <img [src]="img" class="team-logo" alt="Team 2">
+                <img [src]="match.visitorTeam?.picture?.url || img" class="team-logo" alt="Team 2">
                 <span class="team-name">{{match.visitorTeam?.name}}</span>
               </div>
             </div>

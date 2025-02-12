@@ -130,6 +130,27 @@
               "DELETE_CONFIRM":"¿Deseas borrar este jugador?"
             }
       },
+      "MATCHES":{
+        "TITLE":"Partidos",
+        "CREATE": "Crear partido",
+        "EDIT": "Editar partido",
+        "NEW": "Nuevo partido",
+        "DAY":"Día del partido",
+        "TIME":"Hora del partido",
+        "PLACE":"Lugar",
+        "RESULT":"Resultado",
+        "SELECT_DATE": "Seleccionar dia",
+        "SELECT_TIME": "Seleccionar hora",
+        "TEAM_LOCAL":"Equipo local","TEAM_VISITOR":"Equipo visitante",
+        "SUBMIT": "Registrar",
+        "UPDATE": "Actualizar",
+        "ERRORS": {
+          "DAY_REQUIRED": "El día es obligatorio"
+          },
+          "MESSAGES":{
+            "DELETE_CONFIRM":"¿Deseas borrar este partido?"
+          }
+      },
       "HOME": {
         "TITLE": "INICIO",
         "LEAGUES": "Explora las ligas junto a sus respectivos equipos.",

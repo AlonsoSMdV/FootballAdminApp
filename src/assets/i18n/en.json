@@ -130,6 +130,27 @@
               "DELETE_CONFIRM":"You want to delete this player?"
             }
         },
+        "MATCHES":{
+          "TITLE":"Matches",
+          "CREATE": "Create match",
+          "EDIT": "Edit match",
+          "NEW": "New match",
+          "DAY":"Match day",
+          "TIME":"Match hour",
+          "PLACE":"Place",
+          "RESULT":"Result",
+          "SELECT_DATE": "Select day",
+          "SELECT_TIME": "Select time",
+          "TEAM_LOCAL":"Local team","TEAM_VISITOR":"Visitor team",
+          "SUBMIT": "Register",
+          "UPDATE": "Update",
+          "ERRORS": {
+            "DAY_REQUIRED": "Day is required"
+            },
+            "MESSAGES":{
+              "DELETE_CONFIRM":"You want to delete this match?"
+            }
+        },
         "HOME": {
           "TITLE": "Home",
           "LEAGUES": "Explore active leagues and their teams.",
