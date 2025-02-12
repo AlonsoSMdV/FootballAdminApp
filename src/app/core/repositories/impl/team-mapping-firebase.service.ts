@@ -31,7 +31,14 @@ export class TeamMappingFirebase implements IBaseMapping<Team>{
       name: data.name,
       numberOfPlayers: data.numberOfPlayers,
       league: data.league?.id,
-      userId: data.userId?.id 
+      userId: data.userId?.id,
+      picture: data.picture ? {
+        url: data.picture,
+        large: data.picture,
+        medium: data.picture,
+        small: data.picture,
+        thumbnail: data.picture
+      }: undefined
     };
   }
   getAdded(data: { id: string } & FirebaseTeam): Team {
@@ -46,7 +53,8 @@ export class TeamMappingFirebase implements IBaseMapping<Team>{
   setAdd(data: Team): FirebaseTeam {
     let dataMapping:FirebaseTeam = {
       name: data.name,
-      numberOfPlayers: data.numberOfPlayers
+      numberOfPlayers: data.numberOfPlayers,
+      picture: data.picture?.url || ''
     }
     if(data.league){
       dataMapping.league = doc(this.db, 'leagues', data.league || '')
@@ -62,6 +70,7 @@ export class TeamMappingFirebase implements IBaseMapping<Team>{
     if (data.numberOfPlayers) result.numberOfPlayers = data.numberOfPlayers;
     if (data.league) result.league = doc(this.db, 'leagues', data.league || '');
     if (data.userId) result.user = data.userId || '';
+    if (data.picture) result.picture = data.picture?.url || '';
     return result;
   }
   

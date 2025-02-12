@@ -24,7 +24,7 @@
           <ion-card-content>
             <div class="team-header">
               <div class="team-image-container">
-                <img [src]="img" alt="team logo" class="team-img"/>
+                <img [src]="team.picture?.url || img" alt="team logo" class="team-img"/>
                 <div class="glow-effect"></div>
               </div>
               <h2 class="team-name">{{team.name}}</h2>

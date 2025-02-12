@@ -4,4 +4,5 @@ export interface FirebaseTeam{
   numberOfPlayers: number;
   league?: DocumentReference;
   userId?: DocumentReference;
+  picture?: string;
 }

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
 import { Paginated } from 'src/app/core/models/paginated.model';
 import { Team } from 'src/app/core/models/teams.model';
+import { BaseMediaService } from 'src/app/core/services/impl/base-media.service';
 import { TeamService } from 'src/app/core/services/impl/team.service';
 import { LanguageService } from 'src/app/core/services/language.service';
 import { TeamCreateModalComponent } from 'src/app/shared/components/team-create-modal/team-create-modal.component';
@@ -24,7 +25,8 @@ export class TeamsPage implements OnInit {
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
     private translate: TranslateService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private mediaSvc: BaseMediaService
   ) { 
     this.currentLang = this.languageService.getStoredLanguage();
   }
@@ -74,10 +76,35 @@ export class TeamsPage implements OnInit {
         team: team
       }:{})
     });
-    modal.onDidDismiss().then((response:any)=>{
+    modal.onDidDismiss().then(async (response)=>{
+          let newTeam : any = null
+          if (response.data.picture) {
+            const base64Response = await fetch(response.data.picture);
+            const blob = await base64Response.blob();
+            const uploadedBlob = await lastValueFrom(this.mediaSvc.upload(blob));
+            const pictureUrl = uploadedBlob.map(url => url.toString())
+            response.data.picture = pictureUrl
+      
+            newTeam = {
+              name: response.data.name,
+              numberOfPlayers: response.data.numberOfPlayers,
+              picture: {
+                url: pictureUrl[0],
+                large: pictureUrl[0],
+                medium: pictureUrl[0],
+                small: pictureUrl[0],
+                thumbnail: pictureUrl[0],
+              }
+            }
+          }else{
+            newTeam = {
+              name: response.data.name,
+              numberOfPlayers: response.data.numberOfPlayers
+            }
+          }
       switch (response.role) {
         case 'new':
-          this.teamSvc.add(response.data).subscribe({
+          this.teamSvc.add(newTeam).subscribe({
             next:res=>{
               this.getTeams();
             },
@@ -85,7 +112,7 @@ export class TeamsPage implements OnInit {
           });
           break;
         case 'edit':
-          this.teamSvc.update(team!.id, response.data).subscribe({
+          this.teamSvc.update(team!.id, newTeam).subscribe({
             next:res=>{
               this.getTeams();
             },

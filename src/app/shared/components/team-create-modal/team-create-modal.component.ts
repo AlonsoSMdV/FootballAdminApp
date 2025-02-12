@@ -21,6 +21,7 @@ export class TeamCreateModalComponent  implements OnInit {
     this.formGroup.controls['name'].setValue(_team.name);
     this.formGroup.controls['numberOfPlayers'].setValue(_team.numberOfPlayers)
     this.formGroup.controls['league'].setValue(_team.league)
+    this.formGroup.controls['picture'].setValue(_team.picture?.url)
   }
 
   constructor(
@@ -32,7 +33,8 @@ export class TeamCreateModalComponent  implements OnInit {
     this.formGroup = this.fb.group({
       name:['', [Validators.required, Validators.minLength(2)]],
       numberOfPlayers:[''  ,[Validators.pattern(/^\d+$/)]],
-      league:['', [Validators.required]]
+      league:['', [Validators.required]],
+      picture:['']
     });
   }
   
@@ -49,6 +51,10 @@ export class TeamCreateModalComponent  implements OnInit {
 
   get league(){
     return this.formGroup.controls['league']
+  }
+
+  get picture(){
+    return this.formGroup.controls['picture']
   }
 
   
