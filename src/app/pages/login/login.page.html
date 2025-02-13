@@ -21,11 +21,11 @@
           </ion-button>
         </ion-item>
         <ion-text class="input-error" color="danger" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
-          <p *ngIf="email?.errors?.['required']">*Debe introducir un email</p>
-          <p *ngIf="email?.errors?.['email']">*Debe introducir un email correcto</p>
+          <p *ngIf="email?.errors?.['required']">{{'LOGIN.ERRORS.REQUIRED' | translate}}</p>
+          <p *ngIf="email?.errors?.['email']">{{'LOGIN.ERRORS.INCORRECT_EMAIL' | translate}}</p>
         </ion-text>
         <ion-text class="input-error" color="danger" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
-          <p *ngIf="password?.errors?.['required']">*Debe introducir una contraseña</p>
+          <p *ngIf="password?.errors?.['required']">{{'LOGIN.ERRORS.INCORRECT_PASSWORD' | translate}}</p>
         </ion-text>
         <ion-button style="text-transform:none" color="success" expand="block" type="submit" [disabled]="loginForm.invalid">
           {{'LOGIN.BUTTON_LOGIN'|translate}}
@@ -33,7 +33,7 @@
         <ion-grid>
           <ion-row>
             <ion-col style="display:flex" class="ion-justify-content-center ion-align-items-center">
-              ¿No tienes cuenta?<ion-button style="text-transform:none" color="success" (click)="onRegister()" fill="clear">{{'LOGIN.BUTTON_REGISTER' | translate}}</ion-button>
+              {{'LOGIN.NOT_ACCOUNT' | translate}}<ion-button style="text-transform:none" color="success" (click)="onRegister()" fill="clear">{{'LOGIN.BUTTON_REGISTER' | translate}}</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>
