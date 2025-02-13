@@ -1,0 +1,190 @@
+{
+  "COMMON": {
+    "LANGUAGE": "语言",
+    "SPANISH": "西班牙语",
+    "ENGLISH": "英语",
+    "FRENCH": "法语",
+    "ITALIAN": "意大利语",
+    "ERROR": {
+      "LOAD": "加载数据时出错",
+      "SAVE": "保存更改时出错"
+    },
+    "SUCCESS": {
+      "SAVE": "更改已成功保存"
+    },
+    "ACCEPT": "接受",
+    "CANCEL": "取消"
+  },
+  "MENU": {
+    "TITLE": "菜单",
+    "HOME": "首页",
+    "ABOUT": "联系",
+    "LEAGUES": "联赛",
+    "MATCHES": "比赛",
+    "LOGOUT": "退出登录",
+    "PROFILE": "个人资料",
+    "BACK": "返回"
+  },
+  "PROFILE": {
+    "TITLE": "个人资料",
+    "SUBTITLE": "你的个人信息",
+    "UPDATE": "更新",
+    "PICTURE": "个人头像",
+    "NAME": "名字",
+    "SURNAMES": "姓氏",
+    "EMAIL": "电子邮件"
+  },
+  "LOGIN": {
+    "TITLE": "登录",
+    "EMAIL": "电子邮件",
+    "PASSWORD": "密码",
+    "BUTTON_LOGIN": "登录",
+    "BUTTON_REGISTER": "注册",
+    "ERRORS": {
+      "REQUIRED": "*必须输入电子邮件",
+      "INCORRECT_EMAIL": "*必须输入有效的电子邮件",
+      "INCORRECT_PASSWORD": "*必须输入密码"
+    },
+    "NOT_ACCOUNT": "没有账户?"
+  },
+  "REGISTER": {
+    "TITLE": "创建账户",
+    "NAME": "名字",
+    "SURNAMES": "姓氏",
+    "EMAIL": "电子邮件",
+    "PASSWORD": "密码",
+    "REPEAT_PASSWORD": "重复密码",
+    "BUTTON_LOGIN": "登录",
+    "BUTTON_REGISTER": "创建账户",
+    "ERRORS": {
+      "NAME_REQUIRED": "*必须输入名字",
+      "NAME_MIN_LENGTH": "*名字必须至少包含两个字符",
+      "SURNAME_REQUIRED": "*必须输入姓氏",
+      "SURNAME_MIN_LENGTH": "*姓氏必须至少包含两个字符",
+      "EMAIL_REQUIRED": "*必须输入电子邮件",
+      "INCORRECT_EMAIL": "*必须输入有效的电子邮件",
+      "PASSWORD_REQUIRED": "*必须输入密码",
+      "INCORRECT_PASSWORD_REQUIREMENTS": "至少8个字符，包含一个大写字母，一个小写字母，一个数字和一个特殊字符(@$!%*?&.)",
+      "MISMATCH_PASSWORD": "*密码不匹配"
+    },
+    "HAVE_ACCOUNT": "已有账户?"
+  },
+  "LEAGUES": {
+    "TITLE": "联赛",
+    "CREATE": "创建联赛",
+    "EDIT": "编辑联赛",
+    "NEW": "新联赛",
+    "NAME": "联赛名称",
+    "SUBMIT": "注册",
+    "UPDATE": "更新",
+    "ERRORS": {
+      "NAME_REQUIRED": "名称是必填项",
+      "NAME_MIN_LENGTH": "名称必须超过2个字符"
+    },
+    "MESSAGES": {
+      "DELETE_CONFIRM": "你确定要删除这个联赛吗?"
+    }
+  },
+  "LEAGUE_SELECTABLE": {
+    "NONE": "无",
+    "SEARCH": "搜索",
+    "SELECT_LEAGUE": "选择一个联赛"
+  },
+  "TEAMS": {
+    "TITLE": "球队",
+    "CREATE": "创建球队",
+    "EDIT": "编辑球队",
+    "NEW": "新球队",
+    "NAME": "球队名称",
+    "NOFPLAYERS": "球员数量",
+    "LEAGUE": "联赛",
+    "SUBMIT": "注册",
+    "UPDATE": "更新",
+    "ERRORS": {
+      "NAME_REQUIRED": "名称是必填项",
+      "NAME_MIN_LENGTH": "球队名称必须超过2个字符",
+      "PATTERN": "球员数量必须为正数"
+    },
+    "MESSAGES": {
+      "DELETE_CONFIRM": "你确定要删除这个球队吗?"
+    }
+  },
+  "TEAM_SELECTABLE": {
+    "NONE": "无",
+    "SEARCH": "搜索",
+    "SELECT_TEAM": "选择一个球队"
+  },
+  "PLAYERS": {
+    "TITLE": "球员",
+    "CREATE": "创建球员",
+    "EDIT": "编辑球员",
+    "NEW": "新球员",
+    "NAME": "名字",
+    "SURNAME1": "姓氏",
+    "SURNAME2": "第二姓氏",
+    "NATIONALITY": "国籍",
+    "DORSAL": "球衣号码",
+    "BIRTHDATE": "出生日期",
+    "SELECT_DATE": "选择日期",
+    "SELECT_POSITION": "选择位置",
+    "POSITION": "位置",
+    "POSITION_GOALKEEPER": "守门员",
+    "POSITION_DEFENDER": "后卫",
+    "POSITION_MIDFIELDER": "中场",
+    "POSITION_FORWARD": "前锋",
+    "TEAM": "球队",
+    "SUBMIT": "注册",
+    "UPDATE": "更新",
+    "ERRORS": {
+      "NAME_REQUIRED": "名字是必填项",
+      "NAME_MIN_LENGTH": "名字必须至少包含2个字符",
+      "SURNAME_REQUIRED": "姓氏是必填项",
+      "SURNAME_MIN_LENGTH": "姓氏必须至少包含2个字符",
+      "NATIONALITY_REQUIRED": "国籍是必填项",
+      "NATIONALITY_INVALID": "国籍必须至少包含2个字符",
+      "PATTERN": "球衣号码必须是正数",
+      "BIRTHDATE_REQUIRED": "出生日期是必填项",
+      "POSITION_REQUIRED": "位置是必填项"
+    },
+    "MESSAGES": {
+      "DELETE_CONFIRM": "你确定要删除这个球员吗?"
+    }
+  },
+  "MATCHES": {
+    "TITLE": "比赛",
+    "CREATE": "创建比赛",
+    "EDIT": "编辑比赛",
+    "NEW": "新比赛",
+    "DAY": "比赛日期",
+    "TIME": "比赛时间",
+    "PLACE": "地点",
+    "RESULT": "比分",
+    "SELECT_DATE": "选择日期",
+    "SELECT_TIME": "选择时间",
+    "TEAM_LOCAL": "主场球队",
+    "TEAM_VISITOR": "客场球队",
+    "SUBMIT": "注册",
+    "UPDATE": "更新",
+    "ERRORS": {
+      "DAY_REQUIRED": "比赛日期是必填项"
+    },
+    "MESSAGES": {
+      "DELETE_CONFIRM": "你确定要删除这个比赛吗?"
+    }
+  },
+  "HOME": {
+    "TITLE": "首页",
+    "LEAGUES": "探索各大联赛及其球队。",
+    "TEAMS": "查看参赛球队、球员人数及其详细信息。",
+    "PLAYERS": "了解球员的详细信息。",
+    "CONTACT": "有疑问？联系我们获取更多信息。",
+    "SEE_LEAGUES": "查看联赛",
+    "SEE_TEAMS": "查看球队",
+    "SEE_PLAYERS": "查看球员",
+    "SEE_CONTACT": "联系"
+  },
+  "ABOUT": {
+    "TITLE": "联系",
+    "ME": "你好！我是 Alonso，本网站的创建者。本网站使用 Ionic、Angular 和 Strapi，并且我是 C.P.I.F.P. Alan Turing 学校的 2DAM 学生，希望你喜欢本网站！"
+  }
+}

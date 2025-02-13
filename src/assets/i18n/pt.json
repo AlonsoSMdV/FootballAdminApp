@@ -1,0 +1,190 @@
+{
+  "COMMON": {
+    "LANGUAGE": "Idioma",
+    "SPANISH": "Espanhol",
+    "ENGLISH": "Inglês",
+    "FRENCH": "Francês",
+    "ITALIAN": "Italiano",
+    "ERROR": {
+      "LOAD": "Erro ao carregar os dados",
+      "SAVE": "Erro ao salvar as alterações"
+    },
+    "SUCCESS": {
+      "SAVE": "Alterações salvas com sucesso"
+    },
+    "ACCEPT": "Aceitar",
+    "CANCEL": "Cancelar"
+  },
+  "MENU": {
+    "TITLE": "Menu",
+    "HOME": "Início",
+    "ABOUT": "Contato",
+    "LEAGUES": "Ligas",
+    "MATCHES": "Partidas",
+    "LOGOUT": "Sair",
+    "PROFILE": "Perfil",
+    "BACK": "Voltar"
+  },
+  "PROFILE": {
+    "TITLE": "Perfil",
+    "SUBTITLE": "Suas informações pessoais",
+    "UPDATE": "Atualizar",
+    "PICTURE": "Foto do perfil",
+    "NAME": "Nome",
+    "SURNAMES": "Sobrenome",
+    "EMAIL": "E-mail"
+  },
+  "LOGIN": {
+    "TITLE": "Entrar",
+    "EMAIL": "E-mail",
+    "PASSWORD": "Senha",
+    "BUTTON_LOGIN": "Entrar",
+    "BUTTON_REGISTER": "Registrar-se",
+    "ERRORS": {
+      "REQUIRED": "*Você deve inserir um e-mail",
+      "INCORRECT_EMAIL": "*Você deve inserir um e-mail válido",
+      "INCORRECT_PASSWORD": "*Você deve inserir uma senha"
+    },
+    "NOT_ACCOUNT": "Não tem uma conta?"
+  },
+  "REGISTER": {
+    "TITLE": "Criar uma conta",
+    "NAME": "Nome",
+    "SURNAMES": "Sobrenome",
+    "EMAIL": "E-mail",
+    "PASSWORD": "Senha",
+    "REPEAT_PASSWORD": "Repita a senha",
+    "BUTTON_LOGIN": "Entrar",
+    "BUTTON_REGISTER": "Criar conta",
+    "ERRORS": {
+      "NAME_REQUIRED": "*Você deve inserir seu nome",
+      "NAME_MIN_LENGTH": "*O nome deve ter pelo menos dois caracteres",
+      "SURNAME_REQUIRED": "*Você deve inserir seu sobrenome",
+      "SURNAME_MIN_LENGTH": "*O sobrenome deve ter pelo menos dois caracteres",
+      "EMAIL_REQUIRED": "*Você deve inserir um e-mail",
+      "INCORRECT_EMAIL": "*Você deve inserir um e-mail válido",
+      "PASSWORD_REQUIRED": "*Você deve inserir uma senha",
+      "INCORRECT_PASSWORD_REQUIREMENTS": "Mínimo de 8 caracteres, uma letra maiúscula, uma minúscula, um dígito e um caractere especial (@$!%*?&.)",
+      "MISMATCH_PASSWORD": "*As senhas não coincidem"
+    },
+    "HAVE_ACCOUNT": "Já tem uma conta?"
+  },
+  "LEAGUES": {
+    "TITLE": "Ligas",
+    "CREATE": "Criar liga",
+    "EDIT": "Editar liga",
+    "NEW": "Nova liga",
+    "NAME": "Nome da liga",
+    "SUBMIT": "Registrar",
+    "UPDATE": "Atualizar",
+    "ERRORS": {
+      "NAME_REQUIRED": "O nome é obrigatório",
+      "NAME_MIN_LENGTH": "O nome deve ter mais de 2 caracteres"
+    },
+    "MESSAGES": {
+      "DELETE_CONFIRM": "Deseja excluir esta liga?"
+    }
+  },
+  "LEAGUE_SELECTABLE": {
+    "NONE": "Nenhuma",
+    "SEARCH": "Buscar",
+    "SELECT_LEAGUE": "Selecionar uma liga"
+  },
+  "TEAMS": {
+    "TITLE": "Times",
+    "CREATE": "Criar time",
+    "EDIT": "Editar time",
+    "NEW": "Novo time",
+    "NAME": "Nome do time",
+    "NOFPLAYERS": "Jogadores no elenco",
+    "LEAGUE": "Liga",
+    "SUBMIT": "Registrar",
+    "UPDATE": "Atualizar",
+    "ERRORS": {
+      "NAME_REQUIRED": "O nome é obrigatório",
+      "NAME_MIN_LENGTH": "O nome do time deve ter mais de 2 caracteres",
+      "PATTERN": "O número de jogadores no elenco deve ser positivo"
+    },
+    "MESSAGES": {
+      "DELETE_CONFIRM": "Deseja excluir este time?"
+    }
+  },
+  "TEAM_SELECTABLE": {
+    "NONE": "Nenhum",
+    "SEARCH": "Buscar",
+    "SELECT_TEAM": "Selecionar time"
+  },
+  "PLAYERS": {
+    "TITLE": "Jogadores",
+    "CREATE": "Criar jogador",
+    "EDIT": "Editar jogador",
+    "NEW": "Novo jogador",
+    "NAME": "Nome",
+    "SURNAME1": "Primeiro sobrenome",
+    "SURNAME2": "Segundo sobrenome",
+    "NATIONALITY": "Nacionalidade",
+    "DORSAL": "Número da camisa",
+    "BIRTHDATE": "Data de nascimento",
+    "SELECT_DATE": "Selecionar data",
+    "SELECT_POSITION": "Selecionar posição",
+    "POSITION": "Posição",
+    "POSITION_GOALKEEPER": "Goleiro",
+    "POSITION_DEFENDER": "Zagueiro",
+    "POSITION_MIDFIELDER": "Meio-campista",
+    "POSITION_FORWARD": "Atacante",
+    "TEAM": "Time",
+    "SUBMIT": "Registrar",
+    "UPDATE": "Atualizar",
+    "ERRORS": {
+      "NAME_REQUIRED": "O nome é obrigatório",
+      "NAME_MIN_LENGTH": "O nome deve ter no mínimo 2 caracteres",
+      "SURNAME_REQUIRED": "Os sobrenomes são obrigatórios",
+      "SURNAME_MIN_LENGTH": "Os sobrenomes devem ter no mínimo 2 caracteres",
+      "NATIONALITY_REQUIRED": "A nacionalidade é obrigatória",
+      "NATIONALITY_INVALID": "A nacionalidade deve ter no mínimo 2 caracteres",
+      "PATTERN": "O número da camisa deve ser um número positivo",
+      "BIRTHDATE_REQUIRED": "A data de nascimento é obrigatória",
+      "POSITION_REQUIRED": "A posição é obrigatória"
+    },
+    "MESSAGES": {
+      "DELETE_CONFIRM": "Deseja excluir este jogador?"
+    }
+  },
+  "MATCHES": {
+    "TITLE": "Partidas",
+    "CREATE": "Criar partida",
+    "EDIT": "Editar partida",
+    "NEW": "Nova partida",
+    "DAY": "Dia da partida",
+    "TIME": "Hora da partida",
+    "PLACE": "Local",
+    "RESULT": "Resultado",
+    "SELECT_DATE": "Selecionar dia",
+    "SELECT_TIME": "Selecionar hora",
+    "TEAM_LOCAL": "Time mandante",
+    "TEAM_VISITOR": "Time visitante",
+    "SUBMIT": "Registrar",
+    "UPDATE": "Atualizar",
+    "ERRORS": {
+      "DAY_REQUIRED": "O dia é obrigatório"
+    },
+    "MESSAGES": {
+      "DELETE_CONFIRM": "Deseja excluir esta partida?"
+    }
+  },
+  "HOME": {
+    "TITLE": "Início",
+    "LEAGUES": "Explore as ligas e seus respectivos times.",
+    "TEAMS": "Consulte os times participantes, o número de jogadores e suas informações.",
+    "PLAYERS": "Descubra informações detalhadas dos jogadores.",
+    "CONTACT": "Tem dúvidas? Entre em contato para mais informações.",
+    "SEE_LEAGUES": "Ver ligas",
+    "SEE_TEAMS": "Ver times",
+    "SEE_PLAYERS": "Ver jogadores",
+    "SEE_CONTACT": "Contato"
+  },
+  "ABOUT": {
+    "TITLE": "Contato",
+    "ME": "Olá! Sou Alonso, criador desta página que usa Ionic, Angular e conexão com serviços Strapi. Sou estudante de 2ºDAM no C.P.I.F.P. Alan Turing. Espero que gostem da página!"
+  }
+}

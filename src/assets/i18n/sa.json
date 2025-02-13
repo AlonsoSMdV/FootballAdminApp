@@ -1,0 +1,190 @@
+{
+  "COMMON": {
+    "LANGUAGE": "اللغة",
+    "SPANISH": "الإسبانية",
+    "ENGLISH": "الإنجليزية",
+    "FRENCH": "الفرنسية",
+    "ITALIAN": "الإيطالية",
+    "ERROR": {
+      "LOAD": "خطأ في تحميل البيانات",
+      "SAVE": "خطأ في حفظ التغييرات"
+    },
+    "SUCCESS": {
+      "SAVE": "تم حفظ التغييرات بنجاح"
+    },
+    "ACCEPT": "قبول",
+    "CANCEL": "إلغاء"
+  },
+  "MENU": {
+    "TITLE": "القائمة",
+    "HOME": "الرئيسية",
+    "ABOUT": "اتصل بنا",
+    "LEAGUES": "الدوريات",
+    "MATCHES": "المباريات",
+    "LOGOUT": "تسجيل الخروج",
+    "PROFILE": "الملف الشخصي",
+    "BACK": "رجوع"
+  },
+  "PROFILE": {
+    "TITLE": "الملف الشخصي",
+    "SUBTITLE": "معلوماتك الشخصية",
+    "UPDATE": "تحديث",
+    "PICTURE": "صورة الملف الشخصي",
+    "NAME": "الاسم",
+    "SURNAMES": "اللقب",
+    "EMAIL": "البريد الإلكتروني"
+  },
+  "LOGIN": {
+    "TITLE": "تسجيل الدخول",
+    "EMAIL": "البريد الإلكتروني",
+    "PASSWORD": "كلمة المرور",
+    "BUTTON_LOGIN": "تسجيل الدخول",
+    "BUTTON_REGISTER": "إنشاء حساب",
+    "ERRORS": {
+      "REQUIRED": "*يجب إدخال البريد الإلكتروني",
+      "INCORRECT_EMAIL": "*يجب إدخال بريد إلكتروني صحيح",
+      "INCORRECT_PASSWORD": "*يجب إدخال كلمة المرور"
+    },
+    "NOT_ACCOUNT": "ليس لديك حساب؟"
+  },
+  "REGISTER": {
+    "TITLE": "إنشاء حساب",
+    "NAME": "الاسم",
+    "SURNAMES": "اللقب",
+    "EMAIL": "البريد الإلكتروني",
+    "PASSWORD": "كلمة المرور",
+    "REPEAT_PASSWORD": "أعد إدخال كلمة المرور",
+    "BUTTON_LOGIN": "تسجيل الدخول",
+    "BUTTON_REGISTER": "إنشاء حساب",
+    "ERRORS": {
+      "NAME_REQUIRED": "*يجب إدخال الاسم",
+      "NAME_MIN_LENGTH": "*يجب أن يحتوي الاسم على حرفين على الأقل",
+      "SURNAME_REQUIRED": "*يجب إدخال اللقب",
+      "SURNAME_MIN_LENGTH": "*يجب أن يحتوي اللقب على حرفين على الأقل",
+      "EMAIL_REQUIRED": "*يجب إدخال البريد الإلكتروني",
+      "INCORRECT_EMAIL": "*يجب إدخال بريد إلكتروني صحيح",
+      "PASSWORD_REQUIRED": "*يجب إدخال كلمة المرور",
+      "INCORRECT_PASSWORD_REQUIREMENTS": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل، حرف كبير، حرف صغير، رقم، ورمز خاص (@$!%*?&.)",
+      "MISMATCH_PASSWORD": "*كلمتا المرور غير متطابقتين"
+    },
+    "HAVE_ACCOUNT": "هل لديك حساب؟"
+  },
+  "LEAGUES": {
+    "TITLE": "الدوريات",
+    "CREATE": "إنشاء دوري",
+    "EDIT": "تعديل الدوري",
+    "NEW": "دوري جديد",
+    "NAME": "اسم الدوري",
+    "SUBMIT": "تسجيل",
+    "UPDATE": "تحديث",
+    "ERRORS": {
+      "NAME_REQUIRED": "الاسم مطلوب",
+      "NAME_MIN_LENGTH": "يجب أن يكون الاسم أكثر من حرفين"
+    },
+    "MESSAGES": {
+      "DELETE_CONFIRM": "هل تريد حذف هذا الدوري؟"
+    }
+  },
+  "LEAGUE_SELECTABLE": {
+    "NONE": "لا يوجد",
+    "SEARCH": "بحث",
+    "SELECT_LEAGUE": "اختر دوري"
+  },
+  "TEAMS": {
+    "TITLE": "الفرق",
+    "CREATE": "إنشاء فريق",
+    "EDIT": "تعديل الفريق",
+    "NEW": "فريق جديد",
+    "NAME": "اسم الفريق",
+    "NOFPLAYERS": "عدد اللاعبين",
+    "LEAGUE": "الدوري",
+    "SUBMIT": "تسجيل",
+    "UPDATE": "تحديث",
+    "ERRORS": {
+      "NAME_REQUIRED": "الاسم مطلوب",
+      "NAME_MIN_LENGTH": "يجب أن يحتوي اسم الفريق على أكثر من حرفين",
+      "PATTERN": "يجب أن يكون عدد اللاعبين رقمًا موجبًا"
+    },
+    "MESSAGES": {
+      "DELETE_CONFIRM": "هل تريد حذف هذا الفريق؟"
+    }
+  },
+  "TEAM_SELECTABLE": {
+    "NONE": "لا يوجد",
+    "SEARCH": "بحث",
+    "SELECT_TEAM": "اختر فريق"
+  },
+  "PLAYERS": {
+    "TITLE": "اللاعبون",
+    "CREATE": "إضافة لاعب",
+    "EDIT": "تعديل لاعب",
+    "NEW": "لاعب جديد",
+    "NAME": "الاسم",
+    "SURNAME1": "اللقب الأول",
+    "SURNAME2": "اللقب الثاني",
+    "NATIONALITY": "الجنسية",
+    "DORSAL": "رقم القميص",
+    "BIRTHDATE": "تاريخ الميلاد",
+    "SELECT_DATE": "اختر التاريخ",
+    "SELECT_POSITION": "اختر المركز",
+    "POSITION": "المركز",
+    "POSITION_GOALKEEPER": "حارس مرمى",
+    "POSITION_DEFENDER": "مدافع",
+    "POSITION_MIDFIELDER": "لاعب وسط",
+    "POSITION_FORWARD": "مهاجم",
+    "TEAM": "الفريق",
+    "SUBMIT": "تسجيل",
+    "UPDATE": "تحديث",
+    "ERRORS": {
+      "NAME_REQUIRED": "الاسم مطلوب",
+      "NAME_MIN_LENGTH": "يجب أن يحتوي الاسم على حرفين على الأقل",
+      "SURNAME_REQUIRED": "اللقب مطلوب",
+      "SURNAME_MIN_LENGTH": "يجب أن يحتوي اللقب على حرفين على الأقل",
+      "NATIONALITY_REQUIRED": "الجنسية مطلوبة",
+      "NATIONALITY_INVALID": "يجب أن تحتوي الجنسية على حرفين على الأقل",
+      "PATTERN": "يجب أن يكون رقم القميص رقمًا موجبًا",
+      "BIRTHDATE_REQUIRED": "تاريخ الميلاد مطلوب",
+      "POSITION_REQUIRED": "المركز مطلوب"
+    },
+    "MESSAGES": {
+      "DELETE_CONFIRM": "هل تريد حذف هذا اللاعب؟"
+    }
+  },
+  "MATCHES": {
+    "TITLE": "المباريات",
+    "CREATE": "إضافة مباراة",
+    "EDIT": "تعديل مباراة",
+    "NEW": "مباراة جديدة",
+    "DAY": "تاريخ المباراة",
+    "TIME": "وقت المباراة",
+    "PLACE": "المكان",
+    "RESULT": "النتيجة",
+    "SELECT_DATE": "اختر التاريخ",
+    "SELECT_TIME": "اختر الوقت",
+    "TEAM_LOCAL": "الفريق المضيف",
+    "TEAM_VISITOR": "الفريق الضيف",
+    "SUBMIT": "تسجيل",
+    "UPDATE": "تحديث",
+    "ERRORS": {
+      "DAY_REQUIRED": "التاريخ مطلوب"
+    },
+    "MESSAGES": {
+      "DELETE_CONFIRM": "هل تريد حذف هذه المباراة؟"
+    }
+  },
+  "HOME": {
+    "TITLE": "الرئيسية",
+    "LEAGUES": "اكتشف الدوريات والفرق الخاصة بها.",
+    "TEAMS": "استعرض الفرق وعدد اللاعبين ومعلوماتهم.",
+    "PLAYERS": "تعرف على اللاعبين بتفاصيل أكثر.",
+    "CONTACT": "هل لديك أسئلة؟ تواصل معنا لمزيد من المعلومات.",
+    "SEE_LEAGUES": "عرض الدوريات",
+    "SEE_TEAMS": "عرض الفرق",
+    "SEE_PLAYERS": "عرض اللاعبين",
+    "SEE_CONTACT": "تواصل معنا"
+  },
+  "ABOUT": {
+    "TITLE": "اتصل بنا",
+    "ME": "مرحبًا! أنا ألونسو، مطور هذا الموقع باستخدام Ionic وAngular مع Strapi. أنا طالب في السنة الثانية من DAM في معهد C.P.I.F.P. Alan Turing. آمل أن يعجبكم الموقع!"
+  }
+}
