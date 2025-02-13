@@ -8,13 +8,11 @@
       {{ 'MATCHES.NEW' | translate }}
     }
   </ion-title>
-  @if (isMobile) {
-    <ion-buttons slot="end">
-      <ion-button (click)="dismiss()">
-        <ion-icon slot="icon-only" name="close"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  }
+  <ion-buttons slot="end">
+    <ion-button (click)="dismiss()">
+      <ion-icon slot="icon-only" name="close"></ion-icon>
+    </ion-button>
+  </ion-buttons>
 </ion-toolbar>
 <ion-content class="ion-padding">
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">

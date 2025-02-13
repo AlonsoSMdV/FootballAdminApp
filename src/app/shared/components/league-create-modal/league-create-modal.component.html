@@ -9,13 +9,11 @@
         {{ 'LEAGUES.NEW' | translate }}
       }
     </ion-title>
-    @if (isMobile) {
-      <ion-buttons slot="end">
-        <ion-button (click)="dismiss()">
-          <ion-icon slot="icon-only" name="close"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    }
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
@@ -23,7 +21,7 @@
     <ion-button expand="block" color="transparent" class="picture-button">
       <app-picture-selectable formControlName="picture"></app-picture-selectable>
     </ion-button>
-    
+
     <ion-item>
       <ion-input [label]="'LEAGUES.NAME' | translate" label-placement="stacked"  type="text" formControlName="name"></ion-input>
     </ion-item>
