@@ -20,6 +20,10 @@
 </ion-header>
 <ion-content class="ion-padding">
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <ion-button expand="block" color="transparent" class="picture-button">
+      <app-picture-selectable formControlName="picture"></app-picture-selectable>
+    </ion-button>
+    
     <ion-item>
       <ion-input [label]="'LEAGUES.NAME' | translate" label-placement="stacked"  type="text" formControlName="name"></ion-input>
     </ion-item>
@@ -39,9 +43,7 @@
       }
     </ion-button>
 
-    <ion-button expand="block" color="transparent" class="picture-button">
-      <app-picture-selectable formControlName="picture"></app-picture-selectable>
-    </ion-button>
+    
   </form>
 
 </ion-content>
