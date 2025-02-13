@@ -39,7 +39,13 @@
       "EMAIL": "Correo electrónico",
       "PASSWORD": "Contraseña",
       "BUTTON_LOGIN": "Iniciar sesión",
-      "BUTTON_REGISTER": "Regístrate"
+      "BUTTON_REGISTER": "Regístrate",
+      "ERRORS": {
+        "REQUIRED": "*Debe introducir un email", 
+        "INCORRECT_EMAIL": "*Debe introducir un email correcto",
+        "INCORRECT_PASSWORD": "*Debe introducir una contraseña"
+      },
+      "NOT_ACCOUNT": "¿No tienes cuenta?"
       },
     "REGISTER": {
       "TITLE": "Crea una cuenta",
@@ -49,7 +55,19 @@
       "PASSWORD": "Contraseña",
       "REPEAT_PASSWORD": "Repita contraseña",
       "BUTTON_LOGIN": "Iniciar sesión",
-      "BUTTON_REGISTER": "Crear cuenta"
+      "BUTTON_REGISTER": "Crear cuenta",
+      "ERRORS": {
+        "NAME_REQUIRED": "*Debe introducir su nombre", 
+        "NAME_MIN_LENGTH": "*El nombre debe tener al menos dos caracteres",
+        "SURNAME_REQUIRED": "*Debe introducir su/s apellido/s", 
+        "SURNAME_MIN_LENGTH": "*Su/s apellido/s debe/n tener al menos dos caracteres",
+        "EMAIL_REQUIRED": "*Debe introducir un email", 
+        "INCORRECT_EMAIL": "*Debe introducir un email correcto",
+        "PASSWORD_REQUIRED": "*Debe introducir una contraseña", 
+        "INCORRECT_PASSWORD_REQUIREMENTS": "Al menos 8 caracteres, una mayúscula, una minúscula, un dígito y un caracter especial (@$!%*?&.)",
+        "MISMATCH_PASSWORD": "*Las contraseñas no coinciden"
+      },
+      "HAVE_ACCOUNT": "¿Tienes una cuenta?"
       },
       "LEAGUES":{
         "TITLE":"Ligas",

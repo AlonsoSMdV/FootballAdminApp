@@ -1,171 +1,190 @@
 {
-    "COMMON": {
-      "LANGUAGE": "Language",
-      "SPANISH": "Spanish",
-      "ENGLISH": "English",
-      "FRENCH": "French",
-      "ITALIAN": "Italian",
-      "ERROR": {
-        "LOAD": "Error loading data",
-        "SAVE": "Error saving changes"
-      },
-      "SUCCESS": {
-        "SAVE": "Changes saved successfully"
-      },
-      "ACCEPT": "Accept",
-      "CANCEL": "Cancel"
+  "COMMON": {
+    "LANGUAGE": "Language",
+    "SPANISH": "Spanish",
+    "ENGLISH": "English",
+    "FRENCH": "French",
+    "ITALIAN": "Italian",
+    "ERROR": {
+      "LOAD": "Error loading data",
+      "SAVE": "Error saving changes"
     },
-    "MENU": {
-      "TITLE": "Menu",
-      "HOME": "Home",
-      "ABOUT": "Contact",
-      "LEAGUES": "Leagues",
-      "MATCHES": "Matches",
-      "LOGOUT": "Logout",
-      "PROFILE": "Profile",
-      "BACK": "Back"
+    "SUCCESS": {
+      "SAVE": "Changes saved successfully"
     },
-    "PROFILE": {
-      "TITLE": "Profile",
-      "SUBTITLE": "Your personal information",
-      "UPDATE": "Update",
-      "PICTURE": "Profile photo",
-      "NAME": "Name",
-      "SURNAMES": "Surnames",
-      "EMAIL":"Email"
+    "ACCEPT": "Accept",
+    "CANCEL": "Cancel"
+  },
+  "MENU": {
+    "TITLE": "Menu",
+    "HOME": "Home",
+    "ABOUT": "Contact",
+    "LEAGUES": "Leagues",
+    "MATCHES": "Matches",
+    "LOGOUT": "Log out",
+    "PROFILE": "Profile",
+    "BACK": "Back"
+  },
+  "PROFILE": {
+    "TITLE": "Profile",
+    "SUBTITLE": "Your personal information",
+    "UPDATE": "Update",
+    "PICTURE": "Profile picture",
+    "NAME": "Name",
+    "SURNAMES": "Surnames",
+    "EMAIL": "Email"
+  },
+  "LOGIN": {
+    "TITLE": "Log In",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "BUTTON_LOGIN": "Log in",
+    "BUTTON_REGISTER": "Sign up",
+    "ERRORS": {
+      "REQUIRED": "*You must enter an email",
+      "INCORRECT_EMAIL": "*You must enter a valid email",
+      "INCORRECT_PASSWORD": "*You must enter a password"
     },
-    "LOGIN": {
-      "TITLE": "Log In",
-      "EMAIL": "Email",
-      "PASSWORD": "Password",
-      "BUTTON_LOGIN": "Log In",
-      "BUTTON_REGISTER": "Register"
-      },
-      "REGISTER": {
-        "TITLE": "Create an account",
-        "NAME": "Name",
-        "SURNAMES":"Surnames",
-        "EMAIL": "Email",
-        "PASSWORD": "Password",
-        "REPEAT_PASSWORD": "Repeat password",
-        "BUTTON_LOGIN": "Log In",
-        "BUTTON_REGISTER": "Register"
-        },
-        "LEAGUES":{
-          "TITLE":"Leagues",
-          "CREATE": "Create league",
-          "EDIT": "Edit league",
-          "NEW": "New league",
-          "NAME": "Name",
-          "SUBMIT": "Register",
-          "UPDATE": "Update",
-          "ERRORS": {
-            "NAME_REQUIRED": "Name is required",
-            "NAME_MIN_LENGTH": "Name must be at least 2 characters long"
-            },
-          "MESSAGES":{
-              "DELETE_CONFIRM":"You want to delete this league?"
-            }
-        },
-        "LEAGUE_SELECTABLE":{
-          "NONE": "No one league",
-          "SEARCH": "Search",
-          "SELECT_LEAGUE": "Select league"
-        },
-        "TEAMS":{
-          "TITLE":"Teams",
-          "CREATE": "Create team",
-          "EDIT": "Edit team",
-          "NEW": "New team",
-          "NAME": "Name",
-          "NOFPLAYERS": "Number of players",
-          "LEAGUE": "League",
-          "SUBMIT": "Register",
-          "UPDATE": "Update",
-          "ERRORS": {
-            "NAME_REQUIRED": "Name is required",
-            "NAME_MIN_LENGTH": "Name must be at least 2 characters long",
-            "PATTERN": "The number of players in a team neds to be positive"
-            },
-            "MESSAGES":{
-              "DELETE_CONFIRM":"You want to delete this team?"
-            }
-        },
-        "TEAM_SELECTABLE":{
-          "NONE": "No one team",
-          "SEARCH": "Search",
-          "SELECT_TEAM": "Select team"
-        },
-        "PLAYERS":{
-          "TITLE":"Players",
-          "CREATE": "Create player",
-          "EDIT": "Edit player",
-          "NEW": "New player",
-          "NAME": "Name",
-          "SURNAME1":"First surname",
-          "SURNAME2":"Second surname",
-          "NATIONALITY":"Nationality",
-          "DORSAL":"Dorsal",
-          "BIRTHDATE":"Birthdate",
-          "SELECT_DATE": "Select date",
-          "SELECT_POSITION": "Select position",
-          "POSITION":"Position",
-          "POSITION_GOALKEEPER":"Goalkeeper",
-          "POSITION_DEFENDER":"Defender",
-          "POSITION_MIDFIELDER":"Midfielder",
-          "POSITION_FORWARD":"Forward",
-          "TEAM":"Team",
-          "SUBMIT": "Register",
-          "UPDATE": "Update",
-          "ERRORS": {
-            "NAME_REQUIRED": "Name is required",
-            "NAME_MIN_LENGTH": "Name must be at least 2 characters long",
-            "SURNAME_REQUIRED": "Surnames are required",
-            "SURNAME_MIN_LENGTH": "Surnames must be at least 2 characters long",
-            "NATIONALITY_REQUIRED": "Nationality is required",
-            "NATIONALITY_INVALID": "Nationality must be at least 2 characters long",
-            "PATTERN": "Dorsal must be positive",
-            "BIRTHDATE_REQUIRED": "Birthdate is required",
-            "POSITION_REQUIRED": "Position is required"
-            },
-            "MESSAGES":{
-              "DELETE_CONFIRM":"You want to delete this player?"
-            }
-        },
-        "MATCHES":{
-          "TITLE":"Matches",
-          "CREATE": "Create match",
-          "EDIT": "Edit match",
-          "NEW": "New match",
-          "DAY":"Match day",
-          "TIME":"Match hour",
-          "PLACE":"Place",
-          "RESULT":"Result",
-          "SELECT_DATE": "Select day",
-          "SELECT_TIME": "Select time",
-          "TEAM_LOCAL":"Local team","TEAM_VISITOR":"Visitor team",
-          "SUBMIT": "Register",
-          "UPDATE": "Update",
-          "ERRORS": {
-            "DAY_REQUIRED": "Day is required"
-            },
-            "MESSAGES":{
-              "DELETE_CONFIRM":"You want to delete this match?"
-            }
-        },
-        "HOME": {
-          "TITLE": "Home",
-          "LEAGUES": "Explore active leagues and their teams.",
-          "TEAMS": "Check out participating teams, their number of players, and information about them.",
-          "PLAYERS": "Discover detailed information about players.",
-          "CONTACT": "Have questions? Contact us for more information.",
-          "SEE_LEAGUES": "See leagues",
-          "SEE_TEAMS": "See teams",
-          "SEE_PLAYERS": "See players",
-          "SEE_CONTACT": "Contact"
-        },
-      "ABOUT":{
-        "TITLE": "About",
-        "ME": "Hello! I'm Alonso, the creator of this page, which uses Ionic, Angular, and connects to Strapi services. I'm a 2nd-year DAM student at the C.P.I.F.P. Alan Turing center. I hope you enjoy the rest of the page!"
-      }
-  } 
+    "NOT_ACCOUNT": "Don't have an account?"
+  },
+  "REGISTER": {
+    "TITLE": "Create an account",
+    "NAME": "Name",
+    "SURNAMES": "Surnames",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "REPEAT_PASSWORD": "Repeat password",
+    "BUTTON_LOGIN": "Log in",
+    "BUTTON_REGISTER": "Sign up",
+    "ERRORS": {
+      "NAME_REQUIRED": "*You must enter your name",
+      "NAME_MIN_LENGTH": "*The name must have at least two characters",
+      "SURNAME_REQUIRED": "*You must enter your surname(s)",
+      "SURNAME_MIN_LENGTH": "*The surname(s) must have at least two characters",
+      "EMAIL_REQUIRED": "*You must enter an email",
+      "INCORRECT_EMAIL": "*You must enter a valid email",
+      "PASSWORD_REQUIRED": "*You must enter a password",
+      "INCORRECT_PASSWORD_REQUIREMENTS": "At least 8 characters, one uppercase, one lowercase, one digit, and one special character (@$!%*?&.)",
+      "MISMATCH_PASSWORD": "*Passwords do not match"
+    },
+    "HAVE_ACCOUNT": "Already have an account?"
+  },
+  "LEAGUES": {
+    "TITLE": "Leagues",
+    "CREATE": "Create league",
+    "EDIT": "Edit league",
+    "NEW": "New league",
+    "NAME": "League name",
+    "SUBMIT": "Register",
+    "UPDATE": "Update",
+    "ERRORS": {
+      "NAME_REQUIRED": "The name is required",
+      "NAME_MIN_LENGTH": "The name must have more than 2 characters"
+    },
+    "MESSAGES": {
+      "DELETE_CONFIRM": "Do you want to delete this league?"
+    }
+  },
+  "LEAGUE_SELECTABLE": {
+    "NONE": "None",
+    "SEARCH": "Search",
+    "SELECT_LEAGUE": "Select a league"
+  },
+  "TEAMS": {
+    "TITLE": "Teams",
+    "CREATE": "Create team",
+    "EDIT": "Edit team",
+    "NEW": "New team",
+    "NAME": "Team name",
+    "NOFPLAYERS": "Players in squad",
+    "LEAGUE": "League",
+    "SUBMIT": "Register",
+    "UPDATE": "Update",
+    "ERRORS": {
+      "NAME_REQUIRED": "The name is required",
+      "NAME_MIN_LENGTH": "The team name must be more than 2 characters long",
+      "PATTERN": "The number of players must be positive"
+    },
+    "MESSAGES": {
+      "DELETE_CONFIRM": "Do you want to delete this team?"
+    }
+  },
+  "TEAM_SELECTABLE": {
+    "NONE": "None",
+    "SEARCH": "Search",
+    "SELECT_TEAM": "Select a team"
+  },
+  "PLAYERS": {
+    "TITLE": "Players",
+    "CREATE": "Create player",
+    "EDIT": "Edit player",
+    "NEW": "New player",
+    "NAME": "Name",
+    "SURNAME1": "First surname",
+    "SURNAME2": "Second surname",
+    "NATIONALITY": "Nationality",
+    "DORSAL": "Number",
+    "BIRTHDATE": "Date of birth",
+    "SELECT_DATE": "Select date",
+    "SELECT_POSITION": "Select a position",
+    "POSITION": "Position",
+    "POSITION_GOALKEEPER": "Goalkeeper",
+    "POSITION_DEFENDER": "Defender",
+    "POSITION_MIDFIELDER": "Midfielder",
+    "POSITION_FORWARD": "Forward",
+    "TEAM": "Team",
+    "SUBMIT": "Register",
+    "UPDATE": "Update",
+    "ERRORS": {
+      "NAME_REQUIRED": "The name is required",
+      "NAME_MIN_LENGTH": "The name must have at least 2 characters",
+      "SURNAME_REQUIRED": "Surnames are required",
+      "SURNAME_MIN_LENGTH": "Surnames must have at least 2 characters",
+      "NATIONALITY_REQUIRED": "Nationality is required",
+      "NATIONALITY_INVALID": "Nationality must have at least 2 characters",
+      "PATTERN": "The number must be positive",
+      "BIRTHDATE_REQUIRED": "The date of birth is required",
+      "POSITION_REQUIRED": "The position is required"
+    },
+    "MESSAGES": {
+      "DELETE_CONFIRM": "Do you want to delete this player?"
+    }
+  },
+  "MATCHES": {
+    "TITLE": "Matches",
+    "CREATE": "Create match",
+    "EDIT": "Edit match",
+    "NEW": "New match",
+    "DAY": "Match day",
+    "TIME": "Match time",
+    "PLACE": "Place",
+    "RESULT": "Result",
+    "SELECT_DATE": "Select day",
+    "SELECT_TIME": "Select time",
+    "TEAM_LOCAL": "Home team",
+    "TEAM_VISITOR": "Away team",
+    "SUBMIT": "Register",
+    "UPDATE": "Update",
+    "ERRORS": {
+      "DAY_REQUIRED": "The day is required"
+    },
+    "MESSAGES": {
+      "DELETE_CONFIRM": "Do you want to delete this match?"
+    }
+  },
+  "HOME": {
+    "TITLE": "Home",
+    "LEAGUES": "Explore the leagues along with their teams.",
+    "TEAMS": "Check out the participating teams, their number of players, and their details.",
+    "PLAYERS": "Discover detailed player information.",
+    "CONTACT": "Have questions? Contact us for more information.",
+    "SEE_LEAGUES": "View leagues",
+    "SEE_TEAMS": "View teams",
+    "SEE_PLAYERS": "View players",
+    "SEE_CONTACT": "Contact"
+  },
+  "ABOUT": {
+    "TITLE": "Contact",
+    "ME": "Hello! I'm Alonso, creator of this page using Ionic, Angular, and Strapi services. I'm a second-year DAM student at C.P.I.F.P. Alan Turing. I hope you like the site!"
+  }
+}

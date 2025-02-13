@@ -1,135 +1,191 @@
 {
     "COMMON": {
-    "LANGUAGE": "Langue",
-    "SPANISH": "Espagnol",
-    "ENGLISH": "Anglais",
-    "FRENCH": "Français",
-    "ITALIAN": "Italien",
-    "ERROR": {
-    "LOAD": "Erreur lors du chargement des données",
-    "SAVE": "Erreur lors de l'enregistrement des modifications"
-    },
-    "SUCCESS": {
-    "SAVE": "Modifications enregistrées avec succès"
-    },
-    "ACCEPT": "Accepter",
-    "CANCEL": "Annuler"
+      "LANGUAGE": "Langue",
+      "SPANISH": "Espagnol",
+      "ENGLISH": "Anglais",
+      "FRENCH": "Français",
+      "ITALIAN": "Italien",
+      "ERROR": {
+        "LOAD": "Erreur lors du chargement des données",
+        "SAVE": "Erreur lors de l'enregistrement des modifications"
+      },
+      "SUCCESS": {
+        "SAVE": "Modifications enregistrées avec succès"
+      },
+      "ACCEPT": "Accepter",
+      "CANCEL": "Annuler"
     },
     "MENU": {
-        "TITLE": "Menu",
-        "HOME": "Accueil",
-        "ABOUT": "Contact",
-        "LEAGUES": "Ligues",
-        "MATCHES": "Matchs",
-        "LOGOUT": "Déconnexion",
-        "PROFILE": "Profil",
-        "BACK": "Retour"
+      "TITLE": "Menu",
+      "HOME": "Accueil",
+      "ABOUT": "Contact",
+      "LEAGUES": "Ligues",
+      "MATCHES": "Matchs",
+      "LOGOUT": "Déconnexion",
+      "PROFILE": "Profil",
+      "BACK": "Retour"
     },
     "PROFILE": {
-        "TITLE": "Profil",
-        "SUBTITLE": "Vos informations personnelles",
-        "UPDATE": "Mettre à jour",
-        "PICTURE": "Photo de profil",
-        "NAME": "Nom",
-        "SURNAMES": "Nom de famille",
-        "EMAIL": "E-mail"
+      "TITLE": "Profil",
+      "SUBTITLE": "Vos informations personnelles",
+      "UPDATE": "Mettre à jour",
+      "PICTURE": "Photo de profil",
+      "NAME": "Nom",
+      "SURNAMES": "Noms de famille",
+      "EMAIL": "E-mail"
     },
     "LOGIN": {
-        "TITLE": "Connexion",
-        "EMAIL": "E-mail",
-        "PASSWORD": "Mot de passe",
-        "BUTTON_LOGIN": "Se connecter",
-        "BUTTON_REGISTER": "S'inscrire"
+      "TITLE": "Connexion",
+      "EMAIL": "E-mail",
+      "PASSWORD": "Mot de passe",
+      "BUTTON_LOGIN": "Se connecter",
+      "BUTTON_REGISTER": "S'inscrire",
+      "ERRORS": {
+        "REQUIRED": "*Vous devez saisir un e-mail",
+        "INCORRECT_EMAIL": "*Vous devez saisir un e-mail valide",
+        "INCORRECT_PASSWORD": "*Vous devez saisir un mot de passe"
+      },
+      "NOT_ACCOUNT": "Vous n'avez pas de compte?"
     },
     "REGISTER": {
-        "TITLE": "Créer un compte",
-        "NAME": "Nom",
-        "SURNAMES": "Nom de famille",
-        "EMAIL": "E-mail",
-        "PASSWORD": "Mot de passe",
-        "REPEAT_PASSWORD": "Répétez le mot de passe",
-        "BUTTON_LOGIN": "Se connecter",
-        "BUTTON_REGISTER": "Créer un compte"
+      "TITLE": "Créer un compte",
+      "NAME": "Nom",
+      "SURNAMES": "Noms de famille",
+      "EMAIL": "E-mail",
+      "PASSWORD": "Mot de passe",
+      "REPEAT_PASSWORD": "Répéter le mot de passe",
+      "BUTTON_LOGIN": "Se connecter",
+      "BUTTON_REGISTER": "Créer un compte",
+      "ERRORS": {
+        "NAME_REQUIRED": "*Vous devez saisir votre nom",
+        "NAME_MIN_LENGTH": "*Le nom doit comporter au moins deux caractères",
+        "SURNAME_REQUIRED": "*Vous devez saisir vos noms de famille",
+        "SURNAME_MIN_LENGTH": "*Les noms de famille doivent comporter au moins deux caractères",
+        "EMAIL_REQUIRED": "*Vous devez saisir un e-mail",
+        "INCORRECT_EMAIL": "*Vous devez saisir un e-mail valide",
+        "PASSWORD_REQUIRED": "*Vous devez saisir un mot de passe",
+        "INCORRECT_PASSWORD_REQUIREMENTS": "Au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial (@$!%*?&.)",
+        "MISMATCH_PASSWORD": "*Les mots de passe ne correspondent pas"
+      },
+      "HAVE_ACCOUNT": "Vous avez déjà un compte?"
     },
     "LEAGUES": {
-        "TITLE": "Ligues",
-        "CREATE": "Créer une ligue",
-        "EDIT": "Modifier la ligue",
-        "NEW": "Nouvelle ligue",
-        "NAME": "Nom de la ligue",
-        "SUBMIT": "Enregistrer",
-        "UPDATE": "Mettre à jour",
-        "ERRORS": {
+      "TITLE": "Ligues",
+      "CREATE": "Créer une ligue",
+      "EDIT": "Modifier la ligue",
+      "NEW": "Nouvelle ligue",
+      "NAME": "Nom de la ligue",
+      "SUBMIT": "Enregistrer",
+      "UPDATE": "Mettre à jour",
+      "ERRORS": {
         "NAME_REQUIRED": "Le nom est obligatoire",
         "NAME_MIN_LENGTH": "Le nom doit comporter plus de 2 caractères"
-        },
-        "MESSAGES": {
-        "DELETE_CONFIRM": "Voulez-vous supprimer cette ligue ?"
-        }
+      },
+      "MESSAGES": {
+        "DELETE_CONFIRM": "Voulez-vous supprimer cette ligue?"
+      }
     },
     "LEAGUE_SELECTABLE": {
-        "NONE": "Aucune",
-        "SEARCH": "Rechercher",
-        "SELECT_LEAGUE": "Sélectionnez une ligue"
+      "NONE": "Aucune",
+      "SEARCH": "Rechercher",
+      "SELECT_LEAGUE": "Sélectionner une ligue"
     },
     "TEAMS": {
-        "TITLE": "Équipes",
-        "CREATE": "Créer une équipe",
-        "EDIT": "Modifier l'équipe",
-        "NEW": "Nouvelle équipe",
-        "NAME": "Nom de l'équipe",
-        "NOFPLAYERS": "Joueurs dans l'équipe",
-        "LEAGUE": "Ligue",
-        "SUBMIT": "Enregistrer",
-        "UPDATE": "Mettre à jour",
-        "ERRORS": {
+      "TITLE": "Équipes",
+      "CREATE": "Créer une équipe",
+      "EDIT": "Modifier l'équipe",
+      "NEW": "Nouvelle équipe",
+      "NAME": "Nom de l'équipe",
+      "NOFPLAYERS": "Joueurs dans l'équipe",
+      "LEAGUE": "Ligue",
+      "SUBMIT": "Enregistrer",
+      "UPDATE": "Mettre à jour",
+      "ERRORS": {
         "NAME_REQUIRED": "Le nom est obligatoire",
         "NAME_MIN_LENGTH": "Le nom de l'équipe doit comporter plus de 2 caractères",
         "PATTERN": "Le nombre de joueurs doit être positif"
-        },
-        "MESSAGES": {
-        "DELETE_CONFIRM": "Voulez-vous supprimer cette équipe ?"
-        }
+      },
+      "MESSAGES": {
+        "DELETE_CONFIRM": "Voulez-vous supprimer cette équipe?"
+      }
     },
     "TEAM_SELECTABLE": {
-        "NONE": "Aucun",
-        "SEARCH": "Rechercher",
-        "SELECT_TEAM": "Sélectionner une équipe"
+      "NONE": "Aucun",
+      "SEARCH": "Rechercher",
+      "SELECT_TEAM": "Sélectionner une équipe"
     },
     "PLAYERS": {
-        "TITLE": "Joueurs",
-        "CREATE": "Créer un joueur",
-        "EDIT": "Modifier un joueur",
-        "NEW": "Nouveau joueur",
-        "NAME": "Nom",
-        "SURNAME1": "Premier nom de famille",
-        "SURNAME2": "Deuxième nom de famille",
-        "NATIONALITY": "Nationalité",
-        "DORSAL": "Dorsal",
-        "BIRTHDATE": "Date de naissance",
-        "SELECT_DATE": "Sélectionner une date",
-        "SELECT_POSITION": "Sélectionner une position",
-        "POSITION": "Position",
-        "POSITION_GOALKEEPER": "Gardien",
-        "POSITION_DEFENDER": "Défenseur",
-        "POSITION_MIDFIELDER": "Milieu de terrain",
-        "POSITION_FORWARD": "Attaquant",
-        "TEAM": "Équipe",
-        "SUBMIT": "Enregistrer",
-        "UPDATE": "Mettre à jour",
-        "ERRORS": {
+      "TITLE": "Joueurs",
+      "CREATE": "Créer un joueur",
+      "EDIT": "Modifier le joueur",
+      "NEW": "Nouveau joueur",
+      "NAME": "Nom",
+      "SURNAME1": "Premier nom",
+      "SURNAME2": "Deuxième nom",
+      "NATIONALITY": "Nationalité",
+      "DORSAL": "Numéro",
+      "BIRTHDATE": "Date de naissance",
+      "SELECT_DATE": "Sélectionner une date",
+      "SELECT_POSITION": "Sélectionner un poste",
+      "POSITION": "Poste",
+      "POSITION_GOALKEEPER": "Gardien",
+      "POSITION_DEFENDER": "Défenseur",
+      "POSITION_MIDFIELDER": "Milieu de terrain",
+      "POSITION_FORWARD": "Attaquant",
+      "TEAM": "Équipe",
+      "SUBMIT": "Enregistrer",
+      "UPDATE": "Mettre à jour",
+      "ERRORS": {
         "NAME_REQUIRED": "Le nom est obligatoire",
-        "NAME_MIN_LENGTH": "Le nom doit avoir au moins 2 caractères",
-        "SURNAME_REQUIRED": "Le nom de famille est obligatoire",
-        "SURNAME_MIN_LENGTH": "Le nom de famille doit avoir au moins 2 caractères",
+        "NAME_MIN_LENGTH": "Le nom doit comporter au moins 2 caractères",
+        "SURNAME_REQUIRED": "Les noms de famille sont obligatoires",
+        "SURNAME_MIN_LENGTH": "Les noms de famille doivent comporter au moins 2 caractères",
         "NATIONALITY_REQUIRED": "La nationalité est obligatoire",
-        "NATIONALITY_INVALID": "La nationalité doit avoir au moins 2 caractères",
-        "PATTERN": "Le dorsal doit être un nombre positif",
+        "NATIONALITY_INVALID": "La nationalité doit comporter au moins 2 caractères",
+        "PATTERN": "Le numéro doit être positif",
         "BIRTHDATE_REQUIRED": "La date de naissance est obligatoire",
-        "POSITION_REQUIRED": "La position est obligatoire"
-        },
-        "MESSAGES": {
-        "DELETE_CONFIRM": "Voulez-vous supprimer ce joueur ?"
-        }
+        "POSITION_REQUIRED": "Le poste est obligatoire"
+      },
+      "MESSAGES": {
+        "DELETE_CONFIRM": "Voulez-vous supprimer ce joueur?"
+      }
+    },
+    "MATCHES": {
+      "TITLE": "Matchs",
+      "CREATE": "Créer un match",
+      "EDIT": "Modifier le match",
+      "NEW": "Nouveau match",
+      "DAY": "Jour du match",
+      "TIME": "Heure du match",
+      "PLACE": "Lieu",
+      "RESULT": "Résultat",
+      "SELECT_DATE": "Sélectionner un jour",
+      "SELECT_TIME": "Sélectionner une heure",
+      "TEAM_LOCAL": "Équipe locale",
+      "TEAM_VISITOR": "Équipe visiteuse",
+      "SUBMIT": "Enregistrer",
+      "UPDATE": "Mettre à jour",
+      "ERRORS": {
+        "DAY_REQUIRED": "Le jour est obligatoire"
+      },
+      "MESSAGES": {
+        "DELETE_CONFIRM": "Voulez-vous supprimer ce match?"
+      }
+    },
+    "HOME": {
+      "TITLE": "Accueil",
+      "LEAGUES": "Explorez les ligues et leurs équipes.",
+      "TEAMS": "Consultez les équipes participantes, leur nombre de joueurs et leurs détails.",
+      "PLAYERS": "Découvrez des informations détaillées sur les joueurs.",
+      "CONTACT": "Des questions? Contactez-nous pour plus d'informations.",
+      "SEE_LEAGUES": "Voir les ligues",
+      "SEE_TEAMS": "Voir les équipes",
+      "SEE_PLAYERS": "Voir les joueurs",
+      "SEE_CONTACT": "Contact"
+    },
+    "ABOUT": {
+      "TITLE": "Contact",
+      "ME": "Bonjour! Je suis Alonso, créateur de cette page utilisant Ionic, Angular et Strapi. Je suis étudiant en deuxième année de DAM à C.P.I.F.P. Alan Turing. J'espère que vous apprécierez le site!"
     }
-}
+  }
+  
