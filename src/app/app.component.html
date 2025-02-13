@@ -44,15 +44,17 @@
 
           <!-- Language Toggle -->
           <div class="menu-item language-toggle">
-            <ion-icon name="language-outline"></ion-icon>
+            <!--<ion-icon name="language-outline"></ion-icon>
             <span>{{ currentLang === 'es' ? 'Español' : 'English' }}</span>
             <ion-toggle
               class="custom-toggle"
               [checked]="currentLang === 'es'"
               (ionChange)="changeLanguage($event.detail.checked ? 'es' : 'en')"
               color="success">
-            </ion-toggle>
+            </ion-toggle>-->
+            <app-language-selector></app-language-selector>
           </div>
+          
         </div>
 
         <!-- Logout Button -->

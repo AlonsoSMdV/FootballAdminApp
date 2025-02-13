@@ -13,6 +13,7 @@ import { PositionSelectableComponent } from './components/position-selectable/po
 import { PictureSelectableComponent } from './components/picture-selectable/picture-selectable.component';
 import { PasswordTogglePipe } from './pipes/password-toggle/password-toggle.pipe';
 import { MatchCreateComponent } from './components/match-create/match-create.component'
+import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
 
 
 
@@ -26,7 +27,8 @@ import { MatchCreateComponent } from './components/match-create/match-create.com
     PositionSelectableComponent,
     PictureSelectableComponent,
     PasswordTogglePipe,
-    MatchCreateComponent
+    MatchCreateComponent,
+    LanguageSelectorComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +46,8 @@ import { MatchCreateComponent } from './components/match-create/match-create.com
     PositionSelectableComponent,
     PictureSelectableComponent,
     PasswordTogglePipe,
-    MatchCreateComponent
+    MatchCreateComponent,
+    LanguageSelectorComponent
   ]
 })
 export class SharedModule { }

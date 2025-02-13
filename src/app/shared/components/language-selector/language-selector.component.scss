@@ -1,0 +1,120 @@
+   :host {
+      width: 100%;
+    }
+
+    .language-container {
+      position: relative;
+      width: 100%;
+    }
+
+    /* Reset Ionic default styles */
+    .custom-item {
+      --background: transparent;
+      --background-hover: transparent;
+      --background-activated: transparent;
+      --background-focused: transparent;
+      --border-color: transparent;
+      --border-style: none;
+      --border-width: 0;
+      --inner-border-width: 0;
+      --padding-start: 1rem;
+      --padding-end: 1rem;
+      --color: #fff;
+    }
+
+    .language-selector {
+      background: rgba(0, 255, 128, 0.1);
+      border-radius: 8px;
+      margin: 8px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .language-selector:hover {
+      background: rgba(0, 255, 128, 0.15);
+    }
+
+    .language-selector.active {
+      background: rgba(0, 255, 128, 0.2);
+    }
+
+    .language-flag {
+        width: 24px; /* Tamaño de la bandera */
+        height: 24px;
+        border-radius: 50%; /* Hace que la imagen sea circular */
+        object-fit: cover; /* Ajusta la imagen sin deformarla */
+        border: 1px solid rgba(255, 255, 255, 0.2); /* Opcional: borde sutil */
+      }
+
+    .language-icon {
+      color: rgb(0, 255, 128);
+      font-size: 1.25rem;
+    }
+
+    .chevron-icon {
+      color: rgb(0, 255, 128);
+      transition: transform 0.3s ease;
+    }
+
+    .label-content {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .language-name {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .language-code {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
+    }
+
+    .dropdown-container {
+      position: absolute;
+      width: 100%;
+      z-index: 100;
+      margin-top: 4px;
+    }
+
+    .language-list {
+      background: #1a1a1a;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      padding: 0;
+    }
+
+    .language-option {
+      transition: all 0.2s ease;
+    }
+
+    .language-option:hover {
+      background: rgba(0, 255, 128, 0.1);
+    }
+
+    .language-option.selected {
+      background: rgba(0, 255, 128, 0.15);
+    }
+
+    .option-content {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .option-name {
+      color: #fff;
+    }
+
+    .option-code {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
+    }
+
+    .check-icon {
+      color: rgb(0, 255, 128);
+      font-size: 1.25rem;
+    }
