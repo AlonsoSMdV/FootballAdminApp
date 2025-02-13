@@ -3,6 +3,8 @@
       "LANGUAGE": "Idioma",
       "SPANISH": "Español",
       "ENGLISH": "Inglés",
+      "FRENCH": "Francés",
+      "ITALIAN": "Italiano",
       "ERROR": {
         "LOAD": "Error al cargar los datos",
         "SAVE": "Error al guardar los cambios"

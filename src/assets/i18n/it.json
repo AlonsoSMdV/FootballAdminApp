@@ -1,0 +1,135 @@
+{
+    "COMMON": {
+      "LANGUAGE": "Lingua",
+      "SPANISH": "Spagnolo",
+      "ENGLISH": "Inglese",
+      "FRENCH": "Francese",
+      "ITALIAN": "Italiano",
+      "ERROR": {
+        "LOAD": "Errore durante il caricamento dei dati",
+        "SAVE": "Errore durante il salvataggio delle modifiche"
+      },
+      "SUCCESS": {
+        "SAVE": "Modifiche salvate con successo"
+      },
+      "ACCEPT": "Accettare",
+      "CANCEL": "Annulla"
+    },
+    "MENU": {
+      "TITLE": "Menu",
+      "HOME": "Home",
+      "ABOUT": "Contatto",
+      "LEAGUES": "Leghe",
+      "MATCHES": "Partite",
+      "LOGOUT": "Disconnettersi",
+      "PROFILE": "Profilo",
+      "BACK": "Indietro"
+    },
+    "PROFILE": {
+      "TITLE": "Profilo",
+      "SUBTITLE": "Le tue informazioni personali",
+      "UPDATE": "Aggiorna",
+      "PICTURE": "Foto del profilo",
+      "NAME": "Nome",
+      "SURNAMES": "Cognome",
+      "EMAIL": "E-mail"
+    },
+    "LOGIN": {
+      "TITLE": "Accedi",
+      "EMAIL": "E-mail",
+      "PASSWORD": "Password",
+      "BUTTON_LOGIN": "Accedi",
+      "BUTTON_REGISTER": "Registrati"
+    },
+    "REGISTER": {
+      "TITLE": "Crea un account",
+      "NAME": "Nome",
+      "SURNAMES": "Cognome",
+      "EMAIL": "E-mail",
+      "PASSWORD": "Password",
+      "REPEAT_PASSWORD": "Ripeti la password",
+      "BUTTON_LOGIN": "Accedi",
+      "BUTTON_REGISTER": "Crea account"
+    },
+    "LEAGUES": {
+      "TITLE": "Leghe",
+      "CREATE": "Crea lega",
+      "EDIT": "Modifica lega",
+      "NEW": "Nuova lega",
+      "NAME": "Nome della lega",
+      "SUBMIT": "Registra",
+      "UPDATE": "Aggiorna",
+      "ERRORS": {
+        "NAME_REQUIRED": "Il nome è obbligatorio",
+        "NAME_MIN_LENGTH": "Il nome deve contenere più di 2 caratteri"
+      },
+      "MESSAGES": {
+        "DELETE_CONFIRM": "Vuoi eliminare questa lega?"
+      }
+    },
+    "LEAGUE_SELECTABLE": {
+      "NONE": "Nessuna",
+      "SEARCH": "Cerca",
+      "SELECT_LEAGUE": "Seleziona una lega"
+    },
+    "TEAMS": {
+      "TITLE": "Squadre",
+      "CREATE": "Crea squadra",
+      "EDIT": "Modifica squadra",
+      "NEW": "Nuova squadra",
+      "NAME": "Nome della squadra",
+      "NOFPLAYERS": "Giocatori in rosa",
+      "LEAGUE": "Lega",
+      "SUBMIT": "Registra",
+      "UPDATE": "Aggiorna",
+      "ERRORS": {
+        "NAME_REQUIRED": "Il nome è obbligatorio",
+        "NAME_MIN_LENGTH": "Il nome della squadra deve contenere più di 2 caratteri",
+        "PATTERN": "Il numero di giocatori deve essere positivo"
+      },
+      "MESSAGES": {
+        "DELETE_CONFIRM": "Vuoi eliminare questa squadra?"
+      }
+    },
+    "TEAM_SELECTABLE": {
+      "NONE": "Nessuno",
+      "SEARCH": "Cerca",
+      "SELECT_TEAM": "Seleziona una squadra"
+    },
+    "PLAYERS": {
+      "TITLE": "Giocatori",
+      "CREATE": "Crea giocatore",
+      "EDIT": "Modifica giocatore",
+      "NEW": "Nuovo giocatore",
+      "NAME": "Nome",
+      "SURNAME1": "Primo cognome",
+      "SURNAME2": "Secondo cognome",
+      "NATIONALITY": "Nazionalità",
+      "DORSAL": "Numero di maglia",
+      "BIRTHDATE": "Data di nascita",
+      "SELECT_DATE": "Seleziona una data",
+      "SELECT_POSITION": "Seleziona una posizione",
+      "POSITION": "Posizione",
+      "POSITION_GOALKEEPER": "Portiere",
+      "POSITION_DEFENDER": "Difensore",
+      "POSITION_MIDFIELDER": "Centrocampista",
+      "POSITION_FORWARD": "Attaccante",
+      "TEAM": "Squadra",
+      "SUBMIT": "Registra",
+      "UPDATE": "Aggiorna",
+      "ERRORS": {
+        "NAME_REQUIRED": "Il nome è obbligatorio",
+        "NAME_MIN_LENGTH": "Il nome deve avere almeno 2 caratteri",
+        "SURNAME_REQUIRED": "Il cognome è obbligatorio",
+        "SURNAME_MIN_LENGTH": "Il cognome deve avere almeno 2 caratteri",
+        "NATIONALITY_REQUIRED": "La nazionalità è obbligatoria",
+        "NATIONALITY_INVALID": "La nazionalità deve avere almeno 2 caratteri",
+        "PATTERN": "Il numero di maglia deve essere un numero positivo",
+        "BIRTHDATE_REQUIRED": "La data di nascita è obbligatoria",
+        "POSITION_REQUIRED": "La posizione è obbligatoria"
+      },
+      "MESSAGES": {
+        "DELETE_CONFIRM": "Vuoi eliminare questo giocatore?"
+      }
+    }
+}
