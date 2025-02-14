@@ -20,30 +20,32 @@
 
   <div class="dropdown-container" *ngIf="isOpen">
     <ion-list class="language-list">
-      <ion-item 
-        *ngFor="let lang of languages" 
-        lines="none"
-        class="language-option custom-item"
-        [class.selected]="selectedLanguage === lang.code"
-        (click)="selectLanguage(lang.code)">
-        <ion-label>
-          <div class="label-content">
-            <img 
-              *ngIf="lang.code"
-              [src]="'https://flagcdn.com/w40/' + lang.shortCode.toLowerCase() + '.png'"
-              class="language-flag"
-              alt="{{ lang.name }} Flag"
-            />
-            <span class="language-name">{{ lang.name | translate }}</span>
-            <span class="language-code">{{ lang?.shortCode }}</span>
-          </div>
-        </ion-label>
-        <ion-icon 
-          name="checkmark-outline" 
-          *ngIf="selectedLanguage === lang.code"
-          class="check-icon">
-        </ion-icon>
-      </ion-item>
+      <div class="scrollable-content">
+        <ion-item 
+          *ngFor="let lang of languages" 
+          lines="none"
+          class="language-option custom-item"
+          [class.selected]="selectedLanguage === lang.code"
+          (click)="selectLanguage(lang.code)">
+          <ion-label>
+            <div class="label-content">
+              <img 
+                *ngIf="lang.code"
+                [src]="'https://flagcdn.com/w40/' + lang.shortCode.toLowerCase() + '.png'"
+                class="language-flag"
+                alt="{{ lang.name }} Flag"
+              />
+              <span class="language-name">{{ lang.name | translate }}</span>
+              <span class="language-code">{{ lang?.shortCode }}</span>
+            </div>
+          </ion-label>
+          <ion-icon 
+            name="checkmark-outline" 
+            *ngIf="selectedLanguage === lang.code"
+            class="check-icon">
+          </ion-icon>
+        </ion-item>
+      </div>
     </ion-list>
   </div>
 </div>
