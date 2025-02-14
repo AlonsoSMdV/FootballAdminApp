@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, catchError, combineLatest, finalize, firstValueFrom, map, Observable, of, switchMap } from 'rxjs';
 import { Match } from 'src/app/core/models/matches.model';
 import { Paginated } from 'src/app/core/models/paginated.model';
 import { Team } from 'src/app/core/models/teams.model';
+import { PLAYER_COLLECTION_SUBSCRIPTION_TOKEN } from 'src/app/core/repositories/repository.tokens';
 import { MatchService } from 'src/app/core/services/impl/match.service';
 import { TeamService } from 'src/app/core/services/impl/team.service';
+import { CollectionChange, ICollectionSubscription } from 'src/app/core/services/interfaces/collection-subscription.interface';
 import { LanguageService } from 'src/app/core/services/language.service';
 import { MatchCreateComponent } from 'src/app/shared/components/match-create/match-create.component';
 
@@ -26,6 +28,7 @@ export class MatchesPage implements OnInit {
   currentLang:string
   _matches: BehaviorSubject<MatchWithTeams[]> = new BehaviorSubject<MatchWithTeams[]>([])
   matches$: Observable<MatchWithTeams[]> = this._matches.asObservable()
+  private loadedIds: Set<string> = new Set();
 
 
   constructor(
@@ -34,13 +37,43 @@ export class MatchesPage implements OnInit {
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
     private translate: TranslateService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    @Inject(PLAYER_COLLECTION_SUBSCRIPTION_TOKEN)
+    private matchSubs: ICollectionSubscription<Match>
   ) {
     this.currentLang = this.languageService.getStoredLanguage();
    }
 
   ngOnInit() {
     this.getMatches()
+
+    this.matchSubs.subscribe('matches').subscribe((change:
+          CollectionChange<MatchWithTeams>) => {
+              const currentLeague = [...this._matches.value];
+    
+              if ((!this.loadedIds.has(change.id) && change.type !== 'added')) {
+                return;
+              }
+    
+              switch(change.type){
+                case 'added':
+                case 'modified':
+                  const index = currentLeague.findIndex(p => p.id === change.id)
+                  if (index >= 0) {
+                    currentLeague[index] = change.data!;
+                  }
+                  break;
+                case 'removed':
+                  const removedIndex = currentLeague.findIndex(p => p.id === change.id)
+                  if (removedIndex >= 0) {
+                    currentLeague.splice(removedIndex, 1);
+                    this.loadedIds.delete(change.id);
+                  }
+                  break;
+              }
+    
+              this._matches.next(currentLeague)
+          });
   }
   
 
@@ -53,6 +86,8 @@ export class MatchesPage implements OnInit {
       this.page = 1;
       this.matchSvc.getAll(this.page, this.pageSize).subscribe({
         next: async (response: Paginated<Match>) => {
+          // Actualizar el registro de IDs cargados
+          response.data.forEach(match => this.loadedIds.add(match.id));
           try {
             const matchesWithTeams = await Promise.all(
               response.data.map(async (match) => {
@@ -79,6 +114,8 @@ export class MatchesPage implements OnInit {
     getMoreMatches(notify: HTMLIonInfiniteScrollElement | null = null) {
       this.matchSvc.getAll(this.page, this.pageSize).subscribe({
         next: async (response: Paginated<Match>) => {
+          // Actualizar el registro de IDs cargados
+          response.data.forEach(match => this.loadedIds.add(match.id));
           try {
             const matchesWithTeams = await Promise.all(
               response.data.map(async (match) => {
