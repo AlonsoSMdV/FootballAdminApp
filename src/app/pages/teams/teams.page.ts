@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
 import { Paginated } from 'src/app/core/models/paginated.model';
 import { Team } from 'src/app/core/models/teams.model';
+import { TEAM_COLLECTION_SUBSCRIPTION_TOKEN } from 'src/app/core/repositories/repository.tokens';
 import { BaseMediaService } from 'src/app/core/services/impl/base-media.service';
 import { TeamService } from 'src/app/core/services/impl/team.service';
+import { CollectionChange, ICollectionSubscription } from 'src/app/core/services/interfaces/collection-subscription.interface';
 import { LanguageService } from 'src/app/core/services/language.service';
 import { TeamCreateModalComponent } from 'src/app/shared/components/team-create-modal/team-create-modal.component';
 
@@ -19,6 +21,7 @@ export class TeamsPage implements OnInit {
   currentLang:string
   _teams: BehaviorSubject<Team[]> = new BehaviorSubject<Team[]>([]);
   teams$: Observable<Team[]> = this._teams.asObservable();
+  private loadedIds: Set<string> = new Set();
 
   constructor(
     private teamSvc: TeamService,
@@ -26,13 +29,43 @@ export class TeamsPage implements OnInit {
     private alertCtrl: AlertController,
     private translate: TranslateService,
     private languageService: LanguageService,
-    private mediaSvc: BaseMediaService
+    private mediaSvc: BaseMediaService,
+    @Inject(TEAM_COLLECTION_SUBSCRIPTION_TOKEN)
+    private TeamSubs: ICollectionSubscription<Team>
   ) { 
     this.currentLang = this.languageService.getStoredLanguage();
   }
 
   ngOnInit() {
     this.getTeams();
+
+    this.TeamSubs.subscribe('teams').subscribe((change:
+          CollectionChange<Team>) => {
+              const currentLeague = [...this._teams.value];
+    
+              if ((!this.loadedIds.has(change.id) && change.type !== 'added')) {
+                return;
+              }
+    
+              switch(change.type){
+                case 'added':
+                case 'modified':
+                  const index = currentLeague.findIndex(p => p.id === change.id)
+                  if (index >= 0) {
+                    currentLeague[index] = change.data!;
+                  }
+                  break;
+                case 'removed':
+                  const removedIndex = currentLeague.findIndex(p => p.id === change.id)
+                  if (removedIndex >= 0) {
+                    currentLeague.splice(removedIndex, 1);
+                    this.loadedIds.delete(change.id);
+                  }
+                  break;
+              }
+    
+              this._teams.next(currentLeague)
+          });
   }
 
 
@@ -46,6 +79,8 @@ export class TeamsPage implements OnInit {
     this.page=1;
     this.teamSvc.getAll(this.page, this.pageSize).subscribe({
       next:(response:Paginated<Team>)=>{
+        // Actualizar el registro de IDs cargados
+        response.data.forEach(team => this.loadedIds.add(team.id));
         this._teams.next([...response.data]);
         this.page++;
         this.pages = response.pages;
@@ -56,6 +91,8 @@ export class TeamsPage implements OnInit {
   getMoreTeams(notify: HTMLIonInfiniteScrollElement | null = null){
     this.teamSvc.getAll(this.page, this.pageSize).subscribe({
       next:(response: Paginated<Team>)=>{
+        // Actualizar el registro de IDs cargados
+        response.data.forEach(team => this.loadedIds.add(team.id));
         this._teams.next([...this._teams.value, ...response.data]);
         this.page++;
         notify?.complete();
