@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
 import { Paginated } from 'src/app/core/models/paginated.model';
 import { Player } from 'src/app/core/models/players.model';
+import { PLAYER_COLLECTION_SUBSCRIPTION_TOKEN } from 'src/app/core/repositories/repository.tokens';
 import { BaseMediaService } from 'src/app/core/services/impl/base-media.service';
 import { PlayerService } from 'src/app/core/services/impl/player.service';
+import { CollectionChange, ICollectionSubscription } from 'src/app/core/services/interfaces/collection-subscription.interface';
 import { LanguageService } from 'src/app/core/services/language.service';
 import { PlayerCreateModalComponent } from 'src/app/shared/components/player-create-modal/player-create-modal.component';
 import { PlayerModalComponent } from 'src/app/shared/components/player-modal/player-modal.component';
@@ -21,6 +23,7 @@ export class PlayersPage implements OnInit {
   _players: BehaviorSubject<Player[]> = new BehaviorSubject<Player[]>([]);
   players$: Observable<Player[]> = this._players.asObservable();
   flippedCards: { [key: string]: boolean } = {};
+  private loadedIds: Set<string> = new Set();
 
   toggleFlip(playerId: string) {
     // Toggle only the clicked card without affecting others
@@ -33,13 +36,43 @@ export class PlayersPage implements OnInit {
     private alertCtrl: AlertController,
     private translate: TranslateService,
     private languageService: LanguageService,
-    private mediaSvc: BaseMediaService
+    private mediaSvc: BaseMediaService,
+    @Inject(PLAYER_COLLECTION_SUBSCRIPTION_TOKEN)
+    private playerSubs: ICollectionSubscription<Player>
   ) { 
     this.currentLang = this.languageService.getStoredLanguage();
   }
 
   ngOnInit() {
     this.getPlayers();
+
+    this.playerSubs.subscribe('leagues').subscribe((change:
+          CollectionChange<Player>) => {
+              const currentLeague = [...this._players.value];
+    
+              if ((!this.loadedIds.has(change.id) && change.type !== 'added')) {
+                return;
+              }
+    
+              switch(change.type){
+                case 'added':
+                case 'modified':
+                  const index = currentLeague.findIndex(p => p.id === change.id)
+                  if (index >= 0) {
+                    currentLeague[index] = change.data!;
+                  }
+                  break;
+                case 'removed':
+                  const removedIndex = currentLeague.findIndex(p => p.id === change.id)
+                  if (removedIndex >= 0) {
+                    currentLeague.splice(removedIndex, 1);
+                    this.loadedIds.delete(change.id);
+                  }
+                  break;
+              }
+    
+              this._players.next(currentLeague)
+          });
   }
 
 
@@ -53,6 +86,8 @@ export class PlayersPage implements OnInit {
     this.page=1;
     this.playerSvc.getAll(this.page, this.pageSize).subscribe({
       next:(response:Paginated<Player>)=>{
+        // Actualizar el registro de IDs cargados
+        response.data.forEach(player => this.loadedIds.add(player.id));
         this._players.next([...response.data]);
         this.page++;
         this.pages = response.pages;
@@ -71,6 +106,8 @@ export class PlayersPage implements OnInit {
   getMorePlayers(notify: HTMLIonInfiniteScrollElement | null = null){
     this.playerSvc.getAll(this.page, this.pageSize).subscribe({
       next:(response: Paginated<Player>)=>{
+        // Actualizar el registro de IDs cargados
+        response.data.forEach(player => this.loadedIds.add(player.id));
         this._players.next([...this._players.value, ...response.data]);
         this.page++;
         notify?.complete();
