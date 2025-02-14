@@ -14,6 +14,8 @@ import { IPlayerRepository } from './intefaces/player-repository.interface';
 import { ITeamRepository } from './intefaces/team-repository.interface';
 import { IMatchRepository } from './intefaces/match-repository.interface';
 import { Match } from '../models/matches.model';
+import { Model } from '../models/base.model';
+import { ICollectionSubscription } from '../services/interfaces/collection-subscription.interface';
 
 export const RESOURCE_NAME_TOKEN = new InjectionToken<string>('ResourceName');
 export const LEAGUE_RESOURCE_NAME_TOKEN = new InjectionToken<string>('LeagueResourceName');
@@ -50,4 +52,10 @@ export const STRAPI_AUTH_TOKEN = new InjectionToken<IStrapiAuthentication>('IStr
 export const AUTH_MAPPING_TOKEN = new InjectionToken<IBaseMapping<Users>>('IAuthMapping');
 export const BACKEND_TOKEN = new InjectionToken<string>('Backend');
 export const FIREBASE_CONFIG_TOKEN = new InjectionToken<string>('FirebaseConfigToken')
-export const FIREBASE_COLLECTION_TOKEN = new InjectionToken<string>('FirebaseCollectionToken')
+export const FIREBASE_COLLECTION_TOKEN = new InjectionToken<string>('FirebaseCollectionToken');
+export const COLLECTION_SUBSCRIPTION_TOKEN = new InjectionToken<ICollectionSubscription<Model>>('CollectionSubscriptionToken');
+export const LEAGUE_COLLECTION_SUBSCRIPTION_TOKEN = new InjectionToken<ICollectionSubscription<League>>('LeagueCollectionSubscriptionToken');
+export const TEAM_COLLECTION_SUBSCRIPTION_TOKEN = new InjectionToken<ICollectionSubscription<Team>>('TeamCollectionSubscriptionToken');
+export const PLAYER_COLLECTION_SUBSCRIPTION_TOKEN = new InjectionToken<ICollectionSubscription<Player>>('PlayerCollectionSubscriptionToken');
+export const MATCH_COLLECTION_SUBSCRIPTION_TOKEN = new InjectionToken<ICollectionSubscription<Match>>('MatchCollectionSubscriptionToken');
+export const USERS_COLLECTION_SUBSCRIPTION_TOKEN = new InjectionToken<ICollectionSubscription<Users>>('UsersCollectionSubscriptionToken');

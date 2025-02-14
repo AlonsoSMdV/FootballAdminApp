@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { BaseRepositoryHttpService } from './impl/base-repository-http.service';
 import { IBaseRepository } from './intefaces/base-repository.interface';
 import { Users } from '../models/users.model';
-import { AUTH_MAPPING_TOKEN, AUTH_ME_API_URL_TOKEN, AUTH_SIGN_IN_API_URL_TOKEN, AUTH_SIGN_UP_API_URL_TOKEN, BACKEND_TOKEN,  LEAGUE_API_URL_TOKEN, LEAGUE_REPOSITORY_MAPPING_TOKEN, LEAGUE_REPOSITORY_TOKEN, LEAGUE_RESOURCE_NAME_TOKEN, USER_API_URL_TOKEN, USER_REPOSITORY_MAPPING_TOKEN, USER_REPOSITORY_TOKEN, USER_RESOURCE_NAME_TOKEN, PLAYER_API_URL_TOKEN, PLAYER_REPOSITORY_MAPPING_TOKEN, PLAYER_REPOSITORY_TOKEN, PLAYER_RESOURCE_NAME_TOKEN, TEAM_API_URL_TOKEN, TEAM_REPOSITORY_MAPPING_TOKEN, TEAM_REPOSITORY_TOKEN, TEAM_RESOURCE_NAME_TOKEN, UPLOAD_API_URL_TOKEN, FIREBASE_CONFIG_TOKEN, FIREBASE_COLLECTION_TOKEN, MATCH_REPOSITORY_MAPPING_TOKEN, MATCH_REPOSITORY_TOKEN, MATCH_API_URL_TOKEN, MATCH_RESOURCE_NAME_TOKEN } from './repository.tokens';
+import { AUTH_MAPPING_TOKEN, AUTH_ME_API_URL_TOKEN, AUTH_SIGN_IN_API_URL_TOKEN, AUTH_SIGN_UP_API_URL_TOKEN, BACKEND_TOKEN,  LEAGUE_API_URL_TOKEN, LEAGUE_REPOSITORY_MAPPING_TOKEN, LEAGUE_REPOSITORY_TOKEN, LEAGUE_RESOURCE_NAME_TOKEN, USER_API_URL_TOKEN, USER_REPOSITORY_MAPPING_TOKEN, USER_REPOSITORY_TOKEN, USER_RESOURCE_NAME_TOKEN, PLAYER_API_URL_TOKEN, PLAYER_REPOSITORY_MAPPING_TOKEN, PLAYER_REPOSITORY_TOKEN, PLAYER_RESOURCE_NAME_TOKEN, TEAM_API_URL_TOKEN, TEAM_REPOSITORY_MAPPING_TOKEN, TEAM_REPOSITORY_TOKEN, TEAM_RESOURCE_NAME_TOKEN, UPLOAD_API_URL_TOKEN, FIREBASE_CONFIG_TOKEN, FIREBASE_COLLECTION_TOKEN, MATCH_REPOSITORY_MAPPING_TOKEN, MATCH_REPOSITORY_TOKEN, MATCH_API_URL_TOKEN, MATCH_RESOURCE_NAME_TOKEN, LEAGUE_COLLECTION_SUBSCRIPTION_TOKEN, TEAM_COLLECTION_SUBSCRIPTION_TOKEN, PLAYER_COLLECTION_SUBSCRIPTION_TOKEN, MATCH_COLLECTION_SUBSCRIPTION_TOKEN, USERS_COLLECTION_SUBSCRIPTION_TOKEN } from './repository.tokens';
 import { BaseRespositoryLocalStorageService } from './impl/base-repository-local-storage.service';
 import { Model } from '../models/base.model';
 import { IBaseMapping } from './intefaces/base-mapping.interface';
@@ -39,6 +39,8 @@ import { IAuthentication } from '../services/interfaces/authentication.interface
 import { FirebaseMediaService } from '../services/impl/firebase-media.service';
 import { MatchMappingFirebase } from './impl/match-mapping-firebase.service';
 import { Match } from '../models/matches.model';
+import { FirebaseCollectionSubscriptionService } from '../services/impl/firebase-collection-subscription.interface';
+import { ICollectionSubscription } from '../services/interfaces/collection-subscription.interface';
 
 export function createBaseRepositoryFactory<T extends Model>(
   token: InjectionToken<IBaseRepository<T>>,
@@ -286,3 +288,50 @@ export const MatchRepositoryFactory: FactoryProvider = createBaseRepositoryFacto
     MATCH_REPOSITORY_MAPPING_TOKEN, 
     FIREBASE_CONFIG_TOKEN]
 );
+
+export function createCollectionSubscriptionFactory<T extends Model>(
+  collectionName: string,
+  mappingToken: InjectionToken<IBaseMapping<T>>,
+  collectionSubscriptionToken: InjectionToken<ICollectionSubscription<T>>
+): FactoryProvider {
+  return {
+    provide: collectionSubscriptionToken,
+    useFactory: (backend: string, firebaseConfig: any, mapping: IBaseMapping<T>) => {
+      switch (backend) {
+        case 'firebase':
+          return new FirebaseCollectionSubscriptionService<T>(firebaseConfig, mapping);
+        default:
+          throw new Error("BACKEND NOT IMPLEMENTED");
+      }
+    },
+    deps: [BACKEND_TOKEN, FIREBASE_CONFIG_TOKEN, mappingToken]
+  };
+}
+// Factorías específicas para cada tipo
+export const LeagueCollectionSubscriptionFactory = createCollectionSubscriptionFactory<League>(
+  'league',
+  LEAGUE_REPOSITORY_MAPPING_TOKEN,
+  LEAGUE_COLLECTION_SUBSCRIPTION_TOKEN
+);
+export const TeamCollectionSubscriptionFactory = createCollectionSubscriptionFactory<Team>(
+  'team',
+  TEAM_REPOSITORY_MAPPING_TOKEN,
+  TEAM_COLLECTION_SUBSCRIPTION_TOKEN
+);
+export const PlayerCollectionSubscriptionFactory = createCollectionSubscriptionFactory<Player>(
+  'player',
+  PLAYER_REPOSITORY_MAPPING_TOKEN,
+  PLAYER_COLLECTION_SUBSCRIPTION_TOKEN
+);
+export const MatchCollectionSubscriptionFactory = createCollectionSubscriptionFactory<Match>(
+  'match',
+  MATCH_REPOSITORY_MAPPING_TOKEN,
+  MATCH_COLLECTION_SUBSCRIPTION_TOKEN
+);
+
+export const UsersCollectionSubscriptionFactory = createCollectionSubscriptionFactory<Users>(
+  'usuario',
+  USER_REPOSITORY_MAPPING_TOKEN,
+  USERS_COLLECTION_SUBSCRIPTION_TOKEN
+);
+
