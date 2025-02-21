@@ -20,7 +20,7 @@ export class LeagueCreateModalComponent  implements OnInit {
       this.mode = 'edit';
     
     this.formGroup.controls['name'].setValue(_league.name);
-    this.formGroup.controls['picture'].setValue(_league.picture);
+    this.formGroup.controls['picture'].setValue(_league.picture?.url);
   }
 
   constructor(
