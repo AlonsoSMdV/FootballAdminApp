@@ -14,6 +14,7 @@ import { PictureSelectableComponent } from './components/picture-selectable/pict
 import { PasswordTogglePipe } from './pipes/password-toggle/password-toggle.pipe';
 import { MatchCreateComponent } from './components/match-create/match-create.component'
 import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
+import { TimeDirectiveDirective } from './directives/time-directive/time-directive.directive';
 
 
 
@@ -28,7 +29,8 @@ import { LanguageSelectorComponent } from './components/language-selector/langua
     PictureSelectableComponent,
     PasswordTogglePipe,
     MatchCreateComponent,
-    LanguageSelectorComponent
+    LanguageSelectorComponent,
+    TimeDirectiveDirective
   ],
   imports: [
     CommonModule,
@@ -47,7 +49,8 @@ import { LanguageSelectorComponent } from './components/language-selector/langua
     PictureSelectableComponent,
     PasswordTogglePipe,
     MatchCreateComponent,
-    LanguageSelectorComponent
+    LanguageSelectorComponent,
+    TimeDirectiveDirective
   ]
 })
 export class SharedModule { }
