@@ -11,6 +11,8 @@ import { TeamService } from 'src/app/core/services/impl/team.service';
 import { CollectionChange, ICollectionSubscription } from 'src/app/core/services/interfaces/collection-subscription.interface';
 import { LanguageService } from 'src/app/core/services/language.service';
 import { MatchCreateComponent } from 'src/app/shared/components/match-create/match-create.component';
+import { Share } from '@capacitor/share';
+import { Capacitor } from '@capacitor/core';
 
 interface MatchWithTeams extends Match {
   localTeam?: Team;
@@ -219,5 +221,52 @@ export class MatchesPage implements OnInit {
       });
   
       await alert.present();
+    }
+
+    async shareMatch(match: MatchWithTeams) {
+      try {
+        // Formateamos la información del partido de manera atractiva
+        const localTeamName = match.localTeam?.name || 'Equipo Local';
+        const visitorTeamName = match.visitorTeam?.name || 'Equipo Visitante';
+        const matchDay = match.day ? new Date(match.day).toLocaleDateString(this.currentLang) : 'Fecha por confirmar';
+        const matchHour = match.hour ? new Date(`2000-01-01T${match.hour}`).toLocaleTimeString(this.currentLang, { hour: '2-digit', minute: '2-digit' }) : 'Hora por confirmar';
+        const matchPlace = match.place || 'Lugar por confirmar';
+        const matchResult = match.result || 'Resultado pendiente';
+        
+        // Crear el texto para compartir
+        const shareText = `${localTeamName} vs ${visitorTeamName}\n` +
+                          `${this.translate.instant('MATCH.DATE')}: ${matchDay}\n` +
+                          `${this.translate.instant('MATCH.TIME')}: ${matchHour}\n` +
+                          `${this.translate.instant('MATCH.PLACE')}: ${matchPlace}\n` +
+                          `${this.translate.instant('MATCH.RESULT')}: ${matchResult}`;
+        
+        // Usar Capacitor Share si estamos en un dispositivo nativo
+        if (Capacitor.isNativePlatform()) {
+          await Share.share({
+            title: `${localTeamName} vs ${visitorTeamName}`,
+            text: shareText,
+            dialogTitle: this.translate.instant('MATCH.SHARE_DIALOG_TITLE')
+          });
+        } else {
+          // Fallback para navegadores web usando la API Web Share si está disponible
+          if (navigator.share) {
+            await navigator.share({
+              title: `${localTeamName} vs ${visitorTeamName}`,
+              text: shareText
+            });
+          } else {
+            // Si no hay API de compartir, mostramos un simple alert
+            const alert = await this.alertCtrl.create({
+              header: this.translate.instant('MATCH.SHARE_NOT_AVAILABLE'),
+              message: shareText,
+              buttons: ['OK']
+            });
+            await alert.present();
+          }
+        }
+      } catch (error) {
+        console.error('Error sharing match:', error);
+        // Opcionalmente, mostrar un mensaje de error al usuario
+      }
     }
 }
