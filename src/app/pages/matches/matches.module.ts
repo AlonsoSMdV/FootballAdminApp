@@ -17,7 +17,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     IonicModule,
     SharedModule,
     MatchesPageRoutingModule,
-        TranslateModule.forChild()],
+    TranslateModule.forChild()],
   declarations: [MatchesPage]
 })
 export class MatchesPageModule {}
