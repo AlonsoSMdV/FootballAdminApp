@@ -192,4 +192,22 @@ export class TeamsPage implements OnInit {
 
     await alert.present();
   }
+
+  onTeamDropped(event: { fromIndex: number, toIndex: number }) {
+    const teamsArray = [...this._teams.value];
+  
+    if (event.fromIndex !== event.toIndex) {
+      // Remueve el equipo de su posición original
+      const movedItem = teamsArray.splice(event.fromIndex, 1)[0];
+  
+      // Inserta el equipo en la nueva posición
+      teamsArray.splice(event.toIndex, 0, movedItem);
+  
+      // Actualiza el BehaviorSubject con la nueva lista ordenada
+      this._teams.next(teamsArray);
+    }
+  }
+  
 }
+
+

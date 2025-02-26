@@ -19,8 +19,9 @@
         size="12"
         size-sm="12" 
         *ngFor="let team of (teams$ | async), let i = index"
+        appDragDrop [dragData]="team" [index]="i" (dropped)="onTeamDropped($event)"
       >
-        <ion-card>
+        <ion-card appHighlight="rgba(119, 245, 151, 0.3)">
           <ion-card-content>
             <div class="team-header">
               <div class="team-image-container">
