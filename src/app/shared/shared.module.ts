@@ -15,6 +15,9 @@ import { PasswordTogglePipe } from './pipes/password-toggle/password-toggle.pipe
 import { MatchCreateComponent } from './components/match-create/match-create.component'
 import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
 import { TimeDirectiveDirective } from './directives/time-directive/time-directive.directive';
+import { FilterByTeamDirective } from './directives/filterByTeams/filter-by-teams.directive';
+import { HighLightDirective } from './directives/high-light-directive/high-light.directive';
+import { DragDropDirective } from './directives/drag-and-drop/drag-drop.directive';
 
 
 
@@ -30,7 +33,10 @@ import { TimeDirectiveDirective } from './directives/time-directive/time-directi
     PasswordTogglePipe,
     MatchCreateComponent,
     LanguageSelectorComponent,
-    TimeDirectiveDirective
+    TimeDirectiveDirective,
+    FilterByTeamDirective,
+    HighLightDirective,
+    DragDropDirective
   ],
   imports: [
     CommonModule,
@@ -50,7 +56,10 @@ import { TimeDirectiveDirective } from './directives/time-directive/time-directi
     PasswordTogglePipe,
     MatchCreateComponent,
     LanguageSelectorComponent,
-    TimeDirectiveDirective
+    TimeDirectiveDirective,
+    FilterByTeamDirective,
+    HighLightDirective,
+    DragDropDirective
   ]
 })
 export class SharedModule { }
