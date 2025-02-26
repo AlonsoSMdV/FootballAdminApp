@@ -1,4 +1,4 @@
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -31,7 +31,7 @@ import { BaseAuthenticationService } from './core/services/impl/base-authenticat
 import { UsersService } from './core/services/impl/users.service';
 import { UsersMappingStrapi } from './core/repositories/impl/users-mapping-strapi.service';
 import { BaseMediaService } from './core/services/impl/base-media.service';
-import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SharedModule } from './shared/shared.module';
 import player from 'lottie-web';
@@ -41,25 +41,7 @@ import { LeagueMappingFirebase } from './core/repositories/impl/league-mapping-f
 import { TeamMappingFirebase } from './core/repositories/impl/team-mapping-firebase.service';
 import { PlayerMappingFirebase } from './core/repositories/impl/player-mapping-firebase.service';
 import { MatchService } from './core/services/impl/match.service';
-import { registerLocaleData } from '@angular/common';
-import es from '@angular/common/locales/es';
-import en from '@angular/common/locales/en';
-import zh from '@angular/common/locales/zh';
-import ru from '@angular/common/locales/ru';
-import pt from '@angular/common/locales/pt';
-import it from '@angular/common/locales/it';
-import fr from '@angular/common/locales/fr';
-import ar from '@angular/common/locales/ar';
 
-// Registrar los idiomas
-registerLocaleData(es);
-registerLocaleData(en);
-registerLocaleData(zh);
-registerLocaleData(ru);
-registerLocaleData(pt);
-registerLocaleData(it);
-registerLocaleData(fr);
-registerLocaleData(ar);
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -79,11 +61,6 @@ export function createTranslateLoader(http: HttpClient) {
       }
     }),],
   providers: [
-    {
-      provide: LOCALE_ID,
-      useFactory: (translateService: TranslateService) => translateService.currentLang || 'en',
-      deps: [TranslateService]
-    },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },provideLottieOptions({
       player: () => player,
     }),
