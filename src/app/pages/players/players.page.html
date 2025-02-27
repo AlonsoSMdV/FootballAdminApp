@@ -22,11 +22,12 @@
         size-md="4" 
         size-lg="3" 
         *ngFor="let player of (players$ | async), let i = index"
+        appDragDrop [dragData]="player" [index]="i" (dropped)="onPlayerDropped($event)"
       >
         <ion-card>
           <div class="card-inner" [class.flipped]="flippedCards[player.id]">
             <!-- Front of the card -->
-            <div class="card-front" (click)="!flippedCards[player.id] && toggleFlip(player.id)">
+            <div class="card-front" (click)="!flippedCards[player.id] && toggleFlip(player.id)" appHighlight="rgba(119, 245, 151, 0.3)">
               <ion-card-content>
                 <div class="player-header">
                   <div class="player-image-container">

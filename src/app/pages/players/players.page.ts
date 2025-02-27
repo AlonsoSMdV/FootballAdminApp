@@ -219,6 +219,21 @@ export class PlayersPage implements OnInit {
 
     await alert.present();
   }
+
+  onPlayerDropped(event: { fromIndex: number, toIndex: number }) {
+    const playersArray = [...this._players.value];
+  
+    if (event.fromIndex !== event.toIndex) {
+      // Remueve el equipo de su posición original
+      const movedItem = playersArray.splice(event.fromIndex, 1)[0];
+  
+      // Inserta el equipo en la nueva posición
+      playersArray.splice(event.toIndex, 0, movedItem);
+  
+      // Actualiza el BehaviorSubject con la nueva lista ordenada
+      this._players.next(playersArray);
+    }
+  }
 }
 
 
