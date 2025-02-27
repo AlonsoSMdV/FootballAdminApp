@@ -21,8 +21,9 @@
         size-md="4" 
         size-lg="3" 
         *ngFor="let league of (leagues$ | async), let i = index"
+        appDragDrop [dragData]="league" [index]="i" (dropped)="onLeagueDropped($event)"
       >
-        <ion-card>
+        <ion-card appHighlight="rgba(119, 245, 151, 0.3)">
           <ion-card-content>
             <div class="league-header">
               <div class="league-image-container">

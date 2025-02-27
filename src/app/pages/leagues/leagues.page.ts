@@ -189,4 +189,19 @@ export class LeaguesPage implements OnInit {
 
     await alert.present();
   }
+
+  onLeagueDropped(event: { fromIndex: number, toIndex: number }) {
+    const leaguesArray = [...this._leagues.value];
+  
+    if (event.fromIndex !== event.toIndex) {
+      // Remueve el equipo de su posición original
+      const movedItem = leaguesArray.splice(event.fromIndex, 1)[0];
+  
+      // Inserta el equipo en la nueva posición
+      leaguesArray.splice(event.toIndex, 0, movedItem);
+  
+      // Actualiza el BehaviorSubject con la nueva lista ordenada
+      this._leagues.next(leaguesArray);
+    }
+  }
 }
