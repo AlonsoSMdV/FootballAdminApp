@@ -269,4 +269,19 @@ export class MatchesPage implements OnInit {
         // Opcionalmente, mostrar un mensaje de error al usuario
       }
     }
+
+    onMatchDropped(event: { fromIndex: number, toIndex: number }) {
+      const matchesArray = [...this._matches.value];
+    
+      if (event.fromIndex !== event.toIndex) {
+        // Remueve el equipo de su posición original
+        const movedItem = matchesArray.splice(event.fromIndex, 1)[0];
+    
+        // Inserta el equipo en la nueva posición
+        matchesArray.splice(event.toIndex, 0, movedItem);
+    
+        // Actualiza el BehaviorSubject con la nueva lista ordenada
+        this._matches.next(matchesArray);
+      }
+    }
 }

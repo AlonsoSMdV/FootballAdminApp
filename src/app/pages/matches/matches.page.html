@@ -28,8 +28,9 @@
         size="12"
         size-md="4"
         *ngFor="let match of (matches$ | async), let i = index"
+        appDragDrop [dragData]="match" [index]="i" (dropped)="onMatchDropped($event)"
       >
-      <ion-card>
+      <ion-card appHighlight="rgba(119, 245, 151, 0.3)">
         <ion-card-content>
           <div class="match-header">
             <div class="teams-container">
