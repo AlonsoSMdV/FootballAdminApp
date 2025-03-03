@@ -21,17 +21,21 @@
         *ngFor="let team of (teams$ | async), let i = index"
         appDragDrop [dragData]="team" [index]="i" (dropped)="onTeamDropped($event)"
       >
-        <ion-card appHighlight="rgba(119, 245, 151, 0.3)">
+        <ion-card appHighlight="rgba(099, 245, 200, 0.1)">
           <ion-card-content>
             <div class="team-header">
               <div class="team-image-container">
+                <!-- Opcional: número de posición -->
+                <div class="team-number">{{i + 1}}</div>
                 <img [src]="team.picture?.url || img" alt="team logo" class="team-img"/>
                 <div class="glow-effect"></div>
               </div>
-              <h2 class="team-name">{{team.name}}</h2>
-              <h2 class="team-nPlayers">{{team.numberOfPlayers}}</h2>
+              <div class="team-info">
+                <h2 class="team-name">{{team.name}}</h2>
+                <h2 class="team-nPlayers">{{team.numberOfPlayers}} {{ 'TEAMS.PLAYERS' | translate}}</h2>
+              </div>
             </div>
-
+          
             <div class="action-buttons">
               <ion-button fill="clear" class="info" routerLink="/players">
                 <ion-icon name="information-circle" slot="icon-only"></ion-icon>

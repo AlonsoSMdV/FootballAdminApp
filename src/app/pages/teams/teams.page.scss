@@ -4,8 +4,8 @@
   --accent-color: #ff3366;
   --background-dark: #131313;
   --card-bg: rgba(255, 255, 255, 0.1);
-  --card-height: 300px;
-  --card-width: 300px;
+  --card-height: 180px; /* Reducida para un formato más horizontal */
+  --card-width: 100%;
 }
 
 // Header Styles
@@ -56,7 +56,7 @@ ion-col {
   padding: 10px;
 }
 
-// Card Styles
+// Card Styles - Modificados para formato horizontal
 ion-card {
   height: var(--card-height);
   margin: 0;
@@ -77,32 +77,30 @@ ion-card {
 }
 
 ion-card-content {
-  padding: 20px;
+  padding: 15px;
   height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Cambiado a horizontal */
   justify-content: space-between;
+  align-items: center;
 }
 
-// team Header
+// team Header - Modificado
 .team-header {
   display: flex;
-  flex-direction: column; /* Asegura que el contenido se apile verticalmente */
-  align-items: center; /* Centra los elementos horizontalmente */
-  text-align: center;
-  margin-bottom: 0;
+  flex-direction: row; /* Cambiado a horizontal */
+  align-items: center;
+  flex: 1;
   
   .team-image-container {
     position: relative;
-    display: flex;
-    justify-content: center; /* Centra la imagen horizontalmente */
-    align-items: center;
-    width: 250px;
-    height: 150px;
-    margin-right: 15px;
+    width: 120px; /* Tamaño fijo más pequeño */
+    height: 120px;
+    margin-right: 20px;
+    flex-shrink: 0; /* Evita que la imagen se encoja */
     
     .team-img {
-      width:75%;
+      width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 12px;
@@ -115,65 +113,144 @@ ion-card-content {
       right: 0;
       bottom: 0;
       background: radial-gradient(circle at 50% 50%, 
-        rgba(var(--primary-color), 0.5), 
+        rgba(0, 255, 136, 0.5), 
         transparent 70%);
       opacity: 0;
       transition: opacity 0.3s;
+      border-radius: 12px;
     }
+  }
+
+  .team-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
 
   .team-name {
     color: white;
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-top: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
     word-break: break-word;
+    text-align: left;
   }
+  
   .team-nPlayers {
-    color: white;
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      margin-right: 8px;
+    }
   }
 }
 
-// Action Buttons
+// Action Buttons - Modificados
 .action-buttons {
   display: flex;
-  gap: 15px; // Aumentado el espacio entre botones
-  justify-content: center;
-  margin-top: auto; // Asegura que los botones estén al final de la card
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
   
   ion-button {
-    --padding-start: 20px;  // Aumentado el padding
-    --padding-end: 20px;    // Aumentado el padding
+    --padding-start: 10px;
+    --padding-end: 10px;
     --border-radius: 12px;
-    width: 64px;
-    height: 64px;
+    width: 45px;
+    height: 45px;
     
     ion-icon {
-      font-size: 64px !important;    // Iconos más grandes
+      font-size: 22px !important;
     }
     
     &.info {
-      --background: rgba(var(--primary-color), 0.2);
+      --background: rgba(0, 255, 136, 0.2);
       --color: var(--primary-color);
     }
     
     &.edit {
-      --background: rgba(var(--secondary-color), 0.2);
+      --background: rgba(80, 80, 219, 0.2);
       --color: var(--secondary-color);
     }
     
     &.delete {
-      --background: rgba(var(--accent-color), 0.2);
+      --background: rgba(255, 51, 102, 0.2);
       --color: var(--accent-color);
     }
 
     &:hover {
-      --background: rgba(255, 255, 255, 0.15);  // Efecto hover más visible
-      transform: scale(1.1);                     // Efecto de escala al hover
+      --background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.1);
       transition: all 0.2s ease;
     }
+  }
+}
+
+/* Añadido para mostrar equipos con indicador de número */
+.team-number {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  background: linear-gradient(45deg, var(--primary-color), #00ffcc);
+  color: #000;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 576px) {
+  ion-card {
+    --card-height: auto;
+  }
+  
+  ion-card-content {
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .team-header {
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 15px;
+    
+    .team-image-container {
+      width: 100px;
+      height: 100px;
+      margin-right: 0;
+      margin-bottom: 15px;
+    }
+    
+    .team-info {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .team-name, .team-nPlayers {
+      text-align: center;
+    }
+  }
+  
+  .action-buttons {
+    width: 100%;
+    justify-content: center;
   }
 }
