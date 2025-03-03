@@ -22,12 +22,12 @@ providers: [
 })
 export class LanguageSelectorComponent implements ControlValueAccessor {
 languages: Language[] = [
-  { code: 'es', name: 'COMMON.SPANISH', shortCode: 'ES' },
-  { code: 'en', name: 'COMMON.ENGLISH', shortCode: 'GB' },
-  { code: 'fr', name: 'COMMON.FRENCH', shortCode: 'FR'},
-  { code: 'it', name: 'COMMON.ITALIAN', shortCode: 'IT'},
+  { code: 'es', name: 'Spanish', shortCode: 'ES' },
+  { code: 'en', name: 'English', shortCode: 'GB' },
+  { code: 'fr', name: 'French', shortCode: 'FR'},
+  { code: 'it', name: 'Italian', shortCode: 'IT'},
   { code: 'de', name: 'German', shortCode: 'DE'},
-  { code: 'zh', name: 'Chinese', shortCode: 'CN' },
+  { code: 'ch', name: 'Chinese', shortCode: 'CN' },
   { code: 'ru', name: 'Russian', shortCode: 'RU'},
   { code: 'sa', name: 'Arab', shortCode: 'SA'},
   { code: 'pt', name: 'Portuguese', shortCode: 'PT'}

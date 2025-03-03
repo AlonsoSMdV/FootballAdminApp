@@ -174,14 +174,16 @@
   },
   "HOME": {
     "TITLE": "首页",
-    "LEAGUES": "探索各大联赛及其球队。",
-    "TEAMS": "查看参赛球队、球员人数及其详细信息。",
+    "LEAGUES": "探索各个联赛及其所属球队。",
+    "TEAMS": "查看参赛球队、球员数量及相关信息。",
     "PLAYERS": "了解球员的详细信息。",
-    "CONTACT": "有疑问？联系我们获取更多信息。",
+    "MATCHES": "不要错过任何联赛的比赛！",
+    "CONTACT": "有问题吗？联系我们以获取更多信息。",
     "SEE_LEAGUES": "查看联赛",
     "SEE_TEAMS": "查看球队",
     "SEE_PLAYERS": "查看球员",
-    "SEE_CONTACT": "联系"
+    "SEE_MATCHES": "查看比赛",
+    "SEE_CONTACT": "联系我们"
   },
   "ABOUT": {
     "TITLE": "联系",

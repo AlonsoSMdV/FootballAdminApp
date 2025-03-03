@@ -176,10 +176,12 @@
         "LEAGUES": "Explora las ligas junto a sus respectivos equipos.",
         "TEAMS": "Consulta los equipos participantes, su número de jugadores y la información de estos",
         "PLAYERS": "Descubre información detallada de los jugadores.",
+        "MATCHES":"¡No te pierdas ningún partido de cualquier liga!",
         "CONTACT": "¿Tienes preguntas? Contáctanos para obtener más información.",
         "SEE_LEAGUES": "Ver ligas",
         "SEE_TEAMS": "Ver equipos",
         "SEE_PLAYERS": "Ver jugadores",
+        "SEE_MATCHES":"Ver partidos",
         "SEE_CONTACT": "Contactar"
       },
       "ABOUT":{

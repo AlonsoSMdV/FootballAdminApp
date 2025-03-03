@@ -174,14 +174,16 @@
   },
   "HOME": {
     "TITLE": "Home",
-    "LEAGUES": "Explore the leagues along with their teams.",
-    "TEAMS": "Check out the participating teams, their number of players, and their details.",
-    "PLAYERS": "Discover detailed player information.",
+    "LEAGUES": "Explore the leagues along with their respective teams.",
+    "TEAMS": "Check out the participating teams, their number of players, and their information.",
+    "PLAYERS": "Discover detailed information about the players.",
+    "MATCHES": "Don't miss any match from any league!",
     "CONTACT": "Have questions? Contact us for more information.",
     "SEE_LEAGUES": "View leagues",
     "SEE_TEAMS": "View teams",
     "SEE_PLAYERS": "View players",
-    "SEE_CONTACT": "Contact"
+    "SEE_MATCHES": "View matches",
+    "SEE_CONTACT": "Contact us"
   },
   "ABOUT": {
     "TITLE": "Contact",
