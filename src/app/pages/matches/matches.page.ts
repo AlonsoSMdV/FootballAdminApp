@@ -252,7 +252,8 @@ export class MatchesPage implements OnInit {
           if (navigator.share) {
             await navigator.share({
               title: `${localTeamName} vs ${visitorTeamName}`,
-              text: shareText
+              text: shareText,
+              url: 'matches'
             });
           } else {
             // Si no hay API de compartir, mostramos un simple alert
