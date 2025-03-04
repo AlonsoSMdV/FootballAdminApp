@@ -16,6 +16,8 @@ export class MatchCreateComponent  implements OnInit {
   isMobile: boolean = false;
   isDatePickerOpen = false;
   isTimePickerOpen = false;
+  isLocalTeamModalOpen = false;
+  isVisitorTeamModalOpen = false;
 
 
   @Input() set match(_match:Match){
@@ -80,6 +82,24 @@ export class MatchCreateComponent  implements OnInit {
     const selectedTime = event.detail.value;
     this.formGroup.get('hour')?.setValue(this.formatTime(selectedTime));
     this.isTimePickerOpen = false;
+  }
+
+  onLocalTeamMouseEnter() {
+    this.isVisitorTeamModalOpen = false;
+    this.isLocalTeamModalOpen = true;
+  }
+
+  onLocalTeamMouseLeave() {
+    this.isLocalTeamModalOpen = false;
+  }
+
+  onVisitorTeamMouseEnter() {
+    this.isLocalTeamModalOpen = false;
+    this.isVisitorTeamModalOpen = true;
+  }
+
+  onVisitorTeamMouseLeave() {
+    this.isVisitorTeamModalOpen = false;
   }
 
   ngOnInit() {}
