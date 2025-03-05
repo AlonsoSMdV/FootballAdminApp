@@ -3,9 +3,10 @@
   --secondary-color: #5050db;
   --accent-color: #ff3366;
   --background-dark: #131313;
-  --card-bg: rgba(255, 255, 255, 0.1);
-  --card-height: 300px;
-  --card-width: 300px;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.2);
+  --input-bg: rgba(255, 255, 255, 0);
+  --input-border: rgba(255, 255, 255, 0.192);
 }
 
 // Header Styles
@@ -25,7 +26,6 @@ ion-header {
   }
 }
 
-/* Base gradient background */
 ion-content {
   --background: none;
   background-image: linear-gradient(to bottom, #000000, #1c301d);
@@ -48,88 +48,70 @@ ion-toolbar {
   margin: 16px;
 }
 
-/* Profile card styling to match league cards */
+/* Mejoramos el diseño de la tarjeta de perfil */
 .profile-card {
-  background: rgba(21, 71, 52, 0.6);
-  border-radius: 16px;
-  border: 1px solid rgba(0, 255, 157, 0.1);
-  margin: 16px;
-  overflow: hidden;
-  transition: all 0.3s ease;
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 255, 157, 0.15);
+  transition: all 0.3s ease-in-out;
 }
 
 .profile-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(0, 255, 157, 0.3);
-  box-shadow: 0 8px 24px rgba(0, 255, 157, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 255, 157, 0.3);
 }
 
-.profile-card ion-card-header {
-  background: rgba(21, 71, 52, 0.8);
-  border-bottom: 1px solid rgba(0, 255, 157, 0.1);
-}
-
-.profile-card ion-card-title {
-  color: #00ff9d;
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
-/* Profile list container */
-.profile-list {
-  background: rgba(21, 71, 52, 0.6);
-  border-radius: 16px;
-  border: 1px solid rgba(0, 255, 157, 0.1);
-  padding: 16px;
-  margin: 16px 0;
-}
-
-/* Input styling */
+/* Estilos de los inputs */
 ion-item {
-  --background: rgba(21, 71, 52, 0.4);
-  --border-color: rgba(0, 255, 157, 0.1);
-  --border-radius: 12px;
+  --background: var(--input-bg);
+  --border-radius: 8px;
+  --border-color: var(--input-border);
   --border-width: 1px;
-  --padding-start: 16px;
-  --highlight-color: #00ff9d;
-  margin: 8px 0;
+  padding: 12px;
 }
 
 .styled-input {
   --color: white;
   --placeholder-color: rgba(255, 255, 255, 0.5);
+  font-size: 1rem;
 }
 
-/* Button styling */
-.save-button, .delete-button {
-  --border-radius: 12px;
-  font-weight: 500;
+.profile-list{
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 255, 157, 0.15);
+}
+
+/* Botones */
+ion-button {
+  border-radius: 8px;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin: 8px 0;
-  height: 48px;
+  transition: all 0.3s ease-in-out;
 }
 
 .save-button {
-  --background: #00ff9d;
+  --background: var(--primary-color);
   --color: #1a1a1a;
+  box-shadow: 0 4px 10px rgba(0, 255, 157, 0.2);
 }
 
 .save-button:hover {
-  --background: #00ff9d;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px  rgba(0, 255, 157, 0.2);
-}
-
-.delete-button:hover {
-  --background: #ff4961;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px  rgba(255, 73, 97, 0.2);
+  box-shadow: 0 6px 16px rgba(0, 255, 157, 0.3);
 }
 
 .delete-button {
-  --background: #ff4961;
+  --background: var(--accent-color);
   --color: white;
+}
+
+.delete-button:hover {
+  box-shadow: 0 6px 16px rgba(255, 73, 97, 0.3);
 }
 
 /* Picture selectable component */
