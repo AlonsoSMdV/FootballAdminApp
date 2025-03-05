@@ -6,6 +6,22 @@ ion-content {
     --padding-bottom: 16px;
     --min-height: 100%;
   }
+
+  .scrollable-content {
+    overflow: hidden; /* Oculta completamente la barra de scroll */
+  }
+  
+  ion-content {
+    --overflow: hidden;
+  }
+  
+  ::-webkit-scrollbar {
+    display: none; /* Oculta la scrollbar en navegadores basados en WebKit */
+  }
+  
+  html, body {
+    overflow: hidden; /* Evita el desplazamiento global */
+  }
   
   ion-toolbar {
     --background: #355e38;

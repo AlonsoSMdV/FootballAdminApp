@@ -46,9 +46,6 @@
     </ion-modal>
       <div slot="title">{{'MATCHES.SELECT_DATE'|translate}}</div>
   </ion-item>
-    <ion-text color="danger" *ngIf="day?.invalid && (day?.dirty || day?.touched)">
-      <p *ngIf="day?.errors?.['required']">{{ 'MATCHES.ERRORS.DAY_REQUIRED' | translate }}</p>
-    </ion-text>
   
     <!-- Hora del partido-->
     <ion-item>
@@ -94,6 +91,7 @@
         <ion-row>
           <ion-col>
             <ion-item 
+              *ngIf="mode === 'new'"
               (mouseenter)="onLocalTeamMouseEnter()">
               <ion-label position="stacked">{{ 'MATCHES.TEAM_LOCAL' | translate }}</ion-label>
               <app-team-selectable 
@@ -104,6 +102,7 @@
           </ion-col>
           <ion-col>
             <ion-item 
+              *ngIf="mode === 'new'"
               (mouseenter)="onVisitorTeamMouseEnter()">
               <ion-label position="stacked">{{ 'MATCHES.TEAM_VISITOR' | translate }}</ion-label>
               <app-team-selectable 
