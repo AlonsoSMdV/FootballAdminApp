@@ -131,12 +131,14 @@ export class TeamsPage implements OnInit {
                 medium: pictureUrl[0],
                 small: pictureUrl[0],
                 thumbnail: pictureUrl[0],
-              }
+              },
+              league: response.data.league
             }
           }else{
             newTeam = {
               name: response.data.name,
-              numberOfPlayers: response.data.numberOfPlayers
+              numberOfPlayers: response.data.numberOfPlayers,
+              league: response.data.league
             }
           }
       switch (response.role) {
