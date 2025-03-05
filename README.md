@@ -37,4 +37,4 @@ Este proyecto está desarrollado utilizando las siguientes tecnologías:
 
 - **Enlace a Firebase**: (Agregar enlace si es público)
 - **Enlace a la aplicación en Netlify**: [FutManager en Netlify](https://futmanager.netlify.app)
-- **Enlace a YouTube**: [Demostración en YouTube](https://youtu.be/48706eHnVA8?si=0L-_3JoVPcWXqHPb)
+- **Enlace a YouTube**: [Demostración en YouTube](https://www.youtube.com/watch?v=S5aTkGf09Jo)
