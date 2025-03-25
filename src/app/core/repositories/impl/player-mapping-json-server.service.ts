@@ -12,6 +12,7 @@ interface PlayerRaw{
   nacionalidad: string
   dorsal: number
   posicion:string
+  isFavourite: boolean
   idEquipo: string
 
 }
@@ -29,6 +30,7 @@ export class PlayerJsonServerStorageMapping implements IBaseMapping<Player> {
           nacionalidad:data.nationality,
           dorsal:data.dorsal,
           posicion:data.position,
+          isFavourite: data.isFavourite,
           idEquipo:''
       }
   }
@@ -49,6 +51,8 @@ export class PlayerJsonServerStorageMapping implements IBaseMapping<Player> {
               case 'dorsal': toReturn['dorsal']=data[key];
                   break;
               case 'position': toReturn['posicion']=data[key];
+                  break;
+              case 'isFavourite': toReturn['isFavourite']=data[key];
                   break;
               case 'team': toReturn['idEquipo']=data[key];
                   break;
@@ -74,6 +78,7 @@ export class PlayerJsonServerStorageMapping implements IBaseMapping<Player> {
           nationality:data.nacionalidad,
           dorsal:data.dorsal,
           position:data.posicion,
+          isFavourite: data.isFavourite,
           team:data.idEquipo,
       };
   }

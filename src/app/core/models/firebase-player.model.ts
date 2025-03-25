@@ -8,6 +8,7 @@ export interface FirebasePlayer{
   nationality: string;
   dorsal: number;
   position: string;
+  isFavourite: boolean,
   team?: DocumentReference;
   picture?: string;
   userId?: DocumentReference;

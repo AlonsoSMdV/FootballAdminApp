@@ -21,6 +21,7 @@ interface TeamData{
 interface TeamAttributes{
   name: string
   numberOfPlayers: number
+  isFavourite: boolean
   league: LeagueRaw | number | null
   createdAt?: string
   updatedAt?: string
@@ -48,6 +49,7 @@ interface PlayerAttributes{
   nationality: string;
   dorsal: number;
   position: string;
+  isFavourite: boolean
   team: TeamRaw | number | null;
 }
 
@@ -69,6 +71,7 @@ export class PlayerMappingStrapi implements IBaseMapping<Player> {
               nationality: data.nationality,
               dorsal: data.dorsal,
               position: data.position,
+              isFavourite: data.isFavourite,
               team: data.team?Number(data.team):null
           }
       };
@@ -90,6 +93,8 @@ export class PlayerMappingStrapi implements IBaseMapping<Player> {
               case 'dorsal': mappedData.dorsal=data[key];
               break;
               case 'position': mappedData.position=data[key];
+              break;
+              case 'isFavourite' : mappedData.isFavourite=data[key]
               break;
               case 'team': mappedData.team=data[key] ? Number(data[key]): null;
               break;
@@ -118,6 +123,7 @@ export class PlayerMappingStrapi implements IBaseMapping<Player> {
           nationality: attributes.nationality,
           dorsal: attributes.dorsal,
           position: attributes.position,
+          isFavourite: attributes.isFavourite,
           team: typeof attributes.team === 'object' ? attributes.team?.data?.id.toString() : undefined,
       };
   }

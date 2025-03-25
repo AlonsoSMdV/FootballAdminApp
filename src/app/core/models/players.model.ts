@@ -8,6 +8,7 @@ export interface Player extends Model{
   nationality: string;
   dorsal: number;
   position: string;
+  isFavourite: boolean,
   team?: string;
   picture?:{
     url: string | undefined,
