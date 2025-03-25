@@ -39,33 +39,33 @@ export class TeamsPage implements OnInit {
   ngOnInit() {
     this.getTeams();
 
-    this.TeamSubs.subscribe('teams').subscribe((change:
-          CollectionChange<Team>) => {
-              const currentLeague = [...this._teams.value];
+    this.TeamSubs.subscribe('teams').subscribe((change: CollectionChange<Team>) => {
+      let currentTeams = [...this._teams.value];
     
-              if ((!this.loadedIds.has(change.id) && change.type !== 'added')) {
-                return;
-              }
+      if ((!this.loadedIds.has(change.id) && change.type !== 'added')) {
+        return;
+      }
     
-              switch(change.type){
-                case 'added':
-                case 'modified':
-                  const index = currentLeague.findIndex(p => p.id === change.id)
-                  if (index >= 0) {
-                    currentLeague[index] = change.data!;
-                  }
-                  break;
-                case 'removed':
-                  const removedIndex = currentLeague.findIndex(p => p.id === change.id)
-                  if (removedIndex >= 0) {
-                    currentLeague.splice(removedIndex, 1);
-                    this.loadedIds.delete(change.id);
-                  }
-                  break;
-              }
+      switch (change.type) {
+        case 'added':
+        case 'modified':
+          const index = currentTeams.findIndex(p => p.id === change.id);
+          if (index >= 0) {
+            currentTeams[index] = change.data!;
+          } else {
+            currentTeams.push(change.data!);
+            this.loadedIds.add(change.id);
+          }
+          break;
+        case 'removed':
+          currentTeams = currentTeams.filter(p => p.id !== change.id);
+          this.loadedIds.delete(change.id);
+          break;
+      }
     
-              this._teams.next(currentLeague)
-          });
+      // Ordenar por puntos antes de actualizar la lista
+      this._teams.next(currentTeams.sort((a, b) => b.pts - a.pts));
+    });
   }
 
 
@@ -75,29 +75,77 @@ export class TeamsPage implements OnInit {
   pageSize:number = 25;
   pages:number = 0;
 
-  getTeams(){
-    this.page=1;
+  getTeams() {
+    this.page = 1;
     this.teamSvc.getAll(this.page, this.pageSize).subscribe({
-      next:(response:Paginated<Team>)=>{
-        // Actualizar el registro de IDs cargados
+      next: (response: Paginated<Team>) => {
         response.data.forEach(team => this.loadedIds.add(team.id));
-        this._teams.next([...response.data]);
+  
+        // Ordenar los equipos por puntos (de mayor a menor)
+        const sortedTeams = response.data.sort((a, b) => b.pts - a.pts);
+  
+        this._teams.next(sortedTeams);
         this.page++;
         this.pages = response.pages;
       }
     });
   }
   
-  getMoreTeams(notify: HTMLIonInfiniteScrollElement | null = null){
+  getMoreTeams(notify: HTMLIonInfiniteScrollElement | null = null) {
     this.teamSvc.getAll(this.page, this.pageSize).subscribe({
-      next:(response: Paginated<Team>)=>{
-        // Actualizar el registro de IDs cargados
+      next: (response: Paginated<Team>) => {
         response.data.forEach(team => this.loadedIds.add(team.id));
-        this._teams.next([...this._teams.value, ...response.data]);
+  
+        // Añadir y ordenar por puntos
+        const sortedTeams = [...this._teams.value, ...response.data].sort((a, b) => b.pts - a.pts);
+  
+        this._teams.next(sortedTeams);
         this.page++;
         notify?.complete();
       }
-    })
+    });
+  }
+
+  async updatePoints(team: Team) {
+    const alert = await this.alertCtrl.create({
+      header: this.translate.instant('TEAMS.UPDATE_POINTS'),
+      message: this.translate.instant('TEAMS.CHOOSE_RESULT'),
+      buttons: [
+        {
+          text: this.translate.instant('TEAMS.WIN'),
+          handler: () => this.changeTeamPoints(team, 3),
+        },
+        {
+          text: this.translate.instant('TEAMS.DRAW'),
+          handler: () => this.changeTeamPoints(team, 1),
+        },
+        {
+          text: this.translate.instant('TEAMS.LOSS'),
+          handler: () => this.changeTeamPoints(team, 0),
+        },
+        {
+          text: this.translate.instant('COMMON.CANCEL'),
+          role: 'cancel',
+        },
+      ],
+    });
+  
+    await alert.present();
+  }
+
+  changeTeamPoints(team: Team, pointsToAdd: number) {
+    const updatedTeam = { 
+      ...team, 
+      pts: team.pts + pointsToAdd,
+      nMatches: (team.nMatches || 0) + 1 // Incrementamos partidos jugados
+    };
+  
+    this.teamSvc.update(team.id, updatedTeam).subscribe({
+      next: () => {
+        this.getTeams(); // Recargar equipos después de la actualización
+      },
+      error: (err) => console.error(err),
+    });
   }
 
   
@@ -125,6 +173,9 @@ export class TeamsPage implements OnInit {
             newTeam = {
               name: response.data.name,
               numberOfPlayers: response.data.numberOfPlayers,
+              pts: mode === 'new' ? 0 : response.data.pts,
+              isFavourite: mode === 'new' ? false : response.data.isFavourite,
+              nMatches: mode === 'new' ? 0 : response.data.nMatches,
               picture: {
                 url: pictureUrl[0],
                 large: pictureUrl[0],
@@ -138,6 +189,9 @@ export class TeamsPage implements OnInit {
             newTeam = {
               name: response.data.name,
               numberOfPlayers: response.data.numberOfPlayers,
+              pts: mode === 'new' ? 0 : response.data.pts,
+              isFavourite: mode === 'new' ? false : response.data.isFavourite,
+              nMatches: mode === 'new' ? 0 : response.data.nMatches,
               league: response.data.league
             }
           }

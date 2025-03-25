@@ -30,6 +30,9 @@ export class TeamMappingFirebase implements IBaseMapping<Team>{
       id: data.id,
       name: data.name,
       numberOfPlayers: data.numberOfPlayers,
+      pts: data.pts,
+      nMatches: data.nMatches,
+      isFavourite: data.isFavourite,
       league: data.league?.id,
       userId: data.userId?.id,
       picture: data.picture ? {
@@ -54,6 +57,9 @@ export class TeamMappingFirebase implements IBaseMapping<Team>{
     let dataMapping:FirebaseTeam = {
       name: data.name,
       numberOfPlayers: data.numberOfPlayers,
+      pts: data.pts,
+      nMatches: data.nMatches,
+      isFavourite: data.isFavourite,
       picture: data.picture?.url || ''
     }
     if(data.league){
@@ -68,6 +74,9 @@ export class TeamMappingFirebase implements IBaseMapping<Team>{
     const result: any = {};
     if (data.name) result.name = data.name;
     if (data.numberOfPlayers) result.numberOfPlayers = data.numberOfPlayers;
+    if (data.pts) result.pts = data.pts
+    if (data.nMatches) result.nMatches = data.nMatches
+    if (data.isFavourite) result.isFavourite = data.isFavourite
     if (data.league) result.league = doc(this.db, 'leagues', data.league || '');
     if (data.userId) result.user = data.userId || '';
     if (data.picture) result.picture = data.picture?.url || '';

@@ -24,6 +24,9 @@ interface TeamData{
 interface TeamAttributes{
   name: string
   numberOfPlayers: number
+  pts: number
+  nMatches: number
+  isFavourite: boolean
   league: LeagueRaw | number | null
   createdAt?: string
   updatedAt?: string
@@ -46,6 +49,7 @@ interface LeagueData{
 
 interface LeagueAttributes{
   name: string
+  isFavourite: boolean
   createdAt?: string
   updatedAt?: string
   publishedAt?: string
@@ -64,6 +68,9 @@ export class TeamMappingStrapi implements IBaseMapping<Team> {
           data:{
               name: data.name,
               numberOfPlayers: data.numberOfPlayers,
+              pts: data.pts,
+              nMatches: data.nMatches,
+              isFavourite: data.isFavourite,
               league: data.league?Number(data.league): null
           }
       };
@@ -75,6 +82,12 @@ export class TeamMappingStrapi implements IBaseMapping<Team> {
               case 'name': mappedData.name=data[key];
               break;
               case 'numberOfPlayers': mappedData.numberOfPlayers=data[key];
+              break;
+              case 'pts': mappedData.pts=data[key];
+              break;
+              case 'nMatches': mappedData.nMatches=data[key];
+              break;
+              case 'isFavourite': mappedData.isFavourite=data[key];
               break;
               case 'league': mappedData.league=data[key] ? Number(data[key]) : null;
               break;
@@ -99,6 +112,9 @@ export class TeamMappingStrapi implements IBaseMapping<Team> {
           id: id.toString(),
           name: attributes.name,
           numberOfPlayers: attributes.numberOfPlayers,
+          pts: attributes.pts,
+          nMatches: attributes.nMatches,
+          isFavourite: attributes.isFavourite,
           league: typeof attributes.league === 'object' ? attributes.league?.data?.id.toString() : undefined
       };
   }

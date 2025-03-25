@@ -3,6 +3,9 @@ import { Model } from "./base.model";
 export interface Team extends Model{
   name: string;
   numberOfPlayers: number;
+  pts: number,
+  nMatches: number;
+  isFavourite: boolean,
   league?: string;
   userId?: string;
   picture?:{
