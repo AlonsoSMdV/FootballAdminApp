@@ -6,6 +6,7 @@ import { IBaseMapping } from "../intefaces/base-mapping.interface";
 interface LeagueRaw{
   id: string
   nombre: string
+  isFavourite: boolean
 }
 
 @Injectable({
@@ -15,7 +16,8 @@ export class LeagueJsonServerStorageMapping implements IBaseMapping<League> {
   setAdd(data: League):LeagueRaw {
       return {
           id:data.id,
-          nombre:data.name
+          nombre:data.name,
+          isFavourite: data.isFavourite
       }
   }
   setUpdate(data: League):LeagueRaw {
@@ -23,6 +25,8 @@ export class LeagueJsonServerStorageMapping implements IBaseMapping<League> {
       Object.keys(data).forEach(key => {
           switch (key) {
               case 'name': toReturn['nombre']=data[key];
+                  break;
+              case 'isFavourite': toReturn['isFavourite']=data[key]
                   break;
               default:
                   break;
@@ -38,7 +42,8 @@ export class LeagueJsonServerStorageMapping implements IBaseMapping<League> {
   getOne(data: LeagueRaw):League {
       return {
           id:data.id, 
-          name:data.nombre, 
+          name:data.nombre,
+          isFavourite: data.isFavourite
       };
   }
   getAdded(data: any):League {

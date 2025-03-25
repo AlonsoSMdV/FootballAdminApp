@@ -24,6 +24,7 @@ export interface LeagueData{
 
 export interface LeagueAttributes{
   name: string
+  isFavourite: boolean
   createdAt?: string
   updatedAt?: string
   publishedAt?: string
@@ -40,19 +41,23 @@ export class LeagueMappingStrapi implements IBaseMapping<League> {
   setAdd(data: League):LeagueData {
       return {
           data:{
-              name:data.name
+              name:data.name,
+              isFavourite: data.isFavourite
           }
       };
   }
   setUpdate(data: League):LeagueData {
       let toReturn:LeagueData = {
           data:{
-              name:""
+              name:"",
+              isFavourite: false
           }
       };  
       Object.keys(data).forEach(key=>{
           switch(key){
               case 'name': toReturn.data['name']=data[key];
+              break;
+              case 'isFavourite' : toReturn.data['isFavourite']=data[key]
               break;
               default:
           }
@@ -72,7 +77,8 @@ export class LeagueMappingStrapi implements IBaseMapping<League> {
 
       return {
           id: id.toString(),
-          name: attributes.name
+          name: attributes.name,
+          isFavourite: attributes.isFavourite
       };
   }
   getAdded(data: LeagueRaw):League {
