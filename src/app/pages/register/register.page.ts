@@ -63,6 +63,7 @@ export class RegisterPage {
         next: (resp:User) => {
           const userData = {
             ...this.registerForm.value,
+            role: "User",
             userId: resp.id.toString()
           };
           

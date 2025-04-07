@@ -16,7 +16,7 @@
               </ion-avatar>
               <div class="status-dot"></div>
             </div>
-            <h2 class="username">{{ (authSvc.user$ | async)?.username }}</h2>
+            <h2 class="username">{{ (authSvc.user$ | async)?.email }}</h2>
           </div>
         </div>
 
@@ -36,6 +36,18 @@
             <ion-icon name="football-outline"></ion-icon>
             <span>{{ 'MENU.MATCHES' | translate }}</span>
           </a>
+
+          <ng-container *ngIf="userWithAuth$ | async as context">
+            <a class="menu-item"
+               *ngIf="context.user?.role === 'Admin'"
+               routerLink="/users"
+               routerDirection="root"
+               (click)="menu.close()">
+              <ion-icon name="people-outline"></ion-icon>
+              <span>{{ 'MENU.USERS' | translate }}</span>
+            </a>
+          </ng-container>
+          
 
           <a class="menu-item" *ngIf="(authSvc.authenticated$ | async)" routerLink="/about" routerDirection="root" (click)="menu.close()">
             <ion-icon name="information-circle-outline"></ion-icon>

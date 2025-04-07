@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { combineLatest, map, filter } from 'rxjs';
 import { BaseAuthenticationService } from './core/services/impl/base-authentication.service';
 import { LanguageService } from './core/services/language.service';
 import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
@@ -15,6 +16,7 @@ export class AppComponent implements OnInit{
   user$: Observable<any> = this._user.asObservable()
   showMenu: boolean = true;
   currentLang: string;
+  userWithAuth$: Observable<{ isAuthenticated: boolean; user: any; }> | undefined;
 
   constructor(
     private languageService: LanguageService,
@@ -41,6 +43,15 @@ export class AppComponent implements OnInit{
     }catch(error){
       console.error(error)
     }
+    
+    this.userWithAuth$ = combineLatest([
+      this.authSvc.authenticated$,
+      this.user$
+    ]).pipe(
+      filter(([isAuthenticated, user]) => isAuthenticated && !!user), // solo si está autenticado y user está definido
+      map(([isAuthenticated, user]) => ({ isAuthenticated, user }))
+    );
+    
   }
 
   /*isDarkTheme = false;
