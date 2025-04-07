@@ -17,7 +17,8 @@ interface UserRaw{
         medium:string,
         small:string,
         thumbnail:string
-    }
+    },
+    role:string
 }
 
 @Injectable({
@@ -46,7 +47,8 @@ interface UserRaw{
                 medium:data.picture.medium,
                 small:data.picture.small,
                 thumbnail:data.picture.thumbnail
-            }};
+            },
+            role:data.role};
     }
     getAdded(data: UserRaw):Users {
         return this.getOne(data);

@@ -51,7 +51,8 @@ interface PersonAttributes {
     updatedAt?: string
     publishedAt?: string
     user:UserRaw | number | null,
-    picture:MediaRaw | number | null
+    picture:MediaRaw | number | null,
+    role:string
 }
 
 
@@ -68,7 +69,8 @@ interface Meta {}
                 name:data.name,
                 surname:data.surname,
                 user:data.userId?Number(data.userId):null,
-                picture:data.picture?Number(data.picture):null
+                picture:data.picture?Number(data.picture):null,
+                role:data.role
             }
         };
     }
@@ -84,6 +86,8 @@ interface Meta {}
                 case 'userId': mappedData.user = data[key] ? Number(data[key]) : null;
                 break;
                 case 'picture': mappedData.picture = data[key] ? Number(data[key]) : null;
+                break;
+                case 'role':mappedData.role = data[key]
                 break;
             }
         });
@@ -115,7 +119,8 @@ interface Meta {}
                 medium: attributes.picture?.data?.attributes?.formats?.medium?.url || attributes.picture?.data?.attributes?.url,
                 small: attributes.picture?.data?.attributes?.formats?.small?.url || attributes.picture?.data?.attributes?.url,
                 thumbnail: attributes.picture?.data?.attributes?.formats?.thumbnail?.url || attributes.picture?.data?.attributes?.url,
-            } : undefined
+            } : undefined,
+            role: attributes.role
         };
     }
     getAdded(data: PersonRaw):Users {

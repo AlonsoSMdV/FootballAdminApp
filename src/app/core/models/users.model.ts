@@ -12,5 +12,6 @@ export interface Users extends Model{
         small:string | undefined,
         thumbnail:string | undefined
     },
+    role:string,
     userId?:string
 }
