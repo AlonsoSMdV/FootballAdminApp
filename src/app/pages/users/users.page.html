@@ -1,13 +1,52 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>users</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="animate-title">Usuarios Registrados</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">users</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <ion-refresher slot="fixed" (ionRefresh)="loadUsers($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list *ngIf="users!!.length > 0; else noUsers">
+    <ion-card *ngFor="let user of users" class="user-card">
+      <ion-card-content>
+        <div class="user-row">
+          <div class="user-avatar-container">
+            <img [src]="user.picture?.url || 'https://ionicframework.com/docs/img/demos/avatar.svg'" alt="Foto de {{ user.name }}" class="user-avatar" />
+            <div class="glow-effect"></div>
+          </div>
+
+          <div class="user-info">
+            <h2>{{ user.name }} {{ user.surname }}</h2>
+            <p *ngIf="user.email">{{ user.email }}</p>
+          </div>
+
+          <div class="user-role">
+            <ion-select [(ngModel)]="user.role" interface="popover">
+              <ion-select-option value="Admin">Admin</ion-select-option>
+              <ion-select-option value="User">User</ion-select-option>
+            </ion-select>
+          </div>
+
+          <div class="user-action">
+            <ion-button fill="clear" color="success" (click)="updateUserRole(user)">
+              <ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ng-template #noUsers>
+    <div class="no-users-message">
+      <ion-icon name="person-remove-outline" size="large"></ion-icon>
+      <p>No hay usuarios registrados.</p>
+    </div>
+  </ng-template>
 </ion-content>
