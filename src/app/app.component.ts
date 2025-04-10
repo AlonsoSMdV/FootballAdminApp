@@ -27,31 +27,39 @@ export class AppComponent implements OnInit{
   ) {
     this.currentLang = this.languageService.getStoredLanguage();
   }
-  async ngOnInit(){
+  ngOnInit() {
     this.router.events.subscribe(() => {
-      // Chequear la ruta actual y ocultar el menú si es la página Splash
-      const currentRoute = this.router.url;
-      this.showMenu = currentRoute !== '/splash'; // O el nombre de tu ruta splash
+      this.showMenu = this.router.url !== '/splash';
     });
-
-    try{
-      const authUser = await this.authSvc.getCurrentUser()
-
-      if(authUser){
-        this._user.next(await lastValueFrom(this.userSvc.getByUserId(authUser.id)))
+  
+    //Logica al iniciar sesion para que la barra note al usuario autenticado y coja el rol de este
+    this.authSvc.loginSuccessObs$.subscribe(async () => {
+      try {
+        const authUser = await this.authSvc.getCurrentUser();
+        if (authUser) {
+          const userFromDb = await lastValueFrom(this.userSvc.getByUserId(authUser.id));
+          this._user.next(userFromDb);
+        }
+      } catch (error) {
+        console.error(error);
       }
-    }catch(error){
-      console.error(error)
-    }
-    
+    });
+  
+    // También se mantiene la lógica inicial para cuando ya está logueado
+    this.authSvc.getCurrentUser().then(async (authUser) => {
+      if (authUser) {
+        const userFromDb = await lastValueFrom(this.userSvc.getByUserId(authUser.id));
+        this._user.next(userFromDb);
+      }
+    });
+  
     this.userWithAuth$ = combineLatest([
       this.authSvc.authenticated$,
       this.user$
     ]).pipe(
-      filter(([isAuthenticated, user]) => isAuthenticated && !!user), // solo si está autenticado y user está definido
+      filter(([isAuthenticated, user]) => isAuthenticated && !!user),
       map(([isAuthenticated, user]) => ({ isAuthenticated, user }))
     );
-    
   }
 
   /*isDarkTheme = false;

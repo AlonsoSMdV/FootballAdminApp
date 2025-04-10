@@ -47,6 +47,7 @@ export class LoginPage {
       this.authSvc.signIn(this.loginForm.value).subscribe({
         next: resp=>{
           const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
+          this.authSvc.emitLoginSuccess();
           this.router.navigateByUrl(returnUrl); // Redirige a la página solicitada
         },
         error: err=>{

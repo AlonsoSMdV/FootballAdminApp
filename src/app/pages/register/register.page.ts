@@ -70,6 +70,7 @@ export class RegisterPage {
           this.userSvc.add(userData).subscribe({
             next: resp => {
               const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
+              this.authSvc.emitLoginSuccess();
               this.router.navigateByUrl(returnUrl);
             },
             error: err => {}
