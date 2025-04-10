@@ -92,13 +92,19 @@ export class ProfilePage implements OnInit {
           }
         });
 
-        if(changedValues.picture){
-          // Convertir base64 a Blob
+        if (changedValues.picture) {
           const base64Response = await fetch(changedValues.picture);
           const blob = await base64Response.blob();
           const uploadedBlob = await lastValueFrom(this.mediaSvc.upload(blob));
-          changedValues.picture = uploadedBlob[0];
-        } 
+        
+          changedValues.picture = {
+            url: uploadedBlob[0],
+            large: uploadedBlob[0],
+            medium: uploadedBlob[0],
+            small: uploadedBlob[0],
+            thumbnail: uploadedBlob[0]
+          };
+        }
         
         await lastValueFrom(this.userSvc.update(this.user.id, changedValues));
         
