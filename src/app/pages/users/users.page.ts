@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 import { Users } from 'src/app/core/models/users.model';
 import { UsersService } from 'src/app/core/services/impl/users.service';
 
@@ -10,7 +11,10 @@ import { UsersService } from 'src/app/core/services/impl/users.service';
 export class UsersPage implements OnInit {
   users: Users[] = [];
 
-  constructor(private usersService: UsersService) {}
+  constructor(
+    private usersService: UsersService,
+    private toastController: ToastController
+  ) {}
 
   ngOnInit() {
     this.loadUsers();
@@ -33,9 +37,31 @@ export class UsersPage implements OnInit {
     });
   }
 
-  updateUserRole(user: any) {
-    // Aquí iría tu llamada a API o lógica
-    console.log(`Rol actualizado a "${user.role}" para:`, user);
-    // this.userService.updateRole(user.id, user.role).subscribe(...)
+  async updateUserRole(user: Users): Promise<void> {
+    const updatedUser: Partial<Users> = {
+      role: user.role
+    };
+  
+    this.usersService.update(user.id!, updatedUser as Users).subscribe({
+      next: async () => {
+        const toast = await this.toastController.create({
+          message: `Usuario ${user.name} ahora es ${user.role}`,
+          duration: 2500,
+          position: 'bottom',
+          color: 'success'
+        });
+        await toast.present();
+      },
+      error: async (err) => {
+        console.error('Error al actualizar el rol:', err);
+        const toast = await this.toastController.create({
+          message: 'Hubo un error al actualizar el rol.',
+          duration: 3000,
+          position: 'bottom',
+          color: 'danger'
+        });
+        await toast.present();
+      }
+    });
   }
 }
