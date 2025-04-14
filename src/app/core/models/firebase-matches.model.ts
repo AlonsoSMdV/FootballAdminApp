@@ -4,7 +4,8 @@ export interface FirebaseMatch{
     day: Date,
     hour: Date,
     result: string, 
-    place: string
+    place: string,
+    status: string,
     localTeamId?: DocumentReference,
     visitorTeamId?: DocumentReference,
     userId?: DocumentReference;

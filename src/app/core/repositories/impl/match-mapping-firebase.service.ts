@@ -32,6 +32,7 @@ export class MatchMappingFirebase implements IBaseMapping<Match>{
       hour: data.hour,
       result: data.result,
       place: data.place,
+      status: data.status,
       localTeamId: data.localTeamId?.id,
       visitorTeamId: data.visitorTeamId?.id,
       userId: data.userId?.id 
@@ -51,7 +52,8 @@ export class MatchMappingFirebase implements IBaseMapping<Match>{
         day: data.day,
         hour: data.hour,
         result: data.result,
-        place: data.place
+        place: data.place,
+        status: data.status
     };
     if(data.localTeamId){
         dataMapping.localTeamId = doc(this.db, 'teams', data.localTeamId || '')
@@ -72,6 +74,7 @@ export class MatchMappingFirebase implements IBaseMapping<Match>{
     if (data.hour) result.hour = data.hour;
     if (data.result) result.result = data.result;
     if (data.place) result.place = data.place;
+    if (data.status) result.place = data.status;
     if (data.localTeamId) result.localTeamId = data.localTeamId;
     if (data.visitorTeamId) result.visitorTeamId = data.visitorTeamId;
     if (data.userId) result.user = doc(this.db, 'usuarios', data.userId || '');
