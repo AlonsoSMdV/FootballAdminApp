@@ -25,6 +25,7 @@ export class FirebaseAuthenticationService extends BaseAuthenticationService {
     super(authMapping);
     const app = initializeApp(firebaseConfig);
     this.auth = getAuth(app);
+    
     onAuthStateChanged(this.auth, async (user) => {
       if (user) {
         this._token = await user.getIdToken();
