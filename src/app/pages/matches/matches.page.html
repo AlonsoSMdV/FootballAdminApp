@@ -53,6 +53,12 @@
             </div>
             
             <span class="match-res" *ngIf="match.result">{{match.result}}</span>
+            <div class="match-status-container">
+              <div class="match-status" [ngClass]="getStatusClass(match.status)">
+                {{ match.status }}
+              </div>
+              <div class="status-bar" [ngClass]="getStatusClass(match.status)"></div>
+            </div>
           </div>
       
           <div class="action-buttons">

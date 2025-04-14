@@ -4,8 +4,8 @@
   --accent-color: #ff3366;
   --background-dark: #131313;
   --card-bg: rgba(255, 255, 255, 0.1);
-  --card-height: 325px;
-  --card-width: 450px; // Aumentado el ancho de la tarjeta
+  --card-height: 400px;
+  --card-width: 550px; // Aumentado el ancho de la tarjeta
 }
   // Header Styles
   ion-header {
@@ -162,6 +162,63 @@
       font-weight: 700;
       margin-top: 10px;
       text-align: center;
+    }
+  }
+
+  .match-status-container {
+    margin-top: 10px;
+    text-align: center;
+  
+    .match-status {
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+  
+    .match-status.Por_jugar { color: #ffa500; }
+    .match-status.Jugando { color: #00ff88; }
+    .match-status.Finalizado { color: #ff3366; }
+
+    .status-bar {
+      height: 4px;
+      width: 100px;
+      margin: 0 auto;
+      background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+      background-size: 200% auto;
+      animation: shine 2s linear infinite;
+      border-radius: 10px;
+      &.Por_jugar {
+        background: linear-gradient(90deg, transparent, #ffcc00, transparent);
+        background-size: 200% auto;
+        animation: shine 2s linear infinite;
+        border-radius: 10px;
+      }
+  
+      &.Jugando {
+        background: linear-gradient(90deg, transparent, #00ff88, transparent);
+        background-size: 200% auto;
+        animation: shine 2s linear infinite;
+        border-radius: 10px;
+      }
+  
+      &.Finalizado {
+        background: linear-gradient(90deg, transparent, #ff3366, transparent);
+        background-size: 200% auto;
+        animation: shine 2s linear infinite;
+        border-radius: 10px;
+      }
+    }
+  }
+  
+  // Animación para iluminar la barra de izquierda a derecha
+  @keyframes shine {
+    0% {
+      background-position: -100% 0;
+    }
+    100% {
+      background-position: 200% 0;
     }
   }
   

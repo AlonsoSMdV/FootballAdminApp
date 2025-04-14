@@ -143,6 +143,15 @@ export class MatchesPage implements OnInit {
       });
     }
     
+    getStatusClass(status: string): string {
+      if (!status) return '';
+    
+      return status
+        .normalize('NFD')                   // Elimina acentos
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/\s+/g, '_');              // Reemplaza espacios por guiones bajos
+    }
+    
     
 
     async openMatch(match: any, index: number){
@@ -164,6 +173,18 @@ export class MatchesPage implements OnInit {
               hour: response.data.hour,
               result: response.data.result,
               place: response.data.place,
+              status: "Por jugar",
+              localTeamId: response.data.localTeamId,
+              visitorTeamId: response.data.visitorTeamId
+            }
+
+            let editMatch : any = null
+            editMatch = {
+              day: response.data.day,
+              hour: response.data.hour,
+              result: response.data.result,
+              place: response.data.place,
+              status: response.data.status,
               localTeamId: response.data.localTeamId,
               visitorTeamId: response.data.visitorTeamId
             }
@@ -178,7 +199,7 @@ export class MatchesPage implements OnInit {
               });
               break;
             case 'edit':
-              this.matchSvc.update(match!.id, newMatch).subscribe({
+              this.matchSvc.update(match!.id, editMatch).subscribe({
                 next:res=>{
                   this.getMatches();
                 },
