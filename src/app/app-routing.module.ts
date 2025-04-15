@@ -54,7 +54,15 @@ const routes: Routes = [
     path: 'users',
     loadChildren: () => import('./pages/users/users.module').then( m => m.UsersPageModule),
     canActivate: [AdminGuard]
+  },  {
+    path: 'lineups',
+    loadChildren: () => import('./pages/lineups/lineups.module').then( m => m.LineupsPageModule)
+  },
+  {
+    path: 'statistics',
+    loadChildren: () => import('./pages/statistics/statistics.module').then( m => m.StatisticsPageModule)
   }
+
 
 
 ];
