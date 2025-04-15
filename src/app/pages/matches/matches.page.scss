@@ -115,6 +115,10 @@
         font-weight: bold;
       }
     }
+
+    .match-menu-container {
+      margin-left: auto; /* Empuja el app-match-menu a la derecha */
+    }
   
     .match-details {
       display: grid;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
 
 @Component({
@@ -7,6 +7,7 @@ import { ActionSheetController } from '@ionic/angular';
   styleUrls: ['./match-menu.component.scss'],
 })
 export class MatchMenuComponent  implements OnInit {
+  @Input() partidoId!: string;
   constructor(private actionSheetCtrl: ActionSheetController) {}
   ngOnInit(): void {
     throw new Error('Method not implemented.');
