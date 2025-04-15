@@ -18,6 +18,7 @@ import { TimeDirectiveDirective } from './directives/time-directive/time-directi
 import { FilterByTeamDirective } from './directives/filterByTeams/filter-by-teams.directive';
 import { HighLightDirective } from './directives/high-light-directive/high-light.directive';
 import { DragDropDirective } from './directives/drag-and-drop/drag-drop.directive';
+import { MatchMenuComponent } from './components/match-menu/match-menu.component';
 
 
 
@@ -36,7 +37,8 @@ import { DragDropDirective } from './directives/drag-and-drop/drag-drop.directiv
     TimeDirectiveDirective,
     FilterByTeamDirective,
     HighLightDirective,
-    DragDropDirective
+    DragDropDirective,
+    MatchMenuComponent
   ],
   imports: [
     CommonModule,
@@ -59,7 +61,8 @@ import { DragDropDirective } from './directives/drag-and-drop/drag-drop.directiv
     TimeDirectiveDirective,
     FilterByTeamDirective,
     HighLightDirective,
-    DragDropDirective
+    DragDropDirective,
+    MatchMenuComponent
   ]
 })
 export class SharedModule { }
