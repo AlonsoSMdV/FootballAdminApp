@@ -68,11 +68,15 @@ export class BaseRepositoryFirebaseService<T extends Model> implements IBaseRepo
 
           // Convertir a DocumentReference si el campo es 'setId' y el valor es una cadena válida
           if (field === 'league' && typeof value === 'string') {
-            filterValue = doc(this.db, value); // Convertir la cadena a DocumentReference
+            filterValue = doc(this.db, 'leagues', value); // Convertir la cadena a DocumentReference
           }else if(field === 'team' && typeof value === 'string'){
-            filterValue = doc(this.db, value); // Convertir la cadena a DocumentReference
+            filterValue = doc(this.db, 'teams', value); // Convertir la cadena a DocumentReference
+          }else if(field === 'player' && typeof value === 'string'){
+            filterValue = doc(this.db, 'players', value); // Convertir la cadena a DocumentReference
+          }else if(field === 'match' && typeof value === 'string'){
+            filterValue = doc(this.db, 'matches', value); // Convertir la cadena a DocumentReference
           }else if(field === 'user' && typeof value === 'string'){
-            filterValue = doc(this.db, value);
+            filterValue = doc(this.db, 'users', value);
           }
 
           // Añadir la cláusula where
