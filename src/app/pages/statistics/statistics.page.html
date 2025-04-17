@@ -1,13 +1,39 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>statistics</ion-title>
+    <ion-title>Estadísticas</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">statistics</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content *ngIf="match">
+  <div class="stats-container">
+    
+    <!-- Resultado grande arriba -->
+    <div class="result">
+      {{ localTeam?.name }} {{ match.result.split('-') }} - {{ match.result.split('-') }} {{ visitorTeam?.name }}
+    </div>
+
+    <!-- Estado del partido -->
+    <div class="match-state">
+      {{ match.status || 'Finalizado' }}
+    </div>
+
+    <!-- Estadísticas -->
+    <div class="stats-table">
+      <!-- Logos -->
+      <div class="team-logo">
+        <img *ngIf="localTeam?.picture" [src]="localTeam?.picture?.url" alt="Local" />
+      </div>
+      <div></div>
+      <div class="team-logo">
+        <img *ngIf="visitorTeam?.picture" [src]="visitorTeam?.picture?.url" alt="Visitante" />
+      </div>
+
+      <!-- Estadísticas fila por fila -->
+      <ng-container *ngFor="let stat of stats">
+        <div class="stat-value left">{{ stat.local }}</div>
+        <div class="stat-name">{{ stat.name }}</div>
+        <div class="stat-value right">{{ stat.visitor }}</div>
+      </ng-container>
+    </div>
+  </div>
 </ion-content>
