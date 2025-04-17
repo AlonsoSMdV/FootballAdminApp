@@ -60,7 +60,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/lineups/lineups.module').then( m => m.LineupsPageModule)
   },
   {
-    path: 'statistics:id',
+    path: 'statistics/:id',
     loadChildren: () => import('./pages/statistics/statistics.module').then( m => m.StatisticsPageModule)
   }
 

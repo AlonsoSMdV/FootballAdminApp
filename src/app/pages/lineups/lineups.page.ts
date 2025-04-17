@@ -17,7 +17,7 @@ export class LineupsPage implements OnInit {
   partidoId!: string;
   match!: Match | null; 
   localTeam!: Team | null;
-  visitorTeam!: Team | null;;
+  visitorTeam!: Team | null;
   localPlayers: Player[] | null = [];
   visitorPlayers: Player[] | null = [];
   constructor(
