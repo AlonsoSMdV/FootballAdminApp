@@ -1,38 +1,61 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/matches"></ion-back-button>
+    </ion-buttons>
     <ion-title>Estadísticas</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="match">
-  <div class="stats-container">
-    
-    <!-- Resultado grande arriba -->
-    <div class="result">
-      {{ localTeam?.name }} {{ match.result.split('-') }} - {{ match.result.split('-') }} {{ visitorTeam?.name }}
+<ion-content>
+  <!-- Spinner de carga -->
+  <div class="loading-container" *ngIf="loadingStats">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+  
+  <!-- Mensaje de error -->
+  <div class="error-message" *ngIf="!match && !loadingStats">
+    No se pudo cargar la información del partido.
+  </div>
+
+  <div class="stats-container" *ngIf="match && !loadingStats">
+    <!-- Encabezado con equipos y resultado -->
+    <div class="score">
+      <div class="team-name">{{ localTeam?.name || 'Local' }}</div>
+      <div class="goals">{{ localGoals }}</div>
+      <div class="vs">-</div>
+      <div class="goals">{{ visitorGoals }}</div>
+      <div class="team-name">{{ visitorTeam?.name || 'Visitante' }}</div>
     </div>
 
     <!-- Estado del partido -->
-    <div class="match-state">
+    <div class="match-state" [ngClass]="{'finalizado': match.status.toLowerCase() === 'finalizado', 'por-jugar': match.status.toLowerCase() === 'por jugar'}">
       {{ match.status || 'Finalizado' }}
     </div>
 
-    <!-- Estadísticas -->
-    <div class="stats-table">
-      <!-- Logos -->
+    <!-- Logos de los equipos -->
+    <div class="team-logos">
       <div class="team-logo">
         <img *ngIf="localTeam?.picture" [src]="localTeam?.picture?.url" alt="Local" />
+        <img *ngIf="!localTeam?.picture" src="assets/default-team.png" alt="Local" />
       </div>
-      <div></div>
       <div class="team-logo">
         <img *ngIf="visitorTeam?.picture" [src]="visitorTeam?.picture?.url" alt="Visitante" />
+        <img *ngIf="!visitorTeam?.picture" src="assets/default-team.png" alt="Visitante" />
       </div>
+    </div>
 
+    <!-- Estadísticas -->
+    <div class="stats-table" *ngIf="generatedStats?.stats">
       <!-- Estadísticas fila por fila -->
-      <ng-container *ngFor="let stat of stats">
-        <div class="stat-value left">{{ stat.local }}</div>
+      <ng-container *ngFor="let stat of generatedStats.stats">
+        <div class="stat-value left" [ngClass]="{ 'highlight': isGreater(stat.localValue, stat.visitorValue) }">
+          {{ stat.localValue }}
+        </div>
         <div class="stat-name">{{ stat.name }}</div>
-        <div class="stat-value right">{{ stat.visitor }}</div>
+        <div class="stat-value right" [ngClass]="{ 'highlight': isGreater(stat.visitorValue, stat.localValue) }">
+          {{ stat.visitorValue }}
+        </div>
       </ng-container>
     </div>
   </div>

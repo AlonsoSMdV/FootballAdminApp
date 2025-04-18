@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { Match } from 'src/app/core/models/matches.model';
+import { MatchStatistics } from 'src/app/core/models/matchStatistics.model';
 import { Team } from 'src/app/core/models/teams.model';
 import { MatchService } from 'src/app/core/services/impl/match.service';
 import { TeamService } from 'src/app/core/services/impl/team.service';
@@ -19,8 +20,13 @@ interface MatchWithTeams extends Match {
 export class StatisticsPage implements OnInit {
   matchId!: string;
   match!: MatchWithTeams;
+  localGoals!: string;
+  visitorGoals!: string;
   localTeam!: Team | null;
   visitorTeam!: Team | null;
+  generatedStats!: MatchStatistics;
+  loadingStats = true;
+  errorMessage: string | null = null;
 
   stats = [
     { name: 'Tiros', local: 18, visitor: 13 },
@@ -43,16 +49,22 @@ export class StatisticsPage implements OnInit {
 
   ngOnInit() {
     this.matchId = this.route.snapshot.paramMap.get('id')!;
+    this.loadMatchData();
+  }
+
+  loadMatchData() {
+    this.loadingStats = true;
+    this.errorMessage = null;
 
     this.matchSvc.getById(this.matchId).subscribe({
       next: async (match) => {
         try {
           const [localTeamRaw, visitorTeamRaw] = await Promise.all([
-            match!.localTeamId ? firstValueFrom(this.teamSvc.getById(match!.localTeamId)) : undefined,
-            match!.visitorTeamId ? firstValueFrom(this.teamSvc.getById(match!.visitorTeamId)) : undefined
+            match!.localTeamId ? firstValueFrom(this.teamSvc.getById(match!.localTeamId)) : Promise.resolve(undefined),
+            match!.visitorTeamId ? firstValueFrom(this.teamSvc.getById(match!.visitorTeamId)) : Promise.resolve(undefined)
           ]);
 
-          // Asegurar que sean `undefined` si venían como `null`
+          // Asegurar que sean undefined si venían como null
           const localTeam = localTeamRaw ?? undefined;
           const visitorTeam = visitorTeamRaw ?? undefined;
 
@@ -61,17 +73,120 @@ export class StatisticsPage implements OnInit {
             localTeam,
             visitorTeam
           };
-
-          // Llamamos a loadTeamsAndPlayers solo después de tener el partido cargado
+          
+          if (typeof this.match.result === 'string' && this.match.result.includes('-')) {
+            const [local, visitor] = this.match.result.split('-');
+            this.localGoals = local?.trim();
+            this.visitorGoals = visitor?.trim();
+          } else {
+            this.localGoals = '0';
+            this.visitorGoals = '0';
+          }
+          
           this.loadTeamsAndPlayers();
+          this.generateStatsBasedOnStatus();
         } catch (error) {
           console.error('Error fetching team data:', error);
+          this.errorMessage = 'Error al cargar los datos de los equipos.';
+          this.loadingStats = false;
         }
       },
       error: (err) => {
         console.error('Error fetching match:', err);
+        this.errorMessage = 'Error al cargar el partido.';
+        this.loadingStats = false;
       }
     });
+  }
+
+  generateStatsBasedOnStatus() {
+    if (!this.match || !this.match.status) {
+      this.loadingStats = false;
+      return;
+    }
+  
+    const baseStats = this.stats.map(stat => ({
+      name: stat.name,
+      localValue: 0,
+      visitorValue: 0,
+    }));
+  
+    switch (this.match.status.toLowerCase()) {
+      case 'por jugar':
+        this.generatedStats = {
+          id: this.generatedStats?.id || this.match.id + '_stats',
+          matchId: this.match.id,
+          userId: '', // opcional
+          stats: baseStats
+        };
+        this.loadingStats = false;
+        break;
+  
+      case 'jugando':
+      case 'finalizado':
+        this.generatedStats = {
+          id: this.generatedStats?.id || this.match.id + '_stats',
+          matchId: this.match.id,
+          userId: '',
+          stats: this.stats.map(stat => ({
+            name: stat.name,
+            localValue: this.generateValue(stat.local),
+            visitorValue: this.generateValue(stat.visitor),
+          }))
+        };
+        this.loadingStats = false;
+        break;
+  
+      /*case 'finalizado':
+        this.statsSvc.getAll().subscribe({
+          next: (allStats: MatchStatistics[]) => {
+            const finalStats = allStats.find(s => s.matchId === this.match.id);
+            this.generatedStats = finalStats || {
+              matchId: this.match.id,
+              userId: '',
+              stats: baseStats
+            };
+            this.loadingStats = false;
+          },
+          error: err => {
+            console.error('Error loading stats from firebase', err);
+            this.loadingStats = false;
+          }
+        });
+        break;*/
+      default:
+        // Para cualquier otro estado
+        this.generatedStats = {
+          id: this.generatedStats?.id || this.match.id + '_stats',
+          matchId: this.match.id,
+          userId: '',
+          stats: this.stats.map(stat => ({
+            name: stat.name,
+            localValue: this.generateValue(stat.local),
+            visitorValue: this.generateValue(stat.visitor),
+          }))
+        };
+        this.loadingStats = false;
+        break;
+    }
+  }
+  
+
+  generateValue(baseValue: number | string): number | string {
+    const base = typeof baseValue === 'string' && baseValue.includes('%')
+      ? parseFloat(baseValue.replace('%', ''))
+      : Number(baseValue);
+  
+    if (isNaN(base)) return 0;
+  
+    const variation = base * 0.3; // hasta un 30% de variación
+    let randomValue = base + (Math.random() * variation - variation / 2);
+  
+    if (typeof baseValue === 'string' && baseValue.includes('%')) {
+      return `${Math.max(0, Math.min(100, Number(randomValue.toFixed(0))))}%`;
+    }
+  
+    return Math.max(0, Math.round(randomValue));
   }
 
   loadTeamsAndPlayers() {
@@ -91,5 +206,26 @@ export class StatisticsPage implements OnInit {
         });
       }
     }
+  }
+
+  isGreater(a: any, b: any): boolean {
+    const valA = this.parseStatValue(a);
+    const valB = this.parseStatValue(b);
+    return valA > valB;
+  }
+  
+  parseStatValue(value: any): number {
+    if (typeof value === 'string' && value.includes('%')) {
+      return parseFloat(value.replace('%', ''));
+    }
+    return typeof value === 'number' ? value : parseFloat(value) || 0;
+  }
+  
+  // Método para refrescar los datos
+  doRefresh(event: any) {
+    this.loadMatchData();
+    setTimeout(() => {
+      event.target.complete();
+    }, 1000);
   }
 }

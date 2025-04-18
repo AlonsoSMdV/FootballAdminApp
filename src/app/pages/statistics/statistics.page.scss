@@ -1,56 +1,188 @@
+:host {
+  --primary-color: #00ff88;
+  --secondary-color: #5050db;
+  --accent-color: #ff3366;
+  --background-dark: #131313;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.2);
+  --input-bg: rgba(255, 255, 255, 0);
+  --input-border: rgba(255, 255, 255, 0.192);
+}
+
+// Header Styles
+ion-header {
+  ion-toolbar {
+    --background: transparent;
+    backdrop-filter: blur(10px);
+    
+    ion-title {
+      font-weight: 700;
+      background: linear-gradient(45deg, var(--primary-color), #00ffcc);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+// statistics.page.scss actualizado
 .stats-container {
   text-align: center;
   padding: 16px;
-  background-color: #111;
+  background-image: linear-gradient(to bottom, #1c301d, #000000);
   color: #fff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .result {
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 8px;
+  color: #fff;
 }
 
 .match-state {
   font-size: 1.2rem;
-  color: #ccc;
+  color: #F97316; // Color naranja para "Por jugar" o verde para "Finalizado"
   margin-bottom: 24px;
+  font-weight: 500;
+  
+  &.finalizado {
+    color: #FF3B30;
+  }
+
+  &.jugando {
+    color: #4da841;
+  }
+  
+  &.por-jugar {
+    color: #F97316;
+  }
 }
 
 .stats-table {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns:5fr auto 5fr;
   row-gap: 16px;
   align-items: center;
   justify-items: center;
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 16px;
+  background-color: #0c4a2a00; // Un tono más claro del verde para la tabla
 }
 
-.team-logo img {
-  width: 64px;
-  height: 64px;
+.team-logos {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  margin-bottom: 20px;
 }
 
-.team-logo.right {
-  justify-self: end;
+.team-logo {
+  margin: 10px 20px;
+  
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #0C4A2A; // Fondo para los logos
+    padding: 5px;
+  }
 }
 
 .stat-value {
   font-size: 1.1rem;
   font-weight: bold;
-  padding: 4px 8px;
+  padding: 6px 12px;
   border-radius: 50px;
+  min-width: 50px;
+  display:flex;
 }
 
 .stat-value.left {
-  background-color: #55eb37c2;
+  justify-self: end;
+  background-color: rgba(85, 235, 55, 0.2); // Verde más transparente
+  color: #fff;
+  &.highlight {
+    background-color: #10B981; // Verde más brillante cuando es mayor
+    color: #fff;
+  }
 }
 
 .stat-value.right {
-  background-color: #969696;
-  color: #000;
+  justify-self: start;
+  background-color: rgba(150, 150, 150, 0.2); // Gris más transparente
+  color: #fff;
+  &.highlight {
+    background-color: #10B981; // Verde más brillante cuando es mayor
+    color: #fff;
+  }
 }
 
 .stat-name {
   font-size: 1rem;
-  color: #aaa;
+  color: #D1D5DB; // Color más claro para los nombres de las estadísticas
+  font-weight: 500;
+  min-width: 120px;
+}
+
+ion-content {
+  background-image: linear-gradient(to bottom, #1c301d, #000000);
+}
+
+ion-toolbar {
+  --background: #0C4A2A;
+  --color: #fff;
+  --border-color: transparent;
+}
+
+ion-title {
+  font-weight: bold;
+  color: #fff;
+}
+
+// Estilos para el spinner de carga
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+// Estilos para el mensaje de error
+.error-message {
+  text-align: center;
+  color: #FF3B30;
+  padding: 20px;
+}
+
+// Estilos específicos para vs
+.vs {
+  color: #10B981;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+// Estilos para el resultado
+.score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  
+  .team-name {
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+  
+  .goals {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #10B981;
+    margin: 0 10px;
+  }
 }
