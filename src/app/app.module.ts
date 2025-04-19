@@ -7,7 +7,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
-import { LeaguesRepositoryFactory, TeamsRepositoryFactory, PlayersRepositoryFactory, AuthMappingFactory, AuthenticationServiceFactory, UserRepositoryFactory, MediaServiceFactory, PlayersMappingFactory, TeamsMappingFactory, LeaguesMappingFactory, UserMappingFactory, MatchMappingFactoty, MatchRepositoryFactory, LeagueCollectionSubscriptionFactory, TeamCollectionSubscriptionFactory, PlayerCollectionSubscriptionFactory, MatchCollectionSubscriptionFactory, UsersCollectionSubscriptionFactory, MatchStatsMappingFactoty, MatchStatsRepositoryFactory, MatchStatsCollectionSubscriptionFactory } from './core/repositories/repository.factory';
+import { LeaguesRepositoryFactory, TeamsRepositoryFactory, PlayersRepositoryFactory, AuthMappingFactory, AuthenticationServiceFactory, UserRepositoryFactory, MediaServiceFactory, PlayersMappingFactory, TeamsMappingFactory, LeaguesMappingFactory, UserMappingFactory, MatchMappingFactory, MatchRepositoryFactory, LeagueCollectionSubscriptionFactory, TeamCollectionSubscriptionFactory, PlayerCollectionSubscriptionFactory, MatchCollectionSubscriptionFactory, UsersCollectionSubscriptionFactory, MatchStatsMappingFactory, MatchStatsRepositoryFactory, MatchStatsCollectionSubscriptionFactory } from './core/repositories/repository.factory';
 import { LEAGUE_API_URL_TOKEN, LEAGUE_REPOSITORY_MAPPING_TOKEN, LEAGUE_REPOSITORY_TOKEN, LEAGUE_RESOURCE_NAME_TOKEN, 
   TEAM_API_URL_TOKEN, TEAM_REPOSITORY_MAPPING_TOKEN, TEAM_REPOSITORY_TOKEN, TEAM_RESOURCE_NAME_TOKEN, 
   PLAYER_API_URL_TOKEN, PLAYER_REPOSITORY_MAPPING_TOKEN, PLAYER_REPOSITORY_TOKEN,PLAYER_RESOURCE_NAME_TOKEN,
@@ -103,8 +103,8 @@ export function createTranslateLoader(http: HttpClient) {
     LeaguesMappingFactory,
     TeamsMappingFactory,
     PlayersMappingFactory,
-    MatchMappingFactoty,
-    MatchStatsMappingFactoty,
+    MatchMappingFactory,
+    MatchStatsMappingFactory,
     LeaguesRepositoryFactory,
     TeamsRepositoryFactory,
     PlayersRepositoryFactory,
