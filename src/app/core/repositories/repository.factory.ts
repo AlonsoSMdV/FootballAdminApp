@@ -175,16 +175,16 @@ export const PlayersMappingFactory = createBaseMappingFactory<Player>(
   'player'
 );
 
-export const MatchMappingFactoty = createBaseMappingFactory<Match>(
+export const MatchMappingFactory = createBaseMappingFactory<Match>(
   MATCH_REPOSITORY_MAPPING_TOKEN, 
   [BACKEND_TOKEN, FIREBASE_CONFIG_TOKEN],
   'match'
 );
 
-export const MatchStatsMappingFactoty = createBaseMappingFactory<MatchStatistics>(
+export const MatchStatsMappingFactory = createBaseMappingFactory<MatchStatistics>(
   MATCH_STATS_REPOSITORY_MAPPING_TOKEN, 
   [BACKEND_TOKEN, FIREBASE_CONFIG_TOKEN],
-  'match'
+  'matchStatistic'
 );
 
 export const UserMappingFactory = createBaseMappingFactory<Users>(
