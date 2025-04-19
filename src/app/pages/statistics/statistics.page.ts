@@ -3,8 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { Match } from 'src/app/core/models/matches.model';
 import { MatchStatistics } from 'src/app/core/models/matchStatistics.model';
+import { Paginated } from 'src/app/core/models/paginated.model';
 import { Team } from 'src/app/core/models/teams.model';
 import { MatchService } from 'src/app/core/services/impl/match.service';
+import { MatchStatsService } from 'src/app/core/services/impl/matchStats.service';
 import { TeamService } from 'src/app/core/services/impl/team.service';
 
 interface MatchWithTeams extends Match {
@@ -24,7 +26,7 @@ export class StatisticsPage implements OnInit {
   visitorGoals!: string;
   localTeam!: Team | null;
   visitorTeam!: Team | null;
-  generatedStats!: MatchStatistics;
+  generatedStats!: any;
   loadingStats = true;
   errorMessage: string | null = null;
 
@@ -44,7 +46,8 @@ export class StatisticsPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private matchSvc: MatchService,
-    private teamSvc: TeamService
+    private teamSvc: TeamService,
+    private statsSvc: MatchStatsService
   ) {}
 
   ngOnInit() {
@@ -83,7 +86,7 @@ export class StatisticsPage implements OnInit {
             this.visitorGoals = '0';
           }
           
-          this.loadTeamsAndPlayers();
+          this.loadTeams();
           this.generateStatsBasedOnStatus();
         } catch (error) {
           console.error('Error fetching team data:', error);
@@ -111,63 +114,84 @@ export class StatisticsPage implements OnInit {
       visitorValue: 0,
     }));
   
-    switch (this.match.status.toLowerCase()) {
-      case 'por jugar':
-        this.generatedStats = {
-          id: this.generatedStats?.id || this.match.id + '_stats',
-          matchId: this.match.id,
-          userId: '', // opcional
-          stats: baseStats
-        };
-        this.loadingStats = false;
-        break;
+    const statsId = this.generatedStats?.id || this.match.id + '_stats';
   
-      case 'jugando':
-      case 'finalizado':
-        this.generatedStats = {
-          id: this.generatedStats?.id || this.match.id + '_stats',
-          matchId: this.match.id,
-          userId: '',
-          stats: this.stats.map(stat => ({
-            name: stat.name,
-            localValue: this.generateValue(stat.local),
-            visitorValue: this.generateValue(stat.visitor),
-          }))
-        };
-        this.loadingStats = false;
-        break;
-  
-      /*case 'finalizado':
-        this.statsSvc.getAll().subscribe({
-          next: (allStats: MatchStatistics[]) => {
-            const finalStats = allStats.find(s => s.matchId === this.match.id);
-            this.generatedStats = finalStats || {
+    if (this.match.status.toLowerCase() === 'finalizado') {
+      // Verificamos si ya existen stats en Firebase
+      this.statsSvc.getAll().subscribe({
+        next: (allStatsResult: any[] | Paginated<any>) => {
+          const statsArray = Array.isArray(allStatsResult)
+            ? allStatsResult
+            : allStatsResult.data ?? [];
+      
+          const existingStats = statsArray.find(s => s.matchId === this.match.id);
+      
+          if (existingStats) {
+            this.generatedStats = existingStats;
+          } else {
+            const newStats: any = {
               matchId: this.match.id,
-              userId: '',
-              stats: baseStats
+              userId: '', // Si es vacío, considera no incluirlo
+              stats: this.stats.map(stat => ({
+                name: stat.name,
+                localValue: this.generateValue(stat.local),
+                visitorValue: this.generateValue(stat.visitor),
+              }))
             };
-            this.loadingStats = false;
-          },
-          error: err => {
-            console.error('Error loading stats from firebase', err);
-            this.loadingStats = false;
+            
+            // Si userId está vacío, elimínalo para que no cause problemas
+            if (!newStats.userId) {
+              delete newStats.userId;
+            }
+            
+            // Validar que no haya propiedades con valores undefined
+            Object.keys(newStats).forEach(key => {
+              if (newStats[key] === undefined) {
+                delete newStats[key];
+              }
+            });
+      
+            this.statsSvc.add(newStats).subscribe({
+              next: () => {
+                this.generatedStats = newStats;
+              },
+              error: (err) => {
+                console.error('Error saving stats to Firebase:', err);
+                this.errorMessage = 'Error al guardar las estadísticas en Firebase.';
+              }
+            });
           }
-        });
-        break;*/
-      default:
-        // Para cualquier otro estado
-        this.generatedStats = {
-          id: this.generatedStats?.id || this.match.id + '_stats',
-          matchId: this.match.id,
-          userId: '',
-          stats: this.stats.map(stat => ({
-            name: stat.name,
-            localValue: this.generateValue(stat.local),
-            visitorValue: this.generateValue(stat.visitor),
-          }))
-        };
-        this.loadingStats = false;
-        break;
+      
+          this.loadingStats = false;
+        },
+        error: err => {
+          console.error('Error loading stats from Firebase:', err);
+          this.errorMessage = 'Error al cargar estadísticas desde Firebase.';
+          this.loadingStats = false;
+        }
+      });
+    } else if (this.match.status.toLowerCase() === 'por jugar') {
+      // Partido no ha comenzado
+      this.generatedStats = {
+        id: statsId,
+        matchId: this.match.id,
+        userId: '',
+        stats: baseStats
+      };
+      this.loadingStats = false;
+    } else {
+      // Jugando u otro estado, estadísticas generadas al vuelo
+      this.generatedStats = {
+        id: statsId,
+        matchId: this.match.id,
+        userId: '',
+        stats: this.stats.map(stat => ({
+          name: stat.name,
+          localValue: this.generateValue(stat.local),
+          visitorValue: this.generateValue(stat.visitor),
+        }))
+      };
+      this.loadingStats = false;
     }
   }
   
@@ -189,7 +213,7 @@ export class StatisticsPage implements OnInit {
     return Math.max(0, Math.round(randomValue));
   }
 
-  loadTeamsAndPlayers() {
+  loadTeams() {
     // Verificar que `this.match` no es undefined antes de intentar acceder a sus propiedades
     if (this.match) {
       if (this.match.localTeamId) {

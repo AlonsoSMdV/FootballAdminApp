@@ -29,7 +29,7 @@
     </div>
 
     <!-- Estado del partido -->
-    <div class="match-state" [ngClass]="{'finalizado': match.status.toLowerCase() === 'finalizado', 'por-jugar': match.status.toLowerCase() === 'por jugar'}">
+    <div class="match-state" [ngClass]="{'finalizado': match.status.toLowerCase() === 'finalizado', 'jugando': match.status.toLowerCase() === 'jugando', 'por-jugar': match.status.toLowerCase() === 'por jugar'}">
       {{ match.status || 'Finalizado' }}
     </div>
 

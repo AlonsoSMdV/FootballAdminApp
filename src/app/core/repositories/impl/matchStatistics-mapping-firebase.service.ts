@@ -43,19 +43,19 @@ export class MatchStatisticsMappingFirebase implements IBaseMapping<MatchStatist
     return this.getOne(data)
   }
   setAdd(data: MatchStatistics): FirebaseMatchStatistics {
-    const mapped: FirebaseMatchStatistics = {
-      stats: data.stats
+    let dataMapping: FirebaseMatchStatistics = {
+      stats: data.stats || [] 
     };
   
     if (data.matchId) {
-      mapped.matchId = doc(this.db, 'matches', data.matchId);
+      dataMapping.matchId = doc(this.db, 'matches', data.matchId || '');
     }
   
     if (data.userId) {
-      mapped.userId = doc(this.db, 'usuarios', data.userId);
+      dataMapping.userId = doc(this.db, 'usuarios', data.userId || '');
     }
   
-    return mapped;
+    return dataMapping;
   }
   setUpdate(data: Partial<MatchStatistics>): FirebaseMatchStatistics {
     const result: any = {};
