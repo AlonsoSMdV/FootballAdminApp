@@ -74,9 +74,9 @@ export class MatchMappingFirebase implements IBaseMapping<Match>{
     if (data.hour) result.hour = data.hour;
     if (data.result) result.result = data.result;
     if (data.place) result.place = data.place;
-    if (data.status) result.place = data.status;
-    if (data.localTeamId) result.localTeamId = data.localTeamId;
-    if (data.visitorTeamId) result.visitorTeamId = data.visitorTeamId;
+    if (data.status) result.status = data.status;
+    if (data.localTeamId) result.localTeamId = doc(this.db, 'teams', data.localTeamId || '');
+    if (data.visitorTeamId) result.visitorTeamId = doc(this.db, 'teams', data.visitorTeamId || '');
     if (data.userId) result.user = doc(this.db, 'usuarios', data.userId || '');
     return result;
   }

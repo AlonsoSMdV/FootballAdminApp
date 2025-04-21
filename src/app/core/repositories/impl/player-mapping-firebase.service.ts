@@ -86,7 +86,7 @@ export class PlayerMappingFirebase implements IBaseMapping<Player>{
     if (data.dorsal) result.dorsal = data.dorsal;
     if (data.position) result.position = data.position;
     if (data.isFavourite) result.isFavourite = data.isFavourite;
-    if (data.team) result.team = doc(this.db, 'team', data.team || '');
+    if (data.team) result.team = doc(this.db, 'teams', data.team || '');
     if (data.picture) result.picture = data.picture?.url || '';
     if (data.userId) result.user = data.userId || '';
     return result;
