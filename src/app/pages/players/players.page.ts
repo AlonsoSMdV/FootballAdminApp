@@ -1,4 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
@@ -22,6 +23,7 @@ export class PlayersPage implements OnInit {
   currentLang:string
   _players: BehaviorSubject<Player[]> = new BehaviorSubject<Player[]>([]);
   players$: Observable<Player[]> = this._players.asObservable();
+  @Input() teamId!:string
   flippedCards: { [key: string]: boolean } = {};
   private loadedIds: Set<string> = new Set();
 
@@ -31,6 +33,7 @@ export class PlayersPage implements OnInit {
   }
 
   constructor(
+    private route: ActivatedRoute,
     private playerSvc: PlayerService,
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
@@ -44,9 +47,16 @@ export class PlayersPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getPlayers();
+    this.route.paramMap.subscribe(params => {
+      const teamId = params.get('id');
+      if (teamId) {
+        this.teamId = teamId;
+        this.getPlayersByTeam();
+      } else {
+        this.getPlayers();
+      }
 
-    this.playerSubs.subscribe('leagues').subscribe((change:
+    this.playerSubs.subscribe('players').subscribe((change:
           CollectionChange<Player>) => {
               const currentLeague = [...this._players.value];
     
@@ -73,6 +83,7 @@ export class PlayersPage implements OnInit {
     
               this._players.next(currentLeague)
           });
+        });
   }
 
 
@@ -94,14 +105,6 @@ export class PlayersPage implements OnInit {
       }
     });
   }
-
-  async openPlayerDetail(player: Player){
-    const modal = await this.modalCtrl.create({
-      component: PlayerModalComponent,
-      componentProps: {player},
-    });
-    await modal.present();
-  }
   
   getMorePlayers(notify: HTMLIonInfiniteScrollElement | null = null){
     this.playerSvc.getAll(this.page, this.pageSize).subscribe({
@@ -114,6 +117,40 @@ export class PlayersPage implements OnInit {
       }
     })
   }
+
+  getPlayersByTeam(){
+    this.page=1;
+    this.playerSvc.getPlayersByTeam(this.teamId, this.page, this.pageSize).subscribe({
+      next:(response:Paginated<Player>)=>{
+        // Actualizar el registro de IDs cargados
+        response.data.forEach(player => this.loadedIds.add(player.id));
+        this._players.next([...response.data]);
+        this.page++;
+        this.pages = response.pages;
+      }
+    });
+  }
+  
+  getMorePlayersByTeam(notify: HTMLIonInfiniteScrollElement | null = null){
+    this.playerSvc.getPlayersByTeam(this.teamId, this.page, this.pageSize).subscribe({
+      next:(response: Paginated<Player>)=>{
+        // Actualizar el registro de IDs cargados
+        response.data.forEach(player => this.loadedIds.add(player.id));
+        this._players.next([...this._players.value, ...response.data]);
+        this.page++;
+        notify?.complete();
+      }
+    })
+  }
+  
+  async openPlayerDetail(player: Player){
+    const modal = await this.modalCtrl.create({
+      component: PlayerModalComponent,
+      componentProps: {player},
+    });
+    await modal.present();
+  }
+  
 
   async openPlayer(player: any, index: number){
     await this.presentModalPLayer('edit', player)

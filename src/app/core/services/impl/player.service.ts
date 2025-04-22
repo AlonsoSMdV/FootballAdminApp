@@ -6,6 +6,7 @@ import { BaseService } from "./base-service.service";
 import { IPlayerRepository } from "../../repositories/intefaces/player-repository.interface";
 import { SearchParams } from "../../repositories/intefaces/base-repository.interface";
 import { from, map, Observable } from "rxjs";
+import { Paginated } from "../../models/paginated.model";
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,11 @@ export class PlayerService extends BaseService<Player> implements IPlayerService
     super(repository);
   }
 
-  getAllPlayersByTeam(teamId: string): Observable<Player[]> {
-    const filters: SearchParams = { team: teamId };
-    // Llama al método `getAll` del repositorio base
-    return this.getAll(-1, 25, filters) as Observable<Player[]>;
-  }
+  getPlayersByTeam(team: string, page: number, pageSize: number): Observable<Paginated<Player>> {
+      const teamId = team.split('/').pop() ?? team;
+      const filters = { team: teamId };
+      return this.repository.getAll(page, pageSize, filters) as Observable<Paginated<Player>>;
+    }
 
   // Implementa métodos específicos si los hay
 }

@@ -43,7 +43,7 @@
             </div>
           
             <div class="action-buttons">
-              <ion-button fill="clear" class="info" routerLink="/players">
+              <ion-button fill="clear" class="info" [routerLink]="['/players', team.id]">
                 <ion-icon name="information-circle" slot="icon-only"></ion-icon>
               </ion-button>
               <ion-button fill="clear" class="edit" (click)="openTeam(team, i)">
