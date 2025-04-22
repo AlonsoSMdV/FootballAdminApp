@@ -32,7 +32,7 @@ export class MatchMenuComponent  implements OnInit {
     private alertCtrl: AlertController
   ) {}
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
   }
 
   async presentActionSheet() {

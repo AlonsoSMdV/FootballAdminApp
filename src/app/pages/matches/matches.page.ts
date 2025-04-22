@@ -250,51 +250,63 @@ export class MatchesPage implements OnInit {
     }
 
     private updateMatchStatuses() {
-      const now = new Date();
-    
-      const updatedMatches = this._matches.value.map((match) => {
-        if (!match.day || !match.hour || !match.status || !match.id) return match;
-    
-        const dayParts = match.day.toString().split('/');
-        const hourParts = match.hour.toString().split(':');
-        if (dayParts.length !== 3 || hourParts.length !== 2) return match;
-    
-        const [day, month, year] = dayParts.map(Number);
-        const [hour, minute] = hourParts.map(Number);
-        if ([day, month, year, hour, minute].some(isNaN)) return match;
-    
-        const matchDate = new Date(year, month - 1, day, hour, minute);
-        const endDate = new Date(matchDate.getTime() + 2 * 60 * 60 * 1000); // +2 horas
-    
-        let newStatus = match.status;
-    
-        if (now >= matchDate && now < endDate && match.status === 'Por jugar') {
-          newStatus = 'Jugando';
-        } else if (now >= endDate && match.status !== 'Finalizado') {
-          newStatus = 'Finalizado';
-        }
-    
-        if (newStatus !== match.status) {
-          const updated: any = { day: match.day,
-            hour: match.hour,
-            result: match.result,
-            place: match.place,
-            status: newStatus,
-            localTeamId:match.localTeamId,
-            visitorTeamId: match.visitorTeamId };
-          this.matchSvc.update(match.id, updated).subscribe({
-            next: () => {console.log(`Status actualizado a "${newStatus}" para ${match.id}`);
-                  window.location.reload();},
-            error: (err) => console.error('Error actualizando status', err)
-          });
-          return updated;
-        }
-    
-        return match;
-      });
-    
-      this._matches.next(updatedMatches);
+  const now = new Date();
+
+  const updatedMatches = this._matches.value.map((match) => {
+    if (!match.day || !match.hour || !match.status || !match.id) return match;
+
+    const dayParts = match.day.toString().split('/');
+    const hourParts = match.hour.toString().split(':');
+    if (dayParts.length !== 3 || hourParts.length !== 2) return match;
+
+    const [day, month, year] = dayParts.map(Number);
+    const [hour, minute] = hourParts.map(Number);
+    if ([day, month, year, hour, minute].some(isNaN)) return match;
+
+    const matchDate = new Date(year, month - 1, day, hour, minute);
+    const endDate = new Date(matchDate.getTime() + 2 * 60 * 60 * 1000); // +2 horas
+
+    let newStatus = match.status;
+    let newResult = match.result;
+
+    if (now >= matchDate && now < endDate && match.status === 'Por jugar') {
+      newStatus = 'Jugando';
+    } else if (now >= endDate && match.status !== 'Finalizado') {
+      newStatus = 'Finalizado';
+      // Generar resultado aleatorio al finalizar
+      const localScore = Math.floor(Math.random() * 5); // 0-4
+      const visitorScore = Math.floor(Math.random() * 5); // 0-4
+      newResult = `${localScore} - ${visitorScore}`;
     }
+
+    if (newStatus !== match.status) {
+      const updated: any = {
+        day: match.day,
+        hour: match.hour,
+        result: newResult,
+        place: match.place,
+        status: newStatus,
+        localTeamId: match.localTeamId,
+        visitorTeamId: match.visitorTeamId
+      };
+
+      this.matchSvc.update(match.id, updated).subscribe({
+        next: () => {
+          console.log(`Status actualizado a "${newStatus}" para ${match.id}`);
+          window.location.reload();
+        },
+        error: (err) => console.error('Error actualizando status', err)
+      });
+
+      return updated;
+    }
+
+    return match;
+  });
+
+  this._matches.next(updatedMatches);
+}
+
     
     
 
