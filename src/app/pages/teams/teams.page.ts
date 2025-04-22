@@ -1,4 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ModalController, AlertController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
@@ -21,9 +22,11 @@ export class TeamsPage implements OnInit {
   currentLang:string
   _teams: BehaviorSubject<Team[]> = new BehaviorSubject<Team[]>([]);
   teams$: Observable<Team[]> = this._teams.asObservable();
+  @Input() leagueId!: string
   private loadedIds: Set<string> = new Set();
 
   constructor(
+    private route: ActivatedRoute,
     private teamSvc: TeamService,
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
@@ -37,37 +40,44 @@ export class TeamsPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getTeams();
-
-    this.TeamSubs.subscribe('teams').subscribe((change: CollectionChange<Team>) => {
-      let currentTeams = [...this._teams.value];
-    
-      if ((!this.loadedIds.has(change.id) && change.type !== 'added')) {
-        return;
+    this.route.paramMap.subscribe(params => {
+      const leagueId = params.get('id');
+      if (leagueId) {
+        this.leagueId = leagueId;
+        this.getTeamsByleague();
+      } else {
+        this.getTeams();
       }
-    
-      switch (change.type) {
-        case 'added':
-        case 'modified':
-          const index = currentTeams.findIndex(p => p.id === change.id);
-          if (index >= 0) {
-            currentTeams[index] = change.data!;
-          } else {
-            currentTeams.push(change.data!);
-            this.loadedIds.add(change.id);
-          }
-          break;
-        case 'removed':
-          currentTeams = currentTeams.filter(p => p.id !== change.id);
-          this.loadedIds.delete(change.id);
-          break;
-      }
-    
-      // Ordenar por puntos antes de actualizar la lista
-      this._teams.next(currentTeams.sort((a, b) => b.pts - a.pts));
+  
+      this.TeamSubs.subscribe('teams').subscribe((change: CollectionChange<Team>) => {
+        let currentTeams = [...this._teams.value];
+  
+        if ((!this.loadedIds.has(change.id) && change.type !== 'added')) {
+          return;
+        }
+  
+        switch (change.type) {
+          case 'added':
+          case 'modified':
+            const index = currentTeams.findIndex(p => p.id === change.id);
+            if (index >= 0) {
+              currentTeams[index] = change.data!;
+            } else {
+              currentTeams.push(change.data!);
+              this.loadedIds.add(change.id);
+            }
+            break;
+          case 'removed':
+            currentTeams = currentTeams.filter(p => p.id !== change.id);
+            this.loadedIds.delete(change.id);
+            break;
+        }
+  
+        // Ordenar por puntos antes de actualizar la lista
+        this._teams.next(currentTeams.sort((a, b) => b.pts - a.pts));
+      });
     });
   }
-
 
   selectedLeague: any = null
   selectedTeam: any = null
@@ -93,6 +103,37 @@ export class TeamsPage implements OnInit {
   
   getMoreTeams(notify: HTMLIonInfiniteScrollElement | null = null) {
     this.teamSvc.getAll(this.page, this.pageSize).subscribe({
+      next: (response: Paginated<Team>) => {
+        response.data.forEach(team => this.loadedIds.add(team.id));
+  
+        // Añadir y ordenar por puntos
+        const sortedTeams = [...this._teams.value, ...response.data].sort((a, b) => b.pts - a.pts);
+  
+        this._teams.next(sortedTeams);
+        this.page++;
+        notify?.complete();
+      }
+    });
+  }
+
+  getTeamsByleague() {
+    this.page = 1;
+    this.teamSvc.getTeamByLeague(this.leagueId,this.page, this.pageSize).subscribe({
+      next: (response: Paginated<Team>) => {
+        response.data.forEach(team => this.loadedIds.add(team.id));
+  
+        // Ordenar los equipos por puntos (de mayor a menor)
+        const sortedTeams = response.data.sort((a, b) => b.pts - a.pts);
+  
+        this._teams.next(sortedTeams);
+        this.page++;
+        this.pages = response.pages;
+      }
+    });
+  }
+  
+  getMoreTeamsByLeague(notify: HTMLIonInfiniteScrollElement | null = null) {
+    this.teamSvc.getTeamByLeague(this.leagueId,this.page, this.pageSize).subscribe({
       next: (response: Paginated<Team>) => {
         response.data.forEach(team => this.loadedIds.add(team.id));
   

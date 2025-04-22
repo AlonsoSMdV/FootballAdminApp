@@ -17,11 +17,10 @@ export class TeamService extends BaseService<Team> implements ITeamService {
     super(repository);
   }
   getTeamByLeague(league: string, page: number, pageSize: number): Observable<Paginated<Team>> {
-    const formattedLeague = league.includes('/leagues/') ? league : `/leagues/${league}`
-    const filters = {league: formattedLeague}
-    return this.repository.getAll(page, pageSize, filters) as Observable<Paginated<Team>>
+    const leagueId = league.split('/').pop() ?? league;
+    const filters = { league: leagueId };
+    return this.repository.getAll(page, pageSize, filters) as Observable<Paginated<Team>>;
   }
-
 
   // Implementa métodos específicos si los hay
 }
