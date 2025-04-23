@@ -1,12 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { AlertController, ModalController, Platform } from '@ionic/angular';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
+import { BehaviorSubject, firstValueFrom, lastValueFrom, Observable } from 'rxjs';
 import { League } from 'src/app/core/models/leagues.model';
 import { Paginated } from 'src/app/core/models/paginated.model';
 import { LEAGUE_COLLECTION_SUBSCRIPTION_TOKEN } from 'src/app/core/repositories/repository.tokens';
 import { BaseMediaService } from 'src/app/core/services/impl/base-media.service';
 import { LeagueService } from 'src/app/core/services/impl/league.service';
+import { UsersService } from 'src/app/core/services/impl/users.service';
 import { CollectionChange, ICollectionSubscription } from 'src/app/core/services/interfaces/collection-subscription.interface';
 import { LanguageService } from 'src/app/core/services/language.service';
 import { LeagueCreateModalComponent } from 'src/app/shared/components/league-create-modal/league-create-modal.component';
@@ -21,9 +22,11 @@ export class LeaguesPage implements OnInit {
   currentLang:string
   _leagues: BehaviorSubject<League[]> = new BehaviorSubject<League[]>([]);
   leagues$: Observable<League[]> = this._leagues.asObservable();
+  currentUserId!: string | undefined;
   private loadedIds: Set<string> = new Set();
 
   constructor(
+    private userSvc: UsersService,
     private leagueSvc: LeagueService,
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
@@ -38,6 +41,10 @@ export class LeaguesPage implements OnInit {
   }
 
   ngOnInit() {
+    this.userSvc.getCurrentUser().subscribe(user => {
+      this.currentUserId = user!!.userId;
+    });
+
     this.getLeagues();
 
     this.leagueSubs.subscribe('leagues').subscribe((change:
@@ -113,6 +120,7 @@ export class LeaguesPage implements OnInit {
       }:{})
     });
     modal.onDidDismiss().then(async (response)=>{
+      const user = await firstValueFrom(this.userSvc.getCurrentUser());
       let newLeague : any = null
       if (response.data.picture) {
         const base64Response = await fetch(response.data.picture);
@@ -123,6 +131,7 @@ export class LeaguesPage implements OnInit {
   
         newLeague = {
           name: response.data.name,
+          userId: user!!.userId,
           picture: {
             url: pictureUrl[0],
             large: pictureUrl[0],
@@ -133,7 +142,8 @@ export class LeaguesPage implements OnInit {
         }
       }else{
         newLeague = {
-          name: response.data.name
+          name: response.data.name,
+          userId: user!!.userId,
         }
       }
       switch (response.role) {
@@ -141,6 +151,7 @@ export class LeaguesPage implements OnInit {
           this.leagueSvc.add(newLeague).subscribe({
             next:res=>{
               this.getLeagues();
+              console.log('Creando liga con userId:', user!!.userId)
             },
             error:err=>{}
           });

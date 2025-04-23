@@ -46,10 +46,10 @@
               <ion-button fill="clear" class="info" [routerLink]="['/players', team.id]">
                 <ion-icon name="information-circle" slot="icon-only"></ion-icon>
               </ion-button>
-              <ion-button fill="clear" class="edit" (click)="openTeam(team, i)">
+              <ion-button fill="clear" class="edit" [disabled]="team.userId !== currentUserId" (click)="openTeam(team, i)">
                 <ion-icon name="create" slot="icon-only"></ion-icon>
               </ion-button>
-              <ion-button fill="clear" class="delete" (click)="onDeleteTeam(team)">
+              <ion-button fill="clear" class="delete" [disabled]="team.userId !== currentUserId" (click)="onDeleteTeam(team)">
                 <ion-icon name="trash" slot="icon-only"></ion-icon>
               </ion-button>
             </div>

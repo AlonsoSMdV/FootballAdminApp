@@ -2,12 +2,13 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
+import { BehaviorSubject, firstValueFrom, lastValueFrom, Observable } from 'rxjs';
 import { Paginated } from 'src/app/core/models/paginated.model';
 import { Player } from 'src/app/core/models/players.model';
 import { PLAYER_COLLECTION_SUBSCRIPTION_TOKEN } from 'src/app/core/repositories/repository.tokens';
 import { BaseMediaService } from 'src/app/core/services/impl/base-media.service';
 import { PlayerService } from 'src/app/core/services/impl/player.service';
+import { UsersService } from 'src/app/core/services/impl/users.service';
 import { CollectionChange, ICollectionSubscription } from 'src/app/core/services/interfaces/collection-subscription.interface';
 import { LanguageService } from 'src/app/core/services/language.service';
 import { PlayerCreateModalComponent } from 'src/app/shared/components/player-create-modal/player-create-modal.component';
@@ -23,6 +24,7 @@ export class PlayersPage implements OnInit {
   currentLang:string
   _players: BehaviorSubject<Player[]> = new BehaviorSubject<Player[]>([]);
   players$: Observable<Player[]> = this._players.asObservable();
+  currentUserId!: string | undefined;
   @Input() teamId!:string
   flippedCards: { [key: string]: boolean } = {};
   private loadedIds: Set<string> = new Set();
@@ -33,6 +35,7 @@ export class PlayersPage implements OnInit {
   }
 
   constructor(
+    private userSvc: UsersService,
     private route: ActivatedRoute,
     private playerSvc: PlayerService,
     private modalCtrl: ModalController,
@@ -47,6 +50,10 @@ export class PlayersPage implements OnInit {
   }
 
   ngOnInit() {
+    this.userSvc.getCurrentUser().subscribe(user => {
+      this.currentUserId = user!!.userId;
+    });
+
     this.route.paramMap.subscribe(params => {
       const teamId = params.get('id');
       if (teamId) {
@@ -165,6 +172,7 @@ export class PlayersPage implements OnInit {
       }:{})
     });
     modal.onDidDismiss().then(async (response)=>{
+          const user = await firstValueFrom(this.userSvc.getCurrentUser());
       let newPlayer : any = null
       if (response.data.picture) {
         const base64Response = await fetch(response.data.picture);
@@ -188,7 +196,9 @@ export class PlayersPage implements OnInit {
             medium: pictureUrl[0],
             small: pictureUrl[0],
             thumbnail: pictureUrl[0],
-          }
+          },
+          userId: user!!.userId
+          
         }
       }else{
         newPlayer = {
@@ -199,7 +209,8 @@ export class PlayersPage implements OnInit {
           nationality: response.data.nationality,
           dorsal: response.data.dorsal,
           position: response.data.position,
-          team: response.data.team
+          team: response.data.team,
+          userId: user!!.userId,
 
         }
       }

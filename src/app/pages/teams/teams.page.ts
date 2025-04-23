@@ -2,12 +2,13 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController, AlertController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
+import { BehaviorSubject, firstValueFrom, lastValueFrom, Observable } from 'rxjs';
 import { Paginated } from 'src/app/core/models/paginated.model';
 import { Team } from 'src/app/core/models/teams.model';
 import { TEAM_COLLECTION_SUBSCRIPTION_TOKEN } from 'src/app/core/repositories/repository.tokens';
 import { BaseMediaService } from 'src/app/core/services/impl/base-media.service';
 import { TeamService } from 'src/app/core/services/impl/team.service';
+import { UsersService } from 'src/app/core/services/impl/users.service';
 import { CollectionChange, ICollectionSubscription } from 'src/app/core/services/interfaces/collection-subscription.interface';
 import { LanguageService } from 'src/app/core/services/language.service';
 import { TeamCreateModalComponent } from 'src/app/shared/components/team-create-modal/team-create-modal.component';
@@ -22,10 +23,12 @@ export class TeamsPage implements OnInit {
   currentLang:string
   _teams: BehaviorSubject<Team[]> = new BehaviorSubject<Team[]>([]);
   teams$: Observable<Team[]> = this._teams.asObservable();
+  currentUserId!: string | undefined;
   @Input() leagueId!: string
   private loadedIds: Set<string> = new Set();
 
   constructor(
+    private userSvc: UsersService,
     private route: ActivatedRoute,
     private teamSvc: TeamService,
     private modalCtrl: ModalController,
@@ -40,6 +43,10 @@ export class TeamsPage implements OnInit {
   }
 
   ngOnInit() {
+    this.userSvc.getCurrentUser().subscribe(user => {
+      this.currentUserId = user!!.userId;
+    });
+
     this.route.paramMap.subscribe(params => {
       const leagueId = params.get('id');
       if (leagueId) {
@@ -203,6 +210,7 @@ export class TeamsPage implements OnInit {
       }:{})
     });
     modal.onDidDismiss().then(async (response)=>{
+          const user = await firstValueFrom(this.userSvc.getCurrentUser());
           let newTeam : any = null
           if (response.data.picture) {
             const base64Response = await fetch(response.data.picture);
@@ -224,6 +232,7 @@ export class TeamsPage implements OnInit {
                 small: pictureUrl[0],
                 thumbnail: pictureUrl[0],
               },
+              userId: user!!.userId,
               league: response.data.league
             }
           }else{
@@ -233,7 +242,8 @@ export class TeamsPage implements OnInit {
               pts: mode === 'new' ? 0 : response.data.pts,
               isFavourite: mode === 'new' ? false : response.data.isFavourite,
               nMatches: mode === 'new' ? 0 : response.data.nMatches,
-              league: response.data.league
+              league: response.data.league,
+              userId: user!!.userId
             }
           }
       switch (response.role) {
