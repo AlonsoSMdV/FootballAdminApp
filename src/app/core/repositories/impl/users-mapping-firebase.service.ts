@@ -40,7 +40,11 @@ export class UsersMappingFirebase implements IBaseMapping<Users>{
         small: data.picture,
         thumbnail: data.picture
       }: undefined,
-      role: data.role
+      role: data.role,
+      userId: data.userId,
+      playerFav: data.playerFav?.id,
+      teamFav: data.teamFav?.id,
+      leagueFav: data.leagueFav?.id      
     };
   }
   getAdded(data: { id: string } & FirebaseUser): Users {
@@ -59,7 +63,18 @@ export class UsersMappingFirebase implements IBaseMapping<Users>{
         email: data.email,
         userId: data.userId || '',
         picture: data.picture?.url || '',
-        role: data.role
+        role: data.role,
+    }
+    if(data.playerFav){
+      dataMapping.playerFav = doc(this.db, 'players', data.playerFav || '')
+    }
+
+    if(data.teamFav){
+      dataMapping.teamFav = doc(this.db, 'teams', data.teamFav || '')
+    }
+
+    if(data.leagueFav){
+      dataMapping.leagueFav = doc(this.db, 'leagues', data.leagueFav || '')
     }
     return dataMapping;
   }
@@ -70,6 +85,9 @@ export class UsersMappingFirebase implements IBaseMapping<Users>{
     if (data.email) result.email = data.email;
     if (data.picture) result.picture = data.picture?.url || '';
     if (data.role) result.role  = data.role
+    if (data.playerFav) result.playerFav = doc(this.db, 'players', data.playerFav || '');
+    if (data.teamFav) result.teamFav = doc(this.db, 'teams', data.teamFav || '');
+    if (data.leagueFav) result.leagueFav = doc(this.db, 'leagues', data.leagueFav || '');
     return result;
   }
   

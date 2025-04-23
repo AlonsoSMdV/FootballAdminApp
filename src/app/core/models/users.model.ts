@@ -13,5 +13,8 @@ export interface Users extends Model{
         thumbnail:string | undefined
     },
     role:string,
-    userId?:string
+    userId?:string,
+    playerFav?:string,
+    teamFav?:string,
+    leagueFav?:string,
 }

@@ -1,3 +1,5 @@
+import { DocumentReference } from "firebase/firestore";
+
 export interface FirebaseUser{
     name:string,
     surname:string,
@@ -5,5 +7,8 @@ export interface FirebaseUser{
     picture?:string,
     role:string,
     userId: string
+    playerFav?:DocumentReference,
+    teamFav?:DocumentReference,
+    leagueFav?:DocumentReference,
 }
     
