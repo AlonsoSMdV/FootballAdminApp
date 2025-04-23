@@ -32,7 +32,6 @@ export class TeamMappingFirebase implements IBaseMapping<Team>{
       numberOfPlayers: data.numberOfPlayers,
       pts: data.pts,
       nMatches: data.nMatches,
-      isFavourite: data.isFavourite,
       league: data.league?.id,
       userId: data.userId?.id,
       picture: data.picture ? {
@@ -59,14 +58,13 @@ export class TeamMappingFirebase implements IBaseMapping<Team>{
       numberOfPlayers: data.numberOfPlayers,
       pts: data.pts,
       nMatches: data.nMatches,
-      isFavourite: data.isFavourite,
       picture: data.picture?.url || ''
     }
     if(data.league){
       dataMapping.league = doc(this.db, 'leagues', data.league || '')
     }
     if(data.userId){
-      dataMapping.userId = doc(this.db, 'team', data.userId || '')
+      dataMapping.userId = doc(this.db, 'usuarios', data.userId || '')
     }
     return dataMapping;
   }
@@ -76,9 +74,8 @@ export class TeamMappingFirebase implements IBaseMapping<Team>{
     if (data.numberOfPlayers) result.numberOfPlayers = data.numberOfPlayers;
     if (data.pts) result.pts = data.pts
     if (data.nMatches) result.nMatches = data.nMatches
-    if (data.isFavourite) result.isFavourite = data.isFavourite
     if (data.league) result.league = doc(this.db, 'leagues', data.league || '');
-    if (data.userId) result.user = data.userId || '';
+    if (data.userId) result.userId = data.userId || '';
     if (data.picture) result.picture = data.picture?.url || '';
     return result;
   }

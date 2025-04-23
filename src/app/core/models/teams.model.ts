@@ -5,7 +5,6 @@ export interface Team extends Model{
   numberOfPlayers: number;
   pts: number,
   nMatches: number;
-  isFavourite: boolean,
   league?: string;
   userId?: string;
   picture?:{

@@ -8,7 +8,6 @@ interface TeamRaw{
   nombre: string
   pts: number
   nMatches: number
-  isFavourite: boolean
   jugadoresEnPlantilla: number
   idLiga: string
 }
@@ -23,7 +22,6 @@ export class TeamJsonServerStorageMapping implements IBaseMapping<Team> {
           nombre:data.name, 
           pts: data.pts,
           nMatches: data.nMatches,
-          isFavourite: data.isFavourite,
           jugadoresEnPlantilla:data.numberOfPlayers,
           idLiga:data.league!,
       };
@@ -39,8 +37,6 @@ export class TeamJsonServerStorageMapping implements IBaseMapping<Team> {
               case 'pts': toReturn['pts']=data[key];
                   break;
               case 'nMatches': toReturn['nMatches']=data[key];
-                  break;
-              case 'isFavourite': toReturn['isFavourite']=data[key];
                   break;
               case 'league': toReturn['idLiga']=data[key];
                   break;
@@ -62,7 +58,6 @@ export class TeamJsonServerStorageMapping implements IBaseMapping<Team> {
           numberOfPlayers:data.jugadoresEnPlantilla,
           pts: data.pts,
           nMatches: data.nMatches,
-          isFavourite: data.isFavourite,
           league:data.idLiga,
       };
   }
