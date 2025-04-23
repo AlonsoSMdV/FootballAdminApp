@@ -13,6 +13,7 @@ import { LanguageService } from 'src/app/core/services/language.service';
 import { MatchCreateComponent } from 'src/app/shared/components/match-create/match-create.component';
 import { Share } from '@capacitor/share';
 import { Capacitor } from '@capacitor/core';
+import { UsersService } from 'src/app/core/services/impl/users.service';
 
 interface MatchWithTeams extends Match {
   localTeam?: Team;
@@ -30,10 +31,13 @@ export class MatchesPage implements OnInit {
   currentLang:string
   _matches: BehaviorSubject<MatchWithTeams[]> = new BehaviorSubject<MatchWithTeams[]>([])
   matches$: Observable<MatchWithTeams[]> = this._matches.asObservable()
+  isAdmin: boolean = false;
+  currentUserId: string = '';
   private loadedIds: Set<string> = new Set();
 
 
   constructor(
+    private userSvc: UsersService,
     private matchSvc: MatchService,
     private teamSvc: TeamService,
     private modalCtrl: ModalController,
@@ -48,6 +52,10 @@ export class MatchesPage implements OnInit {
 
   ngOnInit() {
     this.getMatches()
+
+    this.userSvc.getCurrentUser().subscribe(user => {
+      this.isAdmin = user?.role === 'Admin';
+    });
 
      // Revisa y actualiza estado de partidos cada minuto
     setInterval(() => {
@@ -172,6 +180,8 @@ export class MatchesPage implements OnInit {
           }:{})
         });
         modal.onDidDismiss().then(async (response)=>{
+          const user = await firstValueFrom(this.userSvc.getCurrentUser());
+
           let newMatch : any = null
             newMatch = {
               day: response.data.day,
@@ -180,7 +190,8 @@ export class MatchesPage implements OnInit {
               place: response.data.place,
               status: "Por jugar",
               localTeamId: response.data.localTeamId,
-              visitorTeamId: response.data.visitorTeamId
+              visitorTeamId: response.data.visitorTeamId,
+              userId: user?.id
             }
 
             let editMatch : any = null
@@ -191,7 +202,8 @@ export class MatchesPage implements OnInit {
               place: response.data.place,
               status: response.data.status,
               localTeamId: response.data.localTeamId,
-              visitorTeamId: response.data.visitorTeamId
+              visitorTeamId: response.data.visitorTeamId,
+              userId: response.data.userId
             }
             
           switch (response.role) {
