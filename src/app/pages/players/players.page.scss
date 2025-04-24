@@ -206,6 +206,17 @@ ion-card {
       --color: var(--accent-color);
     }
 
+    &.favorite {
+      --background: rgba(255, 193, 7, 0.2); // amarillo suave
+      --color: #ffc107;
+      transition: transform 0.2s ease;
+    
+      &:hover {
+        transform: scale(1.1);
+        --background: rgba(255, 193, 7, 0.3);
+      }
+    }
+
     &:hover {
       --background: rgba(255, 255, 255, 0.15);  // Efecto hover más visible
       transform: scale(1.1);                     // Efecto de escala al hover

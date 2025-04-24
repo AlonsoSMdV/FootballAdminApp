@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, firstValueFrom, lastValueFrom, Observable } from 'rxjs';
 import { Paginated } from 'src/app/core/models/paginated.model';
 import { Team } from 'src/app/core/models/teams.model';
+import { Users } from 'src/app/core/models/users.model';
 import { TEAM_COLLECTION_SUBSCRIPTION_TOKEN } from 'src/app/core/repositories/repository.tokens';
 import { BaseMediaService } from 'src/app/core/services/impl/base-media.service';
 import { TeamService } from 'src/app/core/services/impl/team.service';
@@ -24,6 +25,7 @@ export class TeamsPage implements OnInit {
   _teams: BehaviorSubject<Team[]> = new BehaviorSubject<Team[]>([]);
   teams$: Observable<Team[]> = this._teams.asObservable();
   currentUserId!: string | undefined;
+  currentUser: Users | null = null;
   @Input() leagueId!: string
   private loadedIds: Set<string> = new Set();
 
@@ -45,6 +47,7 @@ export class TeamsPage implements OnInit {
   ngOnInit() {
     this.userSvc.getCurrentUser().subscribe(user => {
       this.currentUserId = user!!.userId;
+      this.currentUser = user
     });
 
     this.route.paramMap.subscribe(params => {
@@ -153,6 +156,32 @@ export class TeamsPage implements OnInit {
       }
     });
   }
+
+  async setFavoriteTeam(teamId: string | null) {
+      try {
+        
+        const updatedUser: any = {
+          ...this.currentUser,
+          teamFav: teamId ? teamId : undefined  // 👈 Aquí está el truco
+        };
+    
+        await firstValueFrom(this.userSvc.update(this.currentUser!!.id, updatedUser));
+        this.userSvc.getCurrentUser().subscribe(user => {
+          this.currentUserId = user!!.userId;
+          this.currentUser = user
+        });
+        console.log('Favorite team updated:', teamId);
+      } catch (err) {
+        console.error('Error setting favorite team:', err);
+      }
+    }
+    
+    toggleFavorite(team: Team) {
+      const isFavorite = this.currentUser?.teamFav === team.id;
+      const newTeamFav = isFavorite ? null : team.id;
+    
+      this.setFavoriteTeam(newTeamFav);
+    }
 
   async updatePoints(team: Team) {
     const alert = await this.alertCtrl.create({

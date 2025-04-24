@@ -4,6 +4,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, firstValueFrom, lastValueFrom, Observable } from 'rxjs';
 import { League } from 'src/app/core/models/leagues.model';
 import { Paginated } from 'src/app/core/models/paginated.model';
+import { Users } from 'src/app/core/models/users.model';
 import { LEAGUE_COLLECTION_SUBSCRIPTION_TOKEN } from 'src/app/core/repositories/repository.tokens';
 import { BaseMediaService } from 'src/app/core/services/impl/base-media.service';
 import { LeagueService } from 'src/app/core/services/impl/league.service';
@@ -23,6 +24,7 @@ export class LeaguesPage implements OnInit {
   _leagues: BehaviorSubject<League[]> = new BehaviorSubject<League[]>([]);
   leagues$: Observable<League[]> = this._leagues.asObservable();
   currentUserId!: string | undefined;
+  currentUser: Users | null = null;
   private loadedIds: Set<string> = new Set();
 
   constructor(
@@ -43,6 +45,7 @@ export class LeaguesPage implements OnInit {
   ngOnInit() {
     this.userSvc.getCurrentUser().subscribe(user => {
       this.currentUserId = user!!.userId;
+      this.currentUser = user
     });
 
     this.getLeagues();
@@ -106,6 +109,33 @@ export class LeaguesPage implements OnInit {
       }
     })
   }
+
+  async setFavoriteLeague(leagueId: string | null) {
+    try {
+      
+      const updatedUser: any = {
+        ...this.currentUser,
+        leagueFav: leagueId ? leagueId : undefined  // 👈 Aquí está el truco
+      };
+  
+      await firstValueFrom(this.userSvc.update(this.currentUser!!.id, updatedUser));
+      this.userSvc.getCurrentUser().subscribe(user => {
+        this.currentUserId = user!!.userId;
+        this.currentUser = user
+      });
+      console.log('Favorite league updated:', leagueId);
+    } catch (err) {
+      console.error('Error setting favorite league:', err);
+    }
+  }
+  
+  toggleFavorite(league: League) {
+    const isFavorite = this.currentUser?.leagueFav === league.id;
+    const newLeagueFav = isFavorite ? null : league.id;
+  
+    this.setFavoriteLeague(newLeagueFav);
+  }
+  
 
   async openLeague(league: any, index: number){
     await this.presentModalLeague('edit', league)

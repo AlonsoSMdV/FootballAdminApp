@@ -52,6 +52,16 @@
               <ion-button fill="clear" class="delete" [disabled]="team.userId !== currentUserId" (click)="onDeleteTeam(team)">
                 <ion-icon name="trash" slot="icon-only"></ion-icon>
               </ion-button>
+              <ion-button 
+                fill="clear" 
+                class="favorite"
+                color="warning" 
+                (click)="toggleFavorite(team)">
+                <ion-icon 
+                  [name]="currentUser?.leagueFav === team.id ? 'star' : 'star-outline'" 
+                  slot="icon-only">
+                </ion-icon>
+              </ion-button>
             </div>
           </ion-card-content>
         </ion-card>

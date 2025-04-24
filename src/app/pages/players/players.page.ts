@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, firstValueFrom, lastValueFrom, Observable } from 'rxjs';
 import { Paginated } from 'src/app/core/models/paginated.model';
 import { Player } from 'src/app/core/models/players.model';
+import { Users } from 'src/app/core/models/users.model';
 import { PLAYER_COLLECTION_SUBSCRIPTION_TOKEN } from 'src/app/core/repositories/repository.tokens';
 import { BaseMediaService } from 'src/app/core/services/impl/base-media.service';
 import { PlayerService } from 'src/app/core/services/impl/player.service';
@@ -25,6 +26,7 @@ export class PlayersPage implements OnInit {
   _players: BehaviorSubject<Player[]> = new BehaviorSubject<Player[]>([]);
   players$: Observable<Player[]> = this._players.asObservable();
   currentUserId!: string | undefined;
+  currentUser: Users | null = null;
   @Input() teamId!:string
   flippedCards: { [key: string]: boolean } = {};
   private loadedIds: Set<string> = new Set();
@@ -52,6 +54,7 @@ export class PlayersPage implements OnInit {
   ngOnInit() {
     this.userSvc.getCurrentUser().subscribe(user => {
       this.currentUserId = user!!.userId;
+      this.currentUser = user
     });
 
     this.route.paramMap.subscribe(params => {
@@ -149,6 +152,32 @@ export class PlayersPage implements OnInit {
       }
     })
   }
+
+  async setFavoritePlayer(playerId: string | null) {
+        try {
+          
+          const updatedUser: any = {
+            ...this.currentUser,
+            playerFav: playerId ? playerId : undefined  // 👈 Aquí está el truco
+          };
+      
+          await firstValueFrom(this.userSvc.update(this.currentUser!!.id, updatedUser));
+          this.userSvc.getCurrentUser().subscribe(user => {
+            this.currentUserId = user!!.userId;
+            this.currentUser = user
+          });
+          console.log('Favorite player updated:', playerId);
+        } catch (err) {
+          console.error('Error setting favorite player:', err);
+        }
+      }
+      
+      toggleFavorite(player: Player) {
+        const isFavorite = this.currentUser?.playerFav === player.id;
+        const newPlayerFav = isFavorite ? null : player.id;
+      
+        this.setFavoritePlayer(newPlayerFav);
+      }
   
   async openPlayerDetail(player: Player){
     const modal = await this.modalCtrl.create({
