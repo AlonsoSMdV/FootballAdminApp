@@ -85,9 +85,9 @@ export class UsersMappingFirebase implements IBaseMapping<Users>{
     if (data.email) result.email = data.email;
     if (data.picture) result.picture = data.picture?.url || '';
     if (data.role) result.role  = data.role
-    if (data.playerFav) result.playerFav = doc(this.db, 'players', data.playerFav || '');
-    if (data.teamFav) result.teamFav = doc(this.db, 'teams', data.teamFav || '');
-    if (data.leagueFav) result.leagueFav = doc(this.db, 'leagues', data.leagueFav || '');
+    result.playerFav = data.playerFav ? doc(this.db, 'players', data.playerFav) : null;
+    result.teamFav = data.teamFav ? doc(this.db, 'teams', data.teamFav) : null;
+    result.leagueFav = data.leagueFav ? doc(this.db, 'leagues', data.leagueFav) : null;
     return result;
   }
   
