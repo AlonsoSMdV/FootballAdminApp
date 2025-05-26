@@ -18,8 +18,37 @@
             </div>
             <h2 class="username">{{ (authSvc.user$ | async)?.email }}</h2>
           </div>
+
+          
         </div>
 
+        <ion-item *ngIf="favoriteNames.league">
+          <ion-thumbnail slot="start">
+            <img [src]="favoriteNames.leagueImg || 'assets/img/campo-futbol2.jpg'" />
+          </ion-thumbnail>
+          <ion-label>
+            {{ favoriteNames.league }}
+          </ion-label>
+        </ion-item>
+        
+        <ion-item *ngIf="favoriteNames.team">
+          <ion-thumbnail slot="start">
+            <img [src]="favoriteNames.teamImg || 'assets/img/campo-futbol2.jpg'" />
+          </ion-thumbnail>
+          <ion-label>
+            {{ favoriteNames.team }}
+          </ion-label>
+        </ion-item>
+        
+        <ion-item *ngIf="favoriteNames.player">
+          <ion-thumbnail slot="start">
+            <img [src]="favoriteNames.playerImg || 'assets/img/campo-futbol2.jpg'" />
+          </ion-thumbnail>
+          <ion-label>
+            {{ favoriteNames.player }}
+          </ion-label>
+        </ion-item>
+        
         <!-- Navigation Links -->
         <div class="menu-items">
           <a class="menu-item" routerLink="/home" routerDirection="root" (click)="menu.close()">

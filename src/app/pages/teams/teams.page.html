@@ -58,7 +58,7 @@
                 color="warning" 
                 (click)="toggleFavorite(team)">
                 <ion-icon 
-                  [name]="currentUser?.leagueFav === team.id ? 'star' : 'star-outline'" 
+                  [name]="currentUser?.teamFav === team.id ? 'star' : 'star-outline'" 
                   slot="icon-only">
                 </ion-icon>
               </ion-button>
