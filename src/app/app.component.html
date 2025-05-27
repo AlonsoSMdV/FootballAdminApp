@@ -1,106 +1,85 @@
-<!-- app.component.html -->
 <ion-content>
-  <ion-split-pane contentId="mainContent" style="--side-max-width: 280px;">
-    <ion-menu *ngIf="showMenu" contentId="mainContent" side="start" menuId="mainMenu" #menu [disabled]="!(authSvc.authenticated$ | async)">
-      <ion-content class="menu-content">
-        <!-- Profile Section -->
-        <div class="profile-section" *ngIf="(authSvc.authenticated$ | async)">
-          <div class="profile-background"></div>
-          <div class="profile-info">
-            <div class="avatar-container"  routerLink="/profile" (click)="menu.close()">
-              <ion-avatar *ngIf="(user$ | async)?.picture">
-                <img [src]="(user$ | async)?.picture?.url" alt="Avatar" />
-              </ion-avatar>
-              <ion-avatar *ngIf="!(user$ | async)?.picture">
-                <img [src]="'https://ionicframework.com/docs/img/demos/avatar.svg'" alt="Avatar" />
-              </ion-avatar>
-              <div class="status-dot"></div>
-            </div>
-            <h2 class="username">{{ (authSvc.user$ | async)?.email }}</h2>
-          </div>
+  <ion-split-pane contentId="mainContent" when="(min-width: 768px)">
+    <ion-menu contentId="mainContent" side="start" menuId="mainMenu" *ngIf="showMenu" #menu [disabled]="!(authSvc.authenticated$ | async)">
+      <ion-content class="bg-gray-900 text-white flex flex-col justify-between h-full">
 
-          
+        <!-- Profile -->
+        <div *ngIf="(authSvc.authenticated$ | async)" class="p-4 bg-gradient-to-br from-emerald-700/30 to-cyan-700/20 rounded-b-xl">
+          <div class="flex flex-col items-center">
+            <div 
+              class="relative w-20 h-20 mb-2 group cursor-pointer transition-transform transform hover:scale-105"
+              (click)="menu.close();" routerLink="/profile">
+              <img 
+                [src]="(user$ | async)?.picture?.url || 'https://ionicframework.com/docs/img/demos/avatar.svg'"
+                alt="Avatar"
+                class="rounded-full border-4 border-emerald-400 shadow-lg object-cover w-full h-full transition"
+              />
+              <div class="absolute bottom-1 right-1 w-3 h-3 bg-emerald-400 border-2 border-gray-900 rounded-full shadow-md"></div>
+            </div>
+            <h2 class="text-lg font-semibold text-center truncate w-full">{{ (authSvc.user$ | async)?.email }}</h2>
+          </div>
         </div>
 
-        <ion-item *ngIf="favoriteNames.league">
-          <ion-thumbnail slot="start">
-            <img [src]="favoriteNames.leagueImg || 'assets/img/campo-futbol2.jpg'" />
-          </ion-thumbnail>
-          <ion-label>
-            {{ favoriteNames.league }}
-          </ion-label>
-        </ion-item>
-        
-        <ion-item *ngIf="favoriteNames.team">
-          <ion-thumbnail slot="start">
-            <img [src]="favoriteNames.teamImg || 'assets/img/campo-futbol2.jpg'" />
-          </ion-thumbnail>
-          <ion-label>
-            {{ favoriteNames.team }}
-          </ion-label>
-        </ion-item>
-        
-        <ion-item *ngIf="favoriteNames.player">
-          <ion-thumbnail slot="start">
-            <img [src]="favoriteNames.playerImg || 'assets/img/campo-futbol2.jpg'" />
-          </ion-thumbnail>
-          <ion-label>
-            {{ favoriteNames.player }}
-          </ion-label>
-        </ion-item>
-        
-        <!-- Navigation Links -->
-        <div class="menu-items">
-          <a class="menu-item" routerLink="/home" routerDirection="root" (click)="menu.close()">
+        <!-- Favoritos -->
+        <div class="px-4 pt-4 space-y-2">
+          <ng-container *ngIf="favoriteNames.league">
+            <div class="flex items-center space-x-3">
+              <img [src]="favoriteNames.leagueImg || 'assets/img/campo-futbol2.jpg'" class="w-10 h-10 rounded-lg object-cover" />
+              <span>{{ favoriteNames.league }}</span>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="favoriteNames.team">
+            <div class="flex items-center space-x-3">
+              <img [src]="favoriteNames.teamImg || 'assets/img/campo-futbol2.jpg'" class="w-10 h-10 rounded-lg object-cover" />
+              <span>{{ favoriteNames.team }}</span>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="favoriteNames.player">
+            <div class="flex items-center space-x-3">
+              <img [src]="favoriteNames.playerImg || 'assets/img/campo-futbol2.jpg'" class="w-10 h-10 rounded-lg object-cover" />
+              <span>{{ favoriteNames.player }}</span>
+            </div>
+          </ng-container>
+        </div>
+
+        <!-- Navegación -->
+        <nav class="mt-6 px-4 flex flex-col gap-2">
+          <a routerLink="/home" (click)="menu.close()" class="flex items-center gap-3 hover:bg-emerald-600/20 px-3 py-2 rounded-md transition">
             <ion-icon name="home-outline"></ion-icon>
             <span>{{ 'MENU.HOME' | translate }}</span>
           </a>
 
-          <a class="menu-item" *ngIf="(authSvc.authenticated$ | async)" routerLink="/leagues" routerDirection="root" (click)="menu.close()">
+          <a *ngIf="(authSvc.authenticated$ | async)" routerLink="/leagues" (click)="menu.close()" class="flex items-center gap-3 hover:bg-emerald-600/20 px-3 py-2 rounded-md transition">
             <ion-icon name="trophy-outline"></ion-icon>
             <span>{{ 'MENU.LEAGUES' | translate }}</span>
           </a>
 
-          <a class="menu-item" *ngIf="(authSvc.authenticated$ | async)" routerLink="/matches" routerDirection="root" (click)="menu.close()">
+          <a *ngIf="(authSvc.authenticated$ | async)" routerLink="/matches" (click)="menu.close()" class="flex items-center gap-3 hover:bg-emerald-600/20 px-3 py-2 rounded-md transition">
             <ion-icon name="football-outline"></ion-icon>
             <span>{{ 'MENU.MATCHES' | translate }}</span>
           </a>
 
-          <ng-container *ngIf="userWithAuth$ | async as context">
-            <a class="menu-item"
-               *ngIf="context.user?.role === 'Admin'"
-               routerLink="/users"
-               routerDirection="root"
-               (click)="menu.close()">
-              <ion-icon name="people-outline"></ion-icon>
-              <span>{{ 'MENU.USERS' | translate }}</span>
-            </a>
-          </ng-container>
-          
+          <a *ngIf="(userWithAuth$ | async)?.user?.role === 'Admin'" routerLink="/users" (click)="menu.close()" class="flex items-center gap-3 hover:bg-emerald-600/20 px-3 py-2 rounded-md transition">
+            <ion-icon name="people-outline"></ion-icon>
+            <span>{{ 'MENU.USERS' | translate }}</span>
+          </a>
 
-          <a class="menu-item" *ngIf="(authSvc.authenticated$ | async)" routerLink="/about" routerDirection="root" (click)="menu.close()">
+          <a *ngIf="(authSvc.authenticated$ | async)" routerLink="/about" (click)="menu.close()" class="flex items-center gap-3 hover:bg-emerald-600/20 px-3 py-2 rounded-md transition">
             <ion-icon name="information-circle-outline"></ion-icon>
             <span>{{ 'MENU.ABOUT' | translate }}</span>
           </a>
 
-          <!-- Language Toggle -->
-          <div class="menu-item language-toggle">
-            <!--<ion-icon name="language-outline"></ion-icon>
-            <span>{{ currentLang === 'es' ? 'Español' : 'English' }}</span>
-            <ion-toggle
-              class="custom-toggle"
-              [checked]="currentLang === 'es'"
-              (ionChange)="changeLanguage($event.detail.checked ? 'es' : 'en')"
-              color="success">
-            </ion-toggle>-->
-            <app-language-selector></app-language-selector>
+          <!-- Language Selector -->
+          <div class="flex justify-between items-center gap-3 mt-2">
+            <app-language-selector class="flex-1"></app-language-selector>
           </div>
-          
-        </div>
+        </nav>
 
-        <!-- Logout Button -->
-        <div class="logout-section" *ngIf="(authSvc.authenticated$ | async)">
-          <button class="logout-button" (click)="logout(); menu.close()">
+        <!-- Logout -->
+        <div *ngIf="(authSvc.authenticated$ | async)" class="p-4">
+          <button (click)="logout(); menu.close()" class="w-full bg-red-600/20 hover:bg-red-600/30 text-red-400 font-semibold py-2 px-4 rounded-md flex items-center justify-center gap-2 transition">
             <ion-icon name="log-out-outline"></ion-icon>
             <span>{{ "MENU.LOGOUT" | translate }}</span>
           </button>
@@ -108,7 +87,6 @@
       </ion-content>
     </ion-menu>
 
-    <!-- Main content -->
     <ion-router-outlet id="mainContent"></ion-router-outlet>
   </ion-split-pane>
 </ion-content>

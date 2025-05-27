@@ -1,76 +1,126 @@
-<ion-content [fullscreen]="true" scrollY="true" [style.background-image]="'url(' + img + ')'" [style.background-size]="'cover'" [style.background-position]="'center'">
+<ion-content [fullscreen]="true" scrollY="true" class="bg-cover bg-center" [style.background-image]="'url(' + img + ')'">
+  <div class="flex items-center justify-center min-h-screen px-4 bg-black bg-opacity-50">
+    <div class="w-full max-w-md p-8 rounded-3xl backdrop-blur-xl bg-white/10 border border-white/20 shadow-xl space-y-6">
 
-  <div class="register-wrapper">
-  <div class="register-container">
-    
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <ion-grid>
-        <ion-row>
-          <ion-col style="display:flex" class="ion-justify-content-center">
-            <ion-text><h1>⚽ {{'REGISTER.TITLE'|translate}} ⚽</h1></ion-text>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-      <ion-item>
-        <ion-input labelPlacement="floating" label="{{'REGISTER.NAME'|translate}}" type="text" formControlName="name" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input labelPlacement="floating" label="{{'REGISTER.SURNAMES'|translate}}" type="text" formControlName="surname" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input labelPlacement="floating" label="{{'REGISTER.EMAIL'|translate}}" type="email" formControlName="email" autocomplete="off" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input labelPlacement="floating" label="{{ 'REGISTER.PASSWORD' | translate }}" [type]="isPasswordVisible | passwordToggle" formControlName="password" required></ion-input>
-        <ion-button fill="clear" slot="end" (click)="toggleVisibility()"type="button">
-          <ion-icon color="success" [name]="isPasswordVisible ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
-        </ion-button>
-      </ion-item>
-      <ion-item>
-        <ion-input labelPlacement="floating" label="{{ 'REGISTER.REPEAT_PASSWORD' | translate }}" [type]="isConfirmPasswordVisible | passwordToggle" formControlName="confirmPassword" required></ion-input>
-        <ion-button fill="clear" slot="end" (click)="toggleConfirmVisibility()"type="button">
-          <ion-icon color="success" [name]="isConfirmPasswordVisible ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
-        </ion-button>
-      </ion-item>
-      <ion-text class="input-error" color="danger" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
-        <p *ngIf="name?.errors?.['required']">{{'REGISTER.ERRORS.NAME_REQUIRED' | translate}}</p>
-        <p *ngIf="name?.errors?.['minlength']">{{'REGISTER.ERRORS.NAME_MIN_LENGTH' | translate}}</p>
-      </ion-text>
-      <ion-text class="input-error" color="danger" *ngIf="surname?.invalid && (surname?.dirty || surname?.touched)">
-        <p *ngIf="surname?.errors?.['required']">{{'REGISTER.ERRORS.SURNAME_REQUIRED' | translate}}</p>
-        <p *ngIf="surname?.errors?.['minlength']">{{'REGISTER.ERRORS.SURNAME_MIN_LENGTH' | translate}}</p>
-      </ion-text>
-      <ion-text class="input-error" color="danger" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
-        <p *ngIf="email?.errors?.['required']">{{'REGISTER.ERRORS.EMAIL_REQUIRED' | translate}}</p>
-        <p *ngIf="email?.errors?.['email']">{{'REGISTER.ERRORS.INCORRECT_EMAIL' | translate}}</p>
-      </ion-text>
-      <ion-text class="input-error" color="danger" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
-        <p *ngIf="password?.errors?.['required']">{{'REGISTER.ERRORS.PASSWORD_REQUIRED' | translate}}</p>
-        <p *ngIf="password?.errors?.['passwordStrength']">{{'REGISTER.ERRORS.INCORRECT_PASSWORD_REQUIREMENTS' | translate}}</p>
-      </ion-text>
-      <ion-text class="input-error" color="danger" *ngIf="registerForm.errors?.['passwordsMismatch']">
-        <p>{{'REGISTER.ERRORS.MISMATCH_PASSWORD' | translate}}</p>
-      </ion-text>
-      <ion-button style="text-transform:none" color="success" expand="block" type="submit" [disabled]="registerForm.invalid">
-        {{'REGISTER.BUTTON_REGISTER'|translate}}
-      </ion-button>
-      <ion-grid>
-        <ion-row>
-          <ion-col style="display:flex" class="ion-justify-content-center ion-align-items-center">
-            {{'REGISTER.HAVE_ACCOUNT' | translate}}<ion-button style="text-transform:none" color="success" (click)="onLogin()" fill="clear">{{'REGISTER.BUTTON_LOGIN'|translate}}</ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </form> 
-    <div>
-      <ion-label>{{ currentLang === 'es' ? 'Español' : 'English' }}     </ion-label>
-      <ion-toggle
-        [checked]="currentLang === 'es'"
-        (ionChange)="changeLanguage($event.detail.checked ? 'es' : 'en')"
-        color="success">
-      </ion-toggle>
+      <!-- Título -->
+      <h1 class="text-center text-white text-3xl font-bold tracking-wide">
+        ⚽ {{ 'REGISTER.TITLE' | translate }} ⚽
+      </h1>
+
+      <!-- Formulario -->
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-5">
+
+        <!-- Nombre -->
+        <div>
+          <label class="block text-sm font-medium text-white mb-1">
+            {{ 'REGISTER.NAME' | translate }}
+          </label>
+          <input type="text" formControlName="name"
+                 class="w-full px-4 py-2 rounded-lg bg-white/10 text-white placeholder-white/60 border border-white/30 focus:outline-none focus:ring-2 focus:ring-green-400" />
+        </div>
+
+        <!-- Apellidos -->
+        <div>
+          <label class="block text-sm font-medium text-white mb-1">
+            {{ 'REGISTER.SURNAMES' | translate }}
+          </label>
+          <input type="text" formControlName="surname"
+                 class="w-full px-4 py-2 rounded-lg bg-white/10 text-white placeholder-white/60 border border-white/30 focus:outline-none focus:ring-2 focus:ring-green-400" />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="block text-sm font-medium text-white mb-1">
+            {{ 'REGISTER.EMAIL' | translate }}
+          </label>
+          <input type="email" formControlName="email"
+                 class="w-full px-4 py-2 rounded-lg bg-white/10 text-white placeholder-white/60 border border-white/30 focus:outline-none focus:ring-2 focus:ring-green-400" />
+        </div>
+
+        <!-- Contraseña -->
+        <div>
+          <label class="block text-sm font-medium text-white mb-1">
+            {{ 'REGISTER.PASSWORD' | translate }}
+          </label>
+          <div class="flex items-center bg-white/10 border border-white/30 rounded-lg">
+            <input [type]="isPasswordVisible ? 'text' : 'password'" formControlName="password"
+                   class="flex-1 px-4 py-2 bg-transparent text-white focus:outline-none placeholder-white/60" />
+            <button type="button" (click)="toggleVisibility()" class="px-3 text-green-400 hover:text-green-300">
+              <ion-icon [name]="isPasswordVisible ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
+            </button>
+          </div>
+        </div>
+
+        <!-- Repetir Contraseña -->
+        <div>
+          <label class="block text-sm font-medium text-white mb-1">
+            {{ 'REGISTER.REPEAT_PASSWORD' | translate }}
+          </label>
+          <div class="flex items-center bg-white/10 border border-white/30 rounded-lg">
+            <input [type]="isConfirmPasswordVisible ? 'text' : 'password'" formControlName="confirmPassword"
+                   class="flex-1 px-4 py-2 bg-transparent text-white focus:outline-none placeholder-white/60" />
+            <button type="button" (click)="toggleConfirmVisibility()" class="px-3 text-green-400 hover:text-green-300">
+              <ion-icon [name]="isConfirmPasswordVisible ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
+            </button>
+          </div>
+        </div>
+
+        <!-- Errores -->
+        <div class="text-sm text-red-400 space-y-1">
+          <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+            <p *ngIf="name?.errors?.['required']">{{ 'REGISTER.ERRORS.NAME_REQUIRED' | translate }}</p>
+          </div>
+
+          <div *ngIf="surname?.invalid && (surname?.dirty || surname?.touched)">
+            <p *ngIf="surname?.errors?.['required']">{{ 'REGISTER.ERRORS.SURNAME_REQUIRED' | translate }}</p>
+          </div>
+
+          <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+            <p *ngIf="email?.errors?.['required']">{{ 'REGISTER.ERRORS.EMAIL_REQUIRED' | translate }}</p>
+            <p *ngIf="email?.errors?.['email']">{{ 'REGISTER.ERRORS.INCORRECT_EMAIL' | translate }}</p>
+          </div>
+
+          <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+            <p *ngIf="password?.errors?.['required']">{{ 'REGISTER.ERRORS.PASSWORD_REQUIRED' | translate }}</p>
+            <p *ngIf="password?.errors?.['passwordStrength']">{{ 'REGISTER.ERRORS.INCORRECT_PASSWORD_REQUIREMENTS' | translate }}</p>
+          </div>
+
+          <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)">
+            <p *ngIf="confirmPassword?.errors?.['required']">{{ 'REGISTER.ERRORS.PASSWORD_REQUIRED' | translate }}</p>
+          </div>
+
+          <div *ngIf="registerForm.errors?.['passwordsMismatch'] && (confirmPassword?.dirty || confirmPassword?.touched)">
+            <p>{{ 'REGISTER.ERRORS.MISMATCH_PASSWORD' | translate }}</p>
+          </div>
+        </div>
+
+
+        <!-- Botón registro -->
+        <button type="submit"
+                [disabled]="registerForm.invalid"
+                class="w-full py-2 rounded-lg bg-green-500 hover:bg-green-600 transition text-white font-semibold disabled:opacity-50">
+          {{ 'REGISTER.BUTTON_REGISTER' | translate }}
+        </button>
+      </form>
+
+      <!-- Ir al login -->
+      <div class="text-center text-white text-sm">
+        {{ 'REGISTER.HAVE_ACCOUNT' | translate }}
+        <button (click)="onLogin()" class="text-green-400 hover:underline ml-1">
+          {{ 'REGISTER.BUTTON_LOGIN' | translate }}
+        </button>
+      </div>
+
+      <!-- Toggle idioma -->
+      <div class="flex items-center justify-between text-sm text-white">
+        <span>{{ currentLang === 'es' ? 'Español' : 'English' }}</span>
+        <ion-toggle
+          [checked]="currentLang === 'es'"
+          (ionChange)="changeLanguage($event.detail.checked ? 'es' : 'en')"
+          color="success">
+        </ion-toggle>
+      </div>
+
     </div>
-    
   </div>
-</div>
 </ion-content>
