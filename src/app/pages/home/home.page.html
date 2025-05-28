@@ -1,76 +1,38 @@
-<ion-header class="ion-no-border">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title class="animate-title">{{'HOME.TITLE' | translate}}</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<!-- Fondo y tipografía base -->
+<div class="min-h-screen bg-gradient-to-b from-black via-gray-900 to-green-950 text-white font-sans relative">
 
-<ion-content [fullscreen]="true">
-    <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large" class="page-title">{{ 'HOME.TITLE' | translate }}</ion-title>
-        </ion-toolbar>
-      </ion-header>
-    
-    <section id="ligas">
-        <ion-card>
-            <ion-card-header>
-                <ion-card-title>{{'LEAGUES.TITLE' | translate}}</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              {{'HOME.LEAGUES' | translate}}
-                <ion-button color="success" expand="block" routerLink="/leagues">{{'HOME.SEE_LEAGUES' | translate}}</ion-button>
-            </ion-card-content>
-        </ion-card>
-    </section>
+  <!-- Header fijo -->
+   <header class="w-full py-6 px-4 bg-black/80 backdrop-blur-md shadow-md">
+    <h1 class="text-2xl md:text-3xl font-bold text-green-400 tracking-wide">{{"HOME.TITLE" | translate}}</h1>
+  </header>
 
-    <section id="equipos">
-        <ion-card>
-            <ion-card-header>
-                <ion-card-title>{{'TEAMS.TITLE' | translate}}</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              {{'HOME.TEAMS' | translate}}
-                <ion-button color="success" expand="block" routerLink="/teams">{{'HOME.SEE_TEAMS' | translate}}</ion-button>
-            </ion-card-content>
-        </ion-card>
-    </section>
+  <!-- Contenido principal -->
+  <main class="pt-28 pb-16 px-4 max-w-4xl mx-auto space-y-10">
 
-    <section id="jugadores">
-        <ion-card>
-            <ion-card-header>
-                <ion-card-title>{{'PLAYERS.TITLE' | translate}}</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              {{'HOME.PLAYERS' | translate}}
-                <ion-button color="success" expand="block" routerLink="/players">{{'HOME.SEE_PLAYERS' | translate}}</ion-button>
-            </ion-card-content>
-        </ion-card>
-    </section>
+    <!-- Grid de tarjetas -->
+    <div class="grid md:grid-cols-2 gap-6">
+      
+      <!-- Tarjetas dinámicas -->
+      <ng-container *ngFor="let card of cards">
+        <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-green-500/20 hover:scale-105 transition-transform">
+          <h3 class="text-xl font-semibold text-green-300 uppercase tracking-wide">{{ card.title | translate }}</h3>
+          <p class="text-gray-300 mt-2">{{ card.description | translate }}</p>
+          <a [href]="card.link" class="inline-block mt-4 bg-green-500 hover:bg-green-600 text-black px-4 py-2 rounded-md font-semibold transition">
+            {{ card.cta | translate }}
+          </a>
+        </div>
+      </ng-container>
 
-    <section id="partidos">
-        <ion-card>
-            <ion-card-header>
-                <ion-card-title>{{'MATCHES.TITLE' | translate}}</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              {{'HOME.MATCHES' | translate}}
-                <ion-button color="success" expand="block" routerLink="/matches">{{'HOME.SEE_MATCHES' | translate}}</ion-button>
-            </ion-card-content>
-        </ion-card>
-    </section>
+    </div>
 
-    <section id="contacto">
-        <ion-card>
-            <ion-card-header>
-                <ion-card-title>{{'ABOUT.TITLE' | translate}}</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-                {{'HOME.CONTACT' | translate}}
-                <ion-button color="success" expand="block" routerLink="/about">{{'HOME.SEE_CONTACT' | translate}}</ion-button>
-            </ion-card-content>
-        </ion-card>
-    </section>
-</ion-content>
+    <!-- Contacto destacado -->
+    <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-green-500/20">
+      <h3 class="text-xl font-semibold text-green-300 uppercase tracking-wide">{{"ABOUT.TITLE" | translate}}</h3>
+      <p class="text-gray-300 mt-2">{{"HOME.CONTACT" | translate}}</p>
+      <a href="/about" class="inline-block mt-4 bg-green-500 hover:bg-green-600 text-black px-4 py-2 rounded-md font-semibold transition">
+        {{"HOME.SEE_CONTACT" | translate}}
+      </a>
+    </div>
+
+  </main>
+</div>

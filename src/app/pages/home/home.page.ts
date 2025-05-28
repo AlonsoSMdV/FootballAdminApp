@@ -15,4 +15,32 @@ export class HomePage {
       this.currentLang = this.languageService.getStoredLanguage();
     }
 
+    cards = [
+  {
+    title: 'LEAGUES.TITLE',
+    description: 'HOME.LEAGUES',
+    link: '/leagues',
+    cta: 'HOME.SEE_LEAGUES'
+  },
+  {
+    title: 'TEAMS.TITLE',
+    description: 'HOME.TEAMS',
+    link: '/teams',
+    cta: 'HOME.SEE_TEAMS'
+  },
+  {
+    title: 'PLAYERS.TITLE',
+    description: 'HOME.PLAYERS',
+    link: '/players',
+    cta: 'HOME.SEE_PLAYERS'
+  },
+  {
+    title: 'MATCHES.TITLE',
+    description: 'HOME.MATCHES',
+    link: '/matches',
+    cta: 'HOME.SEE_MATCHES'
+  }
+];
+
+
 }

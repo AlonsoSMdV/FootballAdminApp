@@ -1,37 +1,32 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title class="animate-title">{{'ABOUT.TITLE' | translate}}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="min-h-screen bg-gradient-to-b from-black via-gray-900 to-green-950 text-white font-sans relative">
+  <!-- Header -->
+  <header class="w-full py-6 px-4 bg-black/80 backdrop-blur-md shadow-md">
+    <h1 class="text-2xl md:text-3xl font-bold text-green-400 tracking-wide">{{"ABOUT.TITLE" | translate}}</h1>
+  </header>
 
-<ion-content class="ion-padding">
+  <!-- Contenido principal -->
+  <main class="flex flex-col items-center justify-center px-4 py-16">
+    <div class="bg-white/5 backdrop-blur-md border border-green-500/30 rounded-2xl p-8 max-w-md text-center shadow-lg">
+      
+      <!-- Imagen -->
+      <img src="assets/img/profile.jpg" alt="Foto de perfil" class="w-32 h-32 rounded-full object-cover mx-auto shadow-md border-4 border-green-500/50">
+      
+      <!-- Nombre -->
+      <h2 class="text-2xl font-semibold mt-4 text-white">Alonso Sánchez Moreno de Vega</h2>
 
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large" class="page-title">{{ 'ABOUT.TITLE' | translate }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <div class="about-container">
-    <!-- Imagen -->
-    <img src="assets/img/profile.jpg" alt="Profile Picture" class="profile-picture">
+      <!-- GitHub -->
+      <div class="mt-4">
+        <a href="https://github.com/AlonsoSMdV" target="_blank" class="text-green-400 hover:text-green-300 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 mx-auto fill-current" viewBox="0 0 24 24">
+            <path d="M12 0C5.37 0 0 5.373 0 12c0 5.302 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577v-2.02c-3.338.724-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.082-.729.082-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.495.997.108-.776.418-1.305.762-1.604-2.665-.303-5.467-1.334-5.467-5.931 0-1.31.47-2.382 1.236-3.222-.124-.303-.536-1.522.117-3.176 0 0 1.008-.322 3.3 1.23a11.52 11.52 0 013.003-.403c1.02.004 2.045.137 3.003.403 2.29-1.552 3.295-1.23 3.295-1.23.655 1.654.243 2.873.12 3.176.77.84 1.235 1.912 1.235 3.222 0 4.61-2.807 5.625-5.48 5.922.43.372.823 1.103.823 2.222v3.293c0 .322.218.694.825.576C20.565 21.796 24 17.298 24 12c0-6.627-5.373-12-12-12z" />
+          </svg>
+        </a>
+      </div>
 
-    <!-- Nombre -->
-    <h1 class="full_name">Alonso Sánchez Moreno de Vega</h1>
-
-    <!-- Redes Sociales -->
-    <div class="social">
-      <ion-button  fill="clear" color="success" href="https://github.com/AlonsoSMdV" target="_blank">
-        <ion-icon slot="icon-only" name="logo-github" size="large"></ion-icon>
-      </ion-button>
+      <!-- Biografía -->
+      <p class="mt-6 text-sm text-gray-300 leading-relaxed">
+        {{"ABOUT.ME" | translate}}
+      </p>
     </div>
-
-    <!-- Información adicional -->
-    <p class="biography">
-      {{ 'ABOUT.ME' | translate }}
-    </p>
-  </div>
-</ion-content>
+  </main>
+</div>
