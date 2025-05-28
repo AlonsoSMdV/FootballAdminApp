@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Alineaciones</ion-title>
+    <ion-title>{{"LINEUPS.TITLE"}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +14,7 @@
     </ion-card-header>
 
     <ion-card-content>
-      <h2>Local - {{ localTeam.name }}</h2>
+      <h2>{{"LINEUPS.LOCAL"}} - {{ localTeam.name }}</h2>
       <ion-list>
         <ion-item *ngFor="let player of localPlayers">
           <ion-avatar slot="start" *ngIf="player.picture?.url">
@@ -27,7 +27,7 @@
         </ion-item>
       </ion-list>
 
-      <h2>Visitante - {{ visitorTeam.name }}</h2>
+      <h2>{{"LINEUPS.VISITOR"}} - {{ visitorTeam.name }}</h2>
       <ion-list>
         <ion-item *ngFor="let player of visitorPlayers">
           <ion-avatar slot="start" *ngIf="player.picture?.url">

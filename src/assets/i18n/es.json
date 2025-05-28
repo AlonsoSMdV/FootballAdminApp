@@ -101,6 +101,11 @@
           "LEAGUE": "Liga",
           "SUBMIT": "Registar",
           "UPDATE": "Actualizar",
+          "UPDATE_POINTS": "Actualizar puntos",
+          "CHOOSE_RESULT": "Escoger resultado",
+          "WIN": "Victoria",
+          "DRAW": "Empate",
+          "LOSS": "Derrota",
           "ERRORS": {
             "NAME_REQUIRED": "El nombre es obligatorio",
             "NAME_MIN_LENGTH": "El nombre del equipo tiene que tener una longitud de más de 2 caracteres",
@@ -184,6 +189,20 @@
         "SEE_PLAYERS": "Ver jugadores",
         "SEE_MATCHES":"Ver partidos",
         "SEE_CONTACT": "Contactar"
+      },
+      "LINEUPS":{
+        "TITLE": "Alineaciones",
+        "LOCAL": "Local",
+        "VISITOR": "Visitante"
+      },
+      "STATS":{
+        "TITLE": "Estadísticas",
+        "ERROR": "No se pudo cargar la información del partido."
+      },
+      
+      "USERS":{
+        "TITLE": "Usuarios registrados",
+        "NO_USERS": "No hay usuarios registrados."
       },
       "ABOUT":{
         "TITLE": "Contacto",

@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/matches"></ion-back-button>
     </ion-buttons>
-    <ion-title>Estadísticas</ion-title>
+    <ion-title>{{"STATS.TITLE"}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,7 +15,7 @@
   
   <!-- Mensaje de error -->
   <div class="error-message" *ngIf="!match && !loadingStats">
-    No se pudo cargar la información del partido.
+    {{"STATS.ERROR"}}
   </div>
 
   <div class="stats-container" *ngIf="match && !loadingStats">
