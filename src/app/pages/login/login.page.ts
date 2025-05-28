@@ -13,7 +13,7 @@ import { LanguageService } from 'src/app/core/services/language.service';
 export class LoginPage {
   currentLang:string
   loginForm: FormGroup;
-  img: string|undefined = './../../../assets/img/campo-futbol2.jpg';
+  img: string = 'assets/img/campo-futbol2.jpg';
   isPasswordVisible: boolean = false
 
 
