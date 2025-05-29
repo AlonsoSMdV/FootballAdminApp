@@ -1,52 +1,82 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title class="animate-title">{{"USERS.TITLE"}}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="min-h-screen bg-gradient-to-b from-black via-gray-900 to-green-950 text-white font-sans" style="--background: transparent;">
+  <ion-header class="ion-no-border">
+    <ion-toolbar style="--background: transparent;">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="w-full py-6 px-4 bg-black/80 backdrop-blur-md shadow-md">
+        <h1 class="text-2xl md:text-3xl font-bold text-green-400 tracking-wide">{{"USERS.TITLE"}}</h1>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-refresher slot="fixed" (ionRefresh)="loadUsers($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
+  <ion-content class="ion-padding"  [fullscreen]="true" style="--background: transparent;">
+    <ion-refresher slot="fixed" (ionRefresh)="loadUsers($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
 
-  <ion-list *ngIf="users!!.length > 0; else noUsers">
-    <ion-card *ngFor="let user of users" class="user-card">
-      <ion-card-content>
-        <div class="user-row">
-          <div class="user-avatar-container">
-            <img [src]="user.picture?.url || 'https://ionicframework.com/docs/img/demos/avatar.svg'" alt="Foto de {{ user.name }}" class="user-avatar" />
-            <div class="glow-effect"></div>
+    <ion-list *ngIf="users!!.length > 0; else noUsers" class="bg-white/0 mb-20" style="--background: transparent;">
+      <ion-card
+        *ngFor="let user of users"
+        class="bg-white/0 backdrop-blur-lg border border-white/10 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
+      >
+        <ion-card-content class="p-4">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            
+            <!-- Avatar -->
+            <div class="relative w-20 h-20 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-green-400">
+              <img
+                [src]="user.picture?.url || 'https://ionicframework.com/docs/img/demos/avatar.svg'"
+                class="w-full h-full object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-br from-green-400/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            </div>
+
+
+            <!-- User Info -->
+            <div class="flex-1 min-w-[150px] text-white">
+              <h2 class="text-lg font-semibold tracking-wide">
+                {{ user.name }} {{ user.surname }}
+              </h2>
+              <p *ngIf="user.email" class="text-white/60 text-sm mt-1">
+                {{ user.email }}
+              </p>
+            </div>
+
+            <!-- Role Selector (más ancho) -->
+            <div class="w-full max-w-md flex-grow">
+              <ion-select
+                [(ngModel)]="user.role"
+                interface="popover"
+                class="w-full bg-white/10 text-primary rounded-md p-1 text-center text-base"
+              >
+                <ion-select-option value="Admin">Admin</ion-select-option>
+                <ion-select-option value="User">User</ion-select-option>
+              </ion-select>
+            </div>
+
+
+            <!-- Save Button (solo se ilumina al hover) -->
+            <div class="user-action">
+              <ion-button
+                fill="clear"
+                color="success"
+                class="bg-transparent text-green-400 rounded-full transition duration-300 hover:bg-green-500/20 hover:text-green-300"
+                (click)="updateUserRole(user)"
+              >
+                <ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+              </ion-button>
+            </div>
           </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
 
-          <div class="user-info">
-            <h2>{{ user.name }} {{ user.surname }}</h2>
-            <p *ngIf="user.email">{{ user.email }}</p>
-          </div>
-
-          <div class="user-role">
-            <ion-select [(ngModel)]="user.role" interface="popover">
-              <ion-select-option value="Admin">Admin</ion-select-option>
-              <ion-select-option value="User">User</ion-select-option>
-            </ion-select>
-          </div>
-
-          <div class="user-action">
-            <ion-button fill="clear" color="success" (click)="updateUserRole(user)">
-              <ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon>
-            </ion-button>
-          </div>
-        </div>
-      </ion-card-content>
-    </ion-card>
-  </ion-list>
-
-  <ng-template #noUsers>
-    <div class="no-users-message">
-      <ion-icon name="person-remove-outline" size="large"></ion-icon>
-      <p>{{"USERS.NO_USERS"}}</p>
-    </div>
-  </ng-template>
-</ion-content>
+    <ng-template #noUsers>
+      <div class="no-users-message">
+        <ion-icon name="person-remove-outline" size="large"></ion-icon>
+        <p>{{"USERS.NO_USERS"}}</p>
+      </div>
+    </ng-template>
+  </ion-content>
+</div>
