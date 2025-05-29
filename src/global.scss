@@ -41,3 +41,28 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+/* Custom global scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #22c55e; /* Tailwind's green-500 */
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+
+/* Optional: Firefox support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #22c55e transparent;
+}
+
+
+
