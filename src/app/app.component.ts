@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, map, filter } from 'rxjs';
 import { BaseAuthenticationService } from './core/services/impl/base-authentication.service';
@@ -10,6 +10,7 @@ import { Team } from './core/models/teams.model';
 import { TeamService } from './core/services/impl/team.service';
 import { PlayerService } from './core/services/impl/player.service';
 import { Users } from './core/models/users.model';
+import { IonMenu } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,20 @@ export class AppComponent implements OnInit{
   showMenu: boolean = true;
   currentLang: string;
   userWithAuth$: Observable<{ isAuthenticated: boolean; user: any; }> | undefined;
+
+  @ViewChild('menu', { static: false }) menu: IonMenu | undefined;
+
+  @HostListener('document:click', ['$event'])
+  handleClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (
+      this.menu?.isOpen &&
+      !target.closest('ion-menu') &&
+      !target.closest('ion-menu-button')
+    ) {
+      this.menu.close();
+    }
+  }
 
   constructor(
     private languageService: LanguageService,

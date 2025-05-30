@@ -1,9 +1,15 @@
 <div class="min-h-screen bg-gradient-to-b from-black via-gray-900 to-green-950 text-white font-sans relative">
   <!-- Header -->
-  <header class="w-full py-6 px-4 bg-black/80 backdrop-blur-md shadow-md">
-    <h1 class="text-2xl md:text-3xl font-bold text-green-400 tracking-wide">{{"ABOUT.TITLE" | translate}}</h1>
-  </header>
-
+  <ion-header class="ion-no-border">
+    <ion-toolbar class="w-full py-6 px-4 bg-black/80 backdrop-blur-md shadow-md" style="--background: transparent;">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title >
+        <h1 class="text-2xl md:text-3xl font-bold text-green-400 tracking-wide">{{"ABOUT.TITLE" | translate}}</h1>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
   <!-- Contenido principal -->
   <main class="flex flex-col items-center justify-center px-4 py-16">
     <div class="bg-white/5 backdrop-blur-md border border-green-500/30 rounded-2xl p-8 max-w-md text-center shadow-lg">
