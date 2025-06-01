@@ -1,82 +1,114 @@
 <!-- leagues.page.html -->
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title class="animate-title">{{'MATCHES.TITLE' | translate}}</ion-title>
-    <ion-button *ngIf="isAdmin" class="create-button" slot="end" (click)="onAddMatch()">
-      <ion-icon name="add-circle-outline"></ion-icon>
-      {{'MATCHES.CREATE' | translate}}
-    </ion-button>
-  </ion-toolbar>
-</ion-header>
+<div class="min-h-screen bg-gradient-to-b from-black via-gray-900 to-green-950 text-white font-sans relative">
+  <ion-header class="ion-no-border">
+    <ion-toolbar class="w-full py-6 px-4 bg-black/80 backdrop-blur-md shadow-md" style="--background: transparent;">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title >
+        <h1 class="text-2xl md:text-3xl font-bold text-green-400 tracking-wide">{{"MATCHES.TITLE" | translate}}</h1>
+      </ion-title>
+      <ion-button *ngIf="isAdmin" class="create-button" slot="end" (click)="onAddMatch()">
+        <ion-icon name="add-circle-outline"></ion-icon>
+        {{'MATCHES.CREATE' | translate}}
+      </ion-button>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content class="match-content">
-  <ion-grid>
-    <ion-row *ngIf="isLoading">
-      <ion-col size="12" size-md="4" *ngFor="let i of [1,2,3]">
-        <ion-card>
-          <ion-card-content>
-            <ion-skeleton-text animated style="width: 100%; height: 120px;"></ion-skeleton-text>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row *ngIf="!isLoading">
-      <ion-col 
-        size="12"
-        size-md="4"
-        *ngFor="let match of (matches$ | async), let i = index"
-        appDragDrop [dragData]="match" [index]="i" (dropped)="onMatchDropped($event)"
-      >
-      <ion-card appHighlight="rgba(099, 245, 200, 0.1)">
-        <ion-card-content>
-          <div class="match-header">
-            <!-- Mover el app-match-menu a la derecha -->
-            <div class="match-menu-container">
-              <app-match-menu slot="end" [partidoId]="match.id" [match]="match"></app-match-menu>
-            </div>
-            <div class="teams-container">
-              
-              <div class="team">
-                <img [src]="match.localTeam?.picture?.url || img" alt="team 1" class="team-logo"/>
-                <span class="team-name">{{match.localTeam?.name}}</span>
-              </div>
-              <span class="versus">VS</span>
-              <div class="team">
-                <img [src]="match.visitorTeam?.picture?.url || img" class="team-logo" alt="Team 2">
-                <span class="team-name">{{match.visitorTeam?.name}}</span>
-              </div>
-            </div>
+  <ion-content class="match-content" style="--background: transparent;">
+    <div class="pb-16">
+    <ion-grid>
+      <ion-row *ngIf="isLoading">
+        <ion-col
+          class="flex justify-center"
+          size="12"
+          size-sm="6"
+          size-md="4"
+          size-lg="4" *ngFor="let i of [1,2,3]">
+          <ion-card>
+            <ion-card-content>
+              <ion-skeleton-text animated style="width: 100%; height: 120px;"></ion-skeleton-text>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="!isLoading">
+        <ion-col 
+          class="flex justify-center"
+          size="12"
+          size-sm="8"
+          size-md="6"
+          size-lg="4"
+          *ngFor="let match of (matches$ | async), let i = index"
+          appDragDrop [dragData]="match" [index]="i" (dropped)="onMatchDropped($event)"
+          >
+        <ion-card class="w-full max-w-[550px] h-[400px] bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl shadow-lg hover:-translate-y-1 transition-transform duration-300">
+          <ion-card-content class="relative flex flex-col justify-between h-full px-4 py-6 space-y-4">
             
-            <div class="match-details">
-              <span class="match-day">{{match.day}}</span>
-              <span class="match-hour">{{match.hour}}</span>
-              <span class="match-place">{{match.place}}</span>
+            <!-- Menú en esquina superior derecha -->
+            <div class="absolute top-3 right-3 z-10">
+              <app-match-menu [partidoId]="match.id" [match]="match"></app-match-menu>
             </div>
-            
-            <span class="match-res" *ngIf="match.result">{{match.result}}</span>
-            <div class="match-status-container">
-              <div class="match-status" [ngClass]="getStatusClass(match.status)">
+
+            <!-- Equipos y VS -->
+            <div class="flex justify-between items-center">
+              <div class="flex flex-col items-center w-2/5">
+                <img [src]="match.localTeam?.picture?.url || img" class="w-20 h-20 object-contain mb-2" />
+                <span class="text-white font-semibold text-center text-sm">{{ match.localTeam?.name }}</span>
+              </div>
+              <span class="text-green-400 font-bold text-lg">VS</span>
+              <div class="flex flex-col items-center w-2/5">
+                <img [src]="match.visitorTeam?.picture?.url || img" class="w-20 h-20 object-contain mb-2" />
+                <span class="text-white font-semibold text-center text-sm">{{ match.visitorTeam?.name }}</span>
+              </div>
+            </div>
+
+            <!-- Detalles del partido -->
+            <div class="grid grid-cols-3 text-center text-white text-sm gap-2">
+              <span>{{ match.day }}</span>
+              <span>{{ match.hour }}</span>
+              <span>{{ match.place }}</span>
+            </div>
+
+            <!-- Resultado -->
+            <div class="text-center">
+              <div *ngIf="match.result" class="text-2xl font-bold text-green-400">{{ match.result }}</div>
+            </div>
+
+            <!-- Estado del partido -->
+            <div class="text-center space-y-1">
+              <div class="font-semibold text-base" [ngClass]="{
+                  'text-yellow-400': match.status === 'Por jugar',
+                  'text-emerald-400': match.status === 'Jugando',
+                  'text-rose-500': match.status === 'Finalizado'
+                }">
                 {{ match.status }}
               </div>
-              <div class="status-bar" [ngClass]="getStatusClass(match.status)"></div>
+              <div class="h-1 w-24 mx-auto rounded-full"
+                [ngClass]="{
+                  'bg-yellow-400 animate-pulse': match.status === 'Por jugar',
+                  'bg-emerald-400 animate-pulse': match.status === 'Jugando',
+                  'bg-rose-500 animate-pulse': match.status === 'Finalizado'
+                }"></div>
             </div>
-          </div>
-      
-          <div class="action-buttons">
-            <ion-button *ngIf="isAdmin" fill="clear" class="edit" (click)="openMatch(match, i)">
-              <ion-icon name="create" slot="icon-only"></ion-icon>
-            </ion-button>
-            <ion-button *ngIf="isAdmin" fill="clear" class="delete" (click)="onDeleteMatch(match)">
-              <ion-icon name="trash" slot="icon-only"></ion-icon>
-            </ion-button>
-          </div>
+            
 
-        </ion-card-content>
-      </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-content>
+            <!-- Botones -->
+            <div class="flex justify-center gap-6 pt-2">
+              <ion-button *ngIf="isAdmin" fill="clear" class="edit" (click)="openMatch(match, i)">
+                <ion-icon name="create" slot="icon-only"></ion-icon>
+              </ion-button>
+              <ion-button *ngIf="isAdmin" fill="clear" class="delete" (click)="onDeleteMatch(match)">
+                <ion-icon name="trash" slot="icon-only" class="text-red-500"></ion-icon>
+              </ion-button>
+            </div>
+            
+          </ion-card-content>
+        </ion-card>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </div>
+  </ion-content>
+</div>

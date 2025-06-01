@@ -154,19 +154,8 @@ export class MatchesPage implements OnInit {
           notify?.complete();
         }
       });
-    }
+    } 
     
-    getStatusClass(status: string): string {
-      if (!status) return '';
-    
-      return status
-        .normalize('NFD')                   // Elimina acentos
-        .replace(/[\u0300-\u036f]/g, '')
-        .replace(/\s+/g, '_');              // Reemplaza espacios por guiones bajos
-    }
-    
-    
-
     async openMatch(match: any, index: number){
         await this.presentModalMatch('edit', match)
         this.selectedMatch
