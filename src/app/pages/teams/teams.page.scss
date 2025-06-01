@@ -11,18 +11,6 @@
 // Header Styles
 ion-header {
   ion-toolbar {
-    --background: transparent;
-    backdrop-filter: blur(10px);
-    
-    ion-title {
-      font-weight: 700;
-      background: linear-gradient(45deg, var(--primary-color), #00ffcc);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-size: 1.5rem;
-    }
-
     .create-button {
       --background: linear-gradient(45deg, var(--primary-color), #00ffcc);
       --border-radius: 20px;
@@ -35,12 +23,6 @@ ion-header {
       }
     }
   }
-}
-
-// Content Styles
-ion-content {
-  --background: none;
-  background-image: linear-gradient(to bottom, #1c301d, #000000);
 }
 
 // Grid Layout

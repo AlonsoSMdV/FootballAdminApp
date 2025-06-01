@@ -247,7 +247,7 @@ export class PlayersPage implements OnInit {
         case 'new':
           this.playerSvc.add(newPlayer).subscribe({
             next:res=>{
-              this.getPlayers();
+              this.teamId ? this.getPlayersByTeam() : this.getPlayers();
             },
             error:err=>{}
           });
@@ -255,7 +255,7 @@ export class PlayersPage implements OnInit {
         case 'edit':
           this.playerSvc.update(player!.id, newPlayer).subscribe({
             next:res=>{
-              this.getPlayers();
+              this.teamId ? this.getPlayersByTeam() : this.getPlayers();
             },
             error:err=>{}
           });
@@ -285,7 +285,7 @@ export class PlayersPage implements OnInit {
           handler: () => {
             this.playerSvc.delete(player.id).subscribe({
               next: response => {
-                this.getPlayers();
+                this.teamId ? this.getPlayersByTeam() : this.getPlayers();
               },
               error: err => {}
             });

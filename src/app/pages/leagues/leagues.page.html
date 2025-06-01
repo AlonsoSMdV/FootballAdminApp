@@ -1,62 +1,66 @@
 <!-- leagues.page.html -->
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title class="animate-title">{{'LEAGUES.TITLE' | translate}}</ion-title>
-    <ion-button class="create-button" slot="end" (click)="onAddLeague()">
-      <ion-icon name="add-circle-outline"></ion-icon>
-      {{'LEAGUES.CREATE' | translate}}
-    </ion-button>
-  </ion-toolbar>
-</ion-header>
+<div class="min-h-screen bg-gradient-to-b from-black via-gray-900 to-green-950 text-white font-sans relative">
+  <ion-header class="ion-no-border">
+    <ion-toolbar class="w-full py-6 px-4 bg-black/80 backdrop-blur-md shadow-md" style="--background: transparent;">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title >
+        <h1 class="text-2xl md:text-3xl font-bold text-green-400 tracking-wide">{{"LEAGUES.TITLE" | translate}}</h1>
+      </ion-title>
+      <ion-button class="create-button" slot="end" (click)="onAddLeague()">
+        <ion-icon name="add-circle-outline"></ion-icon>
+        {{'LEAGUES.CREATE' | translate}}
+      </ion-button>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content class="league-content">
-  <ion-grid>
-    <ion-row>
-      <ion-col 
-        size="12"
-        size-sm="6" 
-        size-md="4" 
-        size-lg="3" 
-        *ngFor="let league of (leagues$ | async), let i = index"
-        appDragDrop [dragData]="league" [index]="i" (dropped)="onLeagueDropped($event)"
-      >
-        <ion-card appHighlight="rgba(099, 245, 200, 0.1)">
-          <ion-card-content>
-            <div class="league-header">
-              <div class="league-image-container">
-                <img [src]="league.picture?.url || img" alt="league logo" class="league-img"/>
-                <div class="glow-effect"></div>
+  <ion-content class="league-content" style="--background: transparent;">
+    <ion-grid>
+      <ion-row>
+        <ion-col 
+          size="12"
+          size-sm="6"
+          size-md="4"
+          size-lg="3"
+          *ngFor="let league of (leagues$ | async), let i = index"
+          appDragDrop [dragData]="league" [index]="i" (dropped)="onLeagueDropped($event)"
+        >
+          <ion-card appHighlight="rgba(099, 245, 200, 0.1)">
+            <ion-card-content>
+              <div class="league-header">
+                <div class="league-image-container">
+                  <img [src]="league.picture?.url || img" alt="league logo" class="league-img"/>
+                  <div class="glow-effect"></div>
+                </div>
+                <h2 class="league-name">{{league.name}}</h2>
               </div>
-              <h2 class="league-name">{{league.name}}</h2>
-            </div>
 
-            <div class="action-buttons">
-              <ion-button fill="clear" class="info" [routerLink]="['/teams', league.id]">
-                <ion-icon name="information-circle" slot="icon-only"></ion-icon>
-              </ion-button>
-              <ion-button fill="clear" class="edit" [disabled]="league.userId !== currentUserId" (click)="openLeague(league, i)">
-                <ion-icon name="create" slot="icon-only"></ion-icon>
-              </ion-button>
-              <ion-button fill="clear" class="delete" [disabled]="league.userId !== currentUserId" (click)="onDeleteLeague(league)">
-                <ion-icon name="trash" slot="icon-only"></ion-icon>
-              </ion-button>
-              <ion-button 
-                fill="clear" 
-                class="favorite" 
-                color="warning" 
-                (click)="toggleFavorite(league)">
-                <ion-icon 
-                  [name]="currentUser?.leagueFav === league.id ? 'star' : 'star-outline'" 
-                  slot="icon-only">
-                </ion-icon>
-              </ion-button>
-            </div>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-content>
+              <div class="action-buttons">
+                <ion-button fill="clear" class="info" [routerLink]="['/teams', league.id]">
+                  <ion-icon name="information-circle" slot="icon-only"></ion-icon>
+                </ion-button>
+                <ion-button fill="clear" class="edit" [disabled]="league.userId !== currentUserId" (click)="openLeague(league, i)">
+                  <ion-icon name="create" slot="icon-only"></ion-icon>
+                </ion-button>
+                <ion-button fill="clear" class="delete" [disabled]="league.userId !== currentUserId" (click)="onDeleteLeague(league)">
+                  <ion-icon name="trash" slot="icon-only"></ion-icon>
+                </ion-button>
+                <ion-button 
+                  fill="clear" 
+                  class="favorite" 
+                  color="warning" 
+                  (click)="toggleFavorite(league)">
+                  <ion-icon 
+                    [name]="currentUser?.leagueFav === league.id ? 'star' : 'star-outline'" 
+                    slot="icon-only">
+                  </ion-icon>
+                </ion-button>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</div>

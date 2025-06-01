@@ -219,7 +219,7 @@ export class TeamsPage implements OnInit {
   
     this.teamSvc.update(team.id, updatedTeam).subscribe({
       next: () => {
-        this.getTeams(); // Recargar equipos después de la actualización
+        this.leagueId ? this.getTeamsByleague() : this.getTeams(); // Recargar equipos después de la actualización
       },
       error: (err) => console.error(err),
     });
@@ -279,7 +279,7 @@ export class TeamsPage implements OnInit {
         case 'new':
           this.teamSvc.add(newTeam).subscribe({
             next:res=>{
-              this.getTeams();
+              this.leagueId ? this.getTeamsByleague() : this.getTeams();
             },
             error:err=>{}
           });
@@ -287,7 +287,7 @@ export class TeamsPage implements OnInit {
         case 'edit':
           this.teamSvc.update(team!.id, newTeam).subscribe({
             next:res=>{
-              this.getTeams();
+              this.leagueId ? this.getTeamsByleague() : this.getTeams();
             },
             error:err=>{}
           });
@@ -317,7 +317,7 @@ export class TeamsPage implements OnInit {
           handler: () => {
             this.teamSvc.delete(team.id).subscribe({
               next: response => {
-                this.getTeams();
+                this.leagueId ? this.getTeamsByleague() : this.getTeams();
               },
               error: err => {}
             });

@@ -11,18 +11,6 @@
 // Header Styles
 ion-header {
   ion-toolbar {
-    --background: transparent;
-    backdrop-filter: blur(10px);
-    
-    ion-title {
-      font-weight: 700;
-      background: linear-gradient(45deg, var(--primary-color), #00ffcc);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-size: 1.5rem;
-    }
-
     .create-button {
       --background: linear-gradient(45deg, var(--primary-color), #00ffcc);
       --border-radius: 20px;
@@ -35,12 +23,6 @@ ion-header {
       }
     }
   }
-}
-
-// Content Styles
-ion-content {
-  --background: none;
-  background-image: linear-gradient(to bottom, #1c301d, #000000);
 }
 
 // Grid Layout
@@ -134,21 +116,40 @@ ion-card-content {
 // Action Buttons
 .action-buttons {
   display: flex;
-  gap: 15px; // Aumentado el espacio entre botones
+  gap: 10px;
   justify-content: center;
-  margin-top: auto; // Asegura que los botones estén al final de la card
-  
+  margin-top: auto;
+
   ion-button {
-    --padding-start: 20px;  // Aumentado el padding
-    --padding-end: 20px;    // Aumentado el padding
-    --border-radius: 12px;
-    width: 64px;
-    height: 64px;
-    
+    --padding-start: 12px;
+    --padding-end: 12px;
+    --border-radius: 10px;
+    width: 56px;
+    height: 56px;
+
     ion-icon {
-      font-size: 64px !important;    // Iconos más grandes
+      font-size: 28px !important;
     }
-    
+
+    // Pantallas medianas y grandes (mejoramos progresivamente)
+    @media (min-width: 600px) {
+      width: 64px;
+      height: 64px;
+
+      ion-icon {
+        font-size: 32px !important;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      width: 64px;
+      height: 64px;
+
+      ion-icon {
+        font-size: 28px !important;
+      }
+    }
+
     &.info {
       --background: rgba(var(--primary-color), 0.2);
       --color: var(--primary-color);
@@ -158,7 +159,7 @@ ion-card-content {
         --background: rgba(57, 255, 7, 0.199);
       }
     }
-    
+
     &.edit {
       --background: rgba(var(--secondary-color), 0.2);
       --color: var(--secondary-color);
@@ -168,7 +169,7 @@ ion-card-content {
         --background: rgba(114, 7, 255, 0.151);
       }
     }
-    
+
     &.delete {
       --background: rgba(var(--accent-color), 0.2);
       --color: var(--accent-color);
@@ -180,7 +181,7 @@ ion-card-content {
     }
 
     &.favorite {
-      --background: rgba(255, 193, 7, 0.2); // amarillo suave
+      --background: rgba(255, 193, 7, 0.2);
       --color: #ffc107;
       transition: transform 0.2s ease;
 
