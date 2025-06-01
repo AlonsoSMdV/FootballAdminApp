@@ -30,7 +30,6 @@ ion-header {
 .stats-container {
   text-align: center;
   padding: 16px;
-  background-image: linear-gradient(to bottom, #1c301d, #000000);
   color: #fff;
   height: 100%;
   display: flex;
@@ -129,9 +128,6 @@ ion-header {
   min-width: 120px;
 }
 
-ion-content {
-  background-image: linear-gradient(to bottom, #1c301d, #000000);
-}
 
 ion-toolbar {
   --background: #0C4A2A;

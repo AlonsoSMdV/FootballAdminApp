@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Match } from 'src/app/core/models/matches.model';
 import { Player } from 'src/app/core/models/players.model';
 import { Team } from 'src/app/core/models/teams.model';
 import { MatchService } from 'src/app/core/services/impl/match.service';
 import { PlayerService } from 'src/app/core/services/impl/player.service';
 import { TeamService } from 'src/app/core/services/impl/team.service';
+import { LanguageService } from 'src/app/core/services/language.service';
 
 @Component({
   selector: 'app-lineups',
@@ -20,12 +22,17 @@ export class LineupsPage implements OnInit {
   visitorTeam!: Team | null;
   localPlayers: Player[] | null = [];
   visitorPlayers: Player[] | null = [];
+  currentLang:string
   constructor(
     private route: ActivatedRoute,
     private matchSvc: MatchService,
     private teamSvc: TeamService,
-    private playerSvc: PlayerService
-  ) {}
+    private playerSvc: PlayerService,
+    private translate: TranslateService,
+    private languageService: LanguageService) 
+    {
+      this.currentLang = this.languageService.getStoredLanguage();
+    }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {

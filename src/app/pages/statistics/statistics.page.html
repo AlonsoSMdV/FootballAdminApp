@@ -1,62 +1,77 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/matches"></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{"STATS.TITLE"}}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="min-h-screen bg-gradient-to-b from-black via-gray-900 to-green-950 text-white font-sans">
 
-<ion-content>
-  <!-- Spinner de carga -->
-  <div class="loading-container" *ngIf="loadingStats">
-    <ion-spinner name="crescent"></ion-spinner>
-  </div>
-  
-  <!-- Mensaje de error -->
-  <div class="error-message" *ngIf="!match && !loadingStats">
-    {{"STATS.ERROR"}}
-  </div>
+  <!-- Header -->
+  <ion-header class="ion-no-border">
+    <ion-toolbar class="bg-black/80 backdrop-blur-md px-4 py-5">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        <h1 class="text-2xl font-bold text-green-400 tracking-wide">
+          {{"STATS.TITLE" | translate}}
+        </h1>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-  <div class="stats-container" *ngIf="match && !loadingStats">
-    <!-- Encabezado con equipos y resultado -->
-    <div class="score">
-      <div class="team-name">{{ localTeam?.name || 'Local' }}</div>
-      <div class="goals">{{ localGoals }}</div>
-      <div class="vs">-</div>
-      <div class="goals">{{ visitorGoals }}</div>
-      <div class="team-name">{{ visitorTeam?.name || 'Visitante' }}</div>
+  <!-- Content -->
+  <ion-content class="bg-transparent" [fullscreen]="true" style="--background: transparent;">
+
+    <!-- Loading Spinner -->
+    <div class="flex justify-center items-center h-64" *ngIf="loadingStats">
+      <ion-spinner name="crescent" color="success"></ion-spinner>
     </div>
 
-    <!-- Estado del partido -->
-    <div class="match-state" [ngClass]="{'finalizado': match.status.toLowerCase() === 'finalizado', 'jugando': match.status.toLowerCase() === 'jugando', 'por-jugar': match.status.toLowerCase() === 'por jugar'}">
-      {{ match.status || 'Finalizado' }}
-    </div>
-
-    <!-- Logos de los equipos -->
-    <div class="team-logos">
-      <div class="team-logo">
-        <img *ngIf="localTeam?.picture" [src]="localTeam?.picture?.url" alt="Local" />
-        <img *ngIf="!localTeam?.picture" src="assets/default-team.png" alt="Local" />
-      </div>
-      <div class="team-logo">
-        <img *ngIf="visitorTeam?.picture" [src]="visitorTeam?.picture?.url" alt="Visitante" />
-        <img *ngIf="!visitorTeam?.picture" src="assets/default-team.png" alt="Visitante" />
-      </div>
+    <!-- Error -->
+    <div *ngIf="!match && !loadingStats" class="text-center text-red-500 py-6">
+      {{"STATS.ERROR"}}
     </div>
 
     <!-- Estadísticas -->
-    <div class="stats-table" *ngIf="generatedStats?.stats">
-      <!-- Estadísticas fila por fila -->
-      <ng-container *ngFor="let stat of generatedStats.stats">
-        <div class="stat-value left" [ngClass]="{ 'highlight': isGreater(stat.localValue, stat.visitorValue) }">
-          {{ stat.localValue }}
+    <div *ngIf="match && !loadingStats" class="px-4 pb-12 max-w-4xl mx-auto">
+
+      <!-- Resultado -->
+      <div class="text-center mt-6">
+        <div class="text-lg md:text-xl font-medium">
+          {{ localTeam?.name || 'Local' }}
+          <span class="text-green-400 font-bold text-2xl mx-2">{{ localGoals }}</span>
+          <span class="text-gray-300">-</span>
+          <span class="text-green-400 font-bold text-2xl mx-2">{{ visitorGoals }}</span>
+          {{ visitorTeam?.name || 'Visitante' }}
         </div>
-        <div class="stat-name">{{ stat.name }}</div>
-        <div class="stat-value right" [ngClass]="{ 'highlight': isGreater(stat.visitorValue, stat.localValue) }">
-          {{ stat.visitorValue }}
+        <div [ngClass]="{
+          'text-red-500': match.status.toLowerCase() === 'finalizado',
+          'text-green-500': match.status.toLowerCase() === 'jugando',
+          'text-orange-400': match.status.toLowerCase() === 'por jugar'
+        }" class="text-sm font-semibold mt-1">
+          {{ match.status || 'Finalizado' }}
         </div>
-      </ng-container>
+      </div>
+
+      <!-- Logos -->
+      <div class="flex justify-center items-center gap-16 mt-6">
+        <img *ngIf="localTeam?.picture" [src]="localTeam?.picture?.url" alt="Local"
+             class="w-20 h-20 rounded-full bg-emerald-950 p-1 shadow-lg shadow-emerald-800/40" />
+        <img *ngIf="visitorTeam?.picture" [src]="visitorTeam?.picture?.url" alt="Visitante"
+             class="w-20 h-20 rounded-full bg-emerald-950 p-1 shadow-lg shadow-emerald-800/40" />
+      </div>
+
+      <!-- Tabla de estadísticas -->
+      <div class="grid grid-cols-3 gap-y-4 mt-10 bg-white/5 backdrop-blur-md rounded-xl px-4 py-6 shadow-md">
+        <ng-container *ngFor="let stat of generatedStats.stats">
+          <div class="text-right pr-2 font-semibold"
+               [ngClass]="{ 'text-green-400': isGreater(stat.localValue, stat.visitorValue) }">
+            {{ stat.localValue }}
+          </div>
+          <div class="text-center text-sm text-gray-300 font-medium">{{ stat.name }}</div>
+          <div class="text-left pl-2 font-semibold"
+               [ngClass]="{ 'text-green-400': isGreater(stat.visitorValue, stat.localValue) }">
+            {{ stat.visitorValue }}
+          </div>
+        </ng-container>
+      </div>
+
     </div>
-  </div>
-</ion-content>
+
+  </ion-content>
+</div>

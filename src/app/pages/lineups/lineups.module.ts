@@ -7,14 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { LineupsPageRoutingModule } from './lineups-routing.module';
 
 import { LineupsPage } from './lineups.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LineupsPageRoutingModule
-  ],
+    LineupsPageRoutingModule,
+    TranslateModule.forChild()],
   declarations: [LineupsPage]
 })
 export class LineupsPageModule {}

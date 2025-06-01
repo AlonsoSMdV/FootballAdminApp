@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 import { Match } from 'src/app/core/models/matches.model';
 import { MatchStatistics } from 'src/app/core/models/matchStatistics.model';
@@ -8,6 +9,7 @@ import { Team } from 'src/app/core/models/teams.model';
 import { MatchService } from 'src/app/core/services/impl/match.service';
 import { MatchStatsService } from 'src/app/core/services/impl/matchStats.service';
 import { TeamService } from 'src/app/core/services/impl/team.service';
+import { LanguageService } from 'src/app/core/services/language.service';
 
 interface MatchWithTeams extends Match {
   localTeam?: Team;
@@ -29,6 +31,7 @@ export class StatisticsPage implements OnInit {
   generatedStats!: any;
   loadingStats = true;
   errorMessage: string | null = null;
+  currentLang: string
 
   stats = [
     { name: 'Tiros', local: 18, visitor: 13 },
@@ -47,8 +50,11 @@ export class StatisticsPage implements OnInit {
     private route: ActivatedRoute,
     private matchSvc: MatchService,
     private teamSvc: TeamService,
-    private statsSvc: MatchStatsService
-  ) {}
+    private statsSvc: MatchStatsService,
+    private translate: TranslateService,
+    private languageService: LanguageService) {
+      this.currentLang = this.languageService.getStoredLanguage();
+    }
 
   ngOnInit() {
     this.matchId = this.route.snapshot.paramMap.get('id')!;
