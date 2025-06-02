@@ -23,6 +23,7 @@
     "MATCHES": "Spiele",
     "LOGOUT": "Abmelden",
     "PROFILE": "Profil",
+    "USERS": "Registrierte Benutzer",
     "BACK": "Zurück"
   },
   "PROFILE": {
@@ -41,11 +42,11 @@
     "BUTTON_LOGIN": "Anmelden",
     "BUTTON_REGISTER": "Registrieren",
     "ERRORS": {
-      "REQUIRED": "*Bitte geben Sie eine E-Mail-Adresse ein",
-      "INCORRECT_EMAIL": "*Bitte geben Sie eine gültige E-Mail-Adresse ein",
-      "INCORRECT_PASSWORD": "*Bitte geben Sie ein Passwort ein"
+      "REQUIRED": "*E-Mail-Adresse erforderlich",
+      "INCORRECT_EMAIL": "*Bitte eine gültige E-Mail-Adresse eingeben",
+      "INCORRECT_PASSWORD": "*Bitte ein Passwort eingeben"
     },
-    "NOT_ACCOUNT": "Kein Konto?"
+    "NOT_ACCOUNT": "Noch kein Konto?"
   },
   "REGISTER": {
     "TITLE": "Konto erstellen",
@@ -57,32 +58,32 @@
     "BUTTON_LOGIN": "Anmelden",
     "BUTTON_REGISTER": "Konto erstellen",
     "ERRORS": {
-      "NAME_REQUIRED": "*Bitte geben Sie Ihren Vornamen ein",
+      "NAME_REQUIRED": "*Vorname erforderlich",
       "NAME_MIN_LENGTH": "*Der Vorname muss mindestens zwei Zeichen lang sein",
-      "SURNAME_REQUIRED": "*Bitte geben Sie Ihren Nachnamen ein",
+      "SURNAME_REQUIRED": "*Nachname erforderlich",
       "SURNAME_MIN_LENGTH": "*Der Nachname muss mindestens zwei Zeichen lang sein",
-      "EMAIL_REQUIRED": "*Bitte geben Sie eine E-Mail-Adresse ein",
-      "INCORRECT_EMAIL": "*Bitte geben Sie eine gültige E-Mail-Adresse ein",
-      "PASSWORD_REQUIRED": "*Bitte geben Sie ein Passwort ein",
-      "INCORRECT_PASSWORD_REQUIREMENTS": "Mindestens 8 Zeichen, ein Großbuchstabe, ein Kleinbuchstabe, eine Zahl und ein Sonderzeichen (@$!%*?&.)",
+      "EMAIL_REQUIRED": "*E-Mail-Adresse erforderlich",
+      "INCORRECT_EMAIL": "*Bitte eine gültige E-Mail-Adresse eingeben",
+      "PASSWORD_REQUIRED": "*Passwort erforderlich",
+      "INCORRECT_PASSWORD_REQUIREMENTS": "Mindestens 8 Zeichen, ein Großbuchstabe, ein Kleinbuchstabe, eine Ziffer und ein Sonderzeichen (@$!%*?&.)",
       "MISMATCH_PASSWORD": "*Passwörter stimmen nicht überein"
     },
-    "HAVE_ACCOUNT": "Haben Sie bereits ein Konto?"
+    "HAVE_ACCOUNT": "Bereits ein Konto?"
   },
   "LEAGUES": {
     "TITLE": "Ligen",
     "CREATE": "Liga erstellen",
     "EDIT": "Liga bearbeiten",
     "NEW": "Neue Liga",
-    "NAME": "Liganame",
+    "NAME": "Name der Liga",
     "SUBMIT": "Registrieren",
     "UPDATE": "Aktualisieren",
     "ERRORS": {
-      "NAME_REQUIRED": "Der Name ist erforderlich",
-      "NAME_MIN_LENGTH": "Der Name muss länger als 2 Zeichen sein"
+      "NAME_REQUIRED": "Name ist erforderlich",
+      "NAME_MIN_LENGTH": "Der Name muss mehr als 2 Zeichen lang sein"
     },
     "MESSAGES": {
-      "DELETE_CONFIRM": "Möchten Sie diese Liga wirklich löschen?"
+      "DELETE_CONFIRM": "Möchten Sie diese Liga löschen?"
     }
   },
   "LEAGUE_SELECTABLE": {
@@ -96,18 +97,23 @@
     "EDIT": "Team bearbeiten",
     "NEW": "Neues Team",
     "NAME": "Teamname",
-    "NOFPLAYERS": "Spieleranzahl",
-    "PLAYERS": "spieler",
+    "NOFPLAYERS": "Spieler im Kader",
+    "PLAYERS": "Spieler",
     "LEAGUE": "Liga",
     "SUBMIT": "Registrieren",
     "UPDATE": "Aktualisieren",
+    "UPDATE_POINTS": "Punkte aktualisieren",
+    "CHOOSE_RESULT": "Ergebnis auswählen",
+    "WIN": "Sieg",
+    "DRAW": "Unentschieden",
+    "LOSS": "Niederlage",
     "ERRORS": {
-      "NAME_REQUIRED": "Der Name ist erforderlich",
+      "NAME_REQUIRED": "Name ist erforderlich",
       "NAME_MIN_LENGTH": "Der Teamname muss länger als 2 Zeichen sein",
       "PATTERN": "Die Anzahl der Spieler muss positiv sein"
     },
     "MESSAGES": {
-      "DELETE_CONFIRM": "Möchten Sie dieses Team wirklich löschen?"
+      "DELETE_CONFIRM": "Möchten Sie dieses Team löschen?"
     }
   },
   "TEAM_SELECTABLE": {
@@ -137,18 +143,18 @@
     "SUBMIT": "Registrieren",
     "UPDATE": "Aktualisieren",
     "ERRORS": {
-      "NAME_REQUIRED": "Der Name ist erforderlich",
-      "NAME_MIN_LENGTH": "Der Name muss mindestens 2 Zeichen lang sein",
-      "SURNAME_REQUIRED": "Die Nachnamen sind erforderlich",
-      "SURNAME_MIN_LENGTH": "Die Nachnamen müssen mindestens 2 Zeichen lang sein",
-      "NATIONALITY_REQUIRED": "Die Nationalität ist erforderlich",
+      "NAME_REQUIRED": "Vorname ist erforderlich",
+      "NAME_MIN_LENGTH": "Der Vorname muss mindestens 2 Zeichen lang sein",
+      "SURNAME_REQUIRED": "Nachname ist erforderlich",
+      "SURNAME_MIN_LENGTH": "Der Nachname muss mindestens 2 Zeichen lang sein",
+      "NATIONALITY_REQUIRED": "Nationalität ist erforderlich",
       "NATIONALITY_INVALID": "Die Nationalität muss mindestens 2 Zeichen lang sein",
       "PATTERN": "Die Rückennummer muss eine positive Zahl sein",
-      "BIRTHDATE_REQUIRED": "Das Geburtsdatum ist erforderlich",
-      "POSITION_REQUIRED": "Die Position ist erforderlich"
+      "BIRTHDATE_REQUIRED": "Geburtsdatum ist erforderlich",
+      "POSITION_REQUIRED": "Position ist erforderlich"
     },
     "MESSAGES": {
-      "DELETE_CONFIRM": "Möchten Sie diesen Spieler wirklich löschen?"
+      "DELETE_CONFIRM": "Möchten Sie diesen Spieler löschen?"
     }
   },
   "MATCHES": {
@@ -161,33 +167,46 @@
     "PLACE": "Ort",
     "RESULT": "Ergebnis",
     "SELECT_DATE": "Datum auswählen",
-    "SELECT_TIME": "Zeit auswählen",
+    "SELECT_TIME": "Uhrzeit auswählen",
     "TEAM_LOCAL": "Heimmannschaft",
     "TEAM_VISITOR": "Gastmannschaft",
     "SUBMIT": "Registrieren",
     "UPDATE": "Aktualisieren",
     "ERRORS": {
-      "DAY_REQUIRED": "Das Datum ist erforderlich"
+      "DAY_REQUIRED": "Spieltag ist erforderlich"
     },
     "MESSAGES": {
-      "DELETE_CONFIRM": "Möchten Sie dieses Spiel wirklich löschen?"
+      "DELETE_CONFIRM": "Möchten Sie dieses Spiel löschen?"
     }
   },
   "HOME": {
     "TITLE": "Startseite",
     "LEAGUES": "Entdecke die Ligen und ihre jeweiligen Teams.",
-    "TEAMS": "Sieh dir die teilnehmenden Teams, die Anzahl der Spieler und deren Informationen an.",
-    "PLAYERS": "Erfahre detaillierte Informationen über die Spieler.",
-    "MATCHES": "Verpasse kein Spiel aus irgendeiner Liga!",
+    "TEAMS": "Sieh dir die teilnehmenden Teams, ihre Spieleranzahl und Informationen an.",
+    "PLAYERS": "Entdecke detaillierte Informationen über die Spieler.",
+    "MATCHES": "Verpasse kein Spiel in irgendeiner Liga!",
     "CONTACT": "Hast du Fragen? Kontaktiere uns für weitere Informationen.",
-    "SEE_LEAGUES": "Ligen anzeigen",
-    "SEE_TEAMS": "Teams anzeigen",
-    "SEE_PLAYERS": "Spieler anzeigen",
-    "SEE_MATCHES": "Spiele anzeigen",
-    "SEE_CONTACT": "Kontakt aufnehmen"
+    "SEE_LEAGUES": "Ligen ansehen",
+    "SEE_TEAMS": "Teams ansehen",
+    "SEE_PLAYERS": "Spieler ansehen",
+    "SEE_MATCHES": "Spiele ansehen",
+    "SEE_CONTACT": "Kontaktieren"
+  },
+  "LINEUPS": {
+    "TITLE": "Aufstellungen",
+    "LOCAL": "Heim",
+    "VISITOR": "Gast"
+  },
+  "STATS": {
+    "TITLE": "Statistiken",
+    "ERROR": "Spielinformationen konnten nicht geladen werden."
+  },
+  "USERS": {
+    "TITLE": "Registrierte Benutzer",
+    "NO_USERS": "Keine registrierten Benutzer."
   },
   "ABOUT": {
     "TITLE": "Kontakt",
-    "ME": "Hallo! Ich bin Alonso, der Ersteller dieser Seite. Diese Website nutzt Ionic, Angular und Strapi-Dienste. Ich bin ein 2DAM-Student am C.P.I.F.P. Alan Turing. Ich hoffe, Ihnen gefällt die Seite!"
+    "ME": "Hallo! Ich bin Alonso, der Ersteller dieser Seite, die Ionic, Angular und eine Verbindung zu Strapi-Diensten verwendet. Ich bin Student im 2. Jahr des DAM-Studiums am C.P.I.F.P. Alan Turing. Ich hoffe, dir gefällt der Rest der Seite!"
   }
 }

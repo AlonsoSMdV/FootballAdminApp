@@ -23,6 +23,7 @@
     "MATCHES": "Matches",
     "LOGOUT": "Log out",
     "PROFILE": "Profile",
+    "USERS": "Registered users",
     "BACK": "Back"
   },
   "PROFILE": {
@@ -35,7 +36,7 @@
     "EMAIL": "Email"
   },
   "LOGIN": {
-    "TITLE": "Log In",
+    "TITLE": "Login",
     "EMAIL": "Email",
     "PASSWORD": "Password",
     "BUTTON_LOGIN": "Log in",
@@ -55,16 +56,16 @@
     "PASSWORD": "Password",
     "REPEAT_PASSWORD": "Repeat password",
     "BUTTON_LOGIN": "Log in",
-    "BUTTON_REGISTER": "Sign up",
+    "BUTTON_REGISTER": "Create account",
     "ERRORS": {
       "NAME_REQUIRED": "*You must enter your name",
-      "NAME_MIN_LENGTH": "*The name must have at least two characters",
+      "NAME_MIN_LENGTH": "*Name must be at least two characters",
       "SURNAME_REQUIRED": "*You must enter your surname(s)",
-      "SURNAME_MIN_LENGTH": "*The surname(s) must have at least two characters",
+      "SURNAME_MIN_LENGTH": "*Surname(s) must be at least two characters",
       "EMAIL_REQUIRED": "*You must enter an email",
       "INCORRECT_EMAIL": "*You must enter a valid email",
       "PASSWORD_REQUIRED": "*You must enter a password",
-      "INCORRECT_PASSWORD_REQUIREMENTS": "At least 8 characters, one uppercase, one lowercase, one digit, and one special character (@$!%*?&.)",
+      "INCORRECT_PASSWORD_REQUIREMENTS": "At least 8 characters, one uppercase, one lowercase, one digit and one special character (@$!%*?&.)",
       "MISMATCH_PASSWORD": "*Passwords do not match"
     },
     "HAVE_ACCOUNT": "Already have an account?"
@@ -78,8 +79,8 @@
     "SUBMIT": "Register",
     "UPDATE": "Update",
     "ERRORS": {
-      "NAME_REQUIRED": "The name is required",
-      "NAME_MIN_LENGTH": "The name must have more than 2 characters"
+      "NAME_REQUIRED": "Name is required",
+      "NAME_MIN_LENGTH": "Name must be more than 2 characters"
     },
     "MESSAGES": {
       "DELETE_CONFIRM": "Do you want to delete this league?"
@@ -101,10 +102,15 @@
     "LEAGUE": "League",
     "SUBMIT": "Register",
     "UPDATE": "Update",
+    "UPDATE_POINTS": "Update points",
+    "CHOOSE_RESULT": "Choose result",
+    "WIN": "Win",
+    "DRAW": "Draw",
+    "LOSS": "Loss",
     "ERRORS": {
-      "NAME_REQUIRED": "The name is required",
-      "NAME_MIN_LENGTH": "The team name must be more than 2 characters long",
-      "PATTERN": "The number of players must be positive"
+      "NAME_REQUIRED": "Name is required",
+      "NAME_MIN_LENGTH": "Team name must be more than 2 characters",
+      "PATTERN": "Number of players must be positive"
     },
     "MESSAGES": {
       "DELETE_CONFIRM": "Do you want to delete this team?"
@@ -113,7 +119,7 @@
   "TEAM_SELECTABLE": {
     "NONE": "None",
     "SEARCH": "Search",
-    "SELECT_TEAM": "Select a team"
+    "SELECT_TEAM": "Select team"
   },
   "PLAYERS": {
     "TITLE": "Players",
@@ -124,10 +130,10 @@
     "SURNAME1": "First surname",
     "SURNAME2": "Second surname",
     "NATIONALITY": "Nationality",
-    "DORSAL": "Number",
-    "BIRTHDATE": "Date of birth",
+    "DORSAL": "Shirt number",
+    "BIRTHDATE": "Birthdate",
     "SELECT_DATE": "Select date",
-    "SELECT_POSITION": "Select a position",
+    "SELECT_POSITION": "Select position",
     "POSITION": "Position",
     "POSITION_GOALKEEPER": "Goalkeeper",
     "POSITION_DEFENDER": "Defender",
@@ -137,15 +143,15 @@
     "SUBMIT": "Register",
     "UPDATE": "Update",
     "ERRORS": {
-      "NAME_REQUIRED": "The name is required",
-      "NAME_MIN_LENGTH": "The name must have at least 2 characters",
+      "NAME_REQUIRED": "Name is required",
+      "NAME_MIN_LENGTH": "Name must be at least 2 characters",
       "SURNAME_REQUIRED": "Surnames are required",
-      "SURNAME_MIN_LENGTH": "Surnames must have at least 2 characters",
+      "SURNAME_MIN_LENGTH": "Surnames must be at least 2 characters",
       "NATIONALITY_REQUIRED": "Nationality is required",
-      "NATIONALITY_INVALID": "Nationality must have at least 2 characters",
-      "PATTERN": "The number must be positive",
-      "BIRTHDATE_REQUIRED": "The date of birth is required",
-      "POSITION_REQUIRED": "The position is required"
+      "NATIONALITY_INVALID": "Nationality must be at least 2 characters",
+      "PATTERN": "Shirt number must be a positive number",
+      "BIRTHDATE_REQUIRED": "Birthdate is required",
+      "POSITION_REQUIRED": "Position is required"
     },
     "MESSAGES": {
       "DELETE_CONFIRM": "Do you want to delete this player?"
@@ -158,7 +164,7 @@
     "NEW": "New match",
     "DAY": "Match day",
     "TIME": "Match time",
-    "PLACE": "Place",
+    "PLACE": "Location",
     "RESULT": "Result",
     "SELECT_DATE": "Select day",
     "SELECT_TIME": "Select time",
@@ -167,7 +173,7 @@
     "SUBMIT": "Register",
     "UPDATE": "Update",
     "ERRORS": {
-      "DAY_REQUIRED": "The day is required"
+      "DAY_REQUIRED": "Day is required"
     },
     "MESSAGES": {
       "DELETE_CONFIRM": "Do you want to delete this match?"
@@ -175,19 +181,32 @@
   },
   "HOME": {
     "TITLE": "Home",
-    "LEAGUES": "Explore the leagues along with their respective teams.",
-    "TEAMS": "Check out the participating teams, their number of players, and their information.",
-    "PLAYERS": "Discover detailed information about the players.",
-    "MATCHES": "Don't miss any match from any league!",
-    "CONTACT": "Have questions? Contact us for more information.",
-    "SEE_LEAGUES": "View leagues",
-    "SEE_TEAMS": "View teams",
-    "SEE_PLAYERS": "View players",
-    "SEE_MATCHES": "View matches",
-    "SEE_CONTACT": "Contact us"
+    "LEAGUES": "Explore leagues and their teams.",
+    "TEAMS": "Check the participating teams, their players and info.",
+    "PLAYERS": "Discover detailed player information.",
+    "MATCHES": "Don't miss any league match!",
+    "CONTACT": "Got questions? Contact us for more info.",
+    "SEE_LEAGUES": "See leagues",
+    "SEE_TEAMS": "See teams",
+    "SEE_PLAYERS": "See players",
+    "SEE_MATCHES": "See matches",
+    "SEE_CONTACT": "Contact"
+  },
+  "LINEUPS": {
+    "TITLE": "Lineups",
+    "LOCAL": "Home",
+    "VISITOR": "Away"
+  },
+  "STATS": {
+    "TITLE": "Statistics",
+    "ERROR": "Could not load match information."
+  },
+  "USERS": {
+    "TITLE": "Registered users",
+    "NO_USERS": "No registered users."
   },
   "ABOUT": {
     "TITLE": "Contact",
-    "ME": "Hello! I'm Alonso, creator of this page using Ionic, Angular, and Strapi services. I'm a second-year DAM student at C.P.I.F.P. Alan Turing. I hope you like the site!"
+    "ME": "Hi! I’m Alonso, creator of this site using Ionic, Angular and Strapi services. I’m a 2nd-year DAM student at C.P.I.F.P. Alan Turing. Hope you enjoy the site!"
   }
 }

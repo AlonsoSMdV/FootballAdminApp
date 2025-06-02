@@ -12,8 +12,8 @@
     "SUCCESS": {
       "SAVE": "Modifiche salvate con successo"
     },
-    "ACCEPT": "Accettare",
-    "CANCEL": "Annullare"
+    "ACCEPT": "Accetta",
+    "CANCEL": "Annulla"
   },
   "MENU": {
     "TITLE": "Menu",
@@ -21,64 +21,65 @@
     "ABOUT": "Contatto",
     "LEAGUES": "Leghe",
     "MATCHES": "Partite",
-    "LOGOUT": "Disconnettersi",
+    "LOGOUT": "Disconnetti",
     "PROFILE": "Profilo",
+    "USERS": "Utenti registrati",
     "BACK": "Indietro"
   },
   "PROFILE": {
     "TITLE": "Profilo",
     "SUBTITLE": "Le tue informazioni personali",
-    "UPDATE": "Aggiornare",
-    "PICTURE": "Foto profilo",
+    "UPDATE": "Aggiorna",
+    "PICTURE": "Foto del profilo",
     "NAME": "Nome",
-    "SURNAMES": "Cognomi",
+    "SURNAMES": "Cognome",
     "EMAIL": "Email"
   },
   "LOGIN": {
-    "TITLE": "Accedi",
+    "TITLE": "Accesso",
     "EMAIL": "Email",
     "PASSWORD": "Password",
     "BUTTON_LOGIN": "Accedi",
     "BUTTON_REGISTER": "Registrati",
     "ERRORS": {
-      "REQUIRED": "*Devi inserire un'email",
-      "INCORRECT_EMAIL": "*Devi inserire un'email valida",
-      "INCORRECT_PASSWORD": "*Devi inserire una password"
+      "REQUIRED": "*Email richiesta",
+      "INCORRECT_EMAIL": "*Inserisci un'email valida",
+      "INCORRECT_PASSWORD": "*Inserisci una password"
     },
     "NOT_ACCOUNT": "Non hai un account?"
   },
   "REGISTER": {
     "TITLE": "Crea un account",
     "NAME": "Nome",
-    "SURNAMES": "Cognomi",
+    "SURNAMES": "Cognome",
     "EMAIL": "Email",
     "PASSWORD": "Password",
     "REPEAT_PASSWORD": "Ripeti la password",
     "BUTTON_LOGIN": "Accedi",
     "BUTTON_REGISTER": "Crea account",
     "ERRORS": {
-      "NAME_REQUIRED": "*Devi inserire il tuo nome",
-      "NAME_MIN_LENGTH": "*Il nome deve contenere almeno due caratteri",
-      "SURNAME_REQUIRED": "*Devi inserire il/i cognome/i",
-      "SURNAME_MIN_LENGTH": "*Il/i cognome/i deve contenere almeno due caratteri",
-      "EMAIL_REQUIRED": "*Devi inserire un'email",
-      "INCORRECT_EMAIL": "*Devi inserire un'email valida",
-      "PASSWORD_REQUIRED": "*Devi inserire una password",
+      "NAME_REQUIRED": "*Nome richiesto",
+      "NAME_MIN_LENGTH": "*Il nome deve avere almeno due caratteri",
+      "SURNAME_REQUIRED": "*Cognome richiesto",
+      "SURNAME_MIN_LENGTH": "*Il cognome deve avere almeno due caratteri",
+      "EMAIL_REQUIRED": "*Email richiesta",
+      "INCORRECT_EMAIL": "*Inserisci un'email valida",
+      "PASSWORD_REQUIRED": "*Password richiesta",
       "INCORRECT_PASSWORD_REQUIREMENTS": "Almeno 8 caratteri, una maiuscola, una minuscola, un numero e un carattere speciale (@$!%*?&.)",
-      "MISMATCH_PASSWORD": "*Le password non coincidono"
+      "MISMATCH_PASSWORD": "*Le password non corrispondono"
     },
     "HAVE_ACCOUNT": "Hai già un account?"
   },
   "LEAGUES": {
     "TITLE": "Leghe",
-    "CREATE": "Crea una lega",
+    "CREATE": "Crea lega",
     "EDIT": "Modifica lega",
     "NEW": "Nuova lega",
     "NAME": "Nome della lega",
-    "SUBMIT": "Registrare",
-    "UPDATE": "Aggiornare",
+    "SUBMIT": "Salva",
+    "UPDATE": "Aggiorna",
     "ERRORS": {
-      "NAME_REQUIRED": "Il nome è obbligatorio",
+      "NAME_REQUIRED": "Il nome è richiesto",
       "NAME_MIN_LENGTH": "Il nome deve avere più di 2 caratteri"
     },
     "MESSAGES": {
@@ -96,13 +97,18 @@
     "EDIT": "Modifica squadra",
     "NEW": "Nuova squadra",
     "NAME": "Nome della squadra",
-    "NOFPLAYERS": "Giocatori in rosa",
-    "PLAYERS": "giocatori",
+    "NOFPLAYERS": "Giocatori nel roster",
+    "PLAYERS": "Giocatori",
     "LEAGUE": "Lega",
-    "SUBMIT": "Registrare",
-    "UPDATE": "Aggiornare",
+    "SUBMIT": "Salva",
+    "UPDATE": "Aggiorna",
+    "UPDATE_POINTS": "Aggiorna punti",
+    "CHOOSE_RESULT": "Scegli il risultato",
+    "WIN": "Vittoria",
+    "DRAW": "Pareggio",
+    "LOSS": "Sconfitta",
     "ERRORS": {
-      "NAME_REQUIRED": "Il nome è obbligatorio",
+      "NAME_REQUIRED": "Il nome è richiesto",
       "NAME_MIN_LENGTH": "Il nome della squadra deve avere più di 2 caratteri",
       "PATTERN": "Il numero di giocatori deve essere positivo"
     },
@@ -121,10 +127,10 @@
     "EDIT": "Modifica giocatore",
     "NEW": "Nuovo giocatore",
     "NAME": "Nome",
-    "SURNAME1": "Cognome",
+    "SURNAME1": "Primo cognome",
     "SURNAME2": "Secondo cognome",
     "NATIONALITY": "Nazionalità",
-    "DORSAL": "Numero",
+    "DORSAL": "Numero di maglia",
     "BIRTHDATE": "Data di nascita",
     "SELECT_DATE": "Seleziona una data",
     "SELECT_POSITION": "Seleziona una posizione",
@@ -134,18 +140,18 @@
     "POSITION_MIDFIELDER": "Centrocampista",
     "POSITION_FORWARD": "Attaccante",
     "TEAM": "Squadra",
-    "SUBMIT": "Registrare",
-    "UPDATE": "Aggiornare",
+    "SUBMIT": "Salva",
+    "UPDATE": "Aggiorna",
     "ERRORS": {
-      "NAME_REQUIRED": "Il nome è obbligatorio",
+      "NAME_REQUIRED": "Il nome è richiesto",
       "NAME_MIN_LENGTH": "Il nome deve avere almeno 2 caratteri",
-      "SURNAME_REQUIRED": "I cognomi sono obbligatori",
-      "SURNAME_MIN_LENGTH": "I cognomi devono avere almeno 2 caratteri",
-      "NATIONALITY_REQUIRED": "La nazionalità è obbligatoria",
+      "SURNAME_REQUIRED": "Il cognome è richiesto",
+      "SURNAME_MIN_LENGTH": "Il cognome deve avere almeno 2 caratteri",
+      "NATIONALITY_REQUIRED": "La nazionalità è richiesta",
       "NATIONALITY_INVALID": "La nazionalità deve avere almeno 2 caratteri",
-      "PATTERN": "Il numero deve essere positivo",
-      "BIRTHDATE_REQUIRED": "La data di nascita è obbligatoria",
-      "POSITION_REQUIRED": "La posizione è obbligatoria"
+      "PATTERN": "Il numero di maglia deve essere un numero positivo",
+      "BIRTHDATE_REQUIRED": "La data di nascita è richiesta",
+      "POSITION_REQUIRED": "La posizione è richiesta"
     },
     "MESSAGES": {
       "DELETE_CONFIRM": "Vuoi eliminare questo giocatore?"
@@ -160,14 +166,14 @@
     "TIME": "Ora della partita",
     "PLACE": "Luogo",
     "RESULT": "Risultato",
-    "SELECT_DATE": "Seleziona un giorno",
+    "SELECT_DATE": "Seleziona una data",
     "SELECT_TIME": "Seleziona un'ora",
     "TEAM_LOCAL": "Squadra locale",
     "TEAM_VISITOR": "Squadra ospite",
-    "SUBMIT": "Registrare",
-    "UPDATE": "Aggiornare",
+    "SUBMIT": "Salva",
+    "UPDATE": "Aggiorna",
     "ERRORS": {
-      "DAY_REQUIRED": "Il giorno è obbligatorio"
+      "DAY_REQUIRED": "Il giorno della partita è richiesto"
     },
     "MESSAGES": {
       "DELETE_CONFIRM": "Vuoi eliminare questa partita?"
@@ -175,19 +181,32 @@
   },
   "HOME": {
     "TITLE": "Home",
-    "LEAGUES": "Esplora i campionati insieme alle loro rispettive squadre.",
-    "TEAMS": "Consulta le squadre partecipanti, il numero di giocatori e le loro informazioni.",
+    "LEAGUES": "Scopri le leghe e le loro squadre.",
+    "TEAMS": "Esplora le squadre partecipanti, il numero di giocatori e le loro informazioni.",
     "PLAYERS": "Scopri informazioni dettagliate sui giocatori.",
-    "MATCHES": "Non perdere nessuna partita di nessun campionato!",
-    "CONTACT": "Hai domande? Contattaci per maggiori informazioni.",
-    "SEE_LEAGUES": "Vedi campionati",
-    "SEE_TEAMS": "Vedi squadre",
-    "SEE_PLAYERS": "Vedi giocatori",
-    "SEE_MATCHES": "Vedi partite",
+    "MATCHES": "Non perdere nessuna partita in nessuna lega!",
+    "CONTACT": "Hai domande? Contattaci per ulteriori informazioni.",
+    "SEE_LEAGUES": "Vedi le leghe",
+    "SEE_TEAMS": "Vedi le squadre",
+    "SEE_PLAYERS": "Vedi i giocatori",
+    "SEE_MATCHES": "Vedi le partite",
     "SEE_CONTACT": "Contattaci"
+  },
+  "LINEUPS": {
+    "TITLE": "Formazioni",
+    "LOCAL": "Locale",
+    "VISITOR": "Ospite"
+  },
+  "STATS": {
+    "TITLE": "Statistiche",
+    "ERROR": "Impossibile caricare le informazioni della partita."
+  },
+  "USERS": {
+    "TITLE": "Utenti registrati",
+    "NO_USERS": "Nessun utente registrato."
   },
   "ABOUT": {
     "TITLE": "Contatto",
-    "ME": "Ciao! Sono Alonso, creatore di questa pagina che utilizza Ionic, Angular e Strapi. Sono uno studente del secondo anno di DAM al C.P.I.F.P. Alan Turing. Spero vi piaccia il sito!"
+    "ME": "Ciao! Sono Alonso, il creatore di questo sito che utilizza Ionic, Angular e una connessione ai servizi Strapi. Sono uno studente del secondo anno del programma DAM presso il C.P.I.F.P. Alan Turing. Spero che ti piaccia il resto del sito!"
   }
 }

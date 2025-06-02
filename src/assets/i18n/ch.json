@@ -17,19 +17,20 @@
   },
   "MENU": {
     "TITLE": "菜单",
-    "HOME": "首页",
+    "HOME": "主页",
     "ABOUT": "联系",
     "LEAGUES": "联赛",
     "MATCHES": "比赛",
-    "LOGOUT": "退出登录",
+    "LOGOUT": "注销",
     "PROFILE": "个人资料",
+    "USERS": "注册用户",
     "BACK": "返回"
   },
   "PROFILE": {
     "TITLE": "个人资料",
-    "SUBTITLE": "你的个人信息",
+    "SUBTITLE": "您的个人信息",
     "UPDATE": "更新",
-    "PICTURE": "个人头像",
+    "PICTURE": "头像",
     "NAME": "名字",
     "SURNAMES": "姓氏",
     "EMAIL": "电子邮件"
@@ -41,11 +42,11 @@
     "BUTTON_LOGIN": "登录",
     "BUTTON_REGISTER": "注册",
     "ERRORS": {
-      "REQUIRED": "*必须输入电子邮件",
-      "INCORRECT_EMAIL": "*必须输入有效的电子邮件",
-      "INCORRECT_PASSWORD": "*必须输入密码"
+      "REQUIRED": "*请输入电子邮件",
+      "INCORRECT_EMAIL": "*请输入有效的电子邮件地址",
+      "INCORRECT_PASSWORD": "*请输入密码"
     },
-    "NOT_ACCOUNT": "没有账户?"
+    "NOT_ACCOUNT": "还没有账户？"
   },
   "REGISTER": {
     "TITLE": "创建账户",
@@ -57,17 +58,17 @@
     "BUTTON_LOGIN": "登录",
     "BUTTON_REGISTER": "创建账户",
     "ERRORS": {
-      "NAME_REQUIRED": "*必须输入名字",
-      "NAME_MIN_LENGTH": "*名字必须至少包含两个字符",
-      "SURNAME_REQUIRED": "*必须输入姓氏",
-      "SURNAME_MIN_LENGTH": "*姓氏必须至少包含两个字符",
-      "EMAIL_REQUIRED": "*必须输入电子邮件",
-      "INCORRECT_EMAIL": "*必须输入有效的电子邮件",
-      "PASSWORD_REQUIRED": "*必须输入密码",
-      "INCORRECT_PASSWORD_REQUIREMENTS": "至少8个字符，包含一个大写字母，一个小写字母，一个数字和一个特殊字符(@$!%*?&.)",
+      "NAME_REQUIRED": "*请输入您的名字",
+      "NAME_MIN_LENGTH": "*名字至少需要两个字符",
+      "SURNAME_REQUIRED": "*请输入您的姓氏",
+      "SURNAME_MIN_LENGTH": "*姓氏至少需要两个字符",
+      "EMAIL_REQUIRED": "*请输入电子邮件",
+      "INCORRECT_EMAIL": "*请输入有效的电子邮件地址",
+      "PASSWORD_REQUIRED": "*请输入密码",
+      "INCORRECT_PASSWORD_REQUIREMENTS": "至少8个字符，包含一个大写字母、一个小写字母、一个数字和一个特殊字符（@$!%*?&.）",
       "MISMATCH_PASSWORD": "*密码不匹配"
     },
-    "HAVE_ACCOUNT": "已有账户?"
+    "HAVE_ACCOUNT": "已有账户？"
   },
   "LEAGUES": {
     "TITLE": "联赛",
@@ -78,17 +79,17 @@
     "SUBMIT": "注册",
     "UPDATE": "更新",
     "ERRORS": {
-      "NAME_REQUIRED": "名称是必填项",
+      "NAME_REQUIRED": "名称为必填项",
       "NAME_MIN_LENGTH": "名称必须超过2个字符"
     },
     "MESSAGES": {
-      "DELETE_CONFIRM": "你确定要删除这个联赛吗?"
+      "DELETE_CONFIRM": "您确定要删除此联赛吗？"
     }
   },
   "LEAGUE_SELECTABLE": {
     "NONE": "无",
     "SEARCH": "搜索",
-    "SELECT_LEAGUE": "选择一个联赛"
+    "SELECT_LEAGUE": "选择联赛"
   },
   "TEAMS": {
     "TITLE": "球队",
@@ -96,24 +97,29 @@
     "EDIT": "编辑球队",
     "NEW": "新球队",
     "NAME": "球队名称",
-    "NOFPLAYERS": "球员数量",
+    "NOFPLAYERS": "阵容中的球员数",
     "PLAYERS": "球员",
     "LEAGUE": "联赛",
     "SUBMIT": "注册",
     "UPDATE": "更新",
+    "UPDATE_POINTS": "更新积分",
+    "CHOOSE_RESULT": "选择结果",
+    "WIN": "胜利",
+    "DRAW": "平局",
+    "LOSS": "失败",
     "ERRORS": {
-      "NAME_REQUIRED": "名称是必填项",
+      "NAME_REQUIRED": "名称为必填项",
       "NAME_MIN_LENGTH": "球队名称必须超过2个字符",
-      "PATTERN": "球员数量必须为正数"
+      "PATTERN": "阵容中的球员数必须为正数"
     },
     "MESSAGES": {
-      "DELETE_CONFIRM": "你确定要删除这个球队吗?"
+      "DELETE_CONFIRM": "您确定要删除此球队吗？"
     }
   },
   "TEAM_SELECTABLE": {
     "NONE": "无",
     "SEARCH": "搜索",
-    "SELECT_TEAM": "选择一个球队"
+    "SELECT_TEAM": "选择球队"
   },
   "PLAYERS": {
     "TITLE": "球员",
@@ -121,8 +127,8 @@
     "EDIT": "编辑球员",
     "NEW": "新球员",
     "NAME": "名字",
-    "SURNAME1": "姓氏",
-    "SURNAME2": "第二姓氏",
+    "SURNAME1": "姓氏一",
+    "SURNAME2": "姓氏二",
     "NATIONALITY": "国籍",
     "DORSAL": "球衣号码",
     "BIRTHDATE": "出生日期",
@@ -137,18 +143,18 @@
     "SUBMIT": "注册",
     "UPDATE": "更新",
     "ERRORS": {
-      "NAME_REQUIRED": "名字是必填项",
-      "NAME_MIN_LENGTH": "名字必须至少包含2个字符",
-      "SURNAME_REQUIRED": "姓氏是必填项",
-      "SURNAME_MIN_LENGTH": "姓氏必须至少包含2个字符",
-      "NATIONALITY_REQUIRED": "国籍是必填项",
-      "NATIONALITY_INVALID": "国籍必须至少包含2个字符",
-      "PATTERN": "球衣号码必须是正数",
-      "BIRTHDATE_REQUIRED": "出生日期是必填项",
-      "POSITION_REQUIRED": "位置是必填项"
+      "NAME_REQUIRED": "名字为必填项",
+      "NAME_MIN_LENGTH": "名字至少需要2个字符",
+      "SURNAME_REQUIRED": "姓氏为必填项",
+      "SURNAME_MIN_LENGTH": "姓氏至少需要2个字符",
+      "NATIONALITY_REQUIRED": "国籍为必填项",
+      "NATIONALITY_INVALID": "国籍至少需要2个字符",
+      "PATTERN": "球衣号码必须为正数",
+      "BIRTHDATE_REQUIRED": "出生日期为必填项",
+      "POSITION_REQUIRED": "位置为必填项"
     },
     "MESSAGES": {
-      "DELETE_CONFIRM": "你确定要删除这个球员吗?"
+      "DELETE_CONFIRM": "您确定要删除此球员吗？"
     }
   },
   "MATCHES": {
@@ -159,35 +165,48 @@
     "DAY": "比赛日期",
     "TIME": "比赛时间",
     "PLACE": "地点",
-    "RESULT": "比分",
+    "RESULT": "结果",
     "SELECT_DATE": "选择日期",
     "SELECT_TIME": "选择时间",
-    "TEAM_LOCAL": "主场球队",
-    "TEAM_VISITOR": "客场球队",
+    "TEAM_LOCAL": "主队",
+    "TEAM_VISITOR": "客队",
     "SUBMIT": "注册",
     "UPDATE": "更新",
     "ERRORS": {
-      "DAY_REQUIRED": "比赛日期是必填项"
+      "DAY_REQUIRED": "日期为必填项"
     },
     "MESSAGES": {
-      "DELETE_CONFIRM": "你确定要删除这个比赛吗?"
+      "DELETE_CONFIRM": "您确定要删除此比赛吗？"
     }
   },
   "HOME": {
-    "TITLE": "首页",
-    "LEAGUES": "探索各个联赛及其所属球队。",
-    "TEAMS": "查看参赛球队、球员数量及相关信息。",
+    "TITLE": "主页",
+    "LEAGUES": "探索联赛及其相关球队。",
+    "TEAMS": "查看参赛球队、球员人数及相关信息。",
     "PLAYERS": "了解球员的详细信息。",
     "MATCHES": "不要错过任何联赛的比赛！",
-    "CONTACT": "有问题吗？联系我们以获取更多信息。",
+    "CONTACT": "有问题？联系我们获取更多信息。",
     "SEE_LEAGUES": "查看联赛",
     "SEE_TEAMS": "查看球队",
     "SEE_PLAYERS": "查看球员",
     "SEE_MATCHES": "查看比赛",
-    "SEE_CONTACT": "联系我们"
+    "SEE_CONTACT": "联系"
+  },
+  "LINEUPS": {
+    "TITLE": "阵容",
+    "LOCAL": "主队",
+    "VISITOR": "客队"
+  },
+  "STATS": {
+    "TITLE": "统计数据",
+    "ERROR": "无法加载比赛信息。"
+  },
+  "USERS": {
+    "TITLE": "注册用户",
+    "NO_USERS": "暂无注册用户。"
   },
   "ABOUT": {
     "TITLE": "联系",
-    "ME": "你好！我是 Alonso，本网站的创建者。本网站使用 Ionic、Angular 和 Strapi，并且我是 C.P.I.F.P. Alan Turing 学校的 2DAM 学生，希望你喜欢本网站！"
+    "ME": "你好！我是 Alonso，本页面的创建者，使用了 Ionic、Angular 和 Strapi 服务。我是 C.P.I.F.P. Alan Turing 学校 2ºDAM 年级的学生，希望你喜欢这个页面的其他部分。"
   }
 }

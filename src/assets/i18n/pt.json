@@ -23,35 +23,36 @@
     "MATCHES": "Partidas",
     "LOGOUT": "Sair",
     "PROFILE": "Perfil",
+    "USERS": "Usuários registrados",
     "BACK": "Voltar"
   },
   "PROFILE": {
     "TITLE": "Perfil",
     "SUBTITLE": "Suas informações pessoais",
     "UPDATE": "Atualizar",
-    "PICTURE": "Foto do perfil",
+    "PICTURE": "Foto de perfil",
     "NAME": "Nome",
-    "SURNAMES": "Sobrenome",
-    "EMAIL": "E-mail"
+    "SURNAMES": "Sobrenomes",
+    "EMAIL": "Email"
   },
   "LOGIN": {
-    "TITLE": "Entrar",
-    "EMAIL": "E-mail",
+    "TITLE": "Login",
+    "EMAIL": "Email",
     "PASSWORD": "Senha",
     "BUTTON_LOGIN": "Entrar",
     "BUTTON_REGISTER": "Registrar-se",
     "ERRORS": {
-      "REQUIRED": "*Você deve inserir um e-mail",
-      "INCORRECT_EMAIL": "*Você deve inserir um e-mail válido",
-      "INCORRECT_PASSWORD": "*Você deve inserir uma senha"
+      "REQUIRED": "*Você deve inserir um email",
+      "INCORRECT_EMAIL": "*Insira um email válido",
+      "INCORRECT_PASSWORD": "*Insira uma senha"
     },
     "NOT_ACCOUNT": "Não tem uma conta?"
   },
   "REGISTER": {
     "TITLE": "Criar uma conta",
     "NAME": "Nome",
-    "SURNAMES": "Sobrenome",
-    "EMAIL": "E-mail",
+    "SURNAMES": "Sobrenomes",
+    "EMAIL": "Email",
     "PASSWORD": "Senha",
     "REPEAT_PASSWORD": "Repita a senha",
     "BUTTON_LOGIN": "Entrar",
@@ -59,12 +60,12 @@
     "ERRORS": {
       "NAME_REQUIRED": "*Você deve inserir seu nome",
       "NAME_MIN_LENGTH": "*O nome deve ter pelo menos dois caracteres",
-      "SURNAME_REQUIRED": "*Você deve inserir seu sobrenome",
-      "SURNAME_MIN_LENGTH": "*O sobrenome deve ter pelo menos dois caracteres",
-      "EMAIL_REQUIRED": "*Você deve inserir um e-mail",
-      "INCORRECT_EMAIL": "*Você deve inserir um e-mail válido",
+      "SURNAME_REQUIRED": "*Você deve inserir seu(s) sobrenome(s)",
+      "SURNAME_MIN_LENGTH": "*O(s) sobrenome(s) devem ter pelo menos dois caracteres",
+      "EMAIL_REQUIRED": "*Você deve inserir um email",
+      "INCORRECT_EMAIL": "*Insira um email válido",
       "PASSWORD_REQUIRED": "*Você deve inserir uma senha",
-      "INCORRECT_PASSWORD_REQUIREMENTS": "Mínimo de 8 caracteres, uma letra maiúscula, uma minúscula, um dígito e um caractere especial (@$!%*?&.)",
+      "INCORRECT_PASSWORD_REQUIREMENTS": "Pelo menos 8 caracteres, uma maiúscula, uma minúscula, um dígito e um caractere especial (@$!%*?&.)",
       "MISMATCH_PASSWORD": "*As senhas não coincidem"
     },
     "HAVE_ACCOUNT": "Já tem uma conta?"
@@ -88,7 +89,7 @@
   "LEAGUE_SELECTABLE": {
     "NONE": "Nenhuma",
     "SEARCH": "Buscar",
-    "SELECT_LEAGUE": "Selecionar uma liga"
+    "SELECT_LEAGUE": "Selecione uma liga"
   },
   "TEAMS": {
     "TITLE": "Times",
@@ -101,10 +102,15 @@
     "LEAGUE": "Liga",
     "SUBMIT": "Registrar",
     "UPDATE": "Atualizar",
+    "UPDATE_POINTS": "Atualizar pontos",
+    "CHOOSE_RESULT": "Escolher resultado",
+    "WIN": "Vitória",
+    "DRAW": "Empate",
+    "LOSS": "Derrota",
     "ERRORS": {
       "NAME_REQUIRED": "O nome é obrigatório",
       "NAME_MIN_LENGTH": "O nome do time deve ter mais de 2 caracteres",
-      "PATTERN": "O número de jogadores no elenco deve ser positivo"
+      "PATTERN": "O número de jogadores deve ser positivo"
     },
     "MESSAGES": {
       "DELETE_CONFIRM": "Deseja excluir este time?"
@@ -124,7 +130,7 @@
     "SURNAME1": "Primeiro sobrenome",
     "SURNAME2": "Segundo sobrenome",
     "NATIONALITY": "Nacionalidade",
-    "DORSAL": "Número da camisa",
+    "DORSAL": "Número",
     "BIRTHDATE": "Data de nascimento",
     "SELECT_DATE": "Selecionar data",
     "SELECT_POSITION": "Selecionar posição",
@@ -143,7 +149,7 @@
       "SURNAME_MIN_LENGTH": "Os sobrenomes devem ter no mínimo 2 caracteres",
       "NATIONALITY_REQUIRED": "A nacionalidade é obrigatória",
       "NATIONALITY_INVALID": "A nacionalidade deve ter no mínimo 2 caracteres",
-      "PATTERN": "O número da camisa deve ser um número positivo",
+      "PATTERN": "O número deve ser um número positivo",
       "BIRTHDATE_REQUIRED": "A data de nascimento é obrigatória",
       "POSITION_REQUIRED": "A posição é obrigatória"
     },
@@ -156,18 +162,18 @@
     "CREATE": "Criar partida",
     "EDIT": "Editar partida",
     "NEW": "Nova partida",
-    "DAY": "Dia da partida",
+    "DAY": "Data da partida",
     "TIME": "Hora da partida",
     "PLACE": "Local",
     "RESULT": "Resultado",
-    "SELECT_DATE": "Selecionar dia",
+    "SELECT_DATE": "Selecionar data",
     "SELECT_TIME": "Selecionar hora",
-    "TEAM_LOCAL": "Time mandante",
+    "TEAM_LOCAL": "Time da casa",
     "TEAM_VISITOR": "Time visitante",
     "SUBMIT": "Registrar",
     "UPDATE": "Atualizar",
     "ERRORS": {
-      "DAY_REQUIRED": "O dia é obrigatório"
+      "DAY_REQUIRED": "A data é obrigatória"
     },
     "MESSAGES": {
       "DELETE_CONFIRM": "Deseja excluir esta partida?"
@@ -175,19 +181,32 @@
   },
   "HOME": {
     "TITLE": "Início",
-    "LEAGUES": "Explore as ligas junto com suas respectivas equipes.",
-    "TEAMS": "Confira as equipes participantes, o número de jogadores e suas informações.",
-    "PLAYERS": "Descubra informações detalhadas sobre os jogadores.",
+    "LEAGUES": "Explore as ligas e seus respectivos times.",
+    "TEAMS": "Consulte os times participantes, seus jogadores e informações.",
+    "PLAYERS": "Descubra informações detalhadas dos jogadores.",
     "MATCHES": "Não perca nenhuma partida de qualquer liga!",
-    "CONTACT": "Tem perguntas? Entre em contato para mais informações.",
+    "CONTACT": "Tem dúvidas? Entre em contato para mais informações.",
     "SEE_LEAGUES": "Ver ligas",
-    "SEE_TEAMS": "Ver equipes",
+    "SEE_TEAMS": "Ver times",
     "SEE_PLAYERS": "Ver jogadores",
     "SEE_MATCHES": "Ver partidas",
     "SEE_CONTACT": "Contato"
   },
+  "LINEUPS": {
+    "TITLE": "Escalações",
+    "LOCAL": "Casa",
+    "VISITOR": "Visitante"
+  },
+  "STATS": {
+    "TITLE": "Estatísticas",
+    "ERROR": "Não foi possível carregar as informações da partida."
+  },
+  "USERS": {
+    "TITLE": "Usuários registrados",
+    "NO_USERS": "Não há usuários registrados."
+  },
   "ABOUT": {
     "TITLE": "Contato",
-    "ME": "Olá! Sou Alonso, criador desta página que usa Ionic, Angular e conexão com serviços Strapi. Sou estudante de 2ºDAM no C.P.I.F.P. Alan Turing. Espero que gostem da página!"
+    "ME": "Olá! Sou Alonso, criador deste site feito com Ionic, Angular e serviços do Strapi. Sou estudante do 2º ano de DAM no C.P.I.F.P. Alan Turing. Espero que gostem do site!"
   }
 }
