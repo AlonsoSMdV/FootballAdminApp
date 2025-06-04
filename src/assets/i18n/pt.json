@@ -95,6 +95,8 @@
     "TITLE": "Times",
     "CREATE": "Criar time",
     "EDIT": "Editar time",
+    "PTS": "Pontos",
+    "NMatches": "Partidas",
     "NEW": "Novo time",
     "NAME": "Nome do time",
     "NOFPLAYERS": "Jogadores no elenco",

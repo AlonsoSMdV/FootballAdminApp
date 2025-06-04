@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { Users } from 'src/app/core/models/users.model';
 import { UsersService } from 'src/app/core/services/impl/users.service';
+import { LanguageService } from 'src/app/core/services/language.service';
 
 @Component({
   selector: 'app-users',
@@ -10,11 +11,15 @@ import { UsersService } from 'src/app/core/services/impl/users.service';
 })
 export class UsersPage implements OnInit {
   users: Users[] = [];
+  currentLang: string
 
   constructor(
     private usersService: UsersService,
-    private toastController: ToastController
-  ) {}
+    private toastController: ToastController,
+    private languageService: LanguageService
+  ) {
+    this.currentLang = this.languageService.getStoredLanguage();
+  }
 
   ngOnInit() {
     this.loadUsers();

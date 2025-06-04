@@ -95,6 +95,8 @@
     "TITLE": "球队",
     "CREATE": "创建球队",
     "EDIT": "编辑球队",
+    "PTS": "积分",
+    "NMatches": "比赛",
     "NEW": "新球队",
     "NAME": "球队名称",
     "NOFPLAYERS": "阵容中的球员数",

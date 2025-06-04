@@ -95,6 +95,8 @@
           "TITLE":"Equipos",
           "CREATE": "Crear equipo",
           "EDIT": "Editar equipo",
+          "PTS": "Puntos",
+          "NMatches": "Partidos",
           "NEW": "Nuevo equipo",
           "NAME": "Nombre del equipo",
           "NOFPLAYERS": "Jugadores en plantilla",
