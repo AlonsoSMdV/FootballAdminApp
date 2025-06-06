@@ -1,4 +1,4 @@
-<!-- leagues.page.html -->
+<!-- teams.page.html -->
 <div class="min-h-screen bg-gradient-to-b from-black via-gray-900 to-green-950 text-white font-sans relative">
   <ion-header class="ion-no-border">
     <ion-toolbar class="w-full py-6 px-4 bg-black/80 backdrop-blur-md shadow-md" style="--background: transparent;">
@@ -28,7 +28,6 @@
             <ion-card-content>
               <div class="team-header">
                 <div class="team-image-container">
-                  <!-- Opcional: número de posición -->
                   <div class="team-number">{{i + 1}}</div>
                   <img [src]="team.picture?.url || img" alt="team logo" class="team-img"/>
                   <div class="glow-effect"></div>

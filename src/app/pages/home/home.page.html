@@ -1,7 +1,5 @@
-<!-- Fondo y tipografía base -->
 <div class="min-h-screen bg-gradient-to-b from-black via-gray-900 to-green-950 text-white font-sans relative">
 
-  <!-- Header fijo -->
    <ion-header class="ion-no-border">
     <ion-toolbar class="w-full py-6 px-4 bg-black/80 backdrop-blur-md shadow-md" style="--background: transparent;">
       <ion-buttons slot="start">
@@ -13,13 +11,10 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- Contenido principal -->
   <main class="pt-28 pb-16 px-4 max-w-4xl mx-auto space-y-10">
 
-    <!-- Grid de tarjetas -->
     <div class="grid md:grid-cols-2 gap-6">
       
-      <!-- Tarjetas dinámicas -->
       <ng-container *ngFor="let card of cards">
         <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-green-500/20 hover:scale-105 transition-transform">
           <h3 class="text-xl font-semibold text-green-300 uppercase tracking-wide">{{ card.title | translate }}</h3>
@@ -32,7 +27,6 @@
 
     </div>
 
-    <!-- Contacto destacado -->
     <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-green-500/20">
       <h3 class="text-xl font-semibold text-green-300 uppercase tracking-wide">{{"ABOUT.TITLE" | translate}}</h3>
       <p class="text-gray-300 mt-2">{{"HOME.CONTACT" | translate}}</p>

@@ -3,7 +3,6 @@
     <ion-menu contentId="mainContent" side="start" menuId="mainMenu" type="overlay" [style.width]="'280px'" *ngIf="showMenu" #menu [disabled]="!(authSvc.authenticated$ | async)">
       <ion-content class="bg-gray-900 text-white flex flex-col justify-between h-full">
 
-        <!-- Profile -->
         <div *ngIf="(authSvc.authenticated$ | async)" class="p-4 bg-gradient-to-br from-emerald-700/30 to-cyan-700/20 rounded-b-xl">
           <div class="flex flex-col items-center">
             <div 
@@ -20,7 +19,6 @@
           </div>
         </div>
 
-        <!-- Favoritos -->
         <div class="px-4 pt-4 space-y-2">
           <ng-container *ngIf="favoriteNames.league">
             <div class="flex items-center space-x-3">
@@ -44,7 +42,6 @@
           </ng-container>
         </div>
 
-        <!-- Navegación -->
         <nav class="mt-6 px-4 flex flex-col gap-2">
           <a routerLink="/home" (click)="menu.close()" class="flex items-center gap-3 hover:bg-emerald-600/20 px-3 py-2 rounded-md transition">
             <ion-icon name="home-outline"></ion-icon>
@@ -71,13 +68,11 @@
             <span>{{ 'MENU.ABOUT' | translate }}</span>
           </a>
 
-          <!-- Language Selector -->
           <div class="flex justify-between items-center gap-3 mt-2">
             <app-language-selector class="flex-1"></app-language-selector>
           </div>
         </nav>
 
-        <!-- Logout -->
         <div *ngIf="(authSvc.authenticated$ | async)" class="p-4">
           <button (click)="logout(); menu.close()" class="w-full bg-red-600/20 hover:bg-red-600/30 text-red-400 font-semibold py-2 px-4 rounded-md flex items-center justify-center gap-2 transition">
             <ion-icon name="log-out-outline"></ion-icon>

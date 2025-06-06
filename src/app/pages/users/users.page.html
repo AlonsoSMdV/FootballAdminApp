@@ -23,7 +23,6 @@
         <ion-card-content class="p-4">
           <div class="flex flex-wrap items-center justify-between gap-4">
             
-            <!-- Avatar -->
             <div class="relative w-20 h-20 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-green-400">
               <img
                 [src]="user.picture?.url || 'https://ionicframework.com/docs/img/demos/avatar.svg'"
@@ -33,7 +32,6 @@
             </div>
 
 
-            <!-- User Info -->
             <div class="flex-1 min-w-[150px] text-white">
               <h2 class="text-lg font-semibold tracking-wide">
                 {{ user.name }} {{ user.surname }}
@@ -43,7 +41,6 @@
               </p>
             </div>
 
-            <!-- Role Selector (más ancho) -->
             <div class="w-full max-w-md flex-grow">
               <ion-select
                 [(ngModel)]="user.role"
@@ -56,7 +53,6 @@
             </div>
 
 
-            <!-- Save Button (solo se ilumina al hover) -->
             <div class="user-action">
               <ion-button
                 fill="clear"

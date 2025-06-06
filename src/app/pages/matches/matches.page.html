@@ -1,4 +1,4 @@
-<!-- leagues.page.html -->
+<!-- matches.page.html -->
 <div class="min-h-screen bg-gradient-to-b from-black via-gray-900 to-green-950 text-white font-sans relative">
   <ion-header class="ion-no-border">
     <ion-toolbar class="w-full py-6 px-4 bg-black/80 backdrop-blur-md shadow-md" style="--background: transparent;">
@@ -45,12 +45,10 @@
         <ion-card class="w-full max-w-[550px] h-[400px] bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl shadow-lg hover:-translate-y-1 transition-transform duration-300">
           <ion-card-content class="relative flex flex-col justify-between h-full px-4 py-6 space-y-4">
             
-            <!-- Menú en esquina superior derecha -->
             <div class="absolute top-3 right-3 z-10">
               <app-match-menu [partidoId]="match.id" [match]="match"></app-match-menu>
             </div>
 
-            <!-- Equipos y VS -->
             <div class="flex justify-between items-center">
               <div class="flex flex-col items-center w-2/5">
                 <img [src]="match.localTeam?.picture?.url || img" class="w-20 h-20 object-contain mb-2" />
@@ -63,19 +61,16 @@
               </div>
             </div>
 
-            <!-- Detalles del partido -->
             <div class="grid grid-cols-3 text-center text-white text-sm gap-2">
               <span>{{ match.day }}</span>
               <span>{{ match.hour }}</span>
               <span>{{ match.place }}</span>
             </div>
 
-            <!-- Resultado -->
             <div class="text-center">
               <div *ngIf="match.result" class="text-2xl font-bold text-green-400">{{ match.result }}</div>
             </div>
 
-            <!-- Estado del partido -->
             <div class="text-center space-y-1">
               <div class="font-semibold text-base" [ngClass]="{
                   'text-yellow-400': match.status === 'Por jugar',
@@ -93,7 +88,6 @@
             </div>
             
 
-            <!-- Botones -->
             <div class="flex justify-center gap-6 pt-2">
               <ion-button *ngIf="isAdmin" fill="clear" class="edit" (click)="openMatch(match, i)">
                 <ion-icon name="create" slot="icon-only"></ion-icon>
