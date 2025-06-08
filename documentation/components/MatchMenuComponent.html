@@ -1,0 +1,849 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>FootballAdminApp documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">FootballAdminApp documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  MatchMenuComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/components/match-menu/match-menu.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-match-menu</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./match-menu.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./match-menu.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#compartirPartido" >compartirPartido</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#presentActionSheet" >presentActionSheet</a>
+                            </li>
+                            <li>
+                                <a href="#verAlineaciones" >verAlineaciones</a>
+                            </li>
+                            <li>
+                                <a href="#verEstadisticas" >verEstadisticas</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#match" >match</a>
+                            </li>
+                            <li>
+                                <a href="#partidoId" >partidoId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(actionSheetCtrl: ActionSheetController, router: Router, matchSvc: <a href="../injectables/MatchService.html" target="_self">MatchService</a>, teamSvc: <a href="../injectables/TeamService.html" target="_self">TeamService</a>, translate: TranslateService, alertCtrl: AlertController)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/shared/components/match-menu/match-menu.component.ts:25</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>actionSheetCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActionSheetController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>matchSvc</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MatchService.html" target="_self" >MatchService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>teamSvc</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TeamService.html" target="_self" >TeamService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>translate</td>
+                                                  
+                                                        <td>
+                                                                    <code>TranslateService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>alertCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>AlertController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="match"></a>
+                        <b>match</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/MatchWithTeams.html" target="_self" >MatchWithTeams</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/shared/components/match-menu/match-menu.component.ts:25</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="partidoId"></a>
+                        <b>partidoId</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/shared/components/match-menu/match-menu.component.ts:24</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="compartirPartido"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>compartirPartido</b></span>
+                        <a href="#compartirPartido"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>compartirPartido()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="79"
+                                    class="link-to-prism">src/app/shared/components/match-menu/match-menu.component.ts:79</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="34"
+                                    class="link-to-prism">src/app/shared/components/match-menu/match-menu.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="presentActionSheet"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>presentActionSheet</b></span>
+                        <a href="#presentActionSheet"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>presentActionSheet()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="38"
+                                    class="link-to-prism">src/app/shared/components/match-menu/match-menu.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="verAlineaciones"></a>
+                    <span class="name">
+                        <span ><b>verAlineaciones</b></span>
+                        <a href="#verAlineaciones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>verAlineaciones()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="68"
+                                    class="link-to-prism">src/app/shared/components/match-menu/match-menu.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="verEstadisticas"></a>
+                    <span class="name">
+                        <span ><b>verEstadisticas</b></span>
+                        <a href="#verEstadisticas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>verEstadisticas()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="74"
+                                    class="link-to-prism">src/app/shared/components/match-menu/match-menu.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnInit } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { ActionSheetController } from &#x27;@ionic/angular&#x27;;
+import { Share } from &#x27;@capacitor/share&#x27;;
+import { Capacitor } from &#x27;@capacitor/core&#x27;;
+import { MatchService } from &#x27;src/app/core/services/impl/match.service&#x27;;
+import { TeamService } from &#x27;src/app/core/services/impl/team.service&#x27;;
+import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
+import { AlertController } from &#x27;@ionic/angular&#x27;;
+import { Match } from &#x27;src/app/core/models/matches.model&#x27;;
+import { Team } from &#x27;src/app/core/models/teams.model&#x27;;
+
+interface MatchWithTeams extends Match {
+  localTeam?: Team;
+  visitorTeam?: Team;
+}
+
+@Component({
+  selector: &#x27;app-match-menu&#x27;,
+  templateUrl: &#x27;./match-menu.component.html&#x27;,
+  styleUrls: [&#x27;./match-menu.component.scss&#x27;],
+})
+export class MatchMenuComponent  implements OnInit {
+  @Input() partidoId!: string;
+  @Input() match!: MatchWithTeams;
+  constructor(
+    private actionSheetCtrl: ActionSheetController,
+    private router: Router,
+    private matchSvc: MatchService,
+    private teamSvc: TeamService,
+    private translate: TranslateService,
+    private alertCtrl: AlertController
+  ) {}
+  ngOnInit(): void {
+    
+  }
+
+  async presentActionSheet() {
+    const actionSheet &#x3D; await this.actionSheetCtrl.create({
+      header: &#x27;Opciones&#x27;,
+      buttons: [
+        {
+          text: &#x27;Ver Alineaciones&#x27;,
+          icon: &#x27;people-outline&#x27;,
+          handler: () &#x3D;&gt; {
+            this.verAlineaciones();
+          }
+        },
+        {
+          text: &#x27;Ver Estadísticas&#x27;,
+          icon: &#x27;stats-chart-outline&#x27;,
+          handler: () &#x3D;&gt; {
+            this.verEstadisticas();
+          }
+        },
+        {
+          text: &#x27;Compartir Partido&#x27;, // recomendación 😉
+          icon: &#x27;share-social-outline&#x27;,
+          handler: () &#x3D;&gt; {
+            this.compartirPartido();
+          }
+        }
+      ]
+    });
+    await actionSheet.present();
+  }
+
+  verAlineaciones() {
+    // Aquí defines cómo mostrarlo, ejemplo: cambiar a otro componente, mostrar modal, etc.
+    this.router.navigate([&#x27;/lineups&#x27;, this.partidoId])
+    console.log(this.partidoId!)
+  }
+
+  verEstadisticas() {
+    this.router.navigate([&#x27;/statistics&#x27;, this.partidoId])
+    console.log(this.partidoId)
+  }
+
+  async compartirPartido() {
+    if (!this.match) return;
+  
+    const localTeamName &#x3D; this.match.localTeam?.name || &#x27;Equipo Local&#x27;;
+    const visitorTeamName &#x3D; this.match.visitorTeam?.name || &#x27;Equipo Visitante&#x27;;
+    const matchDay &#x3D; this.match.day ? new Date(this.match.day).toLocaleDateString() : &#x27;Fecha por confirmar&#x27;;
+    const matchHour &#x3D; this.match.hour ? new Date(&#x60;2000-01-01T${this.match.hour}&#x60;).toLocaleTimeString([], { hour: &#x27;2-digit&#x27;, minute: &#x27;2-digit&#x27; }) : &#x27;Hora por confirmar&#x27;;
+    const matchPlace &#x3D; this.match.place || &#x27;Lugar por confirmar&#x27;;
+    const matchResult &#x3D; this.match.result || &#x27;Resultado pendiente&#x27;;
+  
+    const shareText &#x3D; &#x60;${localTeamName} vs ${visitorTeamName}\n&#x60; +
+      &#x60;${this.translate.instant(&#x27;MATCH.DATE&#x27;)}: ${matchDay}\n&#x60; +
+      &#x60;${this.translate.instant(&#x27;MATCH.TIME&#x27;)}: ${matchHour}\n&#x60; +
+      &#x60;${this.translate.instant(&#x27;MATCH.PLACE&#x27;)}: ${matchPlace}\n&#x60; +
+      &#x60;${this.translate.instant(&#x27;MATCH.RESULT&#x27;)}: ${matchResult}&#x60;;
+  
+    try {
+      if (Capacitor.isNativePlatform()) {
+        await Share.share({
+          title: &#x60;${localTeamName} vs ${visitorTeamName}&#x60;,
+          text: shareText,
+          dialogTitle: this.translate.instant(&#x27;MATCH.SHARE_DIALOG_TITLE&#x27;)
+        });
+      } else if (navigator.share) {
+        await navigator.share({
+          title: &#x60;${localTeamName} vs ${visitorTeamName}&#x60;,
+          text: shareText,
+          url: &#x27;matches&#x27;
+        });
+      } else {
+        alert(shareText);
+      }
+    } catch (error) {
+      console.error(&#x27;Error al compartir:&#x27;, error);
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-button fill&#x3D;&quot;clear&quot; (click)&#x3D;&quot;presentActionSheet()&quot;&gt;
+  &lt;ion-icon name&#x3D;&quot;ellipsis-vertical-outline&quot; class&#x3D;&quot;text-green-500&quot;&gt;&lt;/ion-icon&gt;
+&lt;/ion-button&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./match-menu.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-button fill="clear" (click)="presentActionSheet()">  <ion-icon name="ellipsis-vertical-outline" class="text-green-500"></ion-icon></ion-button></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LanguageSelectorComponent', 'selector': 'app-language-selector'},{'name': 'LeagueCreateModalComponent', 'selector': 'app-league-create-modal'},{'name': 'LeagueSelectableComponent', 'selector': 'app-league-selectable'},{'name': 'LeaguesPage', 'selector': 'app-leagues'},{'name': 'LineupsPage', 'selector': 'app-lineups'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'MatchCreateComponent', 'selector': 'app-match-create'},{'name': 'MatchesPage', 'selector': 'app-matches'},{'name': 'MatchMenuComponent', 'selector': 'app-match-menu'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerCreateModalComponent', 'selector': 'app-player-create-modal'},{'name': 'PlayerModalComponent', 'selector': 'app-player-modal'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectableComponent', 'selector': 'app-position-selectable'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'StatisticsPage', 'selector': 'app-statistics'},{'name': 'TeamCreateModalComponent', 'selector': 'app-team-create-modal'},{'name': 'TeamSelectableComponent', 'selector': 'app-team-selectable'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UsersPage', 'selector': 'app-users'}];
+    var DIRECTIVES = [{'name': 'DragDropDirective', 'selector': '[appDragDrop]'},{'name': 'FilterByTeamDirective', 'selector': '[appFilterByTeam]'},{'name': 'HighLightDirective', 'selector': '[appHighlight]'},{'name': 'TimeDirectiveDirective', 'selector': '[appFormatDate]'}];
+    var ACTUAL_COMPONENT = {'name': 'MatchMenuComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MatchMenuComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

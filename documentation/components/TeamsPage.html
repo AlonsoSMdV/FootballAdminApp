@@ -1,0 +1,2563 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>FootballAdminApp documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">FootballAdminApp documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  TeamsPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/teams/teams.page.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-teams</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./teams.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./teams.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#_teams" >_teams</a>
+                            </li>
+                            <li>
+                                <a href="#currentLang" >currentLang</a>
+                            </li>
+                            <li>
+                                <a href="#currentUser" >currentUser</a>
+                            </li>
+                            <li>
+                                <a href="#currentUserId" >currentUserId</a>
+                            </li>
+                            <li>
+                                <a href="#img" >img</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#loadedIds" >loadedIds</a>
+                            </li>
+                            <li>
+                                <a href="#page" >page</a>
+                            </li>
+                            <li>
+                                <a href="#pages" >pages</a>
+                            </li>
+                            <li>
+                                <a href="#pageSize" >pageSize</a>
+                            </li>
+                            <li>
+                                <a href="#selectedLeague" >selectedLeague</a>
+                            </li>
+                            <li>
+                                <a href="#selectedTeam" >selectedTeam</a>
+                            </li>
+                            <li>
+                                <a href="#teams$" >teams$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#changeTeamPoints" >changeTeamPoints</a>
+                            </li>
+                            <li>
+                                <a href="#getMoreTeams" >getMoreTeams</a>
+                            </li>
+                            <li>
+                                <a href="#getMoreTeamsByLeague" >getMoreTeamsByLeague</a>
+                            </li>
+                            <li>
+                                <a href="#getTeams" >getTeams</a>
+                            </li>
+                            <li>
+                                <a href="#getTeamsByleague" >getTeamsByleague</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#onAddTeam" >onAddTeam</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#onDeleteTeam" >onDeleteTeam</a>
+                            </li>
+                            <li>
+                                <a href="#onTeamDropped" >onTeamDropped</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#openTeam" >openTeam</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#presentModalTeam" >presentModalTeam</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#setFavoriteTeam" >setFavoriteTeam</a>
+                            </li>
+                            <li>
+                                <a href="#toggleFavorite" >toggleFavorite</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updatePoints" >updatePoints</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#leagueId" >leagueId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(userSvc: <a href="../injectables/UsersService.html" target="_self">UsersService</a>, route: ActivatedRoute, teamSvc: <a href="../injectables/TeamService.html" target="_self">TeamService</a>, modalCtrl: ModalController, alertCtrl: AlertController, translate: TranslateService, languageService: <a href="../injectables/LanguageService.html" target="_self">LanguageService</a>, mediaSvc: <a href="../injectables/BaseMediaService.html" target="_self">BaseMediaService</a>, TeamSubs: ICollectionSubscription<Team>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/teams/teams.page.ts:30</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>userSvc</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UsersService.html" target="_self" >UsersService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>teamSvc</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TeamService.html" target="_self" >TeamService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>modalCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>ModalController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>alertCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>AlertController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>translate</td>
+                                                  
+                                                        <td>
+                                                                    <code>TranslateService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>languageService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/LanguageService.html" target="_self" >LanguageService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>mediaSvc</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BaseMediaService.html" target="_self" >BaseMediaService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>TeamSubs</td>
+                                                  
+                                                        <td>
+                                                                    <code>ICollectionSubscription&lt;Team&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="leagueId"></a>
+                        <b>leagueId</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/teams/teams.page.ts:29</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeTeamPoints"></a>
+                    <span class="name">
+                        <span ><b>changeTeamPoints</b></span>
+                        <a href="#changeTeamPoints"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changeTeamPoints(team: <a href="../interfaces/Team.html" target="_self">Team</a>, pointsToAdd: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="213"
+                                    class="link-to-prism">src/app/pages/teams/teams.page.ts:213</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>team</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Team.html" target="_self" >Team</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>pointsToAdd</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMoreTeams"></a>
+                    <span class="name">
+                        <span ><b>getMoreTeams</b></span>
+                        <a href="#getMoreTeams"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getMoreTeams(notify: HTMLIonInfiniteScrollElement | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="114"
+                                    class="link-to-prism">src/app/pages/teams/teams.page.ts:114</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>notify</td>
+                                            <td>
+                                                        <code>HTMLIonInfiniteScrollElement | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>null</code>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMoreTeamsByLeague"></a>
+                    <span class="name">
+                        <span ><b>getMoreTeamsByLeague</b></span>
+                        <a href="#getMoreTeamsByLeague"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getMoreTeamsByLeague(notify: HTMLIonInfiniteScrollElement | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="145"
+                                    class="link-to-prism">src/app/pages/teams/teams.page.ts:145</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>notify</td>
+                                            <td>
+                                                        <code>HTMLIonInfiniteScrollElement | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>null</code>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTeams"></a>
+                    <span class="name">
+                        <span ><b>getTeams</b></span>
+                        <a href="#getTeams"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTeams()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="98"
+                                    class="link-to-prism">src/app/pages/teams/teams.page.ts:98</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTeamsByleague"></a>
+                    <span class="name">
+                        <span ><b>getTeamsByleague</b></span>
+                        <a href="#getTeamsByleague"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTeamsByleague()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="129"
+                                    class="link-to-prism">src/app/pages/teams/teams.page.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/app/pages/teams/teams.page.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onAddTeam"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>onAddTeam</b></span>
+                        <a href="#onAddTeam"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onAddTeam()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="302"
+                                    class="link-to-prism">src/app/pages/teams/teams.page.ts:302</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onDeleteTeam"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>onDeleteTeam</b></span>
+                        <a href="#onDeleteTeam"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onDeleteTeam(team: <a href="../interfaces/Team.html" target="_self">Team</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="306"
+                                    class="link-to-prism">src/app/pages/teams/teams.page.ts:306</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>team</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Team.html" target="_self" >Team</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onTeamDropped"></a>
+                    <span class="name">
+                        <span ><b>onTeamDropped</b></span>
+                        <a href="#onTeamDropped"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onTeamDropped(event: literal type)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="332"
+                                    class="link-to-prism">src/app/pages/teams/teams.page.ts:332</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>literal type</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openTeam"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>openTeam</b></span>
+                        <a href="#openTeam"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>openTeam(team: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="229"
+                                    class="link-to-prism">src/app/pages/teams/teams.page.ts:229</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>team</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="presentModalTeam"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>presentModalTeam</b></span>
+                        <a href="#presentModalTeam"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>presentModalTeam(mode: "new" | "edit", team: <a href="../interfaces/Team.html" target="_self">Team | undefined</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="234"
+                                    class="link-to-prism">src/app/pages/teams/teams.page.ts:234</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>mode</td>
+                                            <td>
+                                                        <code>&quot;new&quot; | &quot;edit&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                                <td>team</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Team.html" target="_self" >Team | undefined</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>undefined</code>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setFavoriteTeam"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>setFavoriteTeam</b></span>
+                        <a href="#setFavoriteTeam"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setFavoriteTeam(teamId: string | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="160"
+                                    class="link-to-prism">src/app/pages/teams/teams.page.ts:160</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>teamId</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleFavorite"></a>
+                    <span class="name">
+                        <span ><b>toggleFavorite</b></span>
+                        <a href="#toggleFavorite"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleFavorite(team: <a href="../interfaces/Team.html" target="_self">Team</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="179"
+                                    class="link-to-prism">src/app/pages/teams/teams.page.ts:179</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>team</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Team.html" target="_self" >Team</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updatePoints"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updatePoints</b></span>
+                        <a href="#updatePoints"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updatePoints(team: <a href="../interfaces/Team.html" target="_self">Team</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="186"
+                                    class="link-to-prism">src/app/pages/teams/teams.page.ts:186</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>team</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Team.html" target="_self" >Team</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_teams"></a>
+                    <span class="name">
+                        <span ><b>_teams</b></span>
+                        <a href="#_teams"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Team.html" target="_self" >BehaviorSubject&lt;Team[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new BehaviorSubject&lt;Team[]&gt;([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/teams/teams.page.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentLang"></a>
+                    <span class="name">
+                        <span ><b>currentLang</b></span>
+                        <a href="#currentLang"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/teams/teams.page.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentUser"></a>
+                    <span class="name">
+                        <span ><b>currentUser</b></span>
+                        <a href="#currentUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Users | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/pages/teams/teams.page.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentUserId"></a>
+                    <span class="name">
+                        <span ><b>currentUserId</b></span>
+                        <a href="#currentUserId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | undefined</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/teams/teams.page.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="img"></a>
+                    <span class="name">
+                        <span ><b>img</b></span>
+                        <a href="#img"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | undefined</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;./../../../assets/img/imgCard2.jpg&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/teams/teams.page.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadedIds"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>loadedIds</b></span>
+                        <a href="#loadedIds"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Set&lt;string&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Set()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/teams/teams.page.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="page"></a>
+                    <span class="name">
+                        <span ><b>page</b></span>
+                        <a href="#page"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/app/pages/teams/teams.page.ts:94</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pages"></a>
+                    <span class="name">
+                        <span ><b>pages</b></span>
+                        <a href="#pages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/app/pages/teams/teams.page.ts:96</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pageSize"></a>
+                    <span class="name">
+                        <span ><b>pageSize</b></span>
+                        <a href="#pageSize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>25</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/app/pages/teams/teams.page.ts:95</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedLeague"></a>
+                    <span class="name">
+                        <span ><b>selectedLeague</b></span>
+                        <a href="#selectedLeague"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/app/pages/teams/teams.page.ts:92</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedTeam"></a>
+                    <span class="name">
+                        <span ><b>selectedTeam</b></span>
+                        <a href="#selectedTeam"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/app/pages/teams/teams.page.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="teams$"></a>
+                    <span class="name">
+                        <span ><b>teams$</b></span>
+                        <a href="#teams$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Team.html" target="_self" >Observable&lt;Team[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._teams.asObservable()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/teams/teams.page.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Inject, Input, OnInit } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { ModalController, AlertController } from &#x27;@ionic/angular&#x27;;
+import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
+import { BehaviorSubject, firstValueFrom, lastValueFrom, Observable } from &#x27;rxjs&#x27;;
+import { Paginated } from &#x27;src/app/core/models/paginated.model&#x27;;
+import { Team } from &#x27;src/app/core/models/teams.model&#x27;;
+import { Users } from &#x27;src/app/core/models/users.model&#x27;;
+import { TEAM_COLLECTION_SUBSCRIPTION_TOKEN } from &#x27;src/app/core/repositories/repository.tokens&#x27;;
+import { BaseMediaService } from &#x27;src/app/core/services/impl/base-media.service&#x27;;
+import { TeamService } from &#x27;src/app/core/services/impl/team.service&#x27;;
+import { UsersService } from &#x27;src/app/core/services/impl/users.service&#x27;;
+import { CollectionChange, ICollectionSubscription } from &#x27;src/app/core/services/interfaces/collection-subscription.interface&#x27;;
+import { LanguageService } from &#x27;src/app/core/services/language.service&#x27;;
+import { TeamCreateModalComponent } from &#x27;src/app/shared/components/team-create-modal/team-create-modal.component&#x27;;
+
+@Component({
+  selector: &#x27;app-teams&#x27;,
+  templateUrl: &#x27;./teams.page.html&#x27;,
+  styleUrls: [&#x27;./teams.page.scss&#x27;],
+})
+export class TeamsPage implements OnInit {
+  img: string|undefined &#x3D; &#x27;./../../../assets/img/imgCard2.jpg&#x27;
+  currentLang:string
+  _teams: BehaviorSubject&lt;Team[]&gt; &#x3D; new BehaviorSubject&lt;Team[]&gt;([]);
+  teams$: Observable&lt;Team[]&gt; &#x3D; this._teams.asObservable();
+  currentUserId!: string | undefined;
+  currentUser: Users | null &#x3D; null;
+  @Input() leagueId!: string
+  private loadedIds: Set&lt;string&gt; &#x3D; new Set();
+
+  constructor(
+    private userSvc: UsersService,
+    private route: ActivatedRoute,
+    private teamSvc: TeamService,
+    private modalCtrl: ModalController,
+    private alertCtrl: AlertController,
+    private translate: TranslateService,
+    private languageService: LanguageService,
+    private mediaSvc: BaseMediaService,
+    @Inject(TEAM_COLLECTION_SUBSCRIPTION_TOKEN)
+    private TeamSubs: ICollectionSubscription&lt;Team&gt;
+  ) { 
+    this.currentLang &#x3D; this.languageService.getStoredLanguage();
+  }
+
+  ngOnInit() {
+    this.userSvc.getCurrentUser().subscribe(user &#x3D;&gt; {
+      this.currentUserId &#x3D; user!!.userId;
+      this.currentUser &#x3D; user
+    });
+
+    this.route.paramMap.subscribe(params &#x3D;&gt; {
+      const leagueId &#x3D; params.get(&#x27;id&#x27;);
+      if (leagueId) {
+        this.leagueId &#x3D; leagueId;
+        this.getTeamsByleague();
+      } else {
+        this.getTeams();
+      }
+  
+      this.TeamSubs.subscribe(&#x27;teams&#x27;).subscribe((change: CollectionChange&lt;Team&gt;) &#x3D;&gt; {
+        let currentTeams &#x3D; [...this._teams.value];
+  
+        if ((!this.loadedIds.has(change.id) &amp;&amp; change.type !&#x3D;&#x3D; &#x27;added&#x27;)) {
+          return;
+        }
+  
+        switch (change.type) {
+          case &#x27;added&#x27;:
+          case &#x27;modified&#x27;:
+            const index &#x3D; currentTeams.findIndex(p &#x3D;&gt; p.id &#x3D;&#x3D;&#x3D; change.id);
+            if (index &gt;&#x3D; 0) {
+              currentTeams[index] &#x3D; change.data!;
+            } else {
+              currentTeams.push(change.data!);
+              this.loadedIds.add(change.id);
+            }
+            break;
+          case &#x27;removed&#x27;:
+            currentTeams &#x3D; currentTeams.filter(p &#x3D;&gt; p.id !&#x3D;&#x3D; change.id);
+            this.loadedIds.delete(change.id);
+            break;
+        }
+  
+        // Ordenar por puntos antes de actualizar la lista
+        this._teams.next(currentTeams.sort((a, b) &#x3D;&gt; b.pts - a.pts));
+      });
+    });
+  }
+
+  selectedLeague: any &#x3D; null
+  selectedTeam: any &#x3D; null
+  page: number &#x3D; 1;
+  pageSize:number &#x3D; 25;
+  pages:number &#x3D; 0;
+
+  getTeams() {
+    this.page &#x3D; 1;
+    this.teamSvc.getAll(this.page, this.pageSize).subscribe({
+      next: (response: Paginated&lt;Team&gt;) &#x3D;&gt; {
+        response.data.forEach(team &#x3D;&gt; this.loadedIds.add(team.id));
+  
+        // Ordenar los equipos por puntos (de mayor a menor)
+        const sortedTeams &#x3D; response.data.sort((a, b) &#x3D;&gt; b.pts - a.pts);
+  
+        this._teams.next(sortedTeams);
+        this.page++;
+        this.pages &#x3D; response.pages;
+      }
+    });
+  }
+  
+  getMoreTeams(notify: HTMLIonInfiniteScrollElement | null &#x3D; null) {
+    this.teamSvc.getAll(this.page, this.pageSize).subscribe({
+      next: (response: Paginated&lt;Team&gt;) &#x3D;&gt; {
+        response.data.forEach(team &#x3D;&gt; this.loadedIds.add(team.id));
+  
+        // Añadir y ordenar por puntos
+        const sortedTeams &#x3D; [...this._teams.value, ...response.data].sort((a, b) &#x3D;&gt; b.pts - a.pts);
+  
+        this._teams.next(sortedTeams);
+        this.page++;
+        notify?.complete();
+      }
+    });
+  }
+
+  getTeamsByleague() {
+    this.page &#x3D; 1;
+    this.teamSvc.getTeamByLeague(this.leagueId,this.page, this.pageSize).subscribe({
+      next: (response: Paginated&lt;Team&gt;) &#x3D;&gt; {
+        response.data.forEach(team &#x3D;&gt; this.loadedIds.add(team.id));
+  
+        // Ordenar los equipos por puntos (de mayor a menor)
+        const sortedTeams &#x3D; response.data.sort((a, b) &#x3D;&gt; b.pts - a.pts);
+  
+        this._teams.next(sortedTeams);
+        this.page++;
+        this.pages &#x3D; response.pages;
+      }
+    });
+  }
+  
+  getMoreTeamsByLeague(notify: HTMLIonInfiniteScrollElement | null &#x3D; null) {
+    this.teamSvc.getTeamByLeague(this.leagueId,this.page, this.pageSize).subscribe({
+      next: (response: Paginated&lt;Team&gt;) &#x3D;&gt; {
+        response.data.forEach(team &#x3D;&gt; this.loadedIds.add(team.id));
+  
+        // Añadir y ordenar por puntos
+        const sortedTeams &#x3D; [...this._teams.value, ...response.data].sort((a, b) &#x3D;&gt; b.pts - a.pts);
+  
+        this._teams.next(sortedTeams);
+        this.page++;
+        notify?.complete();
+      }
+    });
+  }
+
+  async setFavoriteTeam(teamId: string | null) {
+      try {
+        
+        const updatedUser: any &#x3D; {
+          ...this.currentUser,
+          teamFav: teamId ? teamId : undefined  // 👈 Aquí está el truco
+        };
+    
+        await firstValueFrom(this.userSvc.update(this.currentUser!!.id, updatedUser));
+        this.userSvc.getCurrentUser().subscribe(user &#x3D;&gt; {
+          this.currentUserId &#x3D; user!!.userId;
+          this.currentUser &#x3D; user
+        });
+        console.log(&#x27;Favorite team updated:&#x27;, teamId);
+      } catch (err) {
+        console.error(&#x27;Error setting favorite team:&#x27;, err);
+      }
+    }
+    
+    toggleFavorite(team: Team) {
+      const isFavorite &#x3D; this.currentUser?.teamFav &#x3D;&#x3D;&#x3D; team.id;
+      const newTeamFav &#x3D; isFavorite ? null : team.id;
+    
+      this.setFavoriteTeam(newTeamFav);
+    }
+
+  async updatePoints(team: Team) {
+    const alert &#x3D; await this.alertCtrl.create({
+      header: this.translate.instant(&#x27;TEAMS.UPDATE_POINTS&#x27;),
+      message: this.translate.instant(&#x27;TEAMS.CHOOSE_RESULT&#x27;),
+      buttons: [
+        {
+          text: this.translate.instant(&#x27;TEAMS.WIN&#x27;),
+          handler: () &#x3D;&gt; this.changeTeamPoints(team, 3),
+        },
+        {
+          text: this.translate.instant(&#x27;TEAMS.DRAW&#x27;),
+          handler: () &#x3D;&gt; this.changeTeamPoints(team, 1),
+        },
+        {
+          text: this.translate.instant(&#x27;TEAMS.LOSS&#x27;),
+          handler: () &#x3D;&gt; this.changeTeamPoints(team, 0),
+        },
+        {
+          text: this.translate.instant(&#x27;COMMON.CANCEL&#x27;),
+          role: &#x27;cancel&#x27;,
+        },
+      ],
+    });
+  
+    await alert.present();
+  }
+
+  changeTeamPoints(team: Team, pointsToAdd: number) {
+    const updatedTeam &#x3D; { 
+      ...team, 
+      pts: team.pts + pointsToAdd,
+      nMatches: (team.nMatches || 0) + 1 // Incrementamos partidos jugados
+    };
+  
+    this.teamSvc.update(team.id, updatedTeam).subscribe({
+      next: () &#x3D;&gt; {
+        this.leagueId ? this.getTeamsByleague() : this.getTeams(); // Recargar equipos después de la actualización
+      },
+      error: (err) &#x3D;&gt; console.error(err),
+    });
+  }
+
+  
+  async openTeam(team: any, index: number){
+    await this.presentModalTeam(&#x27;edit&#x27;, team)
+    this.selectedTeam
+  }
+
+  private async presentModalTeam(mode:&#x27;new&#x27;|&#x27;edit&#x27;, team:Team|undefined&#x3D;undefined){
+    const modal &#x3D; await this.modalCtrl.create({
+      component:TeamCreateModalComponent,
+      componentProps:(mode&#x3D;&#x3D;&#x27;edit&#x27;?{
+        team: team
+      }:{})
+    });
+    modal.onDidDismiss().then(async (response)&#x3D;&gt;{
+          const user &#x3D; await firstValueFrom(this.userSvc.getCurrentUser());
+          let newTeam : any &#x3D; null
+          if (response.data.picture) {
+            const base64Response &#x3D; await fetch(response.data.picture);
+            const blob &#x3D; await base64Response.blob();
+            const uploadedBlob &#x3D; await lastValueFrom(this.mediaSvc.upload(blob));
+            const pictureUrl &#x3D; uploadedBlob.map(url &#x3D;&gt; url.toString())
+            response.data.picture &#x3D; pictureUrl
+      
+            newTeam &#x3D; {
+              name: response.data.name,
+              numberOfPlayers: response.data.numberOfPlayers,
+              pts: mode &#x3D;&#x3D;&#x3D; &#x27;new&#x27; ? 0 : response.data.pts,
+              isFavourite: mode &#x3D;&#x3D;&#x3D; &#x27;new&#x27; ? false : response.data.isFavourite,
+              nMatches: mode &#x3D;&#x3D;&#x3D; &#x27;new&#x27; ? 0 : response.data.nMatches,
+              picture: {
+                url: pictureUrl[0],
+                large: pictureUrl[0],
+                medium: pictureUrl[0],
+                small: pictureUrl[0],
+                thumbnail: pictureUrl[0],
+              },
+              userId: user!!.userId,
+              league: response.data.league
+            }
+          }else{
+            newTeam &#x3D; {
+              name: response.data.name,
+              numberOfPlayers: response.data.numberOfPlayers,
+              pts: mode &#x3D;&#x3D;&#x3D; &#x27;new&#x27; ? 0 : response.data.pts,
+              isFavourite: mode &#x3D;&#x3D;&#x3D; &#x27;new&#x27; ? false : response.data.isFavourite,
+              nMatches: mode &#x3D;&#x3D;&#x3D; &#x27;new&#x27; ? 0 : response.data.nMatches,
+              league: response.data.league,
+              userId: user!!.userId
+            }
+          }
+      switch (response.role) {
+        case &#x27;new&#x27;:
+          this.teamSvc.add(newTeam).subscribe({
+            next:res&#x3D;&gt;{
+              this.leagueId ? this.getTeamsByleague() : this.getTeams();
+            },
+            error:err&#x3D;&gt;{}
+          });
+          break;
+        case &#x27;edit&#x27;:
+          this.teamSvc.update(team!.id, newTeam).subscribe({
+            next:res&#x3D;&gt;{
+              this.leagueId ? this.getTeamsByleague() : this.getTeams();
+            },
+            error:err&#x3D;&gt;{}
+          });
+          break;
+        default:
+          break;
+      }
+    });
+    await modal.present();
+  }
+
+  async onAddTeam(){
+    await this.presentModalTeam(&#x27;new&#x27;);
+  }
+
+  async onDeleteTeam(team: Team) {
+    const alert &#x3D; await this.alertCtrl.create({
+      header: await this.translate.get(&#x27;TEAMS.MESSAGES.DELETE_CONFIRM&#x27;).toPromise(),
+      buttons: [
+        {
+          text: &#x27;Cancel&#x27;,
+          role: &#x27;cancel&#x27;,
+        },
+        {
+          text: &#x27;OK&#x27;,
+          role: &#x27;yes&#x27;,
+          handler: () &#x3D;&gt; {
+            this.teamSvc.delete(team.id).subscribe({
+              next: response &#x3D;&gt; {
+                this.leagueId ? this.getTeamsByleague() : this.getTeams();
+              },
+              error: err &#x3D;&gt; {}
+            });
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  onTeamDropped(event: { fromIndex: number, toIndex: number }) {
+    const teamsArray &#x3D; [...this._teams.value];
+  
+    if (event.fromIndex !&#x3D;&#x3D; event.toIndex) {
+      // Remueve el equipo de su posición original
+      const movedItem &#x3D; teamsArray.splice(event.fromIndex, 1)[0];
+  
+      // Inserta el equipo en la nueva posición
+      teamsArray.splice(event.toIndex, 0, movedItem);
+  
+      // Actualiza el BehaviorSubject con la nueva lista ordenada
+      this._teams.next(teamsArray);
+    }
+  }
+  
+}
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- teams.page.html --&gt;
+&lt;div class&#x3D;&quot;min-h-screen bg-gradient-to-b from-black via-gray-900 to-green-950 text-white font-sans relative&quot;&gt;
+  &lt;ion-header class&#x3D;&quot;ion-no-border&quot;&gt;
+    &lt;ion-toolbar class&#x3D;&quot;w-full py-6 px-4 bg-black/80 backdrop-blur-md shadow-md&quot; style&#x3D;&quot;--background: transparent;&quot;&gt;
+      &lt;ion-buttons slot&#x3D;&quot;start&quot;&gt;
+        &lt;ion-menu-button&gt;&lt;/ion-menu-button&gt;
+      &lt;/ion-buttons&gt;
+      &lt;ion-title &gt;
+        &lt;h1 class&#x3D;&quot;text-2xl md:text-3xl font-bold text-green-400 tracking-wide&quot;&gt;{{&quot;TEAMS.TITLE&quot; | translate}}&lt;/h1&gt;
+      &lt;/ion-title&gt;
+      &lt;ion-button class&#x3D;&quot;create-button&quot; slot&#x3D;&quot;end&quot; (click)&#x3D;&quot;onAddTeam()&quot;&gt;
+        &lt;ion-icon name&#x3D;&quot;add-circle-outline&quot;&gt;&lt;/ion-icon&gt;
+        {{&#x27;TEAMS.CREATE&#x27; | translate}}
+      &lt;/ion-button&gt;
+    &lt;/ion-toolbar&gt;
+  &lt;/ion-header&gt;
+
+  &lt;ion-content class&#x3D;&quot;team-content&quot; style&#x3D;&quot;--background: transparent;&quot;&gt;
+    &lt;ion-grid&gt;
+      &lt;ion-row&gt;
+        &lt;ion-col 
+          size&#x3D;&quot;12&quot;
+          size-sm&#x3D;&quot;12&quot; 
+          *ngFor&#x3D;&quot;let team of (teams$ | async), let i &#x3D; index&quot;
+          appDragDrop [dragData]&#x3D;&quot;team&quot; [index]&#x3D;&quot;i&quot; (dropped)&#x3D;&quot;onTeamDropped($event)&quot;
+        &gt;
+          &lt;ion-card appHighlight&#x3D;&quot;rgba(099, 245, 200, 0.1)&quot;&gt;
+            &lt;ion-card-content&gt;
+              &lt;div class&#x3D;&quot;team-header&quot;&gt;
+                &lt;div class&#x3D;&quot;team-image-container&quot;&gt;
+                  &lt;div class&#x3D;&quot;team-number&quot;&gt;{{i + 1}}&lt;/div&gt;
+                  &lt;img [src]&#x3D;&quot;team.picture?.url || img&quot; alt&#x3D;&quot;team logo&quot; class&#x3D;&quot;team-img&quot;/&gt;
+                  &lt;div class&#x3D;&quot;glow-effect&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;team-info&quot;&gt;
+                    &lt;h2 class&#x3D;&quot;team-name&quot;&gt;{{ team.name }}&lt;/h2&gt;
+                    &lt;h2 class&#x3D;&quot;team-nPlayers&quot;&gt;{{ team.numberOfPlayers }} {{ &#x27;TEAMS.PLAYERS&#x27; | translate }}&lt;/h2&gt;
+                    &lt;h3 class&#x3D;&quot;team-points&quot; (click)&#x3D;&quot;updatePoints(team)&quot;&gt;
+                      {{ team.pts }} {{ &#x27;TEAMS.PTS&#x27; | translate }}
+                    &lt;/h3&gt;
+                    &lt;h3 class&#x3D;&quot;team-matches&quot;&gt;
+                      {{ team.nMatches || 0 }} {{ &#x27;TEAMS.NMATCHES&#x27; | translate }}
+                    &lt;/h3&gt;
+                  &lt;/div&gt;
+              &lt;/div&gt;
+            
+              &lt;div class&#x3D;&quot;action-buttons&quot;&gt;
+                &lt;ion-button fill&#x3D;&quot;clear&quot; class&#x3D;&quot;info&quot; [routerLink]&#x3D;&quot;[&#x27;/players&#x27;, team.id]&quot;&gt;
+                  &lt;ion-icon name&#x3D;&quot;information-circle&quot; slot&#x3D;&quot;icon-only&quot;&gt;&lt;/ion-icon&gt;
+                &lt;/ion-button&gt;
+                &lt;ion-button fill&#x3D;&quot;clear&quot; class&#x3D;&quot;edit&quot; [disabled]&#x3D;&quot;team.userId !&#x3D;&#x3D; currentUserId&quot; (click)&#x3D;&quot;openTeam(team, i)&quot;&gt;
+                  &lt;ion-icon name&#x3D;&quot;create&quot; slot&#x3D;&quot;icon-only&quot;&gt;&lt;/ion-icon&gt;
+                &lt;/ion-button&gt;
+                &lt;ion-button fill&#x3D;&quot;clear&quot; class&#x3D;&quot;delete&quot; [disabled]&#x3D;&quot;team.userId !&#x3D;&#x3D; currentUserId&quot; (click)&#x3D;&quot;onDeleteTeam(team)&quot;&gt;
+                  &lt;ion-icon name&#x3D;&quot;trash&quot; slot&#x3D;&quot;icon-only&quot;&gt;&lt;/ion-icon&gt;
+                &lt;/ion-button&gt;
+                &lt;ion-button 
+                  fill&#x3D;&quot;clear&quot; 
+                  class&#x3D;&quot;favorite&quot;
+                  color&#x3D;&quot;warning&quot; 
+                  (click)&#x3D;&quot;toggleFavorite(team)&quot;&gt;
+                  &lt;ion-icon 
+                    [name]&#x3D;&quot;currentUser?.teamFav &#x3D;&#x3D;&#x3D; team.id ? &#x27;star&#x27; : &#x27;star-outline&#x27;&quot; 
+                    slot&#x3D;&quot;icon-only&quot;&gt;
+                  &lt;/ion-icon&gt;
+                &lt;/ion-button&gt;
+              &lt;/div&gt;
+            &lt;/ion-card-content&gt;
+          &lt;/ion-card&gt;
+        &lt;/ion-col&gt;
+      &lt;/ion-row&gt;
+    &lt;/ion-grid&gt;
+  &lt;/ion-content&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./teams.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">:host {
+  --primary-color: #00ff88;
+  --secondary-color: #5050db;
+  --accent-color: #ff3366;
+  --background-dark: #131313;
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --card-height: 180px; /* Reducida para un formato más horizontal */
+  --card-width: 100%;
+}
+
+// Header Styles
+ion-header {
+  ion-toolbar {
+    .create-button {
+      --background: linear-gradient(45deg, var(--primary-color), #00ffcc);
+      --border-radius: 20px;
+      --padding-start: 15px;
+      --padding-end: 15px;
+      margin-right: 16px;
+      
+      ion-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+// Grid Layout
+ion-grid {
+  padding: 20px;
+}
+
+ion-row {
+  margin: 0;
+}
+
+ion-col {
+  padding: 10px;
+}
+
+// Card Styles - Modificados para formato horizontal
+ion-card {
+  height: var(--card-height);
+  margin: 0;
+  background: var(--card-bg);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  
+  &amp;:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    
+    .glow-effect {
+      opacity: 1;
+    }
+  }
+}
+
+ion-card-content {
+  padding: 15px;
+  height: 100%;
+  display: flex;
+  flex-direction: row; /* Cambiado a horizontal */
+  justify-content: space-between;
+  align-items: center;
+}
+
+// team Header - Modificado
+.team-header {
+  display: flex;
+  flex-direction: row; /* Cambiado a horizontal */
+  align-items: center;
+  flex: 1;
+  
+  .team-image-container {
+    position: relative;
+    width: 120px; /* Tamaño fijo más pequeño */
+    height: 120px;
+    margin-right: 20px;
+    flex-shrink: 0; /* Evita que la imagen se encoja */
+    
+    .team-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    
+    .glow-effect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, 
+        rgba(0, 255, 136, 0.5), 
+        transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      border-radius: 12px;
+    }
+  }
+
+  .team-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .team-name {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    word-break: break-word;
+    text-align: left;
+  }
+  
+  .team-nPlayers {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    
+    &amp;:before {
+      content: &quot;&quot;;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+  }
+}
+
+// Action Buttons - Modificados
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+  
+  ion-button {
+    --padding-start: 10px;
+    --padding-end: 10px;
+    --border-radius: 12px;
+    width: 45px;
+    height: 45px;
+    
+    ion-icon {
+      font-size: 22px !important;
+    }
+    
+    &amp;.info {
+      --background: rgba(var(--primary-color), 0.2);
+      --color: var(--primary-color);
+
+      &amp;:hover {
+        transform: scale(1.1);
+        --background: rgba(57, 255, 7, 0.199);
+      }
+    }
+    
+    &amp;.edit {
+      --background: rgba(var(--secondary-color), 0.2);
+      --color: var(--secondary-color);
+
+      &amp;:hover {
+        transform: scale(1.1);
+        --background: rgba(114, 7, 255, 0.151);
+      }
+    }
+    
+    &amp;.delete {
+      --background: rgba(var(--accent-color), 0.2);
+      --color: var(--accent-color);
+
+      &amp;:hover {
+        transform: scale(1.1);
+        --background: rgba(255, 7, 7, 0.3);
+      }
+    }
+
+    &amp;.favorite {
+      --background: rgba(255, 193, 7, 0.2); // amarillo suave
+      --color: #ffc107;
+      transition: transform 0.2s ease;
+
+      &amp;:hover {
+        transform: scale(1.1);
+        --background: rgba(255, 193, 7, 0.3);
+      }
+    }
+  }
+}
+
+/* Añadido para mostrar equipos con indicador de número */
+.team-number {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  background: linear-gradient(45deg, var(--primary-color), #00ffcc);
+  color: #000;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 576px) {
+  ion-card {
+    --card-height: auto;
+  }
+  
+  ion-card-content {
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .team-header {
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 15px;
+    
+    .team-image-container {
+      width: 100px;
+      height: 100px;
+      margin-right: 0;
+      margin-bottom: 15px;
+    }
+    
+    .team-info {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .team-name, .team-nPlayers {
+      text-align: center;
+    }
+  }
+  
+  .action-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- teams.page.html --><div class="min-h-screen bg-gradient-to-b from-black via-gray-900 to-green-950 text-white font-sans relative">  <ion-header class="ion-no-border">    <ion-toolbar class="w-full py-6 px-4 bg-black/80 backdrop-blur-md shadow-md" style="--background: transparent;">      <ion-buttons slot="start">        <ion-menu-button></ion-menu-button>      </ion-buttons>      <ion-title >        <h1 class="text-2xl md:text-3xl font-bold text-green-400 tracking-wide">{{"TEAMS.TITLE" | translate}}</h1>      </ion-title>      <ion-button class="create-button" slot="end" (click)="onAddTeam()">        <ion-icon name="add-circle-outline"></ion-icon>        {{\'TEAMS.CREATE\' | translate}}      </ion-button>    </ion-toolbar>  </ion-header>  <ion-content class="team-content" style="--background: transparent;">    <ion-grid>      <ion-row>        <ion-col           size="12"          size-sm="12"           *ngFor="let team of (teams$ | async), let i = index"          appDragDrop [dragData]="team" [index]="i" (dropped)="onTeamDropped($event)"        >          <ion-card appHighlight="rgba(099, 245, 200, 0.1)">            <ion-card-content>              <div class="team-header">                <div class="team-image-container">                  <div class="team-number">{{i + 1}}</div>                  <img [src]="team.picture?.url || img" alt="team logo" class="team-img"/>                  <div class="glow-effect"></div>                </div>                <div class="team-info">                    <h2 class="team-name">{{ team.name }}</h2>                    <h2 class="team-nPlayers">{{ team.numberOfPlayers }} {{ \'TEAMS.PLAYERS\' | translate }}</h2>                    <h3 class="team-points" (click)="updatePoints(team)">                      {{ team.pts }} {{ \'TEAMS.PTS\' | translate }}                    </h3>                    <h3 class="team-matches">                      {{ team.nMatches || 0 }} {{ \'TEAMS.NMATCHES\' | translate }}                    </h3>                  </div>              </div>                          <div class="action-buttons">                <ion-button fill="clear" class="info" [routerLink]="[\'/players\', team.id]">                  <ion-icon name="information-circle" slot="icon-only"></ion-icon>                </ion-button>                <ion-button fill="clear" class="edit" [disabled]="team.userId !== currentUserId" (click)="openTeam(team, i)">                  <ion-icon name="create" slot="icon-only"></ion-icon>                </ion-button>                <ion-button fill="clear" class="delete" [disabled]="team.userId !== currentUserId" (click)="onDeleteTeam(team)">                  <ion-icon name="trash" slot="icon-only"></ion-icon>                </ion-button>                <ion-button                   fill="clear"                   class="favorite"                  color="warning"                   (click)="toggleFavorite(team)">                  <ion-icon                     [name]="currentUser?.teamFav === team.id ? \'star\' : \'star-outline\'"                     slot="icon-only">                  </ion-icon>                </ion-button>              </div>            </ion-card-content>          </ion-card>        </ion-col>      </ion-row>    </ion-grid>  </ion-content></div></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LanguageSelectorComponent', 'selector': 'app-language-selector'},{'name': 'LeagueCreateModalComponent', 'selector': 'app-league-create-modal'},{'name': 'LeagueSelectableComponent', 'selector': 'app-league-selectable'},{'name': 'LeaguesPage', 'selector': 'app-leagues'},{'name': 'LineupsPage', 'selector': 'app-lineups'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'MatchCreateComponent', 'selector': 'app-match-create'},{'name': 'MatchesPage', 'selector': 'app-matches'},{'name': 'MatchMenuComponent', 'selector': 'app-match-menu'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerCreateModalComponent', 'selector': 'app-player-create-modal'},{'name': 'PlayerModalComponent', 'selector': 'app-player-modal'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectableComponent', 'selector': 'app-position-selectable'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'StatisticsPage', 'selector': 'app-statistics'},{'name': 'TeamCreateModalComponent', 'selector': 'app-team-create-modal'},{'name': 'TeamSelectableComponent', 'selector': 'app-team-selectable'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UsersPage', 'selector': 'app-users'}];
+    var DIRECTIVES = [{'name': 'DragDropDirective', 'selector': '[appDragDrop]'},{'name': 'FilterByTeamDirective', 'selector': '[appFilterByTeam]'},{'name': 'HighLightDirective', 'selector': '[appHighlight]'},{'name': 'TimeDirectiveDirective', 'selector': '[appFormatDate]'}];
+    var ACTUAL_COMPONENT = {'name': 'TeamsPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TeamsPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

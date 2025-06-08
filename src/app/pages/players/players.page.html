@@ -21,6 +21,10 @@
       <ion-row>
         <ion-col 
           class="player-col"
+          size="12"
+          size-sm="8"
+          size-md="5"
+          size-lg="3"
           *ngFor="let player of (players$ | async), let i = index"
           appDragDrop [dragData]="player" [index]="i" (dropped)="onPlayerDropped($event)"
         >

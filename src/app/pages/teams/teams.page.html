@@ -36,10 +36,10 @@
                     <h2 class="team-name">{{ team.name }}</h2>
                     <h2 class="team-nPlayers">{{ team.numberOfPlayers }} {{ 'TEAMS.PLAYERS' | translate }}</h2>
                     <h3 class="team-points" (click)="updatePoints(team)">
-                      {{ team.pts }} {{ 'TEAMS.POINTS' | translate }}
+                      {{ team.pts }} {{ 'TEAMS.PTS' | translate }}
                     </h3>
                     <h3 class="team-matches">
-                      {{ team.nMatches || 0 }} {{ 'TEAMS.MATCHES' | translate }}
+                      {{ team.nMatches || 0 }} {{ 'TEAMS.NMATCHES' | translate }}
                     </h3>
                   </div>
               </div>

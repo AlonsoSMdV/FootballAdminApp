@@ -1,0 +1,647 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>FootballAdminApp documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">FootballAdminApp documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  PlayerModalComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/components/player-modal/player-modal.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-player-modal</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./player-modal.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./player-modal.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#img" >img</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#closeModal" >closeModal</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#player" >player</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(modalCtrl: ModalController)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/shared/components/player-modal/player-modal.component.ts:11</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>modalCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>ModalController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="player"></a>
+                        <b>player</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Player.html" target="_self" >Player</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/shared/components/player-modal/player-modal.component.ts:14</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeModal"></a>
+                    <span class="name">
+                        <span ><b>closeModal</b></span>
+                        <a href="#closeModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="18"
+                                    class="link-to-prism">src/app/shared/components/player-modal/player-modal.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="16"
+                                    class="link-to-prism">src/app/shared/components/player-modal/player-modal.component.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="img"></a>
+                    <span class="name">
+                        <span ><b>img</b></span>
+                        <a href="#img"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | undefined</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;./../../../assets/img/Player1.jpg&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/shared/components/player-modal/player-modal.component.ts:11</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnInit } from &#x27;@angular/core&#x27;;
+import { ModalController } from &#x27;@ionic/angular&#x27;;
+import { Player } from &#x27;src/app/core/models/players.model&#x27;;
+
+@Component({
+  selector: &#x27;app-player-modal&#x27;,
+  templateUrl: &#x27;./player-modal.component.html&#x27;,
+  styleUrls: [&#x27;./player-modal.component.scss&#x27;],
+})
+export class PlayerModalComponent  implements OnInit {
+  img: string|undefined &#x3D; &#x27;./../../../assets/img/Player1.jpg&#x27;
+  constructor(private modalCtrl: ModalController) { }
+
+  @Input() player!: Player;
+
+  ngOnInit() {}
+
+  closeModal(){
+    this.modalCtrl.dismiss()
+
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-content class&#x3D;&quot;card-modal&quot;  [style.background-image]&#x3D;&quot;&#x27;url(&#x27;+img+&#x27;)&#x27;&quot; [style.background-size]&#x3D;&quot;&#x27;cover&#x27;&quot; [style.background-position]&#x3D;&quot;&#x27;center&#x27;&quot;&gt;
+  &lt;div class&#x3D;&quot;modal-content&quot; (click)&#x3D;&quot;closeModal()&quot;&gt;
+    &lt;h2&gt;INFORMACIÓN DEL JUGADOR&lt;/h2&gt;
+    &lt;ion-avatar&gt;
+      &lt;img alt&#x3D;&quot;Silhouette of a person&#x27;s head&quot; src&#x3D;&quot;https://ionicframework.com/docs/img/demos/avatar.svg&quot; /&gt;
+    &lt;/ion-avatar&gt;&lt;div class&#x3D;&quot;player-info&quot;&gt;
+      &lt;p&gt;&lt;strong&gt;{{&#x27;PLAYERS.NAME&#x27; | translate}}: &lt;/strong&gt; {{ player.name }}&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;{{&#x27;PLAYERS.SURNAME1&#x27; | translate}}: &lt;/strong&gt; {{ player.firstSurname }}&lt;/p&gt;
+      
+      &lt;p&gt;&lt;strong&gt;{{&#x27;PLAYERS.SURNAME2&#x27; | translate}}: &lt;/strong&gt; {{ player.secondSurname }}&lt;/p&gt;
+      
+      &lt;p&gt;&lt;strong&gt;{{&#x27;PLAYERS.BIRTHDATE&#x27; | translate}}: &lt;/strong&gt; {{ player.birthdate }}&lt;/p&gt;
+      
+      &lt;p&gt;&lt;strong&gt;{{&#x27;PLAYERS.DORSAL&#x27; | translate}}: &lt;/strong&gt; {{ player.dorsal }}&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;{{&#x27;PLAYERS.NATIONALITY&#x27; | translate}}: &lt;/strong&gt; {{ player.nationality }}&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;{{&#x27;PLAYERS.POSITION&#x27; | translate}}: &lt;/strong&gt; {{ player.position}}&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/ion-content&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./player-modal.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.card-modal {
+  --background: none; /* Evitar que el contenido tenga un fondo por defecto */
+  background-color: transparent;
+  padding: 20px; /* Agregar espacio alrededor del contenido */
+}
+
+.modal-content {
+  padding: 20px; /* Espaciado dentro del contenido */
+  border-radius: 10px; /* Bordes redondeados */
+  color: white; /* Asegura que el texto sea visible sobre el fondo oscuro */
+  margin-top: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+ion-avatar {
+  margin: 0 auto; /* Centra el avatar */
+  display: block; /* Para que esté en el centro */
+  margin-bottom: 20px; /* Espacio entre el avatar y el contenido */
+}
+
+.player-info p {
+  margin: 10px 0; /* Espaciado entre los párrafos */
+}
+
+.player-info strong {
+  color: #f0f0f0; /* Asegura que los títulos sean visibles */
+}
+
+ion-content {
+  padding: 0; /* Elimina cualquier padding adicional de ion-content */
+  --background: none; /* Para asegurar que no se aplique un fondo adicional */
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-content class="card-modal"  [style.background-image]="\'url(\'+img+\')\'" [style.background-size]="\'cover\'" [style.background-position]="\'center\'">  <div class="modal-content" (click)="closeModal()">    <h2>INFORMACIÓN DEL JUGADOR</h2>    <ion-avatar>      <img alt="Silhouette of a person\'s head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />    </ion-avatar><div class="player-info">      <p><strong>{{\'PLAYERS.NAME\' | translate}}: </strong> {{ player.name }}</p>      <p><strong>{{\'PLAYERS.SURNAME1\' | translate}}: </strong> {{ player.firstSurname }}</p>            <p><strong>{{\'PLAYERS.SURNAME2\' | translate}}: </strong> {{ player.secondSurname }}</p>            <p><strong>{{\'PLAYERS.BIRTHDATE\' | translate}}: </strong> {{ player.birthdate }}</p>            <p><strong>{{\'PLAYERS.DORSAL\' | translate}}: </strong> {{ player.dorsal }}</p>      <p><strong>{{\'PLAYERS.NATIONALITY\' | translate}}: </strong> {{ player.nationality }}</p>      <p><strong>{{\'PLAYERS.POSITION\' | translate}}: </strong> {{ player.position}}</p>    </div>  </div></ion-content></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LanguageSelectorComponent', 'selector': 'app-language-selector'},{'name': 'LeagueCreateModalComponent', 'selector': 'app-league-create-modal'},{'name': 'LeagueSelectableComponent', 'selector': 'app-league-selectable'},{'name': 'LeaguesPage', 'selector': 'app-leagues'},{'name': 'LineupsPage', 'selector': 'app-lineups'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'MatchCreateComponent', 'selector': 'app-match-create'},{'name': 'MatchesPage', 'selector': 'app-matches'},{'name': 'MatchMenuComponent', 'selector': 'app-match-menu'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerCreateModalComponent', 'selector': 'app-player-create-modal'},{'name': 'PlayerModalComponent', 'selector': 'app-player-modal'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectableComponent', 'selector': 'app-position-selectable'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'StatisticsPage', 'selector': 'app-statistics'},{'name': 'TeamCreateModalComponent', 'selector': 'app-team-create-modal'},{'name': 'TeamSelectableComponent', 'selector': 'app-team-selectable'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UsersPage', 'selector': 'app-users'}];
+    var DIRECTIVES = [{'name': 'DragDropDirective', 'selector': '[appDragDrop]'},{'name': 'FilterByTeamDirective', 'selector': '[appFilterByTeam]'},{'name': 'HighLightDirective', 'selector': '[appHighlight]'},{'name': 'TimeDirectiveDirective', 'selector': '[appFormatDate]'}];
+    var ACTUAL_COMPONENT = {'name': 'PlayerModalComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'PlayerModalComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

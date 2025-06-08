@@ -1,0 +1,2051 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>FootballAdminApp documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">FootballAdminApp documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  LeaguesPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/leagues/leagues.page.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-leagues</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./leagues.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./leagues.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#_leagues" >_leagues</a>
+                            </li>
+                            <li>
+                                <a href="#currentLang" >currentLang</a>
+                            </li>
+                            <li>
+                                <a href="#currentUser" >currentUser</a>
+                            </li>
+                            <li>
+                                <a href="#currentUserId" >currentUserId</a>
+                            </li>
+                            <li>
+                                <a href="#img" >img</a>
+                            </li>
+                            <li>
+                                <a href="#leagues$" >leagues$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#loadedIds" >loadedIds</a>
+                            </li>
+                            <li>
+                                <a href="#page" >page</a>
+                            </li>
+                            <li>
+                                <a href="#pages" >pages</a>
+                            </li>
+                            <li>
+                                <a href="#pageSize" >pageSize</a>
+                            </li>
+                            <li>
+                                <a href="#selectedLeague" >selectedLeague</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getLeagues" >getLeagues</a>
+                            </li>
+                            <li>
+                                <a href="#getMoreLeagues" >getMoreLeagues</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#onAddLeague" >onAddLeague</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#onDeleteLeague" >onDeleteLeague</a>
+                            </li>
+                            <li>
+                                <a href="#onLeagueDropped" >onLeagueDropped</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#openLeague" >openLeague</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#presentModalLeague" >presentModalLeague</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#setFavoriteLeague" >setFavoriteLeague</a>
+                            </li>
+                            <li>
+                                <a href="#toggleFavorite" >toggleFavorite</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(userSvc: <a href="../injectables/UsersService.html" target="_self">UsersService</a>, leagueSvc: <a href="../injectables/LeagueService.html" target="_self">LeagueService</a>, modalCtrl: ModalController, alertCtrl: AlertController, translate: TranslateService, languageService: <a href="../injectables/LanguageService.html" target="_self">LanguageService</a>, mediaSvc: <a href="../injectables/BaseMediaService.html" target="_self">BaseMediaService</a>, platform: Platform, leagueSubs: ICollectionSubscription<League>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/pages/leagues/leagues.page.ts:28</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>userSvc</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UsersService.html" target="_self" >UsersService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>leagueSvc</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/LeagueService.html" target="_self" >LeagueService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>modalCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>ModalController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>alertCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>AlertController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>translate</td>
+                                                  
+                                                        <td>
+                                                                    <code>TranslateService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>languageService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/LanguageService.html" target="_self" >LanguageService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>mediaSvc</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BaseMediaService.html" target="_self" >BaseMediaService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>platform</td>
+                                                  
+                                                        <td>
+                                                                    <code>Platform</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>leagueSubs</td>
+                                                  
+                                                        <td>
+                                                                    <code>ICollectionSubscription&lt;League&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getLeagues"></a>
+                    <span class="name">
+                        <span ><b>getLeagues</b></span>
+                        <a href="#getLeagues"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getLeagues()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">src/app/pages/leagues/leagues.page.ts:88</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMoreLeagues"></a>
+                    <span class="name">
+                        <span ><b>getMoreLeagues</b></span>
+                        <a href="#getMoreLeagues"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getMoreLeagues(notify: HTMLIonInfiniteScrollElement | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="101"
+                                    class="link-to-prism">src/app/pages/leagues/leagues.page.ts:101</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>notify</td>
+                                            <td>
+                                                        <code>HTMLIonInfiniteScrollElement | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>null</code>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/app/pages/leagues/leagues.page.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onAddLeague"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>onAddLeague</b></span>
+                        <a href="#onAddLeague"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onAddLeague()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="204"
+                                    class="link-to-prism">src/app/pages/leagues/leagues.page.ts:204</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onDeleteLeague"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>onDeleteLeague</b></span>
+                        <a href="#onDeleteLeague"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onDeleteLeague(league: <a href="../interfaces/League.html" target="_self">League</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="208"
+                                    class="link-to-prism">src/app/pages/leagues/leagues.page.ts:208</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>league</td>
+                                            <td>
+                                                            <code><a href="../interfaces/League.html" target="_self" >League</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onLeagueDropped"></a>
+                    <span class="name">
+                        <span ><b>onLeagueDropped</b></span>
+                        <a href="#onLeagueDropped"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onLeagueDropped(event: literal type)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="234"
+                                    class="link-to-prism">src/app/pages/leagues/leagues.page.ts:234</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>literal type</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openLeague"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>openLeague</b></span>
+                        <a href="#openLeague"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>openLeague(league: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="140"
+                                    class="link-to-prism">src/app/pages/leagues/leagues.page.ts:140</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>league</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="presentModalLeague"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>presentModalLeague</b></span>
+                        <a href="#presentModalLeague"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>presentModalLeague(mode: "new" | "edit", league: <a href="../interfaces/League.html" target="_self">League | undefined</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="145"
+                                    class="link-to-prism">src/app/pages/leagues/leagues.page.ts:145</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>mode</td>
+                                            <td>
+                                                        <code>&quot;new&quot; | &quot;edit&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                                <td>league</td>
+                                            <td>
+                                                            <code><a href="../interfaces/League.html" target="_self" >League | undefined</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>undefined</code>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setFavoriteLeague"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>setFavoriteLeague</b></span>
+                        <a href="#setFavoriteLeague"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setFavoriteLeague(leagueId: string | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="113"
+                                    class="link-to-prism">src/app/pages/leagues/leagues.page.ts:113</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>leagueId</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleFavorite"></a>
+                    <span class="name">
+                        <span ><b>toggleFavorite</b></span>
+                        <a href="#toggleFavorite"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleFavorite(league: <a href="../interfaces/League.html" target="_self">League</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="132"
+                                    class="link-to-prism">src/app/pages/leagues/leagues.page.ts:132</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>league</td>
+                                            <td>
+                                                            <code><a href="../interfaces/League.html" target="_self" >League</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_leagues"></a>
+                    <span class="name">
+                        <span ><b>_leagues</b></span>
+                        <a href="#_leagues"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/League.html" target="_self" >BehaviorSubject&lt;League[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new BehaviorSubject&lt;League[]&gt;([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/leagues/leagues.page.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentLang"></a>
+                    <span class="name">
+                        <span ><b>currentLang</b></span>
+                        <a href="#currentLang"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/leagues/leagues.page.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentUser"></a>
+                    <span class="name">
+                        <span ><b>currentUser</b></span>
+                        <a href="#currentUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Users | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/leagues/leagues.page.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentUserId"></a>
+                    <span class="name">
+                        <span ><b>currentUserId</b></span>
+                        <a href="#currentUserId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | undefined</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/leagues/leagues.page.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="img"></a>
+                    <span class="name">
+                        <span ><b>img</b></span>
+                        <a href="#img"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | undefined</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;./../../../assets/img/imgCard2.jpg&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/leagues/leagues.page.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="leagues$"></a>
+                    <span class="name">
+                        <span ><b>leagues$</b></span>
+                        <a href="#leagues$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/League.html" target="_self" >Observable&lt;League[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._leagues.asObservable()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/leagues/leagues.page.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadedIds"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>loadedIds</b></span>
+                        <a href="#loadedIds"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Set&lt;string&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Set()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/pages/leagues/leagues.page.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="page"></a>
+                    <span class="name">
+                        <span ><b>page</b></span>
+                        <a href="#page"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/pages/leagues/leagues.page.ts:84</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pages"></a>
+                    <span class="name">
+                        <span ><b>pages</b></span>
+                        <a href="#pages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/app/pages/leagues/leagues.page.ts:86</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pageSize"></a>
+                    <span class="name">
+                        <span ><b>pageSize</b></span>
+                        <a href="#pageSize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>25</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/pages/leagues/leagues.page.ts:85</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedLeague"></a>
+                    <span class="name">
+                        <span ><b>selectedLeague</b></span>
+                        <a href="#selectedLeague"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/pages/leagues/leagues.page.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Inject, OnInit } from &#x27;@angular/core&#x27;;
+import { AlertController, ModalController, Platform } from &#x27;@ionic/angular&#x27;;
+import { TranslateModule, TranslateService } from &#x27;@ngx-translate/core&#x27;;
+import { BehaviorSubject, firstValueFrom, lastValueFrom, Observable } from &#x27;rxjs&#x27;;
+import { League } from &#x27;src/app/core/models/leagues.model&#x27;;
+import { Paginated } from &#x27;src/app/core/models/paginated.model&#x27;;
+import { Users } from &#x27;src/app/core/models/users.model&#x27;;
+import { LEAGUE_COLLECTION_SUBSCRIPTION_TOKEN } from &#x27;src/app/core/repositories/repository.tokens&#x27;;
+import { BaseMediaService } from &#x27;src/app/core/services/impl/base-media.service&#x27;;
+import { LeagueService } from &#x27;src/app/core/services/impl/league.service&#x27;;
+import { UsersService } from &#x27;src/app/core/services/impl/users.service&#x27;;
+import { CollectionChange, ICollectionSubscription } from &#x27;src/app/core/services/interfaces/collection-subscription.interface&#x27;;
+import { LanguageService } from &#x27;src/app/core/services/language.service&#x27;;
+import { LeagueCreateModalComponent } from &#x27;src/app/shared/components/league-create-modal/league-create-modal.component&#x27;;
+
+@Component({
+  selector: &#x27;app-leagues&#x27;,
+  templateUrl: &#x27;./leagues.page.html&#x27;,
+  styleUrls: [&#x27;./leagues.page.scss&#x27;],
+})
+export class LeaguesPage implements OnInit {
+  img: string|undefined &#x3D; &#x27;./../../../assets/img/imgCard2.jpg&#x27;
+  currentLang:string
+  _leagues: BehaviorSubject&lt;League[]&gt; &#x3D; new BehaviorSubject&lt;League[]&gt;([]);
+  leagues$: Observable&lt;League[]&gt; &#x3D; this._leagues.asObservable();
+  currentUserId!: string | undefined;
+  currentUser: Users | null &#x3D; null;
+  private loadedIds: Set&lt;string&gt; &#x3D; new Set();
+
+  constructor(
+    private userSvc: UsersService,
+    private leagueSvc: LeagueService,
+    private modalCtrl: ModalController,
+    private alertCtrl: AlertController,
+    private translate: TranslateService,
+    private languageService: LanguageService,
+    private mediaSvc: BaseMediaService,
+    private platform: Platform,
+    @Inject(LEAGUE_COLLECTION_SUBSCRIPTION_TOKEN)
+    private leagueSubs: ICollectionSubscription&lt;League&gt;
+  ) { 
+    this.currentLang &#x3D; this.languageService.getStoredLanguage();
+  }
+
+  ngOnInit() {
+    this.userSvc.getCurrentUser().subscribe(user &#x3D;&gt; {
+      this.currentUserId &#x3D; user!!.userId;
+      this.currentUser &#x3D; user
+    });
+
+    this.getLeagues();
+
+    this.leagueSubs.subscribe(&#x27;leagues&#x27;).subscribe((change:
+      CollectionChange&lt;League&gt;) &#x3D;&gt; {
+          const currentLeague &#x3D; [...this._leagues.value];
+
+          if ((!this.loadedIds.has(change.id) &amp;&amp; change.type !&#x3D;&#x3D; &#x27;added&#x27;)) {
+            return;
+          }
+
+          switch(change.type){
+            case &#x27;added&#x27;:
+            case &#x27;modified&#x27;:
+              const index &#x3D; currentLeague.findIndex(p &#x3D;&gt; p.id &#x3D;&#x3D;&#x3D; change.id)
+              if (index &gt;&#x3D; 0) {
+                currentLeague[index] &#x3D; change.data!;
+              }
+              break;
+            case &#x27;removed&#x27;:
+              const removedIndex &#x3D; currentLeague.findIndex(p &#x3D;&gt; p.id &#x3D;&#x3D;&#x3D; change.id)
+              if (removedIndex &gt;&#x3D; 0) {
+                currentLeague.splice(removedIndex, 1);
+                this.loadedIds.delete(change.id);
+              }
+              break;
+          }
+
+          this._leagues.next(currentLeague)
+      });
+  }
+
+
+  selectedLeague: any &#x3D; null
+  page: number &#x3D; 1;
+  pageSize:number &#x3D; 25;
+  pages:number &#x3D; 0;
+
+  getLeagues(){
+    this.page&#x3D;1;
+    this.leagueSvc.getAll(this.page, this.pageSize).subscribe({
+      next:(response:Paginated&lt;League&gt;)&#x3D;&gt;{
+        // Actualizar el registro de IDs cargados
+        response.data.forEach(league &#x3D;&gt; this.loadedIds.add(league.id));
+        this._leagues.next([...response.data]);
+        this.page++;
+        this.pages &#x3D; response.pages;
+      }
+    });
+  }
+  
+  getMoreLeagues(notify: HTMLIonInfiniteScrollElement | null &#x3D; null){
+    this.leagueSvc.getAll(this.page, this.pageSize).subscribe({
+      next:(response: Paginated&lt;League&gt;)&#x3D;&gt;{
+        // Actualizar el registro de IDs cargados
+        response.data.forEach(league &#x3D;&gt; this.loadedIds.add(league.id));
+        this._leagues.next([...this._leagues.value, ...response.data]);
+        this.page++;
+        notify?.complete();
+      }
+    })
+  }
+
+  async setFavoriteLeague(leagueId: string | null) {
+    try {
+      
+      const updatedUser: any &#x3D; {
+        ...this.currentUser,
+        leagueFav: leagueId ? leagueId : undefined  // 👈 Aquí está el truco
+      };
+  
+      await firstValueFrom(this.userSvc.update(this.currentUser!!.id, updatedUser));
+      this.userSvc.getCurrentUser().subscribe(user &#x3D;&gt; {
+        this.currentUserId &#x3D; user!!.userId;
+        this.currentUser &#x3D; user
+      });
+      console.log(&#x27;Favorite league updated:&#x27;, leagueId);
+    } catch (err) {
+      console.error(&#x27;Error setting favorite league:&#x27;, err);
+    }
+  }
+  
+  toggleFavorite(league: League) {
+    const isFavorite &#x3D; this.currentUser?.leagueFav &#x3D;&#x3D;&#x3D; league.id;
+    const newLeagueFav &#x3D; isFavorite ? null : league.id;
+  
+    this.setFavoriteLeague(newLeagueFav);
+  }
+  
+
+  async openLeague(league: any, index: number){
+    await this.presentModalLeague(&#x27;edit&#x27;, league)
+    this.selectedLeague
+  }
+
+  private async presentModalLeague(mode:&#x27;new&#x27;|&#x27;edit&#x27;, league:League|undefined&#x3D;undefined){
+    const modal &#x3D; await this.modalCtrl.create({
+      component:LeagueCreateModalComponent,
+      componentProps:(mode&#x3D;&#x3D;&#x27;edit&#x27;?{
+        league: league
+      }:{})
+    });
+    modal.onDidDismiss().then(async (response)&#x3D;&gt;{
+      const user &#x3D; await firstValueFrom(this.userSvc.getCurrentUser());
+      let newLeague : any &#x3D; null
+      if (response.data.picture) {
+        const base64Response &#x3D; await fetch(response.data.picture);
+        const blob &#x3D; await base64Response.blob();
+        const uploadedBlob &#x3D; await lastValueFrom(this.mediaSvc.upload(blob));
+        const pictureUrl &#x3D; uploadedBlob.map(url &#x3D;&gt; url.toString())
+        response.data.picture &#x3D; pictureUrl
+  
+        newLeague &#x3D; {
+          name: response.data.name,
+          userId: user!!.userId,
+          picture: {
+            url: pictureUrl[0],
+            large: pictureUrl[0],
+            medium: pictureUrl[0],
+            small: pictureUrl[0],
+            thumbnail: pictureUrl[0],
+          }
+        }
+      }else{
+        newLeague &#x3D; {
+          name: response.data.name,
+          userId: user!!.userId,
+        }
+      }
+      switch (response.role) {
+        case &#x27;new&#x27;:
+          this.leagueSvc.add(newLeague).subscribe({
+            next:res&#x3D;&gt;{
+              this.getLeagues();
+              console.log(&#x27;Creando liga con userId:&#x27;, user!!.userId)
+            },
+            error:err&#x3D;&gt;{}
+          });
+          break;
+        case &#x27;edit&#x27;:
+          this.leagueSvc.update(league!.id, newLeague).subscribe({
+            next:res&#x3D;&gt;{
+              this.getLeagues();
+            },
+            error:err&#x3D;&gt;{}
+          });
+          break;
+        default:
+          break;
+      }
+    });
+    await modal.present();
+  }
+
+  async onAddLeague(){
+    await this.presentModalLeague(&#x27;new&#x27;);
+  }
+
+  async onDeleteLeague(league: League) {
+    const alert &#x3D; await this.alertCtrl.create({
+      header: await this.translate.get(&#x27;LEAGUES.MESSAGES.DELETE_CONFIRM&#x27;).toPromise(),
+      buttons: [
+        {
+          text: &#x27;Cancel&#x27;,
+          role: &#x27;cancel&#x27;,
+        },
+        {
+          text: &#x27;OK&#x27;,
+          role: &#x27;yes&#x27;,
+          handler: () &#x3D;&gt; {
+            this.leagueSvc.delete(league.id).subscribe({
+              next: response &#x3D;&gt; {
+                this.getLeagues();
+              },
+              error: err &#x3D;&gt; {}
+            });
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  onLeagueDropped(event: { fromIndex: number, toIndex: number }) {
+    const leaguesArray &#x3D; [...this._leagues.value];
+  
+    if (event.fromIndex !&#x3D;&#x3D; event.toIndex) {
+      // Remueve el equipo de su posición original
+      const movedItem &#x3D; leaguesArray.splice(event.fromIndex, 1)[0];
+  
+      // Inserta el equipo en la nueva posición
+      leaguesArray.splice(event.toIndex, 0, movedItem);
+  
+      // Actualiza el BehaviorSubject con la nueva lista ordenada
+      this._leagues.next(leaguesArray);
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- leagues.page.html --&gt;
+&lt;div class&#x3D;&quot;min-h-screen bg-gradient-to-b from-black via-gray-900 to-green-950 text-white font-sans relative&quot;&gt;
+  &lt;ion-header class&#x3D;&quot;ion-no-border&quot;&gt;
+    &lt;ion-toolbar class&#x3D;&quot;w-full py-6 px-4 bg-black/80 backdrop-blur-md shadow-md&quot; style&#x3D;&quot;--background: transparent;&quot;&gt;
+      &lt;ion-buttons slot&#x3D;&quot;start&quot;&gt;
+        &lt;ion-menu-button&gt;&lt;/ion-menu-button&gt;
+      &lt;/ion-buttons&gt;
+      &lt;ion-title &gt;
+        &lt;h1 class&#x3D;&quot;text-2xl md:text-3xl font-bold text-green-400 tracking-wide&quot;&gt;{{&quot;LEAGUES.TITLE&quot; | translate}}&lt;/h1&gt;
+      &lt;/ion-title&gt;
+      &lt;ion-button class&#x3D;&quot;create-button&quot; slot&#x3D;&quot;end&quot; (click)&#x3D;&quot;onAddLeague()&quot;&gt;
+        &lt;ion-icon name&#x3D;&quot;add-circle-outline&quot;&gt;&lt;/ion-icon&gt;
+        {{&#x27;LEAGUES.CREATE&#x27; | translate}}
+      &lt;/ion-button&gt;
+    &lt;/ion-toolbar&gt;
+  &lt;/ion-header&gt;
+
+  &lt;ion-content class&#x3D;&quot;league-content&quot; style&#x3D;&quot;--background: transparent;&quot;&gt;
+    &lt;ion-grid&gt;
+      &lt;ion-row&gt;
+        &lt;ion-col 
+          size&#x3D;&quot;12&quot;
+          size-sm&#x3D;&quot;6&quot;
+          size-md&#x3D;&quot;4&quot;
+          size-lg&#x3D;&quot;3&quot;
+          *ngFor&#x3D;&quot;let league of (leagues$ | async), let i &#x3D; index&quot;
+          appDragDrop [dragData]&#x3D;&quot;league&quot; [index]&#x3D;&quot;i&quot; (dropped)&#x3D;&quot;onLeagueDropped($event)&quot;
+        &gt;
+          &lt;ion-card appHighlight&#x3D;&quot;rgba(099, 245, 200, 0.1)&quot;&gt;
+            &lt;ion-card-content&gt;
+              &lt;div class&#x3D;&quot;league-header&quot;&gt;
+                &lt;div class&#x3D;&quot;league-image-container&quot;&gt;
+                  &lt;img [src]&#x3D;&quot;league.picture?.url || img&quot; alt&#x3D;&quot;league logo&quot; class&#x3D;&quot;league-img&quot;/&gt;
+                  &lt;div class&#x3D;&quot;glow-effect&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;h2 class&#x3D;&quot;league-name&quot;&gt;{{league.name}}&lt;/h2&gt;
+              &lt;/div&gt;
+
+              &lt;div class&#x3D;&quot;action-buttons&quot;&gt;
+                &lt;ion-button fill&#x3D;&quot;clear&quot; class&#x3D;&quot;info&quot; [routerLink]&#x3D;&quot;[&#x27;/teams&#x27;, league.id]&quot;&gt;
+                  &lt;ion-icon name&#x3D;&quot;information-circle&quot; slot&#x3D;&quot;icon-only&quot;&gt;&lt;/ion-icon&gt;
+                &lt;/ion-button&gt;
+                &lt;ion-button fill&#x3D;&quot;clear&quot; class&#x3D;&quot;edit&quot; [disabled]&#x3D;&quot;league.userId !&#x3D;&#x3D; currentUserId&quot; (click)&#x3D;&quot;openLeague(league, i)&quot;&gt;
+                  &lt;ion-icon name&#x3D;&quot;create&quot; slot&#x3D;&quot;icon-only&quot;&gt;&lt;/ion-icon&gt;
+                &lt;/ion-button&gt;
+                &lt;ion-button fill&#x3D;&quot;clear&quot; class&#x3D;&quot;delete&quot; [disabled]&#x3D;&quot;league.userId !&#x3D;&#x3D; currentUserId&quot; (click)&#x3D;&quot;onDeleteLeague(league)&quot;&gt;
+                  &lt;ion-icon name&#x3D;&quot;trash&quot; slot&#x3D;&quot;icon-only&quot;&gt;&lt;/ion-icon&gt;
+                &lt;/ion-button&gt;
+                &lt;ion-button 
+                  fill&#x3D;&quot;clear&quot; 
+                  class&#x3D;&quot;favorite&quot; 
+                  color&#x3D;&quot;warning&quot; 
+                  (click)&#x3D;&quot;toggleFavorite(league)&quot;&gt;
+                  &lt;ion-icon 
+                    [name]&#x3D;&quot;currentUser?.leagueFav &#x3D;&#x3D;&#x3D; league.id ? &#x27;star&#x27; : &#x27;star-outline&#x27;&quot; 
+                    slot&#x3D;&quot;icon-only&quot;&gt;
+                  &lt;/ion-icon&gt;
+                &lt;/ion-button&gt;
+              &lt;/div&gt;
+            &lt;/ion-card-content&gt;
+          &lt;/ion-card&gt;
+        &lt;/ion-col&gt;
+      &lt;/ion-row&gt;
+    &lt;/ion-grid&gt;
+  &lt;/ion-content&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./leagues.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">:host {
+  --primary-color: #00ff88;
+  --secondary-color: #5050db;
+  --accent-color: #ff3366;
+  --background-dark: #131313;
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --card-height: 300px;
+  --card-width: 300px;
+}
+
+// Header Styles
+ion-header {
+  ion-toolbar {
+    .create-button {
+      --background: linear-gradient(45deg, var(--primary-color), #00ffcc);
+      --border-radius: 20px;
+      --padding-start: 15px;
+      --padding-end: 15px;
+      margin-right: 16px;
+      
+      ion-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+// Grid Layout
+ion-grid {
+  padding: 20px;
+}
+
+ion-row {
+  margin: 0;
+}
+
+ion-col {
+  padding: 10px;
+}
+
+// Card Styles
+ion-card {
+  height: var(--card-height);
+  margin: 0;
+  background: var(--card-bg);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  
+  &amp;:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    
+    .glow-effect {
+      opacity: 1;
+    }
+  }
+}
+
+ion-card-content {
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+// League Header
+.league-header {
+  display: flex;
+  flex-direction: column; /* Asegura que el contenido se apile verticalmente */
+  align-items: center; /* Centra los elementos horizontalmente */
+  text-align: center;
+  margin-bottom: 20px;
+  
+  .league-image-container {
+    position: relative;
+    display: flex;
+    justify-content: center; /* Centra la imagen horizontalmente */
+    align-items: center;
+    width: 250px;
+    height: 150px;
+    margin-right: 15px;
+    
+    .league-img {
+      width:75%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    
+    .glow-effect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, 
+        rgba(var(--primary-color), 0.5), 
+        transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+  }
+
+  .league-name {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 10px;
+    word-break: break-word;
+  }
+}
+
+// Action Buttons
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: auto;
+
+  ion-button {
+    --padding-start: 12px;
+    --padding-end: 12px;
+    --border-radius: 10px;
+    width: 56px;
+    height: 56px;
+
+    ion-icon {
+      font-size: 28px !important;
+    }
+
+    // Pantallas medianas y grandes (mejoramos progresivamente)
+    @media (min-width: 600px) {
+      width: 64px;
+      height: 64px;
+
+      ion-icon {
+        font-size: 32px !important;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      width: 64px;
+      height: 64px;
+
+      ion-icon {
+        font-size: 28px !important;
+      }
+    }
+
+    &amp;.info {
+      --background: rgba(var(--primary-color), 0.2);
+      --color: var(--primary-color);
+
+      &amp;:hover {
+        transform: scale(1.1);
+        --background: rgba(57, 255, 7, 0.199);
+      }
+    }
+
+    &amp;.edit {
+      --background: rgba(var(--secondary-color), 0.2);
+      --color: var(--secondary-color);
+
+      &amp;:hover {
+        transform: scale(1.1);
+        --background: rgba(114, 7, 255, 0.151);
+      }
+    }
+
+    &amp;.delete {
+      --background: rgba(var(--accent-color), 0.2);
+      --color: var(--accent-color);
+
+      &amp;:hover {
+        transform: scale(1.1);
+        --background: rgba(255, 7, 7, 0.3);
+      }
+    }
+
+    &amp;.favorite {
+      --background: rgba(255, 193, 7, 0.2);
+      --color: #ffc107;
+      transition: transform 0.2s ease;
+
+      &amp;:hover {
+        transform: scale(1.1);
+        --background: rgba(255, 193, 7, 0.3);
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- leagues.page.html --><div class="min-h-screen bg-gradient-to-b from-black via-gray-900 to-green-950 text-white font-sans relative">  <ion-header class="ion-no-border">    <ion-toolbar class="w-full py-6 px-4 bg-black/80 backdrop-blur-md shadow-md" style="--background: transparent;">      <ion-buttons slot="start">        <ion-menu-button></ion-menu-button>      </ion-buttons>      <ion-title >        <h1 class="text-2xl md:text-3xl font-bold text-green-400 tracking-wide">{{"LEAGUES.TITLE" | translate}}</h1>      </ion-title>      <ion-button class="create-button" slot="end" (click)="onAddLeague()">        <ion-icon name="add-circle-outline"></ion-icon>        {{\'LEAGUES.CREATE\' | translate}}      </ion-button>    </ion-toolbar>  </ion-header>  <ion-content class="league-content" style="--background: transparent;">    <ion-grid>      <ion-row>        <ion-col           size="12"          size-sm="6"          size-md="4"          size-lg="3"          *ngFor="let league of (leagues$ | async), let i = index"          appDragDrop [dragData]="league" [index]="i" (dropped)="onLeagueDropped($event)"        >          <ion-card appHighlight="rgba(099, 245, 200, 0.1)">            <ion-card-content>              <div class="league-header">                <div class="league-image-container">                  <img [src]="league.picture?.url || img" alt="league logo" class="league-img"/>                  <div class="glow-effect"></div>                </div>                <h2 class="league-name">{{league.name}}</h2>              </div>              <div class="action-buttons">                <ion-button fill="clear" class="info" [routerLink]="[\'/teams\', league.id]">                  <ion-icon name="information-circle" slot="icon-only"></ion-icon>                </ion-button>                <ion-button fill="clear" class="edit" [disabled]="league.userId !== currentUserId" (click)="openLeague(league, i)">                  <ion-icon name="create" slot="icon-only"></ion-icon>                </ion-button>                <ion-button fill="clear" class="delete" [disabled]="league.userId !== currentUserId" (click)="onDeleteLeague(league)">                  <ion-icon name="trash" slot="icon-only"></ion-icon>                </ion-button>                <ion-button                   fill="clear"                   class="favorite"                   color="warning"                   (click)="toggleFavorite(league)">                  <ion-icon                     [name]="currentUser?.leagueFav === league.id ? \'star\' : \'star-outline\'"                     slot="icon-only">                  </ion-icon>                </ion-button>              </div>            </ion-card-content>          </ion-card>        </ion-col>      </ion-row>    </ion-grid>  </ion-content></div></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LanguageSelectorComponent', 'selector': 'app-language-selector'},{'name': 'LeagueCreateModalComponent', 'selector': 'app-league-create-modal'},{'name': 'LeagueSelectableComponent', 'selector': 'app-league-selectable'},{'name': 'LeaguesPage', 'selector': 'app-leagues'},{'name': 'LineupsPage', 'selector': 'app-lineups'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'MatchCreateComponent', 'selector': 'app-match-create'},{'name': 'MatchesPage', 'selector': 'app-matches'},{'name': 'MatchMenuComponent', 'selector': 'app-match-menu'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerCreateModalComponent', 'selector': 'app-player-create-modal'},{'name': 'PlayerModalComponent', 'selector': 'app-player-modal'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectableComponent', 'selector': 'app-position-selectable'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'StatisticsPage', 'selector': 'app-statistics'},{'name': 'TeamCreateModalComponent', 'selector': 'app-team-create-modal'},{'name': 'TeamSelectableComponent', 'selector': 'app-team-selectable'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UsersPage', 'selector': 'app-users'}];
+    var DIRECTIVES = [{'name': 'DragDropDirective', 'selector': '[appDragDrop]'},{'name': 'FilterByTeamDirective', 'selector': '[appFilterByTeam]'},{'name': 'HighLightDirective', 'selector': '[appHighlight]'},{'name': 'TimeDirectiveDirective', 'selector': '[appFormatDate]'}];
+    var ACTUAL_COMPONENT = {'name': 'LeaguesPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'LeaguesPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,1749 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>FootballAdminApp documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">FootballAdminApp documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  PlayerCreateModalComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/components/player-create-modal/player-create-modal.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-player-create-modal</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./player-create-modal.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./player-create-modal.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#formGroup" >formGroup</a>
+                            </li>
+                            <li>
+                                <a href="#getBirthdate" >getBirthdate</a>
+                            </li>
+                            <li>
+                                <a href="#isDatePickerOpen" >isDatePickerOpen</a>
+                            </li>
+                            <li>
+                                <a href="#isMobile" >isMobile</a>
+                            </li>
+                            <li>
+                                <a href="#mode" >mode</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#dismiss" >dismiss</a>
+                            </li>
+                            <li>
+                                <a href="#getDirtyValues" >getDirtyValues</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onDateChange" >onDateChange</a>
+                            </li>
+                            <li>
+                                <a href="#onSubmit" >onSubmit</a>
+                            </li>
+                            <li>
+                                <a href="#openDatePicker" >openDatePicker</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#player" >player</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#player" >player</a>
+                                </li>
+                                <li>
+                                    <a href="#name" >name</a>
+                                </li>
+                                <li>
+                                    <a href="#firstSurname" >firstSurname</a>
+                                </li>
+                                <li>
+                                    <a href="#secondSurname" >secondSurname</a>
+                                </li>
+                                <li>
+                                    <a href="#nationality" >nationality</a>
+                                </li>
+                                <li>
+                                    <a href="#dorsal" >dorsal</a>
+                                </li>
+                                <li>
+                                    <a href="#birthdate" >birthdate</a>
+                                </li>
+                                <li>
+                                    <a href="#position" >position</a>
+                                </li>
+                                <li>
+                                    <a href="#team" >team</a>
+                                </li>
+                                <li>
+                                    <a href="#picture" >picture</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: FormBuilder, modalCtrl: ModalController, platform: Platform)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:35</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>modalCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>ModalController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>platform</td>
+                                                  
+                                                        <td>
+                                                                    <code>Platform</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="player"></a>
+                        <b>player</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Player.html" target="_self" >Player</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:22</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dismiss"></a>
+                    <span class="name">
+                        <span ><b>dismiss</b></span>
+                        <a href="#dismiss"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>dismiss()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="136"
+                                    class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:136</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDirtyValues"></a>
+                    <span class="name">
+                        <span ><b>getDirtyValues</b></span>
+                        <a href="#getDirtyValues"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDirtyValues(formGroup: FormGroup)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:110</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>formGroup</td>
+                                            <td>
+                                                        <code>FormGroup</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onDateChange"></a>
+                    <span class="name">
+                        <span ><b>onDateChange</b></span>
+                        <a href="#onDateChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onDateChange(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSubmit"></a>
+                    <span class="name">
+                        <span ><b>onSubmit</b></span>
+                        <a href="#onSubmit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSubmit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="123"
+                                    class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:123</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openDatePicker"></a>
+                    <span class="name">
+                        <span ><b>openDatePicker</b></span>
+                        <a href="#openDatePicker"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openDatePicker()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formGroup"></a>
+                    <span class="name">
+                        <span ><b>formGroup</b></span>
+                        <a href="#formGroup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBirthdate"></a>
+                    <span class="name">
+                        <span ><b>getBirthdate</b></span>
+                        <a href="#getBirthdate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormControl</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isDatePickerOpen"></a>
+                    <span class="name">
+                        <span ><b>isDatePickerOpen</b></span>
+                        <a href="#isDatePickerOpen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isMobile"></a>
+                    <span class="name">
+                        <span ><b>isMobile</b></span>
+                        <a href="#isMobile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mode"></a>
+                    <span class="name">
+                        <span ><b>mode</b></span>
+                        <a href="#mode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;new&quot; | &quot;edit&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;new&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="player"></a>
+                        <span class="name"><b>player</b><a href="#player"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>player(_player: <a href="../interfaces/Player.html" target="_self">Player</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:22</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>_player</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="../interfaces/Player.html" target="_self" >Player</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="name"></a>
+                        <span class="name"><b>name</b><a href="#name"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>name()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:74</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="firstSurname"></a>
+                        <span class="name"><b>firstSurname</b><a href="#firstSurname"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>firstSurname()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:78</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="secondSurname"></a>
+                        <span class="name"><b>secondSurname</b><a href="#secondSurname"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>secondSurname()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:82</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nationality"></a>
+                        <span class="name"><b>nationality</b><a href="#nationality"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>nationality()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:86</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dorsal"></a>
+                        <span class="name"><b>dorsal</b><a href="#dorsal"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>dorsal()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:90</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="birthdate"></a>
+                        <span class="name"><b>birthdate</b><a href="#birthdate"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>birthdate()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:94</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="position"></a>
+                        <span class="name"><b>position</b><a href="#position"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>position()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:98</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="team"></a>
+                        <span class="name"><b>team</b><a href="#team"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>team()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:102</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="picture"></a>
+                        <span class="name"><b>picture</b><a href="#picture"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>picture()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/shared/components/player-create-modal/player-create-modal.component.ts:106</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { DatePipe } from &#x27;@angular/common&#x27;;import { Component, Input, OnInit } from &#x27;@angular/core&#x27;;
+import { FormGroup, FormBuilder, Validators, FormControl } from &#x27;@angular/forms&#x27;;
+import { ModalController, Platform } from &#x27;@ionic/angular&#x27;;
+import { Player } from &#x27;src/app/core/models/players.model&#x27;;
+import { __param } from &#x27;tslib&#x27;;
+
+
+@Component({
+  selector: &#x27;app-player-create-modal&#x27;,
+  templateUrl: &#x27;./player-create-modal.component.html&#x27;,
+  styleUrls: [&#x27;./player-create-modal.component.scss&#x27;],
+})
+export class PlayerCreateModalComponent  implements OnInit {
+  getBirthdate: FormControl;
+  formGroup:FormGroup;
+  mode:&#x27;new&#x27;|&#x27;edit&#x27; &#x3D; &#x27;new&#x27;;
+  isMobile: boolean &#x3D; false;
+  isDatePickerOpen &#x3D; false;
+
+
+
+  @Input() set player(_player:Player){
+    if(_player &amp;&amp; _player.id)
+      this.mode &#x3D; &#x27;edit&#x27;;
+    
+    this.formGroup.controls[&#x27;name&#x27;].setValue(_player.name);
+    this.formGroup.controls[&#x27;firstSurname&#x27;].setValue(_player.firstSurname)
+    this.formGroup.controls[&#x27;secondSurname&#x27;].setValue(_player.secondSurname);
+    this.formGroup.controls[&#x27;nationality&#x27;].setValue(_player.nationality)
+    this.formGroup.controls[&#x27;dorsal&#x27;].setValue(_player.dorsal);
+    this.formGroup.controls[&#x27;birthdate&#x27;].setValue(_player.birthdate)
+    this.formGroup.controls[&#x27;position&#x27;].setValue(_player.position);
+    this.formGroup.controls[&#x27;team&#x27;].setValue(_player.team)
+    this.formGroup.controls[&#x27;picture&#x27;].setValue(_player.picture?.url)
+  }
+
+  constructor(
+    private fb:FormBuilder,
+    private modalCtrl:ModalController,
+    private platform: Platform,
+    
+  ) { 
+    this.getBirthdate &#x3D; new FormControl(&#x27;&#x27;);
+    this.isMobile &#x3D; this.platform.is(&#x27;ios&#x27;) || this.platform.is(&#x27;android&#x27;);
+    this.formGroup &#x3D; this.fb.group({
+      name:[&#x27;&#x27;, [Validators.required, Validators.minLength(2)]],
+      firstSurname:[&#x27;&#x27;, [Validators.required, Validators.minLength(2)]],
+      secondSurname:[&#x27;&#x27;, [Validators.required, Validators.minLength(2)]],
+      nationality:[&#x27;&#x27;, [Validators.required, Validators.minLength(3)]],
+      dorsal:[&#x27;&#x27;, [Validators.pattern(/^\d+$/)]],
+      birthdate:[&#x27;&#x27;, [Validators.required]],
+      position:[&#x27;&#x27;, [Validators.required, Validators.minLength(2)]],
+      team:[null, [Validators.required]],
+      picture:[&#x27;&#x27;]
+    });
+  }
+  
+  openDatePicker() {
+    this.isDatePickerOpen &#x3D; true;
+  }
+
+  onDateChange(event: any) {
+    const rawDate &#x3D; new Date(event.detail.value); // Convierte el valor recibido a un objeto Date
+
+  // Si prefieres &#x27;dd-MM-yyyy&#x27;
+  const formattedDate &#x3D; &#x60;${rawDate.getDate().toString().padStart(2, &#x27;0&#x27;)}-${(rawDate.getMonth() + 1).toString().padStart(2, &#x27;0&#x27;)}-${rawDate.getFullYear()}&#x60;;
+
+  this.birthdate.setValue(formattedDate); // Asigna el valor formateado al control de formulario
+  this.isDatePickerOpen &#x3D; false; // Cierra el modal del date picker
+  }
+
+  ngOnInit() {}
+
+  get name(){
+    return this.formGroup.controls[&#x27;name&#x27;];
+  }
+
+  get firstSurname(){
+    return this.formGroup.controls[&#x27;firstSurname&#x27;]
+  }
+
+  get secondSurname(){
+    return this.formGroup.controls[&#x27;secondSurname&#x27;]
+  }
+
+  get nationality(){
+    return this.formGroup.controls[&#x27;nationality&#x27;]
+  }
+
+  get dorsal(){
+    return this.formGroup.controls[&#x27;dorsal&#x27;]
+  }
+
+  get birthdate(){
+    return this.formGroup.controls[&#x27;birthdate&#x27;]
+  }
+
+  get position(){
+    return this.formGroup.controls[&#x27;position&#x27;]
+  }
+
+  get team(){
+    return this.formGroup.controls[&#x27;team&#x27;]
+  }
+
+  get picture(){
+    return this.formGroup.controls[&#x27;picture&#x27;]
+  }
+  
+  getDirtyValues(formGroup: FormGroup): any {
+    const dirtyValues: any &#x3D; {};
+  
+    Object.keys(formGroup.controls).forEach(key &#x3D;&gt; {
+      const control &#x3D; formGroup.get(key);
+      if (control?.dirty) {
+        dirtyValues[key] &#x3D; control.value;
+      }
+    });
+  
+    return dirtyValues;
+  }
+
+  onSubmit(){
+    if (this.formGroup.valid) {
+      this.modalCtrl.dismiss(
+          (this.mode&#x3D;&#x3D;&#x27;new&#x27;?
+            this.formGroup.value:
+            this.getDirtyValues(this.formGroup)), this.mode
+      );
+    } else {
+      console.log(&#x27;Formulario inválido&#x27;);
+    }
+
+  }
+
+  dismiss() {
+    this.modalCtrl.dismiss();
+  }
+}
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-toolbar&gt;
+  &lt;ion-icon slot&#x3D;&quot;start&quot; name&#x3D;&quot;football&quot;&gt;&lt;/ion-icon&gt;
+  &lt;ion-title&gt;
+    @if (mode&#x3D;&#x3D;&#x27;edit&#x27;) {
+      {{ &#x27;PLAYERS.EDIT&#x27; | translate }}
+    }
+    @else {
+      {{ &#x27;PLAYERS.NEW&#x27; | translate }}
+    }
+  &lt;/ion-title&gt;
+ 
+    &lt;ion-buttons slot&#x3D;&quot;end&quot;&gt;
+      &lt;ion-button (click)&#x3D;&quot;dismiss()&quot;&gt;
+        &lt;ion-icon slot&#x3D;&quot;icon-only&quot; name&#x3D;&quot;close&quot;&gt;&lt;/ion-icon&gt;
+      &lt;/ion-button&gt;
+    &lt;/ion-buttons&gt;
+  
+&lt;/ion-toolbar&gt;
+&lt;ion-content class&#x3D;&quot;ion-padding&quot; class&#x3D;&quot;scrollable-content&quot;&gt;
+&lt;form [formGroup]&#x3D;&quot;formGroup&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+  &lt;ion-button expand&#x3D;&quot;block&quot; color&#x3D;&quot;transparent&quot; class&#x3D;&quot;picture-button&quot;&gt;
+    &lt;app-picture-selectable formControlName&#x3D;&quot;picture&quot;&gt;&lt;/app-picture-selectable&gt;
+  &lt;/ion-button&gt;
+  
+  &lt;ion-item&gt;
+    &lt;ion-input [label]&#x3D;&quot;&#x27;PLAYERS.NAME&#x27; | translate&quot; label-placement&#x3D;&quot;stacked&quot;  type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;name&quot;&gt;&lt;/ion-input&gt;
+  &lt;/ion-item&gt;
+  &lt;ion-text color&#x3D;&quot;danger&quot; *ngIf&#x3D;&quot;name?.invalid &amp;&amp; (name?.dirty || name?.touched)&quot;&gt;
+    &lt;p *ngIf&#x3D;&quot;name?.errors?.[&#x27;required&#x27;]&quot;&gt;{{ &#x27;PLAYERS.ERRORS.NAME_REQUIRED&#x27; | translate }}&lt;/p&gt;
+    &lt;p *ngIf&#x3D;&quot;name?.errors?.[&#x27;minlength&#x27;]&quot;&gt;{{ &#x27;PLAYERS.ERRORS.NAME_MIN_LENGTH&#x27; | translate }}&lt;/p&gt;
+  &lt;/ion-text&gt;
+
+  &lt;!-- Apellidos --&gt;
+  &lt;ion-item&gt;
+    &lt;ion-input [label]&#x3D;&quot;&#x27;PLAYERS.SURNAME1&#x27; | translate&quot; label-placement&#x3D;&quot;stacked&quot; type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;firstSurname&quot;&gt;&lt;/ion-input&gt;
+  &lt;/ion-item&gt;
+  &lt;ion-text color&#x3D;&quot;danger&quot; *ngIf&#x3D;&quot;firstSurname?.invalid &amp;&amp; (firstSurname?.dirty || firstSurname?.touched)&quot;&gt;
+    &lt;p *ngIf&#x3D;&quot;firstSurname?.errors?.[&#x27;required&#x27;]&quot;&gt;{{ &#x27;PLAYERS.ERRORS.SURNAME_REQUIRED&#x27; | translate }}&lt;/p&gt;
+    &lt;p *ngIf&#x3D;&quot;firstSurname?.errors?.[&#x27;minlength&#x27;]&quot;&gt;{{ &#x27;PLAYERS.ERRORS.SURNAME_MIN_LENGTH&#x27; | translate }}&lt;/p&gt;
+  &lt;/ion-text&gt;
+
+  &lt;ion-item&gt;
+    &lt;ion-input [label]&#x3D;&quot;&#x27;PLAYERS.SURNAME2&#x27; | translate&quot; label-placement&#x3D;&quot;stacked&quot; type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;secondSurname&quot;&gt;&lt;/ion-input&gt;
+  &lt;/ion-item&gt;
+  &lt;ion-text color&#x3D;&quot;danger&quot; *ngIf&#x3D;&quot;secondSurname?.invalid &amp;&amp; (secondSurname?.dirty || secondSurname?.touched)&quot;&gt;
+    &lt;p *ngIf&#x3D;&quot;secondSurname?.errors?.[&#x27;required&#x27;]&quot;&gt;{{ &#x27;PLAYERS.ERRORS.SURNAME_REQUIRED&#x27; | translate }}&lt;/p&gt;
+    &lt;p *ngIf&#x3D;&quot;secondSurname?.errors?.[&#x27;minlength&#x27;]&quot;&gt;{{ &#x27;PLAYERS.ERRORS.SURNAME_MIN_LENGTH&#x27; | translate }}&lt;/p&gt;
+  &lt;/ion-text&gt;
+
+  &lt;!-- Nacionalidad --&gt;
+  &lt;ion-item&gt;
+    &lt;ion-input [label]&#x3D;&quot;&#x27;PLAYERS.NATIONALITY&#x27; | translate&quot; label-placement&#x3D;&quot;stacked&quot; type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;nationality&quot;&gt;&lt;/ion-input&gt;
+  &lt;/ion-item&gt;
+  &lt;ion-text color&#x3D;&quot;danger&quot; *ngIf&#x3D;&quot;nationality?.invalid &amp;&amp; (nationality?.dirty || nationality?.touched)&quot;&gt;
+    &lt;p *ngIf&#x3D;&quot;nationality?.errors?.[&#x27;required&#x27;]&quot;&gt;{{ &#x27;PLAYERS.ERRORS.NATIONALITY_REQUIRED&#x27; | translate }}&lt;/p&gt;
+    &lt;p *ngIf&#x3D;&quot;nationality?.errors?.[&#x27;minlength&#x27;]&quot;&gt;{{ &#x27;PLAYERS.ERRORS.NATIONALITY_INVALID&#x27; | translate }}&lt;/p&gt;
+  &lt;/ion-text&gt;
+
+  &lt;!-- Dorsal --&gt;
+  &lt;ion-item&gt;
+    &lt;ion-input [label]&#x3D;&quot;&#x27;PLAYERS.DORSAL&#x27; | translate&quot; label-placement&#x3D;&quot;stacked&quot; type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;dorsal&quot;&gt;&lt;/ion-input&gt;
+  &lt;/ion-item&gt;
+  &lt;ion-text color&#x3D;&quot;danger&quot; *ngIf&#x3D;&quot;dorsal?.invalid&quot;&gt;
+    &lt;p *ngIf&#x3D;&quot;dorsal?.errors?.[&#x27;pattern&#x27;]&quot;&gt;{{ &#x27;PLAYERS.ERRORS.PATTERN&#x27; | translate }}&lt;/p&gt;
+  &lt;/ion-text&gt;
+  &lt;!-- Fecha Nacimiento --&gt;
+  &lt;ion-item&gt;
+    &lt;ion-input [label]&#x3D;&quot;&#x27;PLAYERS.BIRTHDATE&#x27; | translate&quot; label-placement&#x3D;&quot;stacked&quot; type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;birthdate&quot;&gt;&lt;/ion-input&gt;
+    &lt;ion-button 
+    class&#x3D;&quot;date-button&quot; 
+    fill&#x3D;&quot;outline&quot; 
+    expand&#x3D;&quot;block&quot;
+    (click)&#x3D;&quot;openDatePicker()&quot;&gt;
+    {{ getBirthdate.value ? (getBirthdate.value | date:&#x27;dd-MM-yyyy&#x27;) : &#x27;PLAYERS.SELECT_DATE&#x27;|translate }}
+    &lt;ion-icon name&#x3D;&quot;calendar-outline&quot; slot&#x3D;&quot;start&quot;&gt;&lt;/ion-icon&gt;
+  &lt;/ion-button&gt; 
+  &lt;ion-modal 
+    [isOpen]&#x3D;&quot;isDatePickerOpen&quot; 
+    (didDismiss)&#x3D;&quot;isDatePickerOpen &#x3D; false&quot;
+    class&#x3D;&quot;date-picker-modal&quot;&gt;
+    &lt;ng-template&gt;
+      &lt;ion-datetime
+        #datetime
+        presentation&#x3D;&quot;date&quot;
+        [value]&#x3D;&quot;birthdate.value&quot;
+        (ionChange)&#x3D;&quot;onDateChange($event)&quot;
+        [showDefaultButtons]&#x3D;&quot;true&quot;
+        cancelText&#x3D;&quot;{{&#x27;COMMON.CANCEL&#x27;|translate}}&quot;
+        doneText&#x3D;&quot;{{&#x27;COMMON.ACCEPT&#x27;|translate}}&quot;&gt;
+        &lt;div slot&#x3D;&quot;title&quot;&gt;{{&#x27;PLAYERS.SELECT_DATE&#x27;|translate}}&lt;/div&gt;
+      &lt;/ion-datetime&gt;
+    &lt;/ng-template&gt;
+  &lt;/ion-modal&gt;
+    &lt;div slot&#x3D;&quot;title&quot;&gt;{{&#x27;PLAYERS.SELECT_DATE&#x27;|translate}}&lt;/div&gt;
+&lt;/ion-item&gt;
+  &lt;ion-text color&#x3D;&quot;danger&quot; *ngIf&#x3D;&quot;birthdate?.invalid &amp;&amp; (birthdate?.dirty || birthdate?.touched)&quot;&gt;
+    &lt;p *ngIf&#x3D;&quot;nationality?.errors?.[&#x27;required&#x27;]&quot;&gt;{{ &#x27;PLAYERS.ERRORS.BIRTHDATE_REQUIRED&#x27; | translate }}&lt;/p&gt;
+  &lt;/ion-text&gt;
+  &lt;!-- Posicion --&gt;
+  &lt;ion-item&gt;
+    &lt;ion-label position&#x3D;&quot;stacked&quot;&gt;{{ &#x27;PLAYERS.POSITION&#x27; | translate }}&lt;/ion-label&gt;
+    &lt;app-position-selectable formControlName&#x3D;&quot;position&quot;&gt;&lt;/app-position-selectable&gt;
+  &lt;/ion-item&gt;
+  &lt;ion-item&gt;
+    &lt;ion-label position&#x3D;&quot;stacked&quot;&gt;{{ &#x27;PLAYERS.TEAM&#x27; | translate }}&lt;/ion-label&gt;
+      &lt;app-team-selectable formControlName&#x3D;&quot;team&quot;&gt;&lt;/app-team-selectable&gt;
+  &lt;/ion-item&gt;
+  &lt;!-- Botón de Envío --&gt;
+  &lt;ion-button color&#x3D;&quot;success&quot; [disabled]&#x3D;&quot;!formGroup.valid || !formGroup.dirty&quot; expand&#x3D;&quot;full&quot; type&#x3D;&quot;submit&quot; &gt;
+    @if (mode&#x3D;&#x3D;&#x27;edit&#x27;) {
+      {{ &#x27;PLAYERS.UPDATE&#x27; | translate }}
+    }
+    @else {
+      {{ &#x27;PLAYERS.SUBMIT&#x27; | translate }}
+    }
+  &lt;/ion-button&gt;
+
+
+&lt;/form&gt;
+
+&lt;/ion-content&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./player-create-modal.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">ion-content {
+  --background: none;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+  --min-height: 100%;
+}
+
+ion-toolbar {
+  --background: #355e38;
+  --color: white;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+ion-toolbar ion-title {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  margin: 0;
+  text-align: center;
+}
+
+ion-toolbar ion-icon {
+  font-size: 24px;
+  color: white;
+}
+
+ion-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+ion-button {
+  --background: transparent;
+  --border-radius: 50%;
+  --color: white;
+}
+
+ion-button:hover {
+  --background: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px 16px;
+}
+
+ion-item {
+  --background: transparent;
+  --border-color: #ccc;
+}
+
+ion-input {
+  --padding-start: 10px;
+  --padding-end: 10px;
+}
+
+ion-input label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+ion-text {
+  font-size: 12px;
+  color: #ff3b30;
+  margin-top: -10px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  ion-toolbar {
+    padding: 8px 12px;
+  }
+
+  ion-title {
+    font-size: 16px;
+  }
+
+  ion-button {
+    --border-radius: 50%;
+  }
+
+  form {
+    padding: 10px 12px;
+  }
+}
+
+/* Custom button */
+ion-button[type&#x3D;&quot;submit&quot;] {
+  background: #28a745;
+  color: white;
+  font-weight: bold;
+  margin-top: 15px;
+  --border-radius: 6px;
+}
+
+ion-button[type&#x3D;&quot;submit&quot;]:disabled {
+  background: #ccc;
+}
+
+ion-button[type&#x3D;&quot;submit&quot;]:not(:disabled):hover {
+  background: #218838;
+}
+
+/* Modal content */
+.modal-content {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Adjust form labels for better spacing */
+ion-item ion-label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+/* Estilo del botón de fecha */
+.date-button {
+  --background: none !important;
+  --color: rgba(255, 255, 255) !important;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-radius: 8px;
+  --border-width: 1px;
+  --border-style: solid;
+  --box-shadow: none;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  margin: 8px auto; /* Centro horizontal */
+  width: 80%; /* Reduce el ancho para centrarlo mejor */
+  max-width: 300px; /* Ancho máximo para pantallas más grandes */
+  font-size: 14px;
+  text-align: center; /* Centro del texto */
+  display: flex; /* Usar flexbox */
+  align-items: center; /* Centra verticalmente el contenido */
+  justify-content: center; /* Centro horizontal */
+}
+
+.date-button ion-icon {
+  margin-left: 8px;
+  color: #ffffff;
+}
+
+/* Estilo del modal del calendario */
+.date-picker-modal {
+  --height: auto;
+  --width: 90%;
+  --max-width: 350px;
+  --border-radius: 8px;
+}
+
+.date-picker-modal ion-datetime {
+  --background: rgb(0, 0, 0, 0.1);
+  --ion-color-primary: #355e38;
+  --ion-color-primary-contrast: rgb(0, 0, 0);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.date-picker-modal ion-datetime::part(active) {
+  background: #355e38;
+  color: rgb(0, 0, 0);
+}
+
+.date-picker-modal ion-datetime::part(button-clear),
+.date-picker-modal ion-datetime::part(button-done) {
+  color: #355e38;
+}
+
+/* Ajustes responsive */
+@media (max-width: 600px) {
+  .date-picker-modal {
+    --width: 95%;
+  }
+}
+
+/* Adjust form labels for better spacing */
+ion-item ion-label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.picture-button {
+  --border-radius: 4px; /* Adjust this value to control corner roundness */
+  border-radius: var(--border-radius);
+}
+
+.picture-button input[type&#x3D;&quot;file&quot;] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.scrollable-content {
+  height: 300px;
+  overflow-y: auto;
+  
+  /* Firefox */
+  scrollbar-width: auto;
+  scrollbar-color: #355e38 rgba(255, 255, 255, 0.1);
+  
+  /* Chrome/Safari/Edge */
+  &amp;::-webkit-scrollbar {
+    width: 2px; /* Reducir el ancho */
+  }
+  
+  &amp;::-webkit-scrollbar-track {
+    background: #355e38;
+    border-radius: 4px;
+  }
+  
+  &amp;::-webkit-scrollbar-thumb {
+    background: #589e5c;
+    border-radius: 4px;
+  }
+  
+  /* Hover state */
+  &amp;:hover {
+    &amp;::-webkit-scrollbar {
+      width: 4px; /* Ligeramente más ancho en hover */
+    }
+
+    &amp;::-webkit-scrollbar-track {
+      background: #589e5c;
+      border-radius: 4px;
+    }
+    
+    &amp;::-webkit-scrollbar-thumb {
+      background: #589e5c;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-toolbar>  <ion-icon slot="start" name="football"></ion-icon>  <ion-title>    @if (mode==\'edit\') {      {{ \'PLAYERS.EDIT\' | translate }}    }    @else {      {{ \'PLAYERS.NEW\' | translate }}    }  </ion-title>     <ion-buttons slot="end">      <ion-button (click)="dismiss()">        <ion-icon slot="icon-only" name="close"></ion-icon>      </ion-button>    </ion-buttons>  </ion-toolbar><ion-content class="ion-padding" class="scrollable-content"><form [formGroup]="formGroup" (ngSubmit)="onSubmit()">  <ion-button expand="block" color="transparent" class="picture-button">    <app-picture-selectable formControlName="picture"></app-picture-selectable>  </ion-button>    <ion-item>    <ion-input [label]="\'PLAYERS.NAME\' | translate" label-placement="stacked"  type="text" formControlName="name"></ion-input>  </ion-item>  <ion-text color="danger" *ngIf="name?.invalid && (name?.dirty || name?.touched)">    <p *ngIf="name?.errors?.[\'required\']">{{ \'PLAYERS.ERRORS.NAME_REQUIRED\' | translate }}</p>    <p *ngIf="name?.errors?.[\'minlength\']">{{ \'PLAYERS.ERRORS.NAME_MIN_LENGTH\' | translate }}</p>  </ion-text>  <!-- Apellidos -->  <ion-item>    <ion-input [label]="\'PLAYERS.SURNAME1\' | translate" label-placement="stacked" type="text" formControlName="firstSurname"></ion-input>  </ion-item>  <ion-text color="danger" *ngIf="firstSurname?.invalid && (firstSurname?.dirty || firstSurname?.touched)">    <p *ngIf="firstSurname?.errors?.[\'required\']">{{ \'PLAYERS.ERRORS.SURNAME_REQUIRED\' | translate }}</p>    <p *ngIf="firstSurname?.errors?.[\'minlength\']">{{ \'PLAYERS.ERRORS.SURNAME_MIN_LENGTH\' | translate }}</p>  </ion-text>  <ion-item>    <ion-input [label]="\'PLAYERS.SURNAME2\' | translate" label-placement="stacked" type="text" formControlName="secondSurname"></ion-input>  </ion-item>  <ion-text color="danger" *ngIf="secondSurname?.invalid && (secondSurname?.dirty || secondSurname?.touched)">    <p *ngIf="secondSurname?.errors?.[\'required\']">{{ \'PLAYERS.ERRORS.SURNAME_REQUIRED\' | translate }}</p>    <p *ngIf="secondSurname?.errors?.[\'minlength\']">{{ \'PLAYERS.ERRORS.SURNAME_MIN_LENGTH\' | translate }}</p>  </ion-text>  <!-- Nacionalidad -->  <ion-item>    <ion-input [label]="\'PLAYERS.NATIONALITY\' | translate" label-placement="stacked" type="text" formControlName="nationality"></ion-input>  </ion-item>  <ion-text color="danger" *ngIf="nationality?.invalid && (nationality?.dirty || nationality?.touched)">    <p *ngIf="nationality?.errors?.[\'required\']">{{ \'PLAYERS.ERRORS.NATIONALITY_REQUIRED\' | translate }}</p>    <p *ngIf="nationality?.errors?.[\'minlength\']">{{ \'PLAYERS.ERRORS.NATIONALITY_INVALID\' | translate }}</p>  </ion-text>  <!-- Dorsal -->  <ion-item>    <ion-input [label]="\'PLAYERS.DORSAL\' | translate" label-placement="stacked" type="text" formControlName="dorsal"></ion-input>  </ion-item>  <ion-text color="danger" *ngIf="dorsal?.invalid">    <p *ngIf="dorsal?.errors?.[\'pattern\']">{{ \'PLAYERS.ERRORS.PATTERN\' | translate }}</p>  </ion-text>  <!-- Fecha Nacimiento -->  <ion-item>    <ion-input [label]="\'PLAYERS.BIRTHDATE\' | translate" label-placement="stacked" type="text" formControlName="birthdate"></ion-input>    <ion-button     class="date-button"     fill="outline"     expand="block"    (click)="openDatePicker()">    {{ getBirthdate.value ? (getBirthdate.value | date:\'dd-MM-yyyy\') : \'PLAYERS.SELECT_DATE\'|translate }}    <ion-icon name="calendar-outline" slot="start"></ion-icon>  </ion-button>   <ion-modal     [isOpen]="isDatePickerOpen"     (didDismiss)="isDatePickerOpen = false"    class="date-picker-modal">    <ng-template>      <ion-datetime        #datetime        presentation="date"        [value]="birthdate.value"        (ionChange)="onDateChange($event)"        [showDefaultButtons]="true"        cancelText="{{\'COMMON.CANCEL\'|translate}}"        doneText="{{\'COMMON.ACCEPT\'|translate}}">        <div slot="title">{{\'PLAYERS.SELECT_DATE\'|translate}}</div>      </ion-datetime>    </ng-template>  </ion-modal>    <div slot="title">{{\'PLAYERS.SELECT_DATE\'|translate}}</div></ion-item>  <ion-text color="danger" *ngIf="birthdate?.invalid && (birthdate?.dirty || birthdate?.touched)">    <p *ngIf="nationality?.errors?.[\'required\']">{{ \'PLAYERS.ERRORS.BIRTHDATE_REQUIRED\' | translate }}</p>  </ion-text>  <!-- Posicion -->  <ion-item>    <ion-label position="stacked">{{ \'PLAYERS.POSITION\' | translate }}</ion-label>    <app-position-selectable formControlName="position"></app-position-selectable>  </ion-item>  <ion-item>    <ion-label position="stacked">{{ \'PLAYERS.TEAM\' | translate }}</ion-label>      <app-team-selectable formControlName="team"></app-team-selectable>  </ion-item>  <!-- Botón de Envío -->  <ion-button color="success" [disabled]="!formGroup.valid || !formGroup.dirty" expand="full" type="submit" >    @if (mode==\'edit\') {      {{ \'PLAYERS.UPDATE\' | translate }}    }    @else {      {{ \'PLAYERS.SUBMIT\' | translate }}    }  </ion-button></form></ion-content></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LanguageSelectorComponent', 'selector': 'app-language-selector'},{'name': 'LeagueCreateModalComponent', 'selector': 'app-league-create-modal'},{'name': 'LeagueSelectableComponent', 'selector': 'app-league-selectable'},{'name': 'LeaguesPage', 'selector': 'app-leagues'},{'name': 'LineupsPage', 'selector': 'app-lineups'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'MatchCreateComponent', 'selector': 'app-match-create'},{'name': 'MatchesPage', 'selector': 'app-matches'},{'name': 'MatchMenuComponent', 'selector': 'app-match-menu'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerCreateModalComponent', 'selector': 'app-player-create-modal'},{'name': 'PlayerModalComponent', 'selector': 'app-player-modal'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectableComponent', 'selector': 'app-position-selectable'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'StatisticsPage', 'selector': 'app-statistics'},{'name': 'TeamCreateModalComponent', 'selector': 'app-team-create-modal'},{'name': 'TeamSelectableComponent', 'selector': 'app-team-selectable'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UsersPage', 'selector': 'app-users'}];
+    var DIRECTIVES = [{'name': 'DragDropDirective', 'selector': '[appDragDrop]'},{'name': 'FilterByTeamDirective', 'selector': '[appFilterByTeam]'},{'name': 'HighLightDirective', 'selector': '[appHighlight]'},{'name': 'TimeDirectiveDirective', 'selector': '[appFormatDate]'}];
+    var ACTUAL_COMPONENT = {'name': 'PlayerCreateModalComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'PlayerCreateModalComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

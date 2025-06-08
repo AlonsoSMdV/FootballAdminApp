@@ -1,0 +1,840 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>FootballAdminApp documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">FootballAdminApp documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  UsersPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/users/users.page.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-users</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./users.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./users.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#currentLang" >currentLang</a>
+                            </li>
+                            <li>
+                                <a href="#users" >users</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#loadUsers" >loadUsers</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateUserRole" >updateUserRole</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(usersService: <a href="../injectables/UsersService.html" target="_self">UsersService</a>, toastController: ToastController, languageService: <a href="../injectables/LanguageService.html" target="_self">LanguageService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/users/users.page.ts:14</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>usersService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UsersService.html" target="_self" >UsersService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>toastController</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>languageService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/LanguageService.html" target="_self" >LanguageService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadUsers"></a>
+                    <span class="name">
+                        <span ><b>loadUsers</b></span>
+                        <a href="#loadUsers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadUsers(event?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="28"
+                                    class="link-to-prism">src/app/pages/users/users.page.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="24"
+                                    class="link-to-prism">src/app/pages/users/users.page.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateUserRole"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateUserRole</b></span>
+                        <a href="#updateUserRole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateUserRole(user: <a href="../interfaces/Users.html" target="_self">Users</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/app/pages/users/users.page.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>user</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Users.html" target="_self" >Users</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentLang"></a>
+                    <span class="name">
+                        <span ><b>currentLang</b></span>
+                        <a href="#currentLang"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/users/users.page.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="users"></a>
+                    <span class="name">
+                        <span ><b>users</b></span>
+                        <a href="#users"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Users[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pages/users/users.page.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { ToastController } from &#x27;@ionic/angular&#x27;;
+import { Users } from &#x27;src/app/core/models/users.model&#x27;;
+import { UsersService } from &#x27;src/app/core/services/impl/users.service&#x27;;
+import { LanguageService } from &#x27;src/app/core/services/language.service&#x27;;
+
+@Component({
+  selector: &#x27;app-users&#x27;,
+  templateUrl: &#x27;./users.page.html&#x27;,
+  styleUrls: [&#x27;./users.page.scss&#x27;],
+})
+export class UsersPage implements OnInit {
+  users: Users[] &#x3D; [];
+  currentLang: string
+
+  constructor(
+    private usersService: UsersService,
+    private toastController: ToastController,
+    private languageService: LanguageService
+  ) {
+    this.currentLang &#x3D; this.languageService.getStoredLanguage();
+  }
+
+  ngOnInit() {
+    this.loadUsers();
+  }
+
+  loadUsers(event?: any): void {
+    this.usersService.getAll().subscribe({
+      next: (data: any) &#x3D;&gt; {
+        if (Array.isArray(data)) {
+          this.users &#x3D; data;
+        } else {
+          this.users &#x3D; data?.data || [];
+        }
+        if (event) event.target.complete();
+      },
+      error: err &#x3D;&gt; {
+        console.error(&#x27;Error cargando usuarios:&#x27;, err);
+        if (event) event.target.complete();
+      }
+    });
+  }
+
+  async updateUserRole(user: Users): Promise&lt;void&gt; {
+    const updatedUser: Partial&lt;Users&gt; &#x3D; {
+      role: user.role
+    };
+  
+    this.usersService.update(user.id!, updatedUser as Users).subscribe({
+      next: async () &#x3D;&gt; {
+        const toast &#x3D; await this.toastController.create({
+          message: &#x60;Usuario ${user.name} ahora es ${user.role}&#x60;,
+          duration: 2500,
+          position: &#x27;bottom&#x27;,
+          color: &#x27;success&#x27;
+        });
+        await toast.present();
+      },
+      error: async (err) &#x3D;&gt; {
+        console.error(&#x27;Error al actualizar el rol:&#x27;, err);
+        const toast &#x3D; await this.toastController.create({
+          message: &#x27;Hubo un error al actualizar el rol.&#x27;,
+          duration: 3000,
+          position: &#x27;bottom&#x27;,
+          color: &#x27;danger&#x27;
+        });
+        await toast.present();
+      }
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;min-h-screen bg-gradient-to-b from-black via-gray-900 to-green-950 text-white font-sans&quot; style&#x3D;&quot;--background: transparent;&quot;&gt;
+  &lt;ion-header class&#x3D;&quot;ion-no-border&quot;&gt;
+    &lt;ion-toolbar class&#x3D;&quot;w-full py-6 px-4 bg-black/80 backdrop-blur-md shadow-md&quot; style&#x3D;&quot;--background: transparent;&quot;&gt;
+      &lt;ion-buttons slot&#x3D;&quot;start&quot;&gt;
+        &lt;ion-menu-button&gt;&lt;/ion-menu-button&gt;
+      &lt;/ion-buttons&gt;
+      &lt;ion-title &gt;
+        &lt;h1 class&#x3D;&quot;text-2xl md:text-3xl font-bold text-green-400 tracking-wide&quot;&gt;{{&quot;USERS.TITLE&quot; | translate}}&lt;/h1&gt;
+      &lt;/ion-title&gt;
+    &lt;/ion-toolbar&gt;
+  &lt;/ion-header&gt;
+
+  &lt;ion-content class&#x3D;&quot;ion-padding&quot;  [fullscreen]&#x3D;&quot;true&quot; style&#x3D;&quot;--background: transparent;&quot;&gt;
+    &lt;ion-refresher slot&#x3D;&quot;fixed&quot; (ionRefresh)&#x3D;&quot;loadUsers($event)&quot;&gt;
+      &lt;ion-refresher-content&gt;&lt;/ion-refresher-content&gt;
+    &lt;/ion-refresher&gt;
+
+    &lt;ion-list *ngIf&#x3D;&quot;users!!.length &gt; 0; else noUsers&quot; class&#x3D;&quot;bg-white/0 mb-20&quot; style&#x3D;&quot;--background: transparent;&quot;&gt;
+      &lt;ion-card
+        *ngFor&#x3D;&quot;let user of users&quot;
+        class&#x3D;&quot;bg-white/0 backdrop-blur-lg border border-white/10 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden&quot;
+      &gt;
+        &lt;ion-card-content class&#x3D;&quot;p-4&quot;&gt;
+          &lt;div class&#x3D;&quot;flex flex-wrap items-center justify-between gap-4&quot;&gt;
+            
+            &lt;div class&#x3D;&quot;relative w-20 h-20 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-green-400&quot;&gt;
+              &lt;img
+                [src]&#x3D;&quot;user.picture?.url || &#x27;https://ionicframework.com/docs/img/demos/avatar.svg&#x27;&quot;
+                class&#x3D;&quot;w-full h-full object-cover&quot;
+              /&gt;
+              &lt;div class&#x3D;&quot;absolute inset-0 bg-gradient-to-br from-green-400/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+
+
+            &lt;div class&#x3D;&quot;flex-1 min-w-[150px] text-white&quot;&gt;
+              &lt;h2 class&#x3D;&quot;text-lg font-semibold tracking-wide&quot;&gt;
+                {{ user.name }} {{ user.surname }}
+              &lt;/h2&gt;
+              &lt;p *ngIf&#x3D;&quot;user.email&quot; class&#x3D;&quot;text-white/60 text-sm mt-1&quot;&gt;
+                {{ user.email }}
+              &lt;/p&gt;
+            &lt;/div&gt;
+
+            &lt;div class&#x3D;&quot;w-full max-w-md flex-grow&quot;&gt;
+              &lt;ion-select
+                [(ngModel)]&#x3D;&quot;user.role&quot;
+                interface&#x3D;&quot;popover&quot;
+                class&#x3D;&quot;w-full bg-white/10 text-primary rounded-md p-1 text-center text-base&quot;
+              &gt;
+                &lt;ion-select-option value&#x3D;&quot;Admin&quot;&gt;Admin&lt;/ion-select-option&gt;
+                &lt;ion-select-option value&#x3D;&quot;User&quot;&gt;User&lt;/ion-select-option&gt;
+              &lt;/ion-select&gt;
+            &lt;/div&gt;
+
+
+            &lt;div class&#x3D;&quot;user-action&quot;&gt;
+              &lt;ion-button
+                fill&#x3D;&quot;clear&quot;
+                color&#x3D;&quot;success&quot;
+                class&#x3D;&quot;bg-transparent text-green-400 rounded-full transition duration-300 hover:bg-green-500/20 hover:text-green-300&quot;
+                (click)&#x3D;&quot;updateUserRole(user)&quot;
+              &gt;
+                &lt;ion-icon slot&#x3D;&quot;icon-only&quot; name&#x3D;&quot;checkmark-circle-outline&quot;&gt;&lt;/ion-icon&gt;
+              &lt;/ion-button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/ion-card-content&gt;
+      &lt;/ion-card&gt;
+    &lt;/ion-list&gt;
+
+    &lt;ng-template #noUsers&gt;
+      &lt;div class&#x3D;&quot;no-users-message&quot;&gt;
+        &lt;ion-icon name&#x3D;&quot;person-remove-outline&quot; size&#x3D;&quot;large&quot;&gt;&lt;/ion-icon&gt;
+        &lt;p&gt;{{&quot;USERS.NO_USERS&quot;}}&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/ng-template&gt;
+  &lt;/ion-content&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./users.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="min-h-screen bg-gradient-to-b from-black via-gray-900 to-green-950 text-white font-sans" style="--background: transparent;">  <ion-header class="ion-no-border">    <ion-toolbar class="w-full py-6 px-4 bg-black/80 backdrop-blur-md shadow-md" style="--background: transparent;">      <ion-buttons slot="start">        <ion-menu-button></ion-menu-button>      </ion-buttons>      <ion-title >        <h1 class="text-2xl md:text-3xl font-bold text-green-400 tracking-wide">{{"USERS.TITLE" | translate}}</h1>      </ion-title>    </ion-toolbar>  </ion-header>  <ion-content class="ion-padding"  [fullscreen]="true" style="--background: transparent;">    <ion-refresher slot="fixed" (ionRefresh)="loadUsers($event)">      <ion-refresher-content></ion-refresher-content>    </ion-refresher>    <ion-list *ngIf="users!!.length > 0; else noUsers" class="bg-white/0 mb-20" style="--background: transparent;">      <ion-card        *ngFor="let user of users"        class="bg-white/0 backdrop-blur-lg border border-white/10 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"      >        <ion-card-content class="p-4">          <div class="flex flex-wrap items-center justify-between gap-4">                        <div class="relative w-20 h-20 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-green-400">              <img                [src]="user.picture?.url || \'https://ionicframework.com/docs/img/demos/avatar.svg\'"                class="w-full h-full object-cover"              />              <div class="absolute inset-0 bg-gradient-to-br from-green-400/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>            </div>            <div class="flex-1 min-w-[150px] text-white">              <h2 class="text-lg font-semibold tracking-wide">                {{ user.name }} {{ user.surname }}              </h2>              <p *ngIf="user.email" class="text-white/60 text-sm mt-1">                {{ user.email }}              </p>            </div>            <div class="w-full max-w-md flex-grow">              <ion-select                [(ngModel)]="user.role"                interface="popover"                class="w-full bg-white/10 text-primary rounded-md p-1 text-center text-base"              >                <ion-select-option value="Admin">Admin</ion-select-option>                <ion-select-option value="User">User</ion-select-option>              </ion-select>            </div>            <div class="user-action">              <ion-button                fill="clear"                color="success"                class="bg-transparent text-green-400 rounded-full transition duration-300 hover:bg-green-500/20 hover:text-green-300"                (click)="updateUserRole(user)"              >                <ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon>              </ion-button>            </div>          </div>        </ion-card-content>      </ion-card>    </ion-list>    <ng-template #noUsers>      <div class="no-users-message">        <ion-icon name="person-remove-outline" size="large"></ion-icon>        <p>{{"USERS.NO_USERS"}}</p>      </div>    </ng-template>  </ion-content></div></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LanguageSelectorComponent', 'selector': 'app-language-selector'},{'name': 'LeagueCreateModalComponent', 'selector': 'app-league-create-modal'},{'name': 'LeagueSelectableComponent', 'selector': 'app-league-selectable'},{'name': 'LeaguesPage', 'selector': 'app-leagues'},{'name': 'LineupsPage', 'selector': 'app-lineups'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'MatchCreateComponent', 'selector': 'app-match-create'},{'name': 'MatchesPage', 'selector': 'app-matches'},{'name': 'MatchMenuComponent', 'selector': 'app-match-menu'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerCreateModalComponent', 'selector': 'app-player-create-modal'},{'name': 'PlayerModalComponent', 'selector': 'app-player-modal'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectableComponent', 'selector': 'app-position-selectable'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'StatisticsPage', 'selector': 'app-statistics'},{'name': 'TeamCreateModalComponent', 'selector': 'app-team-create-modal'},{'name': 'TeamSelectableComponent', 'selector': 'app-team-selectable'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UsersPage', 'selector': 'app-users'}];
+    var DIRECTIVES = [{'name': 'DragDropDirective', 'selector': '[appDragDrop]'},{'name': 'FilterByTeamDirective', 'selector': '[appFilterByTeam]'},{'name': 'HighLightDirective', 'selector': '[appHighlight]'},{'name': 'TimeDirectiveDirective', 'selector': '[appFormatDate]'}];
+    var ACTUAL_COMPONENT = {'name': 'UsersPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'UsersPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

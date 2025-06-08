@@ -1,0 +1,1785 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>FootballAdminApp documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">FootballAdminApp documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  StatisticsPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/statistics/statistics.page.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-statistics</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./statistics.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./statistics.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#currentLang" >currentLang</a>
+                            </li>
+                            <li>
+                                <a href="#errorMessage" >errorMessage</a>
+                            </li>
+                            <li>
+                                <a href="#generatedStats" >generatedStats</a>
+                            </li>
+                            <li>
+                                <a href="#loadingStats" >loadingStats</a>
+                            </li>
+                            <li>
+                                <a href="#localGoals" >localGoals</a>
+                            </li>
+                            <li>
+                                <a href="#localTeam" >localTeam</a>
+                            </li>
+                            <li>
+                                <a href="#match" >match</a>
+                            </li>
+                            <li>
+                                <a href="#matchId" >matchId</a>
+                            </li>
+                            <li>
+                                <a href="#stats" >stats</a>
+                            </li>
+                            <li>
+                                <a href="#visitorGoals" >visitorGoals</a>
+                            </li>
+                            <li>
+                                <a href="#visitorTeam" >visitorTeam</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#doRefresh" >doRefresh</a>
+                            </li>
+                            <li>
+                                <a href="#generateStatsBasedOnStatus" >generateStatsBasedOnStatus</a>
+                            </li>
+                            <li>
+                                <a href="#generateValue" >generateValue</a>
+                            </li>
+                            <li>
+                                <a href="#isGreater" >isGreater</a>
+                            </li>
+                            <li>
+                                <a href="#loadMatchData" >loadMatchData</a>
+                            </li>
+                            <li>
+                                <a href="#loadTeams" >loadTeams</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#parseStatValue" >parseStatValue</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: ActivatedRoute, matchSvc: <a href="../injectables/MatchService.html" target="_self">MatchService</a>, teamSvc: <a href="../injectables/TeamService.html" target="_self">TeamService</a>, statsSvc: <a href="../injectables/MatchStatsService.html" target="_self">MatchStatsService</a>, translate: TranslateService, languageService: <a href="../injectables/LanguageService.html" target="_self">LanguageService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/pages/statistics/statistics.page.ts:47</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>matchSvc</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MatchService.html" target="_self" >MatchService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>teamSvc</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TeamService.html" target="_self" >TeamService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>statsSvc</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MatchStatsService.html" target="_self" >MatchStatsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>translate</td>
+                                                  
+                                                        <td>
+                                                                    <code>TranslateService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>languageService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/LanguageService.html" target="_self" >LanguageService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="doRefresh"></a>
+                    <span class="name">
+                        <span ><b>doRefresh</b></span>
+                        <a href="#doRefresh"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>doRefresh(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="255"
+                                    class="link-to-prism">src/app/pages/statistics/statistics.page.ts:255</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generateStatsBasedOnStatus"></a>
+                    <span class="name">
+                        <span ><b>generateStatsBasedOnStatus</b></span>
+                        <a href="#generateStatsBasedOnStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>generateStatsBasedOnStatus()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="111"
+                                    class="link-to-prism">src/app/pages/statistics/statistics.page.ts:111</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generateValue"></a>
+                    <span class="name">
+                        <span ><b>generateValue</b></span>
+                        <a href="#generateValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>generateValue(baseValue: number | string)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="205"
+                                    class="link-to-prism">src/app/pages/statistics/statistics.page.ts:205</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>baseValue</td>
+                                            <td>
+                                                        <code>number | string</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>number | string</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isGreater"></a>
+                    <span class="name">
+                        <span ><b>isGreater</b></span>
+                        <a href="#isGreater"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isGreater(a: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, b: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="241"
+                                    class="link-to-prism">src/app/pages/statistics/statistics.page.ts:241</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>a</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>b</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadMatchData"></a>
+                    <span class="name">
+                        <span ><b>loadMatchData</b></span>
+                        <a href="#loadMatchData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadMatchData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/app/pages/statistics/statistics.page.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadTeams"></a>
+                    <span class="name">
+                        <span ><b>loadTeams</b></span>
+                        <a href="#loadTeams"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadTeams()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="222"
+                                    class="link-to-prism">src/app/pages/statistics/statistics.page.ts:222</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/app/pages/statistics/statistics.page.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="parseStatValue"></a>
+                    <span class="name">
+                        <span ><b>parseStatValue</b></span>
+                        <a href="#parseStatValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>parseStatValue(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="247"
+                                    class="link-to-prism">src/app/pages/statistics/statistics.page.ts:247</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentLang"></a>
+                    <span class="name">
+                        <span ><b>currentLang</b></span>
+                        <a href="#currentLang"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/pages/statistics/statistics.page.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="errorMessage"></a>
+                    <span class="name">
+                        <span ><b>errorMessage</b></span>
+                        <a href="#errorMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/pages/statistics/statistics.page.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generatedStats"></a>
+                    <span class="name">
+                        <span ><b>generatedStats</b></span>
+                        <a href="#generatedStats"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/pages/statistics/statistics.page.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingStats"></a>
+                    <span class="name">
+                        <span ><b>loadingStats</b></span>
+                        <a href="#loadingStats"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/pages/statistics/statistics.page.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="localGoals"></a>
+                    <span class="name">
+                        <span ><b>localGoals</b></span>
+                        <a href="#localGoals"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/statistics/statistics.page.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="localTeam"></a>
+                    <span class="name">
+                        <span ><b>localTeam</b></span>
+                        <a href="#localTeam"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Team.html" target="_self" >Team | null</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/statistics/statistics.page.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="match"></a>
+                    <span class="name">
+                        <span ><b>match</b></span>
+                        <a href="#match"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/MatchWithTeams.html" target="_self" >MatchWithTeams</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/statistics/statistics.page.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="matchId"></a>
+                    <span class="name">
+                        <span ><b>matchId</b></span>
+                        <a href="#matchId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/statistics/statistics.page.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="stats"></a>
+                    <span class="name">
+                        <span ><b>stats</b></span>
+                        <a href="#stats"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { name: &#x27;Tiros&#x27;, local: 18, visitor: 13 },
+    { name: &#x27;Tiros a puerta&#x27;, local: 10, visitor: 3 },
+    { name: &#x27;Posesión&#x27;, local: &#x27;61%&#x27;, visitor: &#x27;39%&#x27; },
+    { name: &#x27;Pases&#x27;, local: 545, visitor: 349 },
+    { name: &#x27;Precisión de pases&#x27;, local: &#x27;88%&#x27;, visitor: &#x27;82%&#x27; },
+    { name: &#x27;Faltas&#x27;, local: 5, visitor: 12 },
+    { name: &#x27;Tarjetas amarillas&#x27;, local: 0, visitor: 2 },
+    { name: &#x27;Tarjetas rojas&#x27;, local: 0, visitor: 0 },
+    { name: &#x27;Fueras de juego&#x27;, local: 1, visitor: 4 },
+    { name: &#x27;Saques de esquina&#x27;, local: 4, visitor: 6 }
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/statistics/statistics.page.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="visitorGoals"></a>
+                    <span class="name">
+                        <span ><b>visitorGoals</b></span>
+                        <a href="#visitorGoals"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/pages/statistics/statistics.page.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="visitorTeam"></a>
+                    <span class="name">
+                        <span ><b>visitorTeam</b></span>
+                        <a href="#visitorTeam"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Team.html" target="_self" >Team | null</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/statistics/statistics.page.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
+import { firstValueFrom } from &#x27;rxjs&#x27;;
+import { Match } from &#x27;src/app/core/models/matches.model&#x27;;
+import { MatchStatistics } from &#x27;src/app/core/models/matchStatistics.model&#x27;;
+import { Paginated } from &#x27;src/app/core/models/paginated.model&#x27;;
+import { Team } from &#x27;src/app/core/models/teams.model&#x27;;
+import { MatchService } from &#x27;src/app/core/services/impl/match.service&#x27;;
+import { MatchStatsService } from &#x27;src/app/core/services/impl/matchStats.service&#x27;;
+import { TeamService } from &#x27;src/app/core/services/impl/team.service&#x27;;
+import { LanguageService } from &#x27;src/app/core/services/language.service&#x27;;
+
+interface MatchWithTeams extends Match {
+  localTeam?: Team;
+  visitorTeam?: Team;
+}
+
+@Component({
+  selector: &#x27;app-statistics&#x27;,
+  templateUrl: &#x27;./statistics.page.html&#x27;,
+  styleUrls: [&#x27;./statistics.page.scss&#x27;],
+})
+export class StatisticsPage implements OnInit {
+  matchId!: string;
+  match!: MatchWithTeams;
+  localGoals!: string;
+  visitorGoals!: string;
+  localTeam!: Team | null;
+  visitorTeam!: Team | null;
+  generatedStats!: any;
+  loadingStats &#x3D; true;
+  errorMessage: string | null &#x3D; null;
+  currentLang: string
+
+  stats &#x3D; [
+    { name: &#x27;Tiros&#x27;, local: 18, visitor: 13 },
+    { name: &#x27;Tiros a puerta&#x27;, local: 10, visitor: 3 },
+    { name: &#x27;Posesión&#x27;, local: &#x27;61%&#x27;, visitor: &#x27;39%&#x27; },
+    { name: &#x27;Pases&#x27;, local: 545, visitor: 349 },
+    { name: &#x27;Precisión de pases&#x27;, local: &#x27;88%&#x27;, visitor: &#x27;82%&#x27; },
+    { name: &#x27;Faltas&#x27;, local: 5, visitor: 12 },
+    { name: &#x27;Tarjetas amarillas&#x27;, local: 0, visitor: 2 },
+    { name: &#x27;Tarjetas rojas&#x27;, local: 0, visitor: 0 },
+    { name: &#x27;Fueras de juego&#x27;, local: 1, visitor: 4 },
+    { name: &#x27;Saques de esquina&#x27;, local: 4, visitor: 6 }
+  ];
+
+  constructor(
+    private route: ActivatedRoute,
+    private matchSvc: MatchService,
+    private teamSvc: TeamService,
+    private statsSvc: MatchStatsService,
+    private translate: TranslateService,
+    private languageService: LanguageService) {
+      this.currentLang &#x3D; this.languageService.getStoredLanguage();
+    }
+
+  ngOnInit() {
+    this.matchId &#x3D; this.route.snapshot.paramMap.get(&#x27;id&#x27;)!;
+    this.loadMatchData();
+  }
+
+  loadMatchData() {
+    this.loadingStats &#x3D; true;
+    this.errorMessage &#x3D; null;
+
+    this.matchSvc.getById(this.matchId).subscribe({
+      next: async (match) &#x3D;&gt; {
+        try {
+          const [localTeamRaw, visitorTeamRaw] &#x3D; await Promise.all([
+            match!.localTeamId ? firstValueFrom(this.teamSvc.getById(match!.localTeamId)) : Promise.resolve(undefined),
+            match!.visitorTeamId ? firstValueFrom(this.teamSvc.getById(match!.visitorTeamId)) : Promise.resolve(undefined)
+          ]);
+
+          // Asegurar que sean undefined si venían como null
+          const localTeam &#x3D; localTeamRaw ?? undefined;
+          const visitorTeam &#x3D; visitorTeamRaw ?? undefined;
+
+          this.match &#x3D; {
+            ...(match as Match),
+            localTeam,
+            visitorTeam
+          };
+          
+          if (typeof this.match.result &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; this.match.result.includes(&#x27;-&#x27;)) {
+            const [local, visitor] &#x3D; this.match.result.split(&#x27;-&#x27;);
+            this.localGoals &#x3D; local?.trim();
+            this.visitorGoals &#x3D; visitor?.trim();
+          } else {
+            this.localGoals &#x3D; &#x27;0&#x27;;
+            this.visitorGoals &#x3D; &#x27;0&#x27;;
+          }
+          
+          this.loadTeams();
+          this.generateStatsBasedOnStatus();
+        } catch (error) {
+          console.error(&#x27;Error fetching team data:&#x27;, error);
+          this.errorMessage &#x3D; &#x27;Error al cargar los datos de los equipos.&#x27;;
+          this.loadingStats &#x3D; false;
+        }
+      },
+      error: (err) &#x3D;&gt; {
+        console.error(&#x27;Error fetching match:&#x27;, err);
+        this.errorMessage &#x3D; &#x27;Error al cargar el partido.&#x27;;
+        this.loadingStats &#x3D; false;
+      }
+    });
+  }
+
+  generateStatsBasedOnStatus() {
+    if (!this.match || !this.match.status) {
+      this.loadingStats &#x3D; false;
+      return;
+    }
+  
+    const baseStats &#x3D; this.stats.map(stat &#x3D;&gt; ({
+      name: stat.name,
+      localValue: 0,
+      visitorValue: 0,
+    }));
+  
+    const statsId &#x3D; this.generatedStats?.id || this.match.id + &#x27;_stats&#x27;;
+  
+    if (this.match.status.toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;finalizado&#x27;) {
+      // Verificamos si ya existen stats en Firebase
+      this.statsSvc.getAll().subscribe({
+        next: (allStatsResult: any[] | Paginated&lt;any&gt;) &#x3D;&gt; {
+          const statsArray &#x3D; Array.isArray(allStatsResult)
+            ? allStatsResult
+            : allStatsResult.data ?? [];
+      
+          const existingStats &#x3D; statsArray.find(s &#x3D;&gt; s.matchId &#x3D;&#x3D;&#x3D; this.match.id);
+      
+          if (existingStats) {
+            this.generatedStats &#x3D; existingStats;
+          } else {
+            const newStats: any &#x3D; {
+              matchId: this.match.id,
+              userId: &#x27;&#x27;, // Si es vacío, considera no incluirlo
+              stats: this.stats.map(stat &#x3D;&gt; ({
+                name: stat.name,
+                localValue: this.generateValue(stat.local),
+                visitorValue: this.generateValue(stat.visitor),
+              }))
+            };
+            
+            // Si userId está vacío, elimínalo para que no cause problemas
+            if (!newStats.userId) {
+              delete newStats.userId;
+            }
+            
+            // Validar que no haya propiedades con valores undefined
+            Object.keys(newStats).forEach(key &#x3D;&gt; {
+              if (newStats[key] &#x3D;&#x3D;&#x3D; undefined) {
+                delete newStats[key];
+              }
+            });
+      
+            this.statsSvc.add(newStats).subscribe({
+              next: () &#x3D;&gt; {
+                this.generatedStats &#x3D; newStats;
+              },
+              error: (err) &#x3D;&gt; {
+                console.error(&#x27;Error saving stats to Firebase:&#x27;, err);
+                this.errorMessage &#x3D; &#x27;Error al guardar las estadísticas en Firebase.&#x27;;
+              }
+            });
+          }
+      
+          this.loadingStats &#x3D; false;
+        },
+        error: err &#x3D;&gt; {
+          console.error(&#x27;Error loading stats from Firebase:&#x27;, err);
+          this.errorMessage &#x3D; &#x27;Error al cargar estadísticas desde Firebase.&#x27;;
+          this.loadingStats &#x3D; false;
+        }
+      });
+    } else if (this.match.status.toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;por jugar&#x27;) {
+      // Partido no ha comenzado
+      this.generatedStats &#x3D; {
+        id: statsId,
+        matchId: this.match.id,
+        userId: &#x27;&#x27;,
+        stats: baseStats
+      };
+      this.loadingStats &#x3D; false;
+    } else {
+      // Jugando u otro estado, estadísticas generadas al vuelo
+      this.generatedStats &#x3D; {
+        id: statsId,
+        matchId: this.match.id,
+        userId: &#x27;&#x27;,
+        stats: this.stats.map(stat &#x3D;&gt; ({
+          name: stat.name,
+          localValue: this.generateValue(stat.local),
+          visitorValue: this.generateValue(stat.visitor),
+        }))
+      };
+      this.loadingStats &#x3D; false;
+    }
+  }
+  
+
+  generateValue(baseValue: number | string): number | string {
+    const base &#x3D; typeof baseValue &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; baseValue.includes(&#x27;%&#x27;)
+      ? parseFloat(baseValue.replace(&#x27;%&#x27;, &#x27;&#x27;))
+      : Number(baseValue);
+  
+    if (isNaN(base)) return 0;
+  
+    const variation &#x3D; base * 0.3; // hasta un 30% de variación
+    let randomValue &#x3D; base + (Math.random() * variation - variation / 2);
+  
+    if (typeof baseValue &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; baseValue.includes(&#x27;%&#x27;)) {
+      return &#x60;${Math.max(0, Math.min(100, Number(randomValue.toFixed(0))))}%&#x60;;
+    }
+  
+    return Math.max(0, Math.round(randomValue));
+  }
+
+  loadTeams() {
+    // Verificar que &#x60;this.match&#x60; no es undefined antes de intentar acceder a sus propiedades
+    if (this.match) {
+      if (this.match.localTeamId) {
+        this.teamSvc.getById(this.match.localTeamId).subscribe({
+          next: (team) &#x3D;&gt; this.localTeam &#x3D; team!,
+          error: err &#x3D;&gt; console.error(&#x27;Error loading local team:&#x27;, err)
+        });
+      }
+    
+      if (this.match.visitorTeamId) {
+        this.teamSvc.getById(this.match.visitorTeamId).subscribe({
+          next: (team) &#x3D;&gt; this.visitorTeam &#x3D; team!,
+          error: err &#x3D;&gt; console.error(&#x27;Error loading visitor team:&#x27;, err)
+        });
+      }
+    }
+  }
+
+  isGreater(a: any, b: any): boolean {
+    const valA &#x3D; this.parseStatValue(a);
+    const valB &#x3D; this.parseStatValue(b);
+    return valA &gt; valB;
+  }
+  
+  parseStatValue(value: any): number {
+    if (typeof value &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; value.includes(&#x27;%&#x27;)) {
+      return parseFloat(value.replace(&#x27;%&#x27;, &#x27;&#x27;));
+    }
+    return typeof value &#x3D;&#x3D;&#x3D; &#x27;number&#x27; ? value : parseFloat(value) || 0;
+  }
+  
+  // Método para refrescar los datos
+  doRefresh(event: any) {
+    this.loadMatchData();
+    setTimeout(() &#x3D;&gt; {
+      event.target.complete();
+    }, 1000);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;min-h-screen bg-gradient-to-b from-black via-gray-900 to-green-950 text-white font-sans&quot;&gt;
+
+  &lt;ion-header class&#x3D;&quot;ion-no-border&quot;&gt;
+    &lt;ion-toolbar class&#x3D;&quot;bg-black/80 backdrop-blur-md px-4 py-5&quot;&gt;
+      &lt;ion-buttons slot&#x3D;&quot;start&quot;&gt;
+        &lt;ion-menu-button&gt;&lt;/ion-menu-button&gt;
+      &lt;/ion-buttons&gt;
+      &lt;ion-title&gt;
+        &lt;h1 class&#x3D;&quot;text-2xl font-bold text-green-400 tracking-wide&quot;&gt;
+          {{&quot;STATS.TITLE&quot; | translate}}
+        &lt;/h1&gt;
+      &lt;/ion-title&gt;
+    &lt;/ion-toolbar&gt;
+  &lt;/ion-header&gt;
+
+  &lt;ion-content class&#x3D;&quot;bg-transparent&quot; [fullscreen]&#x3D;&quot;true&quot; style&#x3D;&quot;--background: transparent;&quot;&gt;
+
+    &lt;div class&#x3D;&quot;flex justify-center items-center h-64&quot; *ngIf&#x3D;&quot;loadingStats&quot;&gt;
+      &lt;ion-spinner name&#x3D;&quot;crescent&quot; color&#x3D;&quot;success&quot;&gt;&lt;/ion-spinner&gt;
+    &lt;/div&gt;
+
+    &lt;div *ngIf&#x3D;&quot;!match &amp;&amp; !loadingStats&quot; class&#x3D;&quot;text-center text-red-500 py-6&quot;&gt;
+      {{&quot;STATS.ERROR&quot;}}
+    &lt;/div&gt;
+
+    &lt;div *ngIf&#x3D;&quot;match &amp;&amp; !loadingStats&quot; class&#x3D;&quot;px-4 pb-12 max-w-4xl mx-auto&quot;&gt;
+
+      &lt;div class&#x3D;&quot;text-center mt-6&quot;&gt;
+        &lt;div class&#x3D;&quot;text-lg md:text-xl font-medium&quot;&gt;
+          {{ localTeam?.name || &#x27;Local&#x27; }}
+          &lt;span class&#x3D;&quot;text-green-400 font-bold text-2xl mx-2&quot;&gt;{{ localGoals }}&lt;/span&gt;
+          &lt;span class&#x3D;&quot;text-gray-300&quot;&gt;-&lt;/span&gt;
+          &lt;span class&#x3D;&quot;text-green-400 font-bold text-2xl mx-2&quot;&gt;{{ visitorGoals }}&lt;/span&gt;
+          {{ visitorTeam?.name || &#x27;Visitante&#x27; }}
+        &lt;/div&gt;
+        &lt;div [ngClass]&#x3D;&quot;{
+          &#x27;text-red-500&#x27;: match.status.toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;finalizado&#x27;,
+          &#x27;text-green-500&#x27;: match.status.toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;jugando&#x27;,
+          &#x27;text-orange-400&#x27;: match.status.toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;por jugar&#x27;
+        }&quot; class&#x3D;&quot;text-sm font-semibold mt-1&quot;&gt;
+          {{ match.status || &#x27;Finalizado&#x27; }}
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;flex justify-center items-center gap-16 mt-6&quot;&gt;
+        &lt;img *ngIf&#x3D;&quot;localTeam?.picture&quot; [src]&#x3D;&quot;localTeam?.picture?.url&quot; alt&#x3D;&quot;Local&quot;
+             class&#x3D;&quot;w-20 h-20 rounded-full bg-emerald-950 p-1 shadow-lg shadow-emerald-800/40&quot; /&gt;
+        &lt;img *ngIf&#x3D;&quot;visitorTeam?.picture&quot; [src]&#x3D;&quot;visitorTeam?.picture?.url&quot; alt&#x3D;&quot;Visitante&quot;
+             class&#x3D;&quot;w-20 h-20 rounded-full bg-emerald-950 p-1 shadow-lg shadow-emerald-800/40&quot; /&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;grid grid-cols-3 gap-y-4 mt-10 bg-white/5 backdrop-blur-md rounded-xl px-4 py-6 shadow-md&quot;&gt;
+        &lt;ng-container *ngFor&#x3D;&quot;let stat of generatedStats.stats&quot;&gt;
+          &lt;div class&#x3D;&quot;text-right pr-2 font-semibold&quot;
+               [ngClass]&#x3D;&quot;{ &#x27;text-green-400&#x27;: isGreater(stat.localValue, stat.visitorValue) }&quot;&gt;
+            {{ stat.localValue }}
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;text-center text-sm text-gray-300 font-medium&quot;&gt;{{ stat.name }}&lt;/div&gt;
+          &lt;div class&#x3D;&quot;text-left pl-2 font-semibold&quot;
+               [ngClass]&#x3D;&quot;{ &#x27;text-green-400&#x27;: isGreater(stat.visitorValue, stat.localValue) }&quot;&gt;
+            {{ stat.visitorValue }}
+          &lt;/div&gt;
+        &lt;/ng-container&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+
+  &lt;/ion-content&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./statistics.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">:host {
+  --primary-color: #00ff88;
+  --secondary-color: #5050db;
+  --accent-color: #ff3366;
+  --background-dark: #131313;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.2);
+  --input-bg: rgba(255, 255, 255, 0);
+  --input-border: rgba(255, 255, 255, 0.192);
+}
+
+// Header Styles
+ion-header {
+  ion-toolbar {
+    --background: transparent;
+    backdrop-filter: blur(10px);
+    
+    ion-title {
+      font-weight: 700;
+      background: linear-gradient(45deg, var(--primary-color), #00ffcc);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+// statistics.page.scss actualizado
+.stats-container {
+  text-align: center;
+  padding: 16px;
+  color: #fff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.result {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.match-state {
+  font-size: 1.2rem;
+  color: #F97316; // Color naranja para &quot;Por jugar&quot; o verde para &quot;Finalizado&quot;
+  margin-bottom: 24px;
+  font-weight: 500;
+  
+  &amp;.finalizado {
+    color: #FF3B30;
+  }
+
+  &amp;.jugando {
+    color: #4da841;
+  }
+  
+  &amp;.por-jugar {
+    color: #F97316;
+  }
+}
+
+.stats-table {
+  display: grid;
+  grid-template-columns:5fr auto 5fr;
+  row-gap: 16px;
+  align-items: center;
+  justify-items: center;
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 16px;
+  background-color: #0c4a2a00; // Un tono más claro del verde para la tabla
+}
+
+.team-logos {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  margin-bottom: 20px;
+}
+
+.team-logo {
+  margin: 10px 20px;
+  
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #0C4A2A; // Fondo para los logos
+    padding: 5px;
+  }
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 50px;
+  min-width: 50px;
+  display:flex;
+}
+
+.stat-value.left {
+  justify-self: end;
+  background-color: rgba(85, 235, 55, 0.2); // Verde más transparente
+  color: #fff;
+  &amp;.highlight {
+    background-color: #10B981; // Verde más brillante cuando es mayor
+    color: #fff;
+  }
+}
+
+.stat-value.right {
+  justify-self: start;
+  background-color: rgba(150, 150, 150, 0.2); // Gris más transparente
+  color: #fff;
+  &amp;.highlight {
+    background-color: #10B981; // Verde más brillante cuando es mayor
+    color: #fff;
+  }
+}
+
+.stat-name {
+  font-size: 1rem;
+  color: #D1D5DB; // Color más claro para los nombres de las estadísticas
+  font-weight: 500;
+  min-width: 120px;
+}
+
+
+ion-toolbar {
+  --background: #0C4A2A;
+  --color: #fff;
+  --border-color: transparent;
+}
+
+ion-title {
+  font-weight: bold;
+  color: #fff;
+}
+
+// Estilos para el spinner de carga
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+// Estilos para el mensaje de error
+.error-message {
+  text-align: center;
+  color: #FF3B30;
+  padding: 20px;
+}
+
+// Estilos específicos para vs
+.vs {
+  color: #10B981;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+// Estilos para el resultado
+.score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  
+  .team-name {
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+  
+  .goals {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #10B981;
+    margin: 0 10px;
+  }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="min-h-screen bg-gradient-to-b from-black via-gray-900 to-green-950 text-white font-sans">  <ion-header class="ion-no-border">    <ion-toolbar class="bg-black/80 backdrop-blur-md px-4 py-5">      <ion-buttons slot="start">        <ion-menu-button></ion-menu-button>      </ion-buttons>      <ion-title>        <h1 class="text-2xl font-bold text-green-400 tracking-wide">          {{"STATS.TITLE" | translate}}        </h1>      </ion-title>    </ion-toolbar>  </ion-header>  <ion-content class="bg-transparent" [fullscreen]="true" style="--background: transparent;">    <div class="flex justify-center items-center h-64" *ngIf="loadingStats">      <ion-spinner name="crescent" color="success"></ion-spinner>    </div>    <div *ngIf="!match && !loadingStats" class="text-center text-red-500 py-6">      {{"STATS.ERROR"}}    </div>    <div *ngIf="match && !loadingStats" class="px-4 pb-12 max-w-4xl mx-auto">      <div class="text-center mt-6">        <div class="text-lg md:text-xl font-medium">          {{ localTeam?.name || \'Local\' }}          <span class="text-green-400 font-bold text-2xl mx-2">{{ localGoals }}</span>          <span class="text-gray-300">-</span>          <span class="text-green-400 font-bold text-2xl mx-2">{{ visitorGoals }}</span>          {{ visitorTeam?.name || \'Visitante\' }}        </div>        <div [ngClass]="{          \'text-red-500\': match.status.toLowerCase() === \'finalizado\',          \'text-green-500\': match.status.toLowerCase() === \'jugando\',          \'text-orange-400\': match.status.toLowerCase() === \'por jugar\'        }" class="text-sm font-semibold mt-1">          {{ match.status || \'Finalizado\' }}        </div>      </div>      <div class="flex justify-center items-center gap-16 mt-6">        <img *ngIf="localTeam?.picture" [src]="localTeam?.picture?.url" alt="Local"             class="w-20 h-20 rounded-full bg-emerald-950 p-1 shadow-lg shadow-emerald-800/40" />        <img *ngIf="visitorTeam?.picture" [src]="visitorTeam?.picture?.url" alt="Visitante"             class="w-20 h-20 rounded-full bg-emerald-950 p-1 shadow-lg shadow-emerald-800/40" />      </div>      <div class="grid grid-cols-3 gap-y-4 mt-10 bg-white/5 backdrop-blur-md rounded-xl px-4 py-6 shadow-md">        <ng-container *ngFor="let stat of generatedStats.stats">          <div class="text-right pr-2 font-semibold"               [ngClass]="{ \'text-green-400\': isGreater(stat.localValue, stat.visitorValue) }">            {{ stat.localValue }}          </div>          <div class="text-center text-sm text-gray-300 font-medium">{{ stat.name }}</div>          <div class="text-left pl-2 font-semibold"               [ngClass]="{ \'text-green-400\': isGreater(stat.visitorValue, stat.localValue) }">            {{ stat.visitorValue }}          </div>        </ng-container>      </div>    </div>  </ion-content></div></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LanguageSelectorComponent', 'selector': 'app-language-selector'},{'name': 'LeagueCreateModalComponent', 'selector': 'app-league-create-modal'},{'name': 'LeagueSelectableComponent', 'selector': 'app-league-selectable'},{'name': 'LeaguesPage', 'selector': 'app-leagues'},{'name': 'LineupsPage', 'selector': 'app-lineups'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'MatchCreateComponent', 'selector': 'app-match-create'},{'name': 'MatchesPage', 'selector': 'app-matches'},{'name': 'MatchMenuComponent', 'selector': 'app-match-menu'},{'name': 'PictureSelectableComponent', 'selector': 'app-picture-selectable'},{'name': 'PlayerCreateModalComponent', 'selector': 'app-player-create-modal'},{'name': 'PlayerModalComponent', 'selector': 'app-player-modal'},{'name': 'PlayersPage', 'selector': 'app-players'},{'name': 'PositionSelectableComponent', 'selector': 'app-position-selectable'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'SplashPage', 'selector': 'app-splash'},{'name': 'StatisticsPage', 'selector': 'app-statistics'},{'name': 'TeamCreateModalComponent', 'selector': 'app-team-create-modal'},{'name': 'TeamSelectableComponent', 'selector': 'app-team-selectable'},{'name': 'TeamsPage', 'selector': 'app-teams'},{'name': 'UsersPage', 'selector': 'app-users'}];
+    var DIRECTIVES = [{'name': 'DragDropDirective', 'selector': '[appDragDrop]'},{'name': 'FilterByTeamDirective', 'selector': '[appFilterByTeam]'},{'name': 'HighLightDirective', 'selector': '[appHighlight]'},{'name': 'TimeDirectiveDirective', 'selector': '[appFormatDate]'}];
+    var ACTUAL_COMPONENT = {'name': 'StatisticsPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'StatisticsPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

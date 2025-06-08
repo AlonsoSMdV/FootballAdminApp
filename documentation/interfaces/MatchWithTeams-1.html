@@ -1,0 +1,597 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>FootballAdminApp documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">FootballAdminApp documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  MatchWithTeams</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/pages/statistics/statistics.page.ts</code>
+        </p>
+
+
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                            <code><a href="../interfaces/Match.html" target="_self" >Match</a></code>
+            </p>
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#localTeam" 
+>
+                                            localTeam
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#visitorTeam" 
+>
+                                            visitorTeam
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="localTeam"></a>
+                                        <span class="name "><b>localTeam</b>
+                                            <a href="#localTeam">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>localTeam:         <code><a href="../interfaces/Team.html" target="_self" >Team</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="../interfaces/Team.html" target="_self" >Team</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="visitorTeam"></a>
+                                        <span class="name "><b>visitorTeam</b>
+                                            <a href="#visitorTeam">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>visitorTeam:         <code><a href="../interfaces/Team.html" target="_self" >Team</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="../interfaces/Team.html" target="_self" >Team</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
+import { firstValueFrom } from &#x27;rxjs&#x27;;
+import { Match } from &#x27;src/app/core/models/matches.model&#x27;;
+import { MatchStatistics } from &#x27;src/app/core/models/matchStatistics.model&#x27;;
+import { Paginated } from &#x27;src/app/core/models/paginated.model&#x27;;
+import { Team } from &#x27;src/app/core/models/teams.model&#x27;;
+import { MatchService } from &#x27;src/app/core/services/impl/match.service&#x27;;
+import { MatchStatsService } from &#x27;src/app/core/services/impl/matchStats.service&#x27;;
+import { TeamService } from &#x27;src/app/core/services/impl/team.service&#x27;;
+import { LanguageService } from &#x27;src/app/core/services/language.service&#x27;;
+
+interface MatchWithTeams extends Match {
+  localTeam?: Team;
+  visitorTeam?: Team;
+}
+
+@Component({
+  selector: &#x27;app-statistics&#x27;,
+  templateUrl: &#x27;./statistics.page.html&#x27;,
+  styleUrls: [&#x27;./statistics.page.scss&#x27;],
+})
+export class StatisticsPage implements OnInit {
+  matchId!: string;
+  match!: MatchWithTeams;
+  localGoals!: string;
+  visitorGoals!: string;
+  localTeam!: Team | null;
+  visitorTeam!: Team | null;
+  generatedStats!: any;
+  loadingStats &#x3D; true;
+  errorMessage: string | null &#x3D; null;
+  currentLang: string
+
+  stats &#x3D; [
+    { name: &#x27;Tiros&#x27;, local: 18, visitor: 13 },
+    { name: &#x27;Tiros a puerta&#x27;, local: 10, visitor: 3 },
+    { name: &#x27;Posesión&#x27;, local: &#x27;61%&#x27;, visitor: &#x27;39%&#x27; },
+    { name: &#x27;Pases&#x27;, local: 545, visitor: 349 },
+    { name: &#x27;Precisión de pases&#x27;, local: &#x27;88%&#x27;, visitor: &#x27;82%&#x27; },
+    { name: &#x27;Faltas&#x27;, local: 5, visitor: 12 },
+    { name: &#x27;Tarjetas amarillas&#x27;, local: 0, visitor: 2 },
+    { name: &#x27;Tarjetas rojas&#x27;, local: 0, visitor: 0 },
+    { name: &#x27;Fueras de juego&#x27;, local: 1, visitor: 4 },
+    { name: &#x27;Saques de esquina&#x27;, local: 4, visitor: 6 }
+  ];
+
+  constructor(
+    private route: ActivatedRoute,
+    private matchSvc: MatchService,
+    private teamSvc: TeamService,
+    private statsSvc: MatchStatsService,
+    private translate: TranslateService,
+    private languageService: LanguageService) {
+      this.currentLang &#x3D; this.languageService.getStoredLanguage();
+    }
+
+  ngOnInit() {
+    this.matchId &#x3D; this.route.snapshot.paramMap.get(&#x27;id&#x27;)!;
+    this.loadMatchData();
+  }
+
+  loadMatchData() {
+    this.loadingStats &#x3D; true;
+    this.errorMessage &#x3D; null;
+
+    this.matchSvc.getById(this.matchId).subscribe({
+      next: async (match) &#x3D;&gt; {
+        try {
+          const [localTeamRaw, visitorTeamRaw] &#x3D; await Promise.all([
+            match!.localTeamId ? firstValueFrom(this.teamSvc.getById(match!.localTeamId)) : Promise.resolve(undefined),
+            match!.visitorTeamId ? firstValueFrom(this.teamSvc.getById(match!.visitorTeamId)) : Promise.resolve(undefined)
+          ]);
+
+          // Asegurar que sean undefined si venían como null
+          const localTeam &#x3D; localTeamRaw ?? undefined;
+          const visitorTeam &#x3D; visitorTeamRaw ?? undefined;
+
+          this.match &#x3D; {
+            ...(match as Match),
+            localTeam,
+            visitorTeam
+          };
+          
+          if (typeof this.match.result &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; this.match.result.includes(&#x27;-&#x27;)) {
+            const [local, visitor] &#x3D; this.match.result.split(&#x27;-&#x27;);
+            this.localGoals &#x3D; local?.trim();
+            this.visitorGoals &#x3D; visitor?.trim();
+          } else {
+            this.localGoals &#x3D; &#x27;0&#x27;;
+            this.visitorGoals &#x3D; &#x27;0&#x27;;
+          }
+          
+          this.loadTeams();
+          this.generateStatsBasedOnStatus();
+        } catch (error) {
+          console.error(&#x27;Error fetching team data:&#x27;, error);
+          this.errorMessage &#x3D; &#x27;Error al cargar los datos de los equipos.&#x27;;
+          this.loadingStats &#x3D; false;
+        }
+      },
+      error: (err) &#x3D;&gt; {
+        console.error(&#x27;Error fetching match:&#x27;, err);
+        this.errorMessage &#x3D; &#x27;Error al cargar el partido.&#x27;;
+        this.loadingStats &#x3D; false;
+      }
+    });
+  }
+
+  generateStatsBasedOnStatus() {
+    if (!this.match || !this.match.status) {
+      this.loadingStats &#x3D; false;
+      return;
+    }
+  
+    const baseStats &#x3D; this.stats.map(stat &#x3D;&gt; ({
+      name: stat.name,
+      localValue: 0,
+      visitorValue: 0,
+    }));
+  
+    const statsId &#x3D; this.generatedStats?.id || this.match.id + &#x27;_stats&#x27;;
+  
+    if (this.match.status.toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;finalizado&#x27;) {
+      // Verificamos si ya existen stats en Firebase
+      this.statsSvc.getAll().subscribe({
+        next: (allStatsResult: any[] | Paginated&lt;any&gt;) &#x3D;&gt; {
+          const statsArray &#x3D; Array.isArray(allStatsResult)
+            ? allStatsResult
+            : allStatsResult.data ?? [];
+      
+          const existingStats &#x3D; statsArray.find(s &#x3D;&gt; s.matchId &#x3D;&#x3D;&#x3D; this.match.id);
+      
+          if (existingStats) {
+            this.generatedStats &#x3D; existingStats;
+          } else {
+            const newStats: any &#x3D; {
+              matchId: this.match.id,
+              userId: &#x27;&#x27;, // Si es vacío, considera no incluirlo
+              stats: this.stats.map(stat &#x3D;&gt; ({
+                name: stat.name,
+                localValue: this.generateValue(stat.local),
+                visitorValue: this.generateValue(stat.visitor),
+              }))
+            };
+            
+            // Si userId está vacío, elimínalo para que no cause problemas
+            if (!newStats.userId) {
+              delete newStats.userId;
+            }
+            
+            // Validar que no haya propiedades con valores undefined
+            Object.keys(newStats).forEach(key &#x3D;&gt; {
+              if (newStats[key] &#x3D;&#x3D;&#x3D; undefined) {
+                delete newStats[key];
+              }
+            });
+      
+            this.statsSvc.add(newStats).subscribe({
+              next: () &#x3D;&gt; {
+                this.generatedStats &#x3D; newStats;
+              },
+              error: (err) &#x3D;&gt; {
+                console.error(&#x27;Error saving stats to Firebase:&#x27;, err);
+                this.errorMessage &#x3D; &#x27;Error al guardar las estadísticas en Firebase.&#x27;;
+              }
+            });
+          }
+      
+          this.loadingStats &#x3D; false;
+        },
+        error: err &#x3D;&gt; {
+          console.error(&#x27;Error loading stats from Firebase:&#x27;, err);
+          this.errorMessage &#x3D; &#x27;Error al cargar estadísticas desde Firebase.&#x27;;
+          this.loadingStats &#x3D; false;
+        }
+      });
+    } else if (this.match.status.toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;por jugar&#x27;) {
+      // Partido no ha comenzado
+      this.generatedStats &#x3D; {
+        id: statsId,
+        matchId: this.match.id,
+        userId: &#x27;&#x27;,
+        stats: baseStats
+      };
+      this.loadingStats &#x3D; false;
+    } else {
+      // Jugando u otro estado, estadísticas generadas al vuelo
+      this.generatedStats &#x3D; {
+        id: statsId,
+        matchId: this.match.id,
+        userId: &#x27;&#x27;,
+        stats: this.stats.map(stat &#x3D;&gt; ({
+          name: stat.name,
+          localValue: this.generateValue(stat.local),
+          visitorValue: this.generateValue(stat.visitor),
+        }))
+      };
+      this.loadingStats &#x3D; false;
+    }
+  }
+  
+
+  generateValue(baseValue: number | string): number | string {
+    const base &#x3D; typeof baseValue &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; baseValue.includes(&#x27;%&#x27;)
+      ? parseFloat(baseValue.replace(&#x27;%&#x27;, &#x27;&#x27;))
+      : Number(baseValue);
+  
+    if (isNaN(base)) return 0;
+  
+    const variation &#x3D; base * 0.3; // hasta un 30% de variación
+    let randomValue &#x3D; base + (Math.random() * variation - variation / 2);
+  
+    if (typeof baseValue &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; baseValue.includes(&#x27;%&#x27;)) {
+      return &#x60;${Math.max(0, Math.min(100, Number(randomValue.toFixed(0))))}%&#x60;;
+    }
+  
+    return Math.max(0, Math.round(randomValue));
+  }
+
+  loadTeams() {
+    // Verificar que &#x60;this.match&#x60; no es undefined antes de intentar acceder a sus propiedades
+    if (this.match) {
+      if (this.match.localTeamId) {
+        this.teamSvc.getById(this.match.localTeamId).subscribe({
+          next: (team) &#x3D;&gt; this.localTeam &#x3D; team!,
+          error: err &#x3D;&gt; console.error(&#x27;Error loading local team:&#x27;, err)
+        });
+      }
+    
+      if (this.match.visitorTeamId) {
+        this.teamSvc.getById(this.match.visitorTeamId).subscribe({
+          next: (team) &#x3D;&gt; this.visitorTeam &#x3D; team!,
+          error: err &#x3D;&gt; console.error(&#x27;Error loading visitor team:&#x27;, err)
+        });
+      }
+    }
+  }
+
+  isGreater(a: any, b: any): boolean {
+    const valA &#x3D; this.parseStatValue(a);
+    const valB &#x3D; this.parseStatValue(b);
+    return valA &gt; valB;
+  }
+  
+  parseStatValue(value: any): number {
+    if (typeof value &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; value.includes(&#x27;%&#x27;)) {
+      return parseFloat(value.replace(&#x27;%&#x27;, &#x27;&#x27;));
+    }
+    return typeof value &#x3D;&#x3D;&#x3D; &#x27;number&#x27; ? value : parseFloat(value) || 0;
+  }
+  
+  // Método para refrescar los datos
+  doRefresh(event: any) {
+    this.loadMatchData();
+    setTimeout(() &#x3D;&gt; {
+      event.target.complete();
+    }, 1000);
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'MatchWithTeams-1.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
